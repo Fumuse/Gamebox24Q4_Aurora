@@ -6,11 +6,12 @@ using UnityEngine.Events;
 public class InteractableObject : MonoBehaviour, IInteractable
 {
     [SerializeField] protected float positionOffset;
+    [SerializeField] protected Transform objectPosition;
     [SerializeField] protected UnityEvent actionProvider;
     [SerializeField] protected InteractableObjectCondition conditionToView;
 
     public bool IsInteracted { get; private set; }
-    public Vector3 Position => this.transform.position;
+    public Vector3 Position => objectPosition.position;
     public float Offset => positionOffset;
 
     public GameObject GameObject => this.gameObject;
@@ -26,6 +27,11 @@ public class InteractableObject : MonoBehaviour, IInteractable
     public delegate void CancelInteract(IInteractable interactable);
     public static event CancelInteract OnCancelInteract;
     #endregion
+
+    private void OnValidate()
+    {
+        objectPosition ??= this.transform;
+    }
 
     protected void OnEnable()
     {

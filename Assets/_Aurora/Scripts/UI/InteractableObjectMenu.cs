@@ -10,12 +10,18 @@ public class InteractableObjectMenu : MonoBehaviour
     [SerializeField] private Button interactButton;
 
     private bool _mouseIn = false;
+    private GraphicRaycaster _menuRaycaster;
 
     private void OnValidate()
     {
         objectMenu ??= GetComponentInChildren<Canvas>();
         interObject ??= GetComponent<InteractableObject>();
         interactButton ??= GetComponentInChildren<Button>();
+    }
+
+    private void Awake()
+    {
+        _menuRaycaster ??= objectMenu.GetComponent<GraphicRaycaster>();
     }
 
     private void OnEnable()
@@ -62,6 +68,7 @@ public class InteractableObjectMenu : MonoBehaviour
 
     private void HideInteractMenu()
     {
+        _menuRaycaster.enabled = false;
         interactButton.interactable = interObject.IsInteracted;
         
         objectMenu.gameObject.SetActive(false);
@@ -71,6 +78,7 @@ public class InteractableObjectMenu : MonoBehaviour
     {
         if (interObject.IsInteracted)
         {
+            _menuRaycaster.enabled = true;
             ShowInteractMenu();
         }
     }
