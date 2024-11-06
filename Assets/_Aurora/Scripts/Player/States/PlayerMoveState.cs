@@ -2,12 +2,6 @@
 
 public class PlayerMoveState : PlayerBaseState
 {
-    private readonly int _moveAnimParamHash = Animator.StringToHash("MoveSpeed");
-    private readonly int _moveAnimBlendTreeHash = Animator.StringToHash("MoveBlendTree");
-    
-    private const float AnimationDampTime = 0.1f;
-    private const float CrossFadeDuration = 0.1f;
-    
     public PlayerMoveState(PlayerStateMachine stateMachine) : base(stateMachine)
     {}
 
@@ -15,19 +9,16 @@ public class PlayerMoveState : PlayerBaseState
     {
         InputReader.OnMouseClicked += OnMouseClicked;
         
-        stateMachine.Animator.CrossFadeInFixedTime(_moveAnimBlendTreeHash, CrossFadeDuration);
+        stateMachine.Animator.CrossFadeInFixedTime(moveAnimBlendTreeHash, CrossFadeDuration);
     }
 
     public override void Tick()
     {
+        CheckClickToUI();
         Rotate();
         Move();
 
-        stateMachine.Animator.SetFloat(_moveAnimParamHash, 
-            isMoving ? 1f : 0f, 
-            AnimationDampTime, 
-            Time.deltaTime
-        );
+        MoveAnimation();
     }
 
     public override void Exit()
@@ -37,8 +28,20 @@ public class PlayerMoveState : PlayerBaseState
 
     private void OnMouseClicked(Vector2 mousePosition)
     {
+        if (isClickedToUI) return;
+        
         targetPosition = stateMachine.MainCamera.ScreenToWorldPoint(mousePosition);
+        Collider2D clickedCollider = Physics2D.OverlapPoint(targetPosition);
 
-        isMoving = true;
+        if (clickedCollider != null)
+        {
+            if (clickedCollider.TryGetComponent(out IInteractable interactable))
+            {
+                stateMachine.SwitchState(new PlayerInteractState(stateMachine, interactable));
+                return;
+            }
+        }
+
+        isMoving = true; 
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class StateMachine : MonoBehaviour
 {
     private State _currentState;
-    private CancellationTokenSource _cancellationSource;
+    private CancellationTokenSource _cts;
 
     public void SwitchState(State state)
     {
@@ -21,18 +21,17 @@ public abstract class StateMachine : MonoBehaviour
 
     protected virtual void OnDisable()
     {
-        if (_cancellationSource != null)
-            _cancellationSource.Cancel();
+        _cts?.Cancel();
     }
 
     private async void UpdateLoop()
     {
-        _cancellationSource = new();
+        _cts = new();
 
         while (true)
         {
             AsyncUpdate();
-            bool isCanceled = await UniTask.WaitForEndOfFrame(this, _cancellationSource.Token).SuppressCancellationThrow();
+            bool isCanceled = await UniTask.WaitForEndOfFrame(this, _cts.Token).SuppressCancellationThrow();
             if (isCanceled) return;
         }
     }

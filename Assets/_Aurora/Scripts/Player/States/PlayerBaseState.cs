@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 public abstract class PlayerBaseState : State
 {
@@ -7,6 +9,19 @@ public abstract class PlayerBaseState : State
     protected Vector3 moveDirection;
 
     protected bool isMoving = false;
+    protected bool isClickedToUI = false;
+
+    public Action OnEndMove;
+
+    #region Animations
+    
+    protected readonly int moveAnimParamHash = Animator.StringToHash("MoveSpeed");
+    protected readonly int moveAnimBlendTreeHash = Animator.StringToHash("MoveBlendTree");
+    
+    protected const float AnimationDampTime = 0.1f;
+    protected const float CrossFadeDuration = 0.1f;
+
+    #endregion
     
     protected PlayerBaseState(PlayerStateMachine stateMachine)
     {
@@ -28,7 +43,17 @@ public abstract class PlayerBaseState : State
         {
             isMoving = false;
             targetPosition = Vector3.zero;
+            OnEndMove?.Invoke();
         }
+    }
+
+    protected void MoveAnimation()
+    {
+        stateMachine.Animator.SetFloat(moveAnimParamHash, 
+            isMoving ? 1f : 0f, 
+            AnimationDampTime, 
+            Time.deltaTime
+        );
     }
 
     private void FixMoveDirection()
@@ -44,5 +69,10 @@ public abstract class PlayerBaseState : State
         if (targetPosition == Vector3.zero || !isMoving) return;
         
         stateMachine.SpriteRenderer.flipX = !(targetPosition.x - stateMachine.transform.position.x > 0);
+    }
+
+    protected void CheckClickToUI()
+    {
+        isClickedToUI = EventSystem.current.IsPointerOverGameObject();
     }
 }

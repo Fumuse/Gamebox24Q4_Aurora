@@ -22,23 +22,27 @@ public class CameraScaler : MonoBehaviour
 
     private CancellationTokenSource _cts;
 
-    private void OnEnable()
+    private void InitParameters()
     {
-        _cts = new CancellationTokenSource();
-        
         _camera ??= GetComponent<Camera>();
         _initialSize = _camera.orthographicSize;
         _targetAspect = defaultResolution.x / defaultResolution.y;
         _initialFov = _camera.fieldOfView;
         _horizontalFov = CalcVerticalFov(_initialFov, 1 / _targetAspect);
+    }
+
+    private void OnEnable()
+    {
+        _cts = new CancellationTokenSource();
+        
+        InitParameters();
 
         WindowResize();
     }
 
     private void OnDisable()
     {
-        if (_cts != null)
-            _cts.Cancel();
+        _cts?.Cancel();
     }
 
     private async void WindowResize()

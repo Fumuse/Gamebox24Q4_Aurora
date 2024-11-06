@@ -33,6 +33,19 @@ public class InputReader : MonoBehaviour
 
     private void OnMouseClick(InputAction.CallbackContext context)
     {
+        if (!IsMouseInCameraView(Mouse.current.position.value)) return;
         OnMouseClicked?.Invoke(Mouse.current.position.value);
+    }
+    
+    private bool IsMouseInCameraView(Vector3 mousePosition)
+    {
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+
+        if (mousePosition.x >= 0 && mousePosition.x <= screenWidth && mousePosition.y >= 0 && mousePosition.y <= screenHeight)
+        {
+            return true;
+        }
+        return false;
     }
 }
