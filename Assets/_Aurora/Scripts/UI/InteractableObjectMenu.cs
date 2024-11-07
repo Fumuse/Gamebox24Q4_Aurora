@@ -9,6 +9,10 @@ public class InteractableObjectMenu : MonoBehaviour
     [SerializeField, HideInInspector] private InteractableObject interObject;
     [SerializeField] private Button interactButton;
 
+    [Header("Objects sprites controller")] 
+    [SerializeField] private SpriteRenderer bodySprite;
+    [SerializeField] private InteractableObjectsStates states;
+
     private bool _mouseIn = false;
     private GraphicRaycaster _menuRaycaster;
 
@@ -44,11 +48,13 @@ public class InteractableObjectMenu : MonoBehaviour
         
         interactButton.onClick.RemoveListener(interObject.Interact);
     }
-
+    
+    //TODO: изображения должны переключаться в зависимости от общего стейта игры, продумать
     private void OnMouseEnter()
     {
         _mouseIn = true;
         if (interObject.IsInteracted) return;
+        ChangeBodySpriteByStage("light");
         ShowInteractMenu();
     }
 
@@ -56,7 +62,20 @@ public class InteractableObjectMenu : MonoBehaviour
     {
         _mouseIn = false;
         if (interObject.IsInteracted) return;
+        ChangeBodySpriteByStage("dark");
         HideInteractMenu();
+    }
+
+    private void ChangeBodySpriteByStage(string stage)
+    {
+        if (states == null) return;
+        
+        if (stage == "light" && states.Light != null)
+            bodySprite.sprite = states.Light;
+        if (stage == "dark" && states.Darkness != null)
+            bodySprite.sprite = states.Darkness;
+        if (stage == "broken" && states.Broken != null)
+            bodySprite.sprite = states.Broken;
     }
     
     private void ShowInteractMenu()
@@ -80,6 +99,7 @@ public class InteractableObjectMenu : MonoBehaviour
         {
             _menuRaycaster.enabled = true;
             ShowInteractMenu();
+            ChangeBodySpriteByStage("light");
         }
     }
 
@@ -88,6 +108,7 @@ public class InteractableObjectMenu : MonoBehaviour
         if (!interObject.IsInteracted && !_mouseIn)
         {
             HideInteractMenu();
+            ChangeBodySpriteByStage("dark");
         }
     }
 
