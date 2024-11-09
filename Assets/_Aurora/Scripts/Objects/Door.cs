@@ -6,6 +6,6 @@ public class Door : InteractableObject, IDoor
     [SerializeField] private Door connectedDoor;
 
     public Room Room => room;
-    public Door ConnectedDoor => connectedDoor;
-    
+    public IDoor ConnectedDoor => connectedDoor;
+    public Transform Transform => objectPosition;
 }

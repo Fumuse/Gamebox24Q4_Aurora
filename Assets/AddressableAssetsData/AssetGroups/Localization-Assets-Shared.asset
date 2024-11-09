@@ -20,6 +20,18 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 73cedb56d542d7e48bd8dfd5394ba827
+    m_Address: Assets/_Aurora/Localization/Tables/LocalizationAssetTable Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: afe90ce8353ce6444a7d66400b66a0fc
+    m_Address: Trellis_Scene
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: f6e2ef50d5e71aa4084ffae29d126493, type: 2}
   m_SchemaSet:

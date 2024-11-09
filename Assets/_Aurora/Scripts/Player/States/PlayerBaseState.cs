@@ -68,7 +68,7 @@ public abstract class PlayerBaseState : State
     {
         if (targetPosition == Vector3.zero || !isMoving) return;
         
-        stateMachine.SpriteRenderer.flipX = !(targetPosition.x - stateMachine.transform.position.x > 0);
+        stateMachine.SpriteRenderer.flipX = (targetPosition.x - stateMachine.transform.position.x > 0);
     }
 
     protected void CheckClickToUI()

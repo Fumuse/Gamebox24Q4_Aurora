@@ -15,7 +15,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Room
   - 
   - 
   - 
@@ -41,11 +41,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: InterObject
+    uniqueID: 1615682465
+    locked: 0
   - name: SceneUI
     uniqueID: 4257855927
     locked: 0
   - name: Player
     uniqueID: 1548214489
+    locked: 0
+  - name: Foreground
+    uniqueID: 796773735
     locked: 0
   - name: GlobalUI
     uniqueID: 2273496755
