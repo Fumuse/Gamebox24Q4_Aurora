@@ -35,6 +35,10 @@ MonoBehaviour:
     m_Localized: Trellis
     m_Metadata:
       m_Items: []
+  - m_Id: 1106321603850240
+    m_Localized: Curtains
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

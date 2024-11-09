@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public interface IInteractable
 {
@@ -11,4 +12,6 @@ public interface IInteractable
     public void Interact();
     public void DeclineInteract();
     public void FinishInteract();
+    
+    public void ChangeActionProvider(ListedUnityEvent actions);
 }

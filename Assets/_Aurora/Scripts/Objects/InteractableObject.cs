@@ -2,13 +2,14 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(InteractableObjectMenu))]
+[RequireComponent(typeof(InteractableObjectUI))]
 public class InteractableObject : MonoBehaviour, IInteractable
 {
     [SerializeField] protected float positionOffset;
     [SerializeField] protected Transform objectPosition;
-    [SerializeField] protected UnityEvent actionProvider;
+    [SerializeField] protected ListedUnityEvent actionProvider;
     [SerializeField] protected InteractableObjectCondition conditionToView;
+    [SerializeField] private InteractableObjectUI ui;
 
     public bool IsInteracted { get; private set; }
     public Vector3 Position => objectPosition.position;
@@ -31,6 +32,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
     private void OnValidate()
     {
         objectPosition ??= this.transform;
+        ui ??= GetComponent<InteractableObjectUI>();
     }
 
     protected void OnEnable()
@@ -51,9 +53,9 @@ public class InteractableObject : MonoBehaviour, IInteractable
         }
 
         bool needToHide = false;
-        needToHide |= conditionToView.PassesTagsCondition;
-        needToHide |= conditionToView.PassesTimeCondition;
-        needToHide |= conditionToView.PassesAcceptanceCondition;
+        needToHide |= !conditionToView.PassesTagsCondition;
+        needToHide |= !conditionToView.PassesTimeCondition;
+        needToHide |= !conditionToView.PassesAcceptanceCondition;
 
         this.gameObject.SetActive(!needToHide);
     }
@@ -66,7 +68,8 @@ public class InteractableObject : MonoBehaviour, IInteractable
         OnInteracted?.Invoke(this);
         
         actionProvider?.Invoke();
-        if (actionProvider?.GetPersistentEventCount() < 1)
+        
+        if (actionProvider?.ActionsCount < 1)
         {
             FinishInteract();
         }
@@ -97,5 +100,15 @@ public class InteractableObject : MonoBehaviour, IInteractable
     {
         IsInteracted = false;
         OnCancelInteract?.Invoke(this);
+    }
+
+    public void ChangeBodySpriteByStage(HouseStageEnum stage)
+    {
+        ui.ChangeBodySpriteByStage(stage);
+    }
+
+    public void ChangeActionProvider(ListedUnityEvent actions)
+    {
+        actionProvider = actions;
     }
 }

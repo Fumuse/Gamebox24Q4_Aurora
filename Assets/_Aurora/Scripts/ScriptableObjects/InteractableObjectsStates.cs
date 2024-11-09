@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "InteractableObjectStates", menuName = "InteractableObjects/InteractableObjectsStates")]
-public class InteractableObjectsStates : ScriptableObject
+[CreateAssetMenu(fileName = "InteractableObjectState", menuName = "States/InteractableObjectState")]
+public class InteractableObjectState : ScriptableObject
 {
     [SerializeField] private Sprite light;
-    [SerializeField] private Sprite darkness;
+    [SerializeField] private Sprite dark;
     [SerializeField] private Sprite broken;
 
     public Sprite Light => light;
-    public Sprite Darkness => darkness;
+    public Sprite Dark => dark;
     public Sprite Broken => broken;
 }
