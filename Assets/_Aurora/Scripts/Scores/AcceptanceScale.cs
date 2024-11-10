@@ -1,15 +1,31 @@
 ﻿using System;
+using UnityEngine;
 
 public class AcceptanceScale
 {
     private int _currentScale;
 
     public static Action OnAcceptanceScaleExhausted;
+    public static Action OnAcceptanceScaleChanged;
 
     public int Current
     {
         get => _currentScale;
-        private set => _currentScale = value;
+        private set
+        {
+            _currentScale = value;
+            Debug.Log(_currentScale);
+            
+            if (_currentScale < 0)
+            {
+                _currentScale = 0;
+                OnAcceptanceScaleExhausted?.Invoke();
+            }
+            else
+            {
+                OnAcceptanceScaleChanged?.Invoke();
+            }
+        }
     }
 
     public AcceptanceScale(int maxAcceptance)
@@ -22,10 +38,5 @@ public class AcceptanceScale
         if (cost < 0) return;
         
         Current -= cost;
-        if (Current < 0)
-        {
-            Current = 0;
-            OnAcceptanceScaleExhausted?.Invoke();
-        }
     }
 }

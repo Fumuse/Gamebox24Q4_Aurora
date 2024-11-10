@@ -12,15 +12,19 @@ public class InputReader : MonoBehaviour
     public delegate void MouseClicked(Vector2 mousePosition);
     public static event MouseClicked OnMouseClicked;
 
-    private void Awake()
+    public void Init()
     {
         _isActions = new();
+        
+        _isActions.Enable();
+        _isActions.Player.Click.performed += OnMouseClick;
     }
 
     private void OnEnable()
     {
+        if (_isActions == null) return;
+        
         _isActions.Enable();
-
         _isActions.Player.Click.performed += OnMouseClick;
     }
 

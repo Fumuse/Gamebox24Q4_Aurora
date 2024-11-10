@@ -15,6 +15,9 @@ public class TeleportProvider : MonoBehaviour, IAction
     private IInteractable _lastInteractable;
     private IDoor _interactableDoor;
     private ActionSettings _actionSettings;
+    
+    public Action OnTeleportEnds;
+    public Action OnPlayerTeleported;
 
     private void OnValidate()
     {
@@ -67,8 +70,21 @@ public class TeleportProvider : MonoBehaviour, IAction
         if (isCanceled) return;
 
         SpentTime();
-        
-        _interactableDoor.FinishInteract();
+        OnTeleportEnds?.Invoke();
+
+        if (_interactableDoor != null)
+        {
+            if (_actionSettings != null)
+            {
+                this.AddingTagsAfterInteract(_actionSettings);
+                this.ChangeInteractableObjectAction(
+                    _interactableDoor, 
+                    _actionSettings.ChangeActionSettingsAfterPlay, 
+                    _actionSettings.ChangeObjectEventAfterPlay
+                );
+            }
+            _interactableDoor.FinishInteract();
+        }
     }
 
     /// <summary>
@@ -94,6 +110,8 @@ public class TeleportProvider : MonoBehaviour, IAction
         newCameraPosition.y = connectedRoomPosition.y;
 
         mainCamera.transform.position = newCameraPosition;
+        
+        OnPlayerTeleported?.Invoke();
     }
     
     private void OnInteracted(IInteractable interactable)

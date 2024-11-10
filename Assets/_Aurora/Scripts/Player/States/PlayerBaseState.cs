@@ -73,6 +73,9 @@ public abstract class PlayerBaseState : State
 
     protected void CheckClickToUI()
     {
-        isClickedToUI = EventSystem.current.IsPointerOverGameObject();
+        if (EventSystem.current != null)
+        {
+            isClickedToUI = EventSystem.current.IsPointerOverGameObject();
+        }
     }
 }

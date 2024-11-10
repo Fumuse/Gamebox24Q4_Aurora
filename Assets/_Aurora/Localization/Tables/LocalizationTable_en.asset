@@ -22,10 +22,6 @@ MonoBehaviour:
     m_Localized: Door
     m_Metadata:
       m_Items: []
-  - m_Id: 530511589376
-    m_Localized: Teapot
-    m_Metadata:
-      m_Items: []
   - m_Id: 339593865228288
     m_Localized: There's some text here that appeared after interacting with the
       object.
@@ -37,6 +33,64 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1106321603850240
     m_Localized: Curtains
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1435686782922752
+    m_Localized: Cellar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1436543092027392
+    m_Localized: Attic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1436772369461248
+    m_Localized: Hatch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1440026478276608
+    m_Localized: Aurora, honey, I'm in the kitchen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1440180677668864
+    m_Localized: <color=yellow>Use <b>LMB</b> to move</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1624964058083328
+    m_Localized: Photo album
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1650727012560896
+    m_Localized: Grandma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1661868933672960
+    m_Localized: A box of candles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1675506230784000
+    m_Localized: ???
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1675644974166016
+    m_Localized: Corpse of grandmother
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1697835300188160
+    m_Localized: <color=yellow>Interact with an object or turn on the flashlight
+      (<b>RMB</b>)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1709268259860480
+    m_Localized: Sadly...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1709271552389120
+    m_Localized: We'll talk to you before the first rooster crows. And don't forget
+      the candles - we'll be looking at photos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1709304473481216
+    m_Localized: Turn that light off, it's annoying!
     m_Metadata:
       m_Items: []
   references:

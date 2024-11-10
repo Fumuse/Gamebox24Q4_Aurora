@@ -6,16 +6,31 @@ public class Timer
     private int _timeToEnd;
 
     public static Action OnTimeEnded;
+    public static Action OnTimeChanged;
 
     public int TimeToEnd
     {
         get => _timeToEnd;
-        private set => _timeToEnd = value;
+        private set
+        {
+            _timeToEnd = value;
+            Debug.Log(_timeToEnd);
+        
+            if (_timeToEnd < 0)
+            {
+                _timeToEnd = 0;
+                OnTimeEnded?.Invoke();
+            }
+            else
+            {
+                OnTimeChanged?.Invoke();
+            }
+        }
     }
 
     public Timer(int timeToEnd)
     {
-        TimeToEnd = timeToEnd;
+        _timeToEnd = timeToEnd;
     }
 
     public void SpendTime(int time)
@@ -24,12 +39,5 @@ public class Timer
         if (time < 0) return;
 
         TimeToEnd -= time;
-        
-        if (TimeToEnd < 0)
-        {
-            TimeToEnd = 0;
-            
-            OnTimeEnded?.Invoke();
-        }
     }
 }

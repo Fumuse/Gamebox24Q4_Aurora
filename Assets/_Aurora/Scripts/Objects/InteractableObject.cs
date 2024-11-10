@@ -35,12 +35,24 @@ public class InteractableObject : MonoBehaviour, IInteractable
         ui ??= GetComponent<InteractableObjectUI>();
     }
 
-    protected void OnEnable()
+    public virtual void Init()
     {
         CheckConditionToView();
+
+        TagManager.OnTagAdded += CheckConditionToView;
+        TagManager.OnTagRemoved += CheckConditionToView;
+        AcceptanceScale.OnAcceptanceScaleChanged += CheckConditionToView;
+        Timer.OnTimeChanged += CheckConditionToView;
     }
 
-    //TODO: эта проверка должна быть у каждого объекта после всех триггеров
+    private void OnDisable()
+    {
+        TagManager.OnTagAdded -= CheckConditionToView;
+        TagManager.OnTagRemoved -= CheckConditionToView;
+        AcceptanceScale.OnAcceptanceScaleChanged -= CheckConditionToView;
+        Timer.OnTimeChanged -= CheckConditionToView;
+    }
+
     /// <summary>
     /// Проверка условий отображения объекта
     /// </summary>

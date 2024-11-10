@@ -19,10 +19,6 @@ MonoBehaviour:
     m_Key: Door
     m_Metadata:
       m_Items: []
-  - m_Id: 530511589376
-    m_Key: Teapot
-    m_Metadata:
-      m_Items: []
   - m_Id: 339593865228288
     m_Key: WhisperText
     m_Metadata:
@@ -33,6 +29,62 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1106321603850240
     m_Key: Curtains
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1435686782922752
+    m_Key: Cellar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1436543092027392
+    m_Key: Attic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1436772369461248
+    m_Key: Hatch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1440026478276608
+    m_Key: Tutorial_GrandmaCalls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1440180677668864
+    m_Key: Tutorial_Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1624964058083328
+    m_Key: PhotoAlbum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1650727012560896
+    m_Key: Grandma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1661868933672960
+    m_Key: CandleBox
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1675506230784000
+    m_Key: UndefinedObject
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1675644974166016
+    m_Key: GrandmaCorpse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1697835300188160
+    m_Key: Tutorial_CellarInteract
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1709268259860480
+    m_Key: GrandmaSadly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1709271552389120
+    m_Key: Tutorial_Cellar_GranmaRosterCrowns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1709304473481216
+    m_Key: Tutorial_Cellar_GranmaTurnOffLight
     m_Metadata:
       m_Items: []
   m_Metadata:

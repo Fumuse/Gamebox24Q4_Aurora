@@ -20,7 +20,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 473821376512
-    m_Key: New Entry
+    m_Key: TutorialMovie
     m_Metadata:
       m_Items: []
   m_Metadata:
@@ -40,6 +40,10 @@ MonoBehaviour:
       data:
         m_Entries:
         - m_KeyId: 13110636544
+          m_TableCodes:
+          - en
+          - ru
+        - m_KeyId: 473821376512
           m_TableCodes:
           - en
           - ru

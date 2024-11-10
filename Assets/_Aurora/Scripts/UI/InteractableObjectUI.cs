@@ -1,13 +1,18 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
+using UnityEngine.Localization.Tables;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(IInteractable))]
 public class InteractableObjectUI : MonoBehaviour
 {
     [SerializeField] private Canvas objectMenu;
-    [SerializeField, HideInInspector] private InteractableObject interObject;
     [SerializeField] private Button interactButton;
+    [SerializeField, HideInInspector] private InteractableObject interObject;
+    [SerializeField, HideInInspector] private LocalizeStringEvent buttonTextLocalizeEvent;
 
     [Header("Objects sprites controller")] 
     [SerializeField] private SpriteRenderer bodySprite;
@@ -21,6 +26,7 @@ public class InteractableObjectUI : MonoBehaviour
         objectMenu ??= GetComponentInChildren<Canvas>();
         interObject ??= GetComponent<InteractableObject>();
         interactButton ??= GetComponentInChildren<Button>();
+        buttonTextLocalizeEvent ??= interactButton.GetComponentInChildren<LocalizeStringEvent>();
     }
 
     private void Awake()
@@ -49,7 +55,6 @@ public class InteractableObjectUI : MonoBehaviour
         interactButton.onClick.RemoveListener(interObject.Interact);
     }
     
-    //TODO: изображения должны переключаться в зависимости от общего стейта игры, продумать
     private void OnMouseEnter()
     {
         _mouseIn = true;
@@ -122,5 +127,10 @@ public class InteractableObjectUI : MonoBehaviour
     {
         if (!interObject.Equals(interactable)) return;
         OnDeclineInteract();
+    }
+
+    public void ChangeObjectName(string newNameLocalizationKey)
+    {
+        buttonTextLocalizeEvent.StringReference.TableEntryReference = newNameLocalizationKey;
     }
 }

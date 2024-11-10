@@ -15,8 +15,8 @@ public class PlayerStateMachine : StateMachine
     public Animator Animator { get; private set; }
     public Camera MainCamera { get; private set; }
     public SpriteRenderer SpriteRenderer { get; private set; }
-    
-    private void Start()
+
+    public void Init()
     {
         InputReader = GetComponent<InputReader>();
         Сontroller = GetComponent<CharacterController>();
@@ -25,16 +25,6 @@ public class PlayerStateMachine : StateMachine
         SpriteRenderer = spriteRenderer;
         
         SwitchState(new PlayerMoveState(this));
-    }
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-    }
-
-    protected override void OnDisable()
-    {
-        base.OnDisable();
     }
 
     public void ChangePlayerSpriteByStage(HouseStageEnum stage)

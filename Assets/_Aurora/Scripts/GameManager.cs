@@ -4,29 +4,39 @@ using UnityEngine;
 public class GameManager : PersistentSingleton<GameManager>
 {
     [SerializeField] private GameSettings settings;
-    [SerializeField] private bool tutorialStage = false;
+    [SerializeField] private bool startInTutorial = true;
     [SerializeField] private HouseStageEnum houseStage = HouseStageEnum.Light;
     [SerializeField] private House house;
+    
+    [Header("Скрипты для инициализации")]
+    [SerializeField] private GameProvidersManager providersManager;
     [SerializeField] private PlayerStateMachine player;
+    [SerializeField] private TutorialStateMachine tutorial;
+    [SerializeField] private InputReader inputReader;
 
     public GameSettings Settings => settings;
 
     #region GameStages
+    private bool _tutorialStage = false;
     public bool TutorialStage
     {
-        get => tutorialStage;
-        set
-        {
-            tutorialStage = value;
-            
-            //TODO: Выполнение каких-то событий
-        }
+        get => _tutorialStage;
+        private set => _tutorialStage = value;
     }
     #endregion
 
     #region Options
     public bool TimeSpentWhenTeleport => !TutorialStage;
-    public HouseStageEnum CurrentStage => houseStage;
+
+    public HouseStageEnum CurrentStage
+    {
+        get => houseStage;
+        set
+        {
+            houseStage = value;
+            ChangeHouseSprites();
+        }
+    }
 
     public HouseStageEnum OppositeSpriteStage
     {
@@ -51,9 +61,36 @@ public class GameManager : PersistentSingleton<GameManager>
     {
         base.Awake();
 
+        Init();
+    }
+
+    /// <summary>
+    /// Единая точка входа
+    /// </summary>
+    private void Init()
+    {
         Timer = new Timer(Settings.TimeToEnd);
         AcceptanceScale = new AcceptanceScale(Settings.MaxAcceptance);
         TagManager = new TagManager();
+
+        inputReader.Init();
+        providersManager.Init();
+        InitObjects();
+    }
+
+    private void InitObjects()
+    {
+        foreach(Room room in house.Rooms)
+        {
+            foreach (InteractableObject interObject in room.InteractableObjects)
+            {
+                interObject.Init();
+            }
+            foreach (Door door in room.Doors)
+            {
+                door.Init();
+            }
+        }
     }
 
     private void OnValidate()
@@ -65,11 +102,32 @@ public class GameManager : PersistentSingleton<GameManager>
 
         house ??= FindFirstObjectByType<House>();
         player ??= FindFirstObjectByType<PlayerStateMachine>();
+        tutorial ??= FindFirstObjectByType<TutorialStateMachine>();
+        providersManager ??= FindFirstObjectByType<GameProvidersManager>();
+        inputReader ??= FindFirstObjectByType<InputReader>();
+    }
+
+    public void InitPlayer()
+    {
+        player.Init();
     }
 
     private void Start()
     {
         ChangeHouseSprites();
+        StartTutorial();
+    }
+
+    private void StartTutorial()
+    {
+        if (!startInTutorial)
+        {
+            InitPlayer();
+            return;
+        }
+        TutorialStage = true;
+        
+        tutorial.StartTutorial();
     }
 
     public void ChangeHouseSprites()

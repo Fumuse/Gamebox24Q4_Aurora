@@ -2,5 +2,5 @@
 
 public interface IAction
 {
-    public void Execute([CanBeNull] ActionSettings settings);
+    public void Execute(ActionSettings settings);
 }
