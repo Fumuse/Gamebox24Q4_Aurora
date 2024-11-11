@@ -10,34 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de2ec311efdf5684c8a96962c764a828, type: 3}
-  m_Name: DialogueInKitchen
+  m_Name: DieGrany
   m_EditorClassIdentifier: 
   Dialogue:
-  - _tag:
-      m_TableReference:
-        m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
-      m_TableEntryReference:
-        m_KeyId: 1650727012560896
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    _dialogueText:
-      m_TableReference:
-        m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
-      m_TableEntryReference:
-        m_KeyId: 2040721532440576
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    <Condition>k__BackingField: []
-    <Response>k__BackingField: []
-    <RepeatEndPhraze>k__BackingField: 0
-    <Event>k__BackingField:
-      <NameEvent>k__BackingField: 
-      <SendEvent>k__BackingField: 0
-      <WaitEndEvent>k__BackingField: 0
   - _tag:
       m_TableReference:
         m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
@@ -51,7 +26,7 @@ MonoBehaviour:
       m_TableReference:
         m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
       m_TableEntryReference:
-        m_KeyId: 2041213041954816
+        m_KeyId: 2080386732089344
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -67,7 +42,7 @@ MonoBehaviour:
       m_TableReference:
         m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
       m_TableEntryReference:
-        m_KeyId: 1650727012560896
+        m_KeyId: 2097764014579712
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -76,7 +51,7 @@ MonoBehaviour:
       m_TableReference:
         m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
       m_TableEntryReference:
-        m_KeyId: 2085699686326272
+        m_KeyId: 1709268259860480
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -88,7 +63,32 @@ MonoBehaviour:
       <NameEvent>k__BackingField: 
       <SendEvent>k__BackingField: 0
       <WaitEndEvent>k__BackingField: 0
-  EndDialoguesID: 
+  - _tag:
+      m_TableReference:
+        m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
+      m_TableEntryReference:
+        m_KeyId: 2097764014579712
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _dialogueText:
+      m_TableReference:
+        m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
+      m_TableEntryReference:
+        m_KeyId: 1709271552389120
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    <Condition>k__BackingField: []
+    <Response>k__BackingField: []
+    <RepeatEndPhraze>k__BackingField: 0
+    <Event>k__BackingField:
+      <NameEvent>k__BackingField: 
+      <SendEvent>k__BackingField: 0
+      <WaitEndEvent>k__BackingField: 0
+  EndDialoguesID: TutorialEnd
   references:
     version: 2
     RefIds: []

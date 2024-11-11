@@ -99,6 +99,42 @@ MonoBehaviour:
     m_Key: dialogue_in_kitchen_aurora_1
     m_Metadata:
       m_Items: []
+  - m_Id: 2067677370212352
+    m_Key: System
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2068147471998976
+    m_Key: photo_album
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2078880775626752
+    m_Key: trallis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2080386732089344
+    m_Key: die_grany
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2080964480688128
+    m_Key: candles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2085699686326272
+    m_Key: dialogue_in_kitchen_grany_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2086502157344768
+    m_Key: not_visible
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2089397313429504
+    m_Key: none
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2097764014579712
+    m_Key: spirit_grany
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

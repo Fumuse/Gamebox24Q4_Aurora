@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77ad7679d8d844dbac99a13007c02d9e, type: 3}
-  m_Name: TestDialogue_ActionSettings
+  m_Script: {fileID: 11500000, guid: 532c017304791f543839746a90fa7182, type: 3}
+  m_Name: DialogueActionProvider
   m_EditorClassIdentifier: 
-  whisperTextKey: 

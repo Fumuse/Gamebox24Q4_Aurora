@@ -32,7 +32,7 @@ MonoBehaviour:
     m_WaitForCompletion: 0
   timeCost: 0
   acceptanceCost: 0
-  changeObjectEventAfterPlay: {fileID: 11400000, guid: 446033b48e0089a49afb5b93df55e1bd, type: 2}
+  changeObjectEventAfterPlay: {fileID: 11400000, guid: 8d776b1b6a4f18b4c8a5abf58e28cc5e, type: 2}
   changeObjectSettingsAfterPlay: {fileID: 11400000, guid: 0883538f8e40b774bafa3c3671c42d76, type: 2}
   tagsToAddAfterAction: []
   references:

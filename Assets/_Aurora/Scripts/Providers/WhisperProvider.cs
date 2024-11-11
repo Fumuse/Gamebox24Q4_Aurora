@@ -87,7 +87,7 @@ public class WhisperProvider : MonoBehaviour, IAction
         if(dialog != null)
             _dialogHandler.StartNewDialog(dialog);
         else
-            UpdateWhisperText(whisperText);
+             UpdateWhisperText(whisperText);
 
         _localizedTextCharsCount = whisperText.Length;
     }

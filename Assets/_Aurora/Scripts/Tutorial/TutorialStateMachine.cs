@@ -45,4 +45,12 @@ public class TutorialStateMachine : StateMachine
             pair.door.gameObject.SetActive(false);
         }
     }
+
+    public void EndTutorial()
+    {
+        foreach(DoorKeyPair door in doorsMap)
+        {
+            door.door.gameObject.SetActive(true);
+        }
+    }
 }

@@ -21,7 +21,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  dialogueRoot: {fileID: 0}
+  dialogueRoot: {fileID: 11400000, guid: b53c49cf5eb47c442b82d0fec766c15d, type: 2}
   catSceneClip:
     m_TableReference:
       m_TableCollectionName: 
@@ -35,7 +35,7 @@ MonoBehaviour:
   changeObjectEventAfterPlay: {fileID: 0}
   changeObjectSettingsAfterPlay: {fileID: 0}
   tagsToAddAfterAction:
-  - tagName: SawGrandmaCorpse
+  - tagName: 0
   references:
     version: 2
     RefIds: []

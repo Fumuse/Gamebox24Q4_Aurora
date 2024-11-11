@@ -21,7 +21,6 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  whisperTextColor: gold
   dialogueRoot: {fileID: 0}
   catSceneClip:
     m_TableReference:
@@ -35,6 +34,7 @@ MonoBehaviour:
   acceptanceCost: 0
   changeObjectEventAfterPlay: {fileID: 0}
   changeObjectSettingsAfterPlay: {fileID: 0}
+  tagsToAddAfterAction: []
   references:
     version: 2
     RefIds: []

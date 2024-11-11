@@ -8,6 +8,8 @@ public class DialogueProvider : MonoBehaviour, IAction
     private ActionSettings _actionSettings;
     private CancellationTokenSource _cts;
 
+    [SerializeField] private DialogueHandler _dialog;
+
     private void OnEnable()
     {
         _cts = new();
@@ -23,9 +25,9 @@ public class DialogueProvider : MonoBehaviour, IAction
     public void Execute(ActionSettings settings)
     {
         _actionSettings = settings;
-        
-        // 
 
+         DialogueNode newDialog = settings.DialogueRoot;
+        _dialog.StartNewDialog(newDialog);
 
         if (_lastInteractable != null)
         {

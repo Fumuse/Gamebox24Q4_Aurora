@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77ad7679d8d844dbac99a13007c02d9e, type: 3}
-  m_Name: Room_5_TutorialGrandmaCorpse_ActionSettings
+  m_Name: TestDialogGrany
   m_EditorClassIdentifier: 
   whisperTextKey:
     m_TableReference:
@@ -21,7 +21,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  dialogueRoot: {fileID: 11400000, guid: f0d0ede20d098c84c950b1bbc5475819, type: 2}
+  dialogueRoot: {fileID: 11400000, guid: ab7d534f08c8c0b45aa60cae9386ada4, type: 2}
   catSceneClip:
     m_TableReference:
       m_TableCollectionName: 
@@ -32,10 +32,9 @@ MonoBehaviour:
     m_WaitForCompletion: 0
   timeCost: 0
   acceptanceCost: 0
-  changeObjectEventAfterPlay: {fileID: 11400000, guid: 8d776b1b6a4f18b4c8a5abf58e28cc5e, type: 2}
-  changeObjectSettingsAfterPlay: {fileID: 11400000, guid: 3e173723608f1f34cb6149ec791f5058, type: 2}
-  tagsToAddAfterAction:
-  - tagName: 1
+  changeObjectEventAfterPlay: {fileID: 0}
+  changeObjectSettingsAfterPlay: {fileID: 0}
+  tagsToAddAfterAction: []
   references:
     version: 2
     RefIds: []
