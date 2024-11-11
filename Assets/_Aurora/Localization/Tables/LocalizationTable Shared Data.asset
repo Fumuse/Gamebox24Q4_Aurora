@@ -87,6 +87,18 @@ MonoBehaviour:
     m_Key: Tutorial_Cellar_GranmaTurnOffLight
     m_Metadata:
       m_Items: []
+  - m_Id: 2038624548212736
+    m_Key: Aurora
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2040721532440576
+    m_Key: dialogue_in_kitchen_grany_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2041213041954816
+    m_Key: dialogue_in_kitchen_aurora_1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

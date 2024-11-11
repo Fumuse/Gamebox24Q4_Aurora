@@ -10,9 +10,11 @@ public class WhisperProvider : MonoBehaviour, IAction
     [SerializeField] private CanvasGroup whisperWrapper;
     [SerializeField] private TextMeshProUGUI whisperText;
     [SerializeField] private LocalizedString whisperLocalization;
+    [SerializeField] private DialogueHandler _dialogHandler;
     [SerializeField] private float fadeSpeed = 5f;
     [SerializeField] private float timeToWaitToReadGlobal = 1f;
     [SerializeField] private float timeToWaitToReadOneChar = 0.05f;
+
 
     private IInteractable _lastInteractable;
     private ActionSettings _actionSettings;
@@ -80,7 +82,12 @@ public class WhisperProvider : MonoBehaviour, IAction
         if (_actionSettings.WhisperText == null) return;
 
         string whisperText = _actionSettings.WhisperText.GetLocalizedString();
-        UpdateWhisperText(whisperText);
+        DialogueNode dialog = _actionSettings.DialogueRoot;
+
+        if(dialog != null)
+            _dialogHandler.StartNewDialog(dialog);
+        else
+            UpdateWhisperText(whisperText);
 
         _localizedTextCharsCount = whisperText.Length;
     }

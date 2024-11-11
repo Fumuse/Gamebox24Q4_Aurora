@@ -93,6 +93,10 @@ MonoBehaviour:
     m_Localized: Turn that light off, it's annoying!
     m_Metadata:
       m_Items: []
+  - m_Id: 2038624548212736
+    m_Localized: Aurora
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
