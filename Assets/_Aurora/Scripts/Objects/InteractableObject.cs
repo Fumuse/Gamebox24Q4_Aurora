@@ -64,12 +64,11 @@ public class InteractableObject : MonoBehaviour, IInteractable
             return;
         }
 
-        bool needToHide = false;
-        needToHide |= !conditionToView.PassesTagsCondition;
-        needToHide |= !conditionToView.PassesTimeCondition;
-        needToHide |= !conditionToView.PassesAcceptanceCondition;
+        bool needToShow = conditionToView.PassesTagsCondition;
+        if (!conditionToView.PassesTimeCondition) needToShow = false;
+        if (!conditionToView.PassesAcceptanceCondition) needToShow = false;
 
-        this.gameObject.SetActive(!needToHide);
+        gameObject.SetActive(needToShow);
     }
 
     /// <summary>

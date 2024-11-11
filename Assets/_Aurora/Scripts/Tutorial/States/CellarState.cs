@@ -127,6 +127,8 @@ public class CellarState : TutorialBaseState
 
     private void OnPlayerTeleportedToFirstRoom()
     {
+        LockDoor("Room_1_DoorDown");
+        UnlockDoor("Room_1_DoorLeft");
         stateMachine.SwitchState(new TryToEscapeStage(stateMachine));
     }
 

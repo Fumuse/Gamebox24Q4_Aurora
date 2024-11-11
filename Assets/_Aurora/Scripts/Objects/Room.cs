@@ -48,6 +48,11 @@ public class Room : MonoBehaviour
             intObject.ChangeBodySpriteByStage(stage);
         }
 
+        foreach (Door door in doors)
+        {
+            door.ChangeBodySpriteByStage(stage);
+        }
+
         foreach (RoomAdditionalObject additionalObject in additionalObjects)
         {
             additionalObject.ChangeBodySpriteByStage(stage);

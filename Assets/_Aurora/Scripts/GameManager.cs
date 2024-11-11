@@ -69,6 +69,8 @@ public class GameManager : PersistentSingleton<GameManager>
     /// </summary>
     private void Init()
     {
+        InitSettings();
+        
         Timer = new Timer(Settings.TimeToEnd);
         AcceptanceScale = new AcceptanceScale(Settings.MaxAcceptance);
         TagManager = new TagManager();
@@ -76,6 +78,12 @@ public class GameManager : PersistentSingleton<GameManager>
         inputReader.Init();
         providersManager.Init();
         InitObjects();
+    }
+
+    private void InitSettings()
+    {
+        //QualitySettings.vSyncCount = 1;
+        Application.targetFrameRate = 36;
     }
 
     private void InitObjects()
@@ -128,6 +136,12 @@ public class GameManager : PersistentSingleton<GameManager>
         TutorialStage = true;
         
         tutorial.StartTutorial();
+    }
+
+    public void EndTutorial()
+    {
+        TutorialStage = false;
+        tutorial.EndTutorial();
     }
 
     public void ChangeHouseSprites()

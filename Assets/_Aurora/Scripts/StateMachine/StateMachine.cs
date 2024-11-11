@@ -11,7 +11,7 @@ public abstract class StateMachine : MonoBehaviour
     {
         _currentState?.Exit();
         _currentState = state;
-        _currentState.Enter();
+        _currentState?.Enter();
     }
 
     protected virtual void OnEnable()

@@ -38,11 +38,25 @@ public class TutorialStateMachine : StateMachine
         SwitchState(new StartMovieState(this));
     }
 
+    public void EndTutorial()
+    {
+        UnlockAllDoors();
+        SwitchState(null);
+    }
+
     private void LockAllDoors()
     {
         foreach (DoorKeyPair pair in doorsMap)
         {
             pair.door.gameObject.SetActive(false);
+        }
+    }
+
+    private void UnlockAllDoors()
+    {
+        foreach (DoorKeyPair pair in doorsMap)
+        {
+            pair.door.gameObject.SetActive(true);
         }
     }
 }
