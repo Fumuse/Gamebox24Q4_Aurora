@@ -1995,7 +1995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4813445236147194116, guid: 8804fa65eca92f44c8f740b4f8286898, type: 3}
       propertyPath: _endDialogEvents.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4813445236147194116, guid: 8804fa65eca92f44c8f740b4f8286898, type: 3}
       propertyPath: _endDialogEvents.Array.data[0].NameEvent
@@ -2007,27 +2007,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4813445236147194116, guid: 8804fa65eca92f44c8f740b4f8286898, type: 3}
       propertyPath: _endDialogEvents.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4813445236147194116, guid: 8804fa65eca92f44c8f740b4f8286898, type: 3}
       propertyPath: _endDialogEvents.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1428543120}
+      objectReference: {fileID: 918220936}
     - target: {fileID: 4813445236147194116, guid: 8804fa65eca92f44c8f740b4f8286898, type: 3}
       propertyPath: _endDialogEvents.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4813445236147194116, guid: 8804fa65eca92f44c8f740b4f8286898, type: 3}
       propertyPath: _endDialogEvents.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: EndTutorial
       objectReference: {fileID: 0}
     - target: {fileID: 4813445236147194116, guid: 8804fa65eca92f44c8f740b4f8286898, type: 3}
       propertyPath: _endDialogEvents.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: TutorialStateMachine, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4813445236147194116, guid: 8804fa65eca92f44c8f740b4f8286898, type: 3}
       propertyPath: _endDialogEvents.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4813445236147194116, guid: 8804fa65eca92f44c8f740b4f8286898, type: 3}
       propertyPath: _endDialogEvents.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -3179,11 +3179,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rooms:
-  - {fileID: 1188960396}
-  - {fileID: 573044117}
-  - {fileID: 1583529928}
   - {fileID: 1395965568}
   - {fileID: 420420010}
+  - {fileID: 573044117}
+  - {fileID: 1583529928}
+  - {fileID: 1188960396}
 --- !u!1 &664419753
 GameObject:
   m_ObjectHideFlags: 0
