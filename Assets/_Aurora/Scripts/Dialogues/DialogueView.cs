@@ -47,7 +47,7 @@ public class DialogueView : MonoBehaviour
 
         IsClickResponse = false;
         _isSkipDialog = false;
-        animationText = $"<color=white>{_tag}: </color>";
+        animationText = $"<color=yellow>{_tag}: </color>";
 
         if (_useAnimationText)
         {
@@ -58,7 +58,7 @@ public class DialogueView : MonoBehaviour
 
                  if(_isSkipDialog)
                  {
-                     animationText = $"<color=white>{_tag}: </color> {_dialogueText}" ;
+                     animationText = $"<color=yellow>{_tag}: </color> {_dialogueText}" ;
                     _dialogueTMP.text = animationText;
                      return;
                  }

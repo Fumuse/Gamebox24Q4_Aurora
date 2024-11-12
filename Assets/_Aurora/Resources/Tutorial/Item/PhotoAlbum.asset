@@ -9,34 +9,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77ad7679d8d844dbac99a13007c02d9e, type: 3}
-  m_Name: Room_5_TutorialGrandmaCorpse_ActionSettings
+  m_Script: {fileID: 11500000, guid: 54589a71ca44a984989351a991e23208, type: 3}
+  m_Name: PhotoAlbum
   m_EditorClassIdentifier: 
-  whisperTextKey:
+  _nameItem:
     m_TableReference:
       m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
     m_TableEntryReference:
-      m_KeyId: 1709268259860480
+      m_KeyId: 1624964058083328
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  dialogueRoot: {fileID: 0}
-  item: {fileID: 0}
-  catSceneClip:
+  _itemSprite: {fileID: 8078105608785885881, guid: 785e9328b8f41f347ab539caf4504891, type: 3}
+  _description:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 2068147471998976
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
-  timeCost: 0
-  acceptanceCost: 0
-  changeObjectEventAfterPlay: {fileID: 11400000, guid: 446033b48e0089a49afb5b93df55e1bd, type: 2}
-  changeObjectSettingsAfterPlay: {fileID: 11400000, guid: ee3a3f5b508844d44bcb2d5da18a587d, type: 2}
-  tagsToAddAfterAction:
-  - tagName: 1
+    m_LocalVariables: []
   references:
     version: 2
     RefIds: []

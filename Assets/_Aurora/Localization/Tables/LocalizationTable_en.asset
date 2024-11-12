@@ -48,7 +48,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1440026478276608
-    m_Localized: Aurora, honey, I'm in the kitchen!
+    m_Localized: <color=yellow>(Grandma):</color>Aurora, honey, I'm in the kitchen!
     m_Metadata:
       m_Items: []
   - m_Id: 1440180677668864
@@ -94,7 +94,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2038624548212736
-    m_Localized: Aurora
+    m_Localized: (Aurora)
     m_Metadata:
       m_Items: []
   - m_Id: 2068147471998976

@@ -22,7 +22,6 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
     private bool _break;
     private bool _endEvent;
 
-
     private void OnEnable()
     {
         DialogueView.NextResponseDialog += OnNextResponseDialog;

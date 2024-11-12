@@ -249,10 +249,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8918360025191498262}
-        m_TargetAssemblyTypeName: ItemInfoView, Assembly-CSharp
-        m_MethodName: Hide
-        m_Mode: 1
+      - m_Target: {fileID: 8918360025191498261}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -462,7 +462,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e00f583fad8034999d4a03d24f2b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemInfoHandler: {fileID: 1245916385}
 --- !u!1 &58542877 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4815409596525330355, guid: fed423cc687b2e64a803d0a0196b612d, type: 3}
@@ -3452,11 +3451,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rooms:
-  - {fileID: 1583529928}
-  - {fileID: 1188960396}
-  - {fileID: 420420010}
-  - {fileID: 1395965568}
   - {fileID: 573044117}
+  - {fileID: 420420010}
+  - {fileID: 1583529928}
+  - {fileID: 1395965568}
+  - {fileID: 1188960396}
 --- !u!1 &664419753
 GameObject:
   m_ObjectHideFlags: 0
@@ -3550,7 +3549,7 @@ PrefabInstance:
     - target: {fileID: 2126070780737491757, guid: 730535abdb7e44d4cafe02326e3f1c32, type: 3}
       propertyPath: actionProvider.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 49016475}
+      objectReference: {fileID: 49016473}
     - target: {fileID: 2126070780737491757, guid: 730535abdb7e44d4cafe02326e3f1c32, type: 3}
       propertyPath: actionProvider.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -3573,7 +3572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2126070780737491757, guid: 730535abdb7e44d4cafe02326e3f1c32, type: 3}
       propertyPath: actionProvider.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ItemInfoProvider, Assembly-CSharp
+      value: DialogueProvider, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2126070780737491757, guid: 730535abdb7e44d4cafe02326e3f1c32, type: 3}
       propertyPath: actionProvider.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -6331,7 +6330,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1245916384}
   - component: {fileID: 1245916385}
-  - component: {fileID: 1245916386}
   m_Layer: 0
   m_Name: ItemHandler
   m_TagString: Untagged
@@ -6367,18 +6365,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemInfoView: {fileID: 8918360025191498262}
---- !u!114 &1245916386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245916383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 411eae6a750c2994893fc2f35e75eb7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1279534513
 GameObject:
   m_ObjectHideFlags: 0
@@ -7483,7 +7469,7 @@ RectTransform:
   m_GameObject: {fileID: 1564715670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.431708, y: 2.431708, z: 2.431708}
+  m_LocalScale: {x: 6.6749353, y: 6.6749353, z: 6.6749353}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975535419741576738}
@@ -7491,7 +7477,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 967, y: -379}
-  m_SizeDelta: {x: 138, y: 66}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1564715672
 MonoBehaviour:
@@ -7513,7 +7499,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8078105608785885881, guid: 785e9328b8f41f347ab539caf4504891, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 539416f2036f2874cb2dc86fe3d8425b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10582,7 +10568,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -820.6497, y: 73.22002, z: 165.41528, w: -504.20483}
+  m_margin: {x: -820.6497, y: -70.86305, z: 165.41528, w: -504.20483}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -10894,7 +10880,7 @@ GameObject:
   - component: {fileID: 6629578056369030839}
   - component: {fileID: 6662913410024833914}
   m_Layer: 5
-  m_Name: DialogView
+  m_Name: DialogPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11352,7 +11338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogueTMP: {fileID: 2955104793686954300}
   _canvas: {fileID: 8918360025354177540}
-  _useAnimationText: 0
+  _useAnimationText: 1
   _timeDelayAnimationText: 30
   <Buttons>k__BackingField:
   - {fileID: 2836369398146908148}
@@ -11465,7 +11451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogue: {fileID: 0}
   _dialogueView: {fileID: 6662913410024833914}
-  _delayBeforeNextPhrase: 3000
+  _delayBeforeNextPhrase: 2000
   _isDialogueTrigger: 0
 --- !u!1 &6860406265941922118
 GameObject:

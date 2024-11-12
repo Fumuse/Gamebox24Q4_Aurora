@@ -16,12 +16,13 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
     m_TableEntryReference:
-      m_KeyId: 384729642987520
+      m_KeyId: 2089397313429504
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  dialogueRoot: {fileID: 11400000, guid: 49b005ba0ea2ef947b3e36cde5c19a8c, type: 2}
+  dialogueRoot: {fileID: 0}
+  item: {fileID: 0}
   catSceneClip:
     m_TableReference:
       m_TableCollectionName: 

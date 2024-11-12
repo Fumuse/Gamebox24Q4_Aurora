@@ -14,14 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whisperTextKey:
     m_TableReference:
-      m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
+      m_TableCollectionName: 
     m_TableEntryReference:
-      m_KeyId: 2038624548212736
+      m_KeyId: 0
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  dialogueRoot: {fileID: 11400000, guid: ab7d534f08c8c0b45aa60cae9386ada4, type: 2}
+  dialogueRoot: {fileID: 0}
+  item: {fileID: 11400000, guid: 12621173688da7641b62d4d93bedb4e8, type: 2}
   catSceneClip:
     m_TableReference:
       m_TableCollectionName: 
