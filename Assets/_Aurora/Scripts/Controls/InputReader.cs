@@ -7,7 +7,7 @@ public class InputReader : MonoBehaviour
     private InputSystem_Actions _isActions;
     public Vector2 MousePosition { get; private set; }
 
-    public Action OnEscClicked;
+    public static Action OnEscClicked;
 
     public delegate void MouseClicked(Vector2 mousePosition);
     public static event MouseClicked OnMouseClicked;
@@ -21,6 +21,7 @@ public class InputReader : MonoBehaviour
     {
         _isActions.Enable();
 
+        _isActions.Player.Cancel.performed += OnCancel;
         _isActions.Player.Click.performed += OnMouseClick;
     }
 
@@ -28,7 +29,13 @@ public class InputReader : MonoBehaviour
     {
         _isActions.Disable();
 
+        _isActions.Player.Cancel.performed -= OnCancel;
         _isActions.Player.Click.performed -= OnMouseClick;
+    }
+
+    private void OnCancel(InputAction.CallbackContext context)
+    {
+        OnEscClicked?.Invoke();
     }
 
     private void OnMouseClick(InputAction.CallbackContext context)

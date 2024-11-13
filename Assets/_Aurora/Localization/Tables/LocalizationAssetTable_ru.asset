@@ -79,6 +79,26 @@ MonoBehaviour:
     m_Localized: '42a06a0a244fd8645a2f04058533dec2[creators_hover]'
     m_Metadata:
       m_Items: []
+  - m_Id: 1542769134039040
+    m_Localized: '5914f6611b470214fb021738f8f6895b[pause_fon]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1542777124188160
+    m_Localized: '4358020d3e0b02947b0a965888b5923d[exit]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1555742204391424
+    m_Localized: '60981a50ce466384fbb582a69ff0d3c9[exit_hover]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1555797107830784
+    m_Localized: '10a7598dbade4a04d93c9e74a1f83514[language]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1555757236776960
+    m_Localized: '103cb749de3b03c419c5f825807dc4db[sound]'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
