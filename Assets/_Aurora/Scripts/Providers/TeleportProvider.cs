@@ -69,32 +69,16 @@ public class TeleportProvider : MonoBehaviour, IAction
         isCanceled = await overlayWrapper.FadeOut(this, _cts.Token, fadeSpeed);
         if (isCanceled) return;
 
-        SpentTime();
         OnTeleportEnds?.Invoke();
 
         if (_interactableDoor != null)
         {
             if (_actionSettings != null)
             {
-                this.AddingTagsAfterInteract(_actionSettings);
-                this.ChangeInteractableObjectAction(
-                    _interactableDoor, 
-                    _actionSettings.ChangeActionSettingsAfterPlay, 
-                    _actionSettings.ChangeObjectEventAfterPlay
-                );
+                this.AfterInteractChanges(_interactableDoor, _actionSettings);
             }
             _interactableDoor.FinishInteract();
         }
-    }
-
-    /// <summary>
-    /// Spend time to teleport between rooms
-    /// </summary>
-    private void SpentTime()
-    {
-        GameManager.Instance.Timer.SpendTime(
-            _actionSettings.TimeCost
-        );
     }
 
     private void TeleportPlayer()

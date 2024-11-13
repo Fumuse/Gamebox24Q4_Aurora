@@ -30,12 +30,12 @@ MonoBehaviour:
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
-  timeCost: 0
+  timeCost: 10
   acceptanceCost: 0
   changeObjectEventAfterPlay: {fileID: 0}
   changeObjectSettingsAfterPlay: {fileID: 0}
   tagsToAddAfterAction:
-  - tagName: SawGrandmaCorpse
+  - tagName: 0
   references:
     version: 2
     RefIds: []

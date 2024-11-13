@@ -7,8 +7,9 @@ public class GameManager : PersistentSingleton<GameManager>
     [SerializeField] private bool startInTutorial = true;
     [SerializeField] private HouseStageEnum houseStage = HouseStageEnum.Light;
     [SerializeField] private House house;
-    
-    [Header("Скрипты для инициализации")]
+
+    [Header("Скрипты для инициализации")] 
+    [SerializeField] private CleanupEvents cleanupEvents;
     [SerializeField] private GameProvidersManager providersManager;
     [SerializeField] private PlayerStateMachine player;
     [SerializeField] private TutorialStateMachine tutorial;
@@ -71,6 +72,8 @@ public class GameManager : PersistentSingleton<GameManager>
     {
         InitSettings();
         
+        cleanupEvents.Init();
+        
         Timer = new Timer(Settings.TimeToEnd);
         AcceptanceScale = new AcceptanceScale(Settings.MaxAcceptance);
         TagManager = new TagManager();
@@ -98,6 +101,8 @@ public class GameManager : PersistentSingleton<GameManager>
             {
                 door.Init();
             }
+            
+            room.Shadow.Init();
         }
     }
 
@@ -113,6 +118,7 @@ public class GameManager : PersistentSingleton<GameManager>
         tutorial ??= FindFirstObjectByType<TutorialStateMachine>();
         providersManager ??= FindFirstObjectByType<GameProvidersManager>();
         inputReader ??= FindFirstObjectByType<InputReader>();
+        cleanupEvents ??= FindAnyObjectByType<CleanupEvents>();
     }
 
     public void InitPlayer()
@@ -126,6 +132,7 @@ public class GameManager : PersistentSingleton<GameManager>
         StartTutorial();
     }
 
+    #region Tutorial
     private void StartTutorial()
     {
         if (!startInTutorial)
@@ -143,6 +150,7 @@ public class GameManager : PersistentSingleton<GameManager>
         TutorialStage = false;
         tutorial.EndTutorial();
     }
+    #endregion
 
     public void ChangeHouseSprites()
     {

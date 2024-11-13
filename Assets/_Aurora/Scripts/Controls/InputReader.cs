@@ -9,6 +9,9 @@ public class InputReader : MonoBehaviour
 
     public Action OnEscClicked;
 
+    public delegate void RightMouseClicked(Vector2 mousePosition);
+    public static event RightMouseClicked OnRightMouseClicked;
+
     public delegate void MouseClicked(Vector2 mousePosition);
     public static event MouseClicked OnMouseClicked;
 
@@ -18,14 +21,8 @@ public class InputReader : MonoBehaviour
         
         _isActions.Enable();
         _isActions.Player.Click.performed += OnMouseClick;
-    }
-
-    private void OnEnable()
-    {
-        if (_isActions == null) return;
-        
-        _isActions.Enable();
-        _isActions.Player.Click.performed += OnMouseClick;
+        _isActions.Player.RightClick.performed += OnMouseRightClick;
+        _isActions.Player.Point.performed += OnMouseMove;
     }
 
     private void OnDisable()
@@ -33,6 +30,8 @@ public class InputReader : MonoBehaviour
         _isActions.Disable();
 
         _isActions.Player.Click.performed -= OnMouseClick;
+        _isActions.Player.RightClick.performed -= OnMouseRightClick;
+        _isActions.Player.Point.performed -= OnMouseMove;
     }
 
     private void OnMouseClick(InputAction.CallbackContext context)
@@ -51,5 +50,16 @@ public class InputReader : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private void OnMouseMove(InputAction.CallbackContext context)
+    {
+        MousePosition = context.ReadValue<Vector2>();
+    }
+
+    private void OnMouseRightClick(InputAction.CallbackContext context)
+    {
+        if (!IsMouseInCameraView(Mouse.current.position.value)) return;
+        OnRightMouseClicked?.Invoke(Mouse.current.position.value);
     }
 }

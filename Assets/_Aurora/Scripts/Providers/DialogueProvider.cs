@@ -31,12 +31,7 @@ public class DialogueProvider : MonoBehaviour, IAction
         {
             if (_actionSettings != null)
             {
-                this.AddingTagsAfterInteract(_actionSettings);
-                this.ChangeInteractableObjectAction(
-                    _lastInteractable, 
-                    _actionSettings.ChangeActionSettingsAfterPlay, 
-                    _actionSettings.ChangeObjectEventAfterPlay
-                );
+                this.AfterInteractChanges(_lastInteractable, _actionSettings);
             }
             _lastInteractable.FinishInteract();
         }

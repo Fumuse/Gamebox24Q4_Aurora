@@ -1,12 +1,13 @@
 ﻿using System;
 using UnityEngine;
 
-public class Timer
+public class Timer : ISubscriberToCleanup
 {
     private int _timeToEnd;
 
     public static Action OnTimeEnded;
     public static Action OnTimeChanged;
+    public static Action OnAfterFlashlightTimeChanged;
 
     public int TimeToEnd
     {
@@ -28,9 +29,27 @@ public class Timer
         }
     }
 
+    private int _timePassedAfterFlashlight = 0;
+    public int TimePassedAfterFlashlight
+    {
+        get => _timePassedAfterFlashlight;
+        private set
+        {
+            _timePassedAfterFlashlight = value;
+            OnAfterFlashlightTimeChanged?.Invoke();
+        }
+    }
+
     public Timer(int timeToEnd)
     {
         _timeToEnd = timeToEnd;
+        SubscribeEvents();
+    }
+
+    private void SubscribeEvents()
+    {
+        CleanupEvents.Instance.Subscribe(this);
+        Flashlight.OnFlashLightTurnOn += OnFlashLightTurnOn;
     }
 
     public void SpendTime(int time)
@@ -39,5 +58,20 @@ public class Timer
         if (time < 0) return;
 
         TimeToEnd -= time;
+
+        if (!Flashlight.flashlightActive)
+        {
+            TimePassedAfterFlashlight += time;
+        }
+    }
+
+    private void OnFlashLightTurnOn()
+    {
+        TimePassedAfterFlashlight = 0;
+    }
+
+    public void Cleanup()
+    {
+        Flashlight.OnFlashLightTurnOn -= OnFlashLightTurnOn;
     }
 }

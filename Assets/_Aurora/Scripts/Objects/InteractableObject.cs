@@ -38,14 +38,17 @@ public class InteractableObject : MonoBehaviour, IInteractable
     public virtual void Init()
     {
         CheckConditionToView();
+    }
 
+    protected void OnEnable()
+    {
         TagManager.OnTagAdded += CheckConditionToView;
         TagManager.OnTagRemoved += CheckConditionToView;
         AcceptanceScale.OnAcceptanceScaleChanged += CheckConditionToView;
         Timer.OnTimeChanged += CheckConditionToView;
     }
 
-    private void OnDisable()
+    protected void OnDisable()
     {
         TagManager.OnTagAdded -= CheckConditionToView;
         TagManager.OnTagRemoved -= CheckConditionToView;
