@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PauseMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     private bool _pauseMenuOpened = false;
+
+    public static Action OnPauseChanged;
+    public static bool InPause { get; private set; }
     
     private void OnEnable()
     {
@@ -27,6 +31,8 @@ public class PauseMenuController : MonoBehaviour
         pauseMenu.SetActive(!_pauseMenuOpened);
         _pauseMenuOpened = !_pauseMenuOpened;
 
+        InPause = _pauseMenuOpened;
+
         if (_pauseMenuOpened)
         {
             Time.timeScale = 0;
@@ -35,6 +41,8 @@ public class PauseMenuController : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+        
+        OnPauseChanged?.Invoke();
     }
 
     public void Exit()
