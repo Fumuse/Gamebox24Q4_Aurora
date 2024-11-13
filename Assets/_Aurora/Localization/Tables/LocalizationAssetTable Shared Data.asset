@@ -23,9 +23,62 @@ MonoBehaviour:
     m_Key: TutorialMovie
     m_Metadata:
       m_Items: []
+  - m_Id: 1125658452586496
+    m_Key: MainMenu_Exit_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1129380222103552
+    m_Key: MainMenu_Play_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1129415219376128
+    m_Key: MainMenu_Settings_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1129467631398912
+    m_Key: MainMenu_Exit_Button_Hover
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1129502360236032
+    m_Key: MainMenu_Play_Button_Hover
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1129552557666304
+    m_Key: MainMenu_Settings_Button_Hover
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1136608354267136
+    m_Key: MainMenu_GameLogo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1156929077669888
+    m_Key: MenuSettings_Return_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1157004558364672
+    m_Key: MenuSettings_Return_Button_Hover
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1158670087122944
+    m_Key: MenuSettings_Sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1158698377703424
+    m_Key: MenuSettings_Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1432139858604032
+    m_Key: MainMenu_Credits_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1432142446489600
+    m_Key: MainMenu_Credits_Button_Hover
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 9026372752308961477
+    - rid: 9026372825281462365
   m_KeyGenerator:
     rid: 9026372752308961476
   references:
@@ -48,4 +101,62 @@ MonoBehaviour:
           - en
           - ru
         m_TypeString: UnityEngine.Video.VideoClip, UnityEngine.VideoModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+    - rid: 9026372825281462365
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 1125658452586496
+          m_TableCodes:
+          - ru
+          - en
+        - m_KeyId: 1129380222103552
+          m_TableCodes:
+          - ru
+          - en
+        - m_KeyId: 1129415219376128
+          m_TableCodes:
+          - ru
+          - en
+        - m_KeyId: 1129467631398912
+          m_TableCodes:
+          - en
+          - ru
+        - m_KeyId: 1129502360236032
+          m_TableCodes:
+          - en
+          - ru
+        - m_KeyId: 1129552557666304
+          m_TableCodes:
+          - en
+          - ru
+        - m_KeyId: 1136608354267136
+          m_TableCodes:
+          - ru
+          - en
+        - m_KeyId: 1157004558364672
+          m_TableCodes:
+          - ru
+          - en
+        - m_KeyId: 1156929077669888
+          m_TableCodes:
+          - ru
+          - en
+        - m_KeyId: 1158670087122944
+          m_TableCodes:
+          - ru
+          - en
+        - m_KeyId: 1158698377703424
+          m_TableCodes:
+          - ru
+          - en
+        - m_KeyId: 1432139858604032
+          m_TableCodes:
+          - ru
+          - en
+        - m_KeyId: 1432142446489600
+          m_TableCodes:
+          - ru
+          - en
+        m_TypeString: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null

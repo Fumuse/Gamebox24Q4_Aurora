@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: ru
   m_SharedData: {fileID: 11400000, guid: 73cedb56d542d7e48bd8dfd5394ba827, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 9026372825281462475
   m_TableData:
   - m_Id: 13110636544
     m_Localized: afe90ce8353ce6444a7d66400b66a0fc
@@ -26,6 +27,62 @@ MonoBehaviour:
     m_Localized: 980aabecffe4923489c28c3586e81940
     m_Metadata:
       m_Items: []
+  - m_Id: 1125658452586496
+    m_Localized: 'e0b8e5ba7959df349942f26607563a86[exit]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1129467631398912
+    m_Localized: '99bffe535b990714e9a777e0ee394841[exit_hover]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1129415219376128
+    m_Localized: 'fa5755ae5f74f1545bdac27f0f12dec2[settings]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1129380222103552
+    m_Localized: '69321de41fddc15499244a37e1e9494b[new_game]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1129502360236032
+    m_Localized: '4dbd94af664fdf44b935c55e2d141759[new_game_hover]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1129552557666304
+    m_Localized: '5463770485cc386408e9b397aa3e9fd4[settings_hover]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1136608354267136
+    m_Localized: '4c699d10b89880748ae0c6411c4159f4[game_logo]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1157004558364672
+    m_Localized: 'b851ee0f2bb1202488421caa606b6409[back_hover]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1156929077669888
+    m_Localized: '98aa395762e26634b879ae6dfccc1c9b[back]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1158670087122944
+    m_Localized: '39b1427cb0a8cd64794707b3dc18401e[settings_sound]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1158698377703424
+    m_Localized: '1cb6fb111400146419e014713de61895[settings_language]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1432139858604032
+    m_Localized: 'cf3307cd0b0f61a49aa38d21c0e6ff15[creators]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1432142446489600
+    m_Localized: '42a06a0a244fd8645a2f04058533dec2[creators_hover]'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 9026372825281462475
+      type: {class: PreloadAssetTableMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_PreloadBehaviour: 1

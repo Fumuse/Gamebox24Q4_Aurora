@@ -93,6 +93,30 @@ MonoBehaviour:
     m_Localized: Turn that light off, it's annoying!
     m_Metadata:
       m_Items: []
+  - m_Id: 2782144531951616
+    m_Localized: 'Igor Shapovalov - gamedesign
+
+      Trisha Skarzgard - 2D
+
+      Inna
+      Shinkareva - 2D
+
+      Lyudmila Bryzgalova - 2D
+
+      Yuliya Shchigareva -
+      narrative
+
+      Vitaly Fesov - developer
+
+      Nadzeya Shenfeld - developer
+
+      Helena
+      Borka - video editor
+
+
+      Alena Goncharenko - Gamebox mentor'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
