@@ -75,6 +75,26 @@ MonoBehaviour:
     m_Key: MainMenu_Credits_Button_Hover
     m_Metadata:
       m_Items: []
+  - m_Id: 1542769134039040
+    m_Key: PauseMenu_Background
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1542777124188160
+    m_Key: PauseMenu_Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1555742204391424
+    m_Key: PauseMenu_Exit_Hover
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1555757236776960
+    m_Key: PauseMenu_SoundHeader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1555797107830784
+    m_Key: PauseMenu_LanguageHeader
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 9026372752308961477
@@ -155,6 +175,26 @@ MonoBehaviour:
           - ru
           - en
         - m_KeyId: 1432142446489600
+          m_TableCodes:
+          - ru
+          - en
+        - m_KeyId: 1542769134039040
+          m_TableCodes:
+          - en
+          - ru
+        - m_KeyId: 1542777124188160
+          m_TableCodes:
+          - ru
+          - en
+        - m_KeyId: 1555742204391424
+          m_TableCodes:
+          - ru
+          - en
+        - m_KeyId: 1555797107830784
+          m_TableCodes:
+          - ru
+          - en
+        - m_KeyId: 1555757236776960
           m_TableCodes:
           - ru
           - en
