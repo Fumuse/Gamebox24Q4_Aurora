@@ -35,6 +35,10 @@ MonoBehaviour:
     m_Key: Curtains
     m_Metadata:
       m_Items: []
+  - m_Id: 2782144531951616
+    m_Key: MainMenu_Credits
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
