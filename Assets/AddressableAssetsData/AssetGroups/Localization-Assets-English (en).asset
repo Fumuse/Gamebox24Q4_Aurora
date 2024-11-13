@@ -27,6 +27,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f0d37288b4eccb4596b090e9ca82a47
+    m_Address: language
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29677d91814c6b64296564a097c6f822
+    m_Address: exit_hover
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5bc756141216d4c4f927f6bc2c8a8ebe
     m_Address: new_game_menu_eng
     m_ReadOnly: 1
@@ -63,6 +75,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86de779bb50eb254f95c6295726ee254
+    m_Address: pause_fon
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 922b987df69051045bea469d12abbed9
+    m_Address: sound
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a8912407ea9745b4f96f114c76316a6f
     m_Address: credits_eng
     m_ReadOnly: 1
@@ -94,6 +118,12 @@ MonoBehaviour:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e0b8e5ba7959df349942f26607563a86
+    m_Address: exit
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb308f004a6b71346954519c70ee148f
     m_Address: exit
     m_ReadOnly: 1
     m_SerializedLabels:
