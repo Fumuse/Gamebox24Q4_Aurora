@@ -5,6 +5,8 @@ public class PlayerInteractState : PlayerBaseState
 {
     private IInteractable _interactable;
 
+    private bool _playerMovingToItem = true;
+
     public PlayerInteractState(PlayerStateMachine stateMachine, IInteractable interactable) : base(stateMachine)
     {
         _interactable = interactable;
@@ -15,6 +17,7 @@ public class PlayerInteractState : PlayerBaseState
         base.OnEndMove += OnEndMoving;
         InteractableObject.OnInteracted += OnInteracted;
         InteractableObject.OnCancelInteract += OnCancelInteract;
+        PauseMenuController.OnPauseChanged += OnPauseChanged;
         
         SetupMove();
     }
@@ -54,11 +57,13 @@ public class PlayerInteractState : PlayerBaseState
     {
         base.OnEndMove -= OnEndMoving;
         InputReader.OnMouseClicked -= OnMouseClicked;
+        PauseMenuController.OnPauseChanged -= OnPauseChanged;
     }
 
     private void OnEndMoving()
     {
         InputReader.OnMouseClicked += OnMouseClicked;
+        _playerMovingToItem = false;
         _interactable.PreInteract();
     }
 
@@ -101,5 +106,15 @@ public class PlayerInteractState : PlayerBaseState
     {
         InteractableObject.OnCancelInteract -= OnCancelInteract;
         stateMachine.SwitchState(new PlayerMoveState(stateMachine));
+    }
+
+    private void OnPauseChanged()
+    {
+        if (!_playerMovingToItem) return;
+        
+        if (PauseMenuController.InPause)
+        {
+            stateMachine.SwitchState(new PlayerMoveState(stateMachine));
+        }
     }
 }
