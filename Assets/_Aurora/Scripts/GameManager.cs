@@ -58,6 +58,8 @@ public class GameManager : PersistentSingleton<GameManager>
 
     public TagManager TagManager { get; private set; }
     
+    public CleanupEvents CleanupEvents { get; private set; }
+    
     protected override void Awake()
     {
         base.Awake();
@@ -71,8 +73,9 @@ public class GameManager : PersistentSingleton<GameManager>
     private void Init()
     {
         InitSettings();
-        
-        cleanupEvents.Init();
+
+        CleanupEvents = cleanupEvents;
+        CleanupEvents.Init();
         
         Timer = new Timer(Settings.TimeToEnd);
         AcceptanceScale = new AcceptanceScale(Settings.MaxAcceptance);

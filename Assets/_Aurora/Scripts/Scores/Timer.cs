@@ -48,7 +48,7 @@ public class Timer : ISubscriberToCleanup
 
     private void SubscribeEvents()
     {
-        CleanupEvents.Instance.Subscribe(this);
+        GameManager.Instance.CleanupEvents.Subscribe(this);
         Flashlight.OnFlashLightTurnOn += OnFlashLightTurnOn;
     }
 

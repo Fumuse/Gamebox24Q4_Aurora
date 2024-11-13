@@ -1,16 +1,12 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class CleanupEvents : Singleton<CleanupEvents>
+public class CleanupEvents : MonoBehaviour
 {
     private List<ISubscriberToCleanup> _subscribers;
     
     public void Init()
     {
-        if (Instance == null)
-        {
-            this.Awake();
-        }
-
         _subscribers = new();
     }
 
