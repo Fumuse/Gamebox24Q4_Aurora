@@ -50,6 +50,7 @@ public class Response
     [SerializeField] private LocalizedString _tag;
     [SerializeField] private LocalizedString _responseText;
     [field: SerializeField] public DialogueNode NextDialogue { get; private set; }
+    //[field: SerializeField] public DialogueProvider DialogueProvider { get; private set; }
     [field: SerializeField] public List<Condition> Condition { get;private set; }
     [field: SerializeField] public string ColorText { get; private set; }
 

@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -61,23 +62,21 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
         _dialogue = null;
         _dialoguesQueue = null;
         _dialogue = newDialogue;
-        
+        _isDialogueStart = false;
+
         StartDialogue();
     }
 
-    private bool CanCondition(IEnumerable<Condition> conditions)
+    public void SetNewDialog(DialogueNode dialog)=>_dialogue = dialog;
+
+    private bool CanCondition(List<Condition> conditions)
     {
-        foreach (Condition condition in conditions)
-        {
-            bool actionState = PlayerAction.HasAction(condition.Action);
+        bool isCondition = false;
+        int count = conditions.FindAll(cond =>cond.Required==PlayerAction.HasAction(cond.Action)).Count;
 
-            if (actionState != condition.Required)
-            {
-                return false;
-            }
-        }
+        if(count == conditions.Count)  isCondition = true;
 
-        return true;
+        return isCondition;
     }
 
     private async void StartDialogue()
@@ -91,7 +90,7 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
         
         SubscribeToEvents();
 
-        _dialoguesQueue ??= new Queue<Dialogue>(_dialogue.Dialogue);
+        _dialoguesQueue = new Queue<Dialogue>(_dialogue.Dialogue);
         string dialogEndID = _dialogue.EndDialoguesID;
         
         while (_dialoguesQueue.Count > 0)
@@ -100,7 +99,7 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
 
             SetRepeatEndPhrase(_currentDialog);
 
-            if (CanCondition(_currentDialog.Condition) == false)
+            if (CanCondition(_currentDialog.Condition) == false && _currentDialog.Condition.Count > 0)
             {
                 continue;
             }

@@ -135,6 +135,54 @@ MonoBehaviour:
     m_Key: spirit_grany
     m_Metadata:
       m_Items: []
+  - m_Id: 2651084326096896
+    m_Key: MemoriesOf_Hide_And_Seek_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2651214307577856
+    m_Key: req_UnderTheStairs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2651516431683584
+    m_Key: req_InTheAttic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2651577903403008
+    m_Key: req_InTheBasket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2651658404679680
+    m_Key: req_InTheCellar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2651784296714240
+    m_Key: consequenceOfChoice_req_stairs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2652072831275008
+    m_Key: consequenceOfChoice_req_attick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2652215840264192
+    m_Key: consequenceOfChoice_req_basket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2652274833149952
+    m_Key: consequenceOfChoice_req_cellar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2652478739238912
+    m_Key: consequenceOfChoice_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2671838774087680
+    m_Key: memory_end
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2708650699706368
+    m_Key: hiden_answer
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

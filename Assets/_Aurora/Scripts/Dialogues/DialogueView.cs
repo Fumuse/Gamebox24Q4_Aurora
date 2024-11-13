@@ -27,6 +27,7 @@ public class DialogueView : MonoBehaviour
     private string _responseText;
     private string _dialogueText;
     private string _tag;
+    private bool _isButtonView;
 
     public void Show()
     { 
@@ -78,7 +79,7 @@ public class DialogueView : MonoBehaviour
         ClearViewResponces();
         ButtonResponseInitialize(dialogue);
 
-        if (dialogue.Response.Length > 0)
+        if (dialogue.Response.Length > 0 && _isButtonView)
         {
            await WaitResponse();
         }
@@ -107,17 +108,14 @@ public class DialogueView : MonoBehaviour
 
     private bool CanDisplayResponce(Response responce)
     {
-        foreach (Condition condition in responce.Condition) 
-        {
-            bool actionState = PlayerAction.HasAction(condition.Action);
+        if(responce.Condition.Count == 0) return true;
 
-            if (actionState != condition.Required)
-            {
-                return false;
-            }
-        }
+        bool isCondition = false;
+        int count = responce.Condition.FindAll(cond => cond.Required == PlayerAction.HasAction(cond.Action)).Count;
 
-        return true;
+        if (count == responce.Condition.Count) isCondition = true;
+
+        return isCondition;
     }
 
     private void ButtonResponseInitialize(Dialogue dialog)
@@ -131,6 +129,11 @@ public class DialogueView : MonoBehaviour
                 bool isResponce = CanDisplayResponce(dialog.Response[i]);
                 if (isResponce)
                 {
+                    if (_isButtonView == false)
+                    {
+                        _isButtonView = true;
+                    }
+
                     string colorTag = dialog.Response[i].ColorText;
                     _responseText = dialog.Response[i].ResponseText;
 
@@ -140,6 +143,9 @@ public class DialogueView : MonoBehaviour
                     int responseID = dialog.Response[i].ID;
                     DialogueNode nextDialog = dialog.Response[i].NextDialogue;
                     string responce = dialog.Response[i].ResponseText;
+                    
+                    //DialogueProvider dialogProvider = dialog.Response[i].DialogueProvider;
+
                     Buttons[i].onClick.AddListener(() => OnResponseSelected(responseID, responce, nextDialog));
                 }
             }
@@ -152,6 +158,8 @@ public class DialogueView : MonoBehaviour
 
     public void ClearViewResponces()
     {
+        _isButtonView = false;
+
         for (int i = 0; i < Buttons.Length; i++)
         {
             Buttons[i].onClick.RemoveAllListeners();
