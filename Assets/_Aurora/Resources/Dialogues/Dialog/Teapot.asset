@@ -15,24 +15,46 @@ MonoBehaviour:
   Dialogue:
   - _tag:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 530511589376
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
     _dialogueText:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 339593865228288
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
     <Condition>k__BackingField: []
-    <Response>k__BackingField: []
+    <Response>k__BackingField:
+    - ID: 0
+      _tag:
+        m_TableReference:
+          m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
+        m_TableEntryReference:
+          m_KeyId: 530511589376
+          m_Key: 
+        m_FallbackState: 0
+        m_WaitForCompletion: 0
+        m_LocalVariables: []
+      _responseText:
+        m_TableReference:
+          m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
+        m_TableEntryReference:
+          m_KeyId: 1106321603850240
+          m_Key: 
+        m_FallbackState: 0
+        m_WaitForCompletion: 0
+        m_LocalVariables: []
+      <NextDialogue>k__BackingField: {fileID: 0}
+      <Condition>k__BackingField: []
+      <ColorText>k__BackingField: 
     <RepeatEndPhraze>k__BackingField: 0
     <Event>k__BackingField:
       <NameEvent>k__BackingField: 

@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nameItem:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 530511589376
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  _itemSprite: {fileID: 0}
+  _itemSprite: {fileID: -6268023519088717812, guid: cc596967226775348b3e64241af3f1cf, type: 3}
   _description:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 339593865228288
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

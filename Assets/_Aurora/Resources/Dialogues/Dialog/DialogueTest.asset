@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DialogueTest
   m_EditorClassIdentifier: 
   whisperTextKey: 
-  dialogueRoot: {fileID: 0}
+  dialogueRoot: {fileID: 11400000, guid: 5b318c7e333157340b7397a2ac5c456b, type: 2}
   item: {fileID: 0}
   catSceneClipKey: 
   timeCost: 0
