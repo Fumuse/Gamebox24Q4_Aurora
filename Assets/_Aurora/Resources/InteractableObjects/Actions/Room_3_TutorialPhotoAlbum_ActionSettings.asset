@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whisperTextKey:
     m_TableReference:
-      m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
+      m_TableCollectionName: 
     m_TableEntryReference:
-      m_KeyId: 339593865228288
+      m_KeyId: 0
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -24,16 +24,17 @@ MonoBehaviour:
   dialogueRoot: {fileID: 0}
   catSceneClip:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:73cedb56d542d7e48bd8dfd5394ba827
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 2184078418407424
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
   timeCost: 0
   acceptanceCost: 0
-  changeObjectEventAfterPlay: {fileID: 0}
-  changeObjectSettingsAfterPlay: {fileID: 0}
+  changeObjectEventAfterPlay: {fileID: 11400000, guid: 446033b48e0089a49afb5b93df55e1bd, type: 2}
+  changeObjectSettingsAfterPlay: {fileID: 11400000, guid: f0dd447a17eb4d84587e1de878028db0, type: 2}
+  tagsToAddAfterAction: []
   references:
     version: 2
     RefIds: []

@@ -16,6 +16,7 @@ public class Door : InteractableObject, IDoor
         base.Init();
 
         _realConnectedDoor = connectedDoor;
+        _isViewed = true;
     }
 
     public void ChangeConnectedDoor(Door door)

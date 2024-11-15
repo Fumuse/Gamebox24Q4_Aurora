@@ -21,4 +21,6 @@ MonoBehaviour:
   hasTags: []
   hasntTags:
   - tagName: 1
-  viewOnlyOnFlashlight: 0
+  viewOnFlashlight: 0
+  canHideAfterView: 1
+  needToHideGlobal: 1

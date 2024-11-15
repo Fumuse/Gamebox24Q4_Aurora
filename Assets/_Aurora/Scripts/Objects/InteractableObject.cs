@@ -1,9 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(InteractableObjectUI))]
-public class InteractableObject : MonoBehaviour, IInteractable
+public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
 {
     [SerializeField] protected float positionOffset;
     [SerializeField] protected Transform objectPosition;
@@ -28,6 +27,9 @@ public class InteractableObject : MonoBehaviour, IInteractable
     public delegate void CancelInteract(IInteractable interactable);
     public static event CancelInteract OnCancelInteract;
     #endregion
+
+    protected bool _isViewed = false;
+    public bool IsViewed => _isViewed;
 
     private void OnValidate()
     {
@@ -60,7 +62,18 @@ public class InteractableObject : MonoBehaviour, IInteractable
     {
         if (conditionToView == null)
         {
-            this.gameObject.SetActive(true);
+            _isViewed = true;
+            this.enabled = true;
+            return;
+        }
+
+        if (_isViewed && !conditionToView.CanHideAfterView)
+        {
+            if (!this.enabled)
+            {
+                this.enabled = true;
+            }
+
             return;
         }
 
@@ -68,7 +81,10 @@ public class InteractableObject : MonoBehaviour, IInteractable
         if (!conditionToView.PassesTimeCondition) needToShow = false;
         if (!conditionToView.PassesAcceptanceCondition) needToShow = false;
 
-        gameObject.SetActive(needToShow);
+        if (conditionToView.NeedToHideGlobal) this.gameObject.SetActive(needToShow);
+        else this.enabled = needToShow;
+        
+        _isViewed = needToShow;
     }
 
     /// <summary>
@@ -121,5 +137,16 @@ public class InteractableObject : MonoBehaviour, IInteractable
     public void ChangeActionProvider(ListedUnityEvent actions)
     {
         actionProvider = actions;
+    }
+
+    public bool Illuminate()
+    {
+        if (conditionToView == null || !conditionToView.IsViewOnFlashLight) return false;
+        if (IsViewed) return false;
+        
+        _isViewed = true;
+        CheckConditionToView();
+        
+        return true;
     }
 }

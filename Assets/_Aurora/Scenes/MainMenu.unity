@@ -277,7 +277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 406, y: 0.17999268}
+  m_AnchoredPosition: {x: 406, y: 0.17993164}
   m_SizeDelta: {x: 812, y: 26.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &80325998
@@ -1455,7 +1455,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a27b5438d67bcdc49bdeb86f99da7674, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc7a7da36453843449a570940ed87e2b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2229,7 +2229,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080925266}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 66f370febbc61fa4f91b5abdc5250854, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 86a69ee4be1c81943aba45487c52d214, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -2248,7 +2248,7 @@ VideoPlayer:
   m_DirectAudioVolumes:
   - 1
   m_Url: 
-  m_EnabledAudioTracks: 00
+  m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1

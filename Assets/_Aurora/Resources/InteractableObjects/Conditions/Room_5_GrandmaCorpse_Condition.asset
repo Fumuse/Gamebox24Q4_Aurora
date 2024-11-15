@@ -21,4 +21,4 @@ MonoBehaviour:
   hasTags:
   - tagName: 0
   hasntTags: []
-  viewOnlyOnFlashlight: 0
+  viewOnFlashlight: 1

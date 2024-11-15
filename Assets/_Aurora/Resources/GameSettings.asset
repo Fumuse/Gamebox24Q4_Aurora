@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToEnd: 240
   maxAcceptance: 100
-  maxRoomShadowOverlayOpacity: 180
+  maxRoomShadowOverlayOpacity: 220
   stepRoomShadowOverlayOpacity: 30

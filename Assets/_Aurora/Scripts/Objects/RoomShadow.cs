@@ -49,7 +49,7 @@ public class RoomShadow : MonoBehaviour
     private Color GetShadowColor(int timeWithoutLight = 0)
     {
         Color shadowColor = spriteRenderer.color;
-        if (timeWithoutLight == 0) 
+        if (timeWithoutLight == 0 || GameManager.Instance.TutorialStage) 
             shadowColor.a = _maxOverlay;
         else
         {

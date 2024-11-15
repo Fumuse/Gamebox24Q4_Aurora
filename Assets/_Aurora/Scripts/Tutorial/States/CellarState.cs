@@ -34,10 +34,9 @@ public class CellarState : TutorialBaseState
         
         _teleportProvider.OnPlayerTeleported += OnPlayerTeleportedToCellar;
         
-        //TODO: подписаться на событие фонарика, в момент его нахождения скрытого объекта
-        // += OnFlashlightFindObject;
+        Flashlight.OnFlashlightFindObject += OnFlashlightFindObject;
         
-        _grandmaCorpse = GetInteractableByKey("Room_2_Trellis");
+        _grandmaCorpse = GetInteractableByKey("Room_5_GrandmaCorpse");
     }
 
     private async void SayAboutInteract()
@@ -158,5 +157,7 @@ public class CellarState : TutorialBaseState
         if (!interactable.Equals(_grandmaCorpse)) return;
 
         _playerSawCorpseByFlashlight = true;
+
+        Flashlight.OnFlashlightFindObject -= OnFlashlightFindObject;
     }
 }

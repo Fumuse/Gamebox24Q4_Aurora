@@ -37,8 +37,11 @@ public class PlayerMoveState : PlayerBaseState
         {
             if (clickedCollider.TryGetComponent(out IInteractable interactable))
             {
-                stateMachine.SwitchState(new PlayerInteractState(stateMachine, interactable));
-                return;
+                if (interactable.IsViewed)
+                {
+                    stateMachine.SwitchState(new PlayerInteractState(stateMachine, interactable));
+                    return;
+                }
             }
         }
 

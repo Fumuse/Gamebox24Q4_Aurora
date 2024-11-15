@@ -9,6 +9,9 @@ public class Flashlight : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField, HideInInspector] private InputReader reader;
     
+    public delegate void FlashlightFindObject(IInteractable interactable);
+    public static event FlashlightFindObject OnFlashlightFindObject;
+    
     public static Action OnFlashLightTurnOn;
     public static bool flashlightActive = false;
 
@@ -75,5 +78,20 @@ public class Flashlight : MonoBehaviour
         Vector3 position = mainCamera.ScreenToWorldPoint(mousePosition);
         position.z = 0;
         transform.position = position;
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.TryGetComponent(out IIlluminated illuminated))
+        {
+            bool isIlluminated = illuminated.Illuminate();
+            if (isIlluminated)
+            {
+                if (col.TryGetComponent(out IInteractable interactable))
+                {
+                    OnFlashlightFindObject?.Invoke(interactable);
+                }
+            }
+        }
     }
 }
