@@ -2,6 +2,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TeleportProvider : MonoBehaviour, IAction
 {
@@ -10,7 +11,8 @@ public class TeleportProvider : MonoBehaviour, IAction
     [SerializeField] private float fadeSpeed = 2f;
     [SerializeField] private float timeToWaitBetweenRooms = 1f;
     [SerializeField] private Camera mainCamera;
-    
+    [SerializeField] private UnityEvent eventExitFromRoom;
+
     private CancellationTokenSource _cts;
     private IInteractable _lastInteractable;
     private IDoor _interactableDoor;
@@ -69,6 +71,8 @@ public class TeleportProvider : MonoBehaviour, IAction
         SpentTime();
         
         _interactableDoor.FinishInteract();
+       
+        eventExitFromRoom?.Invoke();
     }
 
     /// <summary>

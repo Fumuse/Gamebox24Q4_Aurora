@@ -1,24 +1,20 @@
-using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Ghost : Screamer
 {
     [SerializeField] private float _speedMove;
     [SerializeField] private float _distanceAttack;
+    [SerializeField] private UnityEvent EventDeathPlayer;
 
+    private bool _isActivate;
     private bool _readyToMove;
-    private Transform _playerTransform;
     private Vector2 _defaultPosition;
 
     private void Start()
     {
-        _playerTransform = FindFirstObjectByType<PlayerStateMachine>().transform;
         _defaultPosition = transform.position;
-    }
-
-    private void OnValidate()
-    {
-        Activate(_isActivate);
+        _screamerView.SetNewColorAlpha(alpha: 0);
     }
 
     private void Update()
@@ -31,13 +27,14 @@ public class Ghost : Screamer
     public override async void Activate(bool activate)
     {
         if (_isActivate) return;
-
+        
         _isActivate = activate;
 
         if (_isActivate)
         {
-            await Show();
+             await Show();
             _readyToMove = true;
+            _screamerView.AnimationMove(_readyToMove);
         }
         else
         {
@@ -45,31 +42,22 @@ public class Ghost : Screamer
         }
     }
 
-    private void ResetGhost()
+    public void ResetGhost()
     {
+        if (_isActivate == false) return;
+
         _readyToMove = false;
         _isActivate = false;
         transform.position = _defaultPosition;
-        UniTask task = Hide();
+        _screamerView.AnimationMove(_readyToMove); ;
+        _screamerView.SetNewColorAlpha(alpha: 0);
     }
 
     private void Move()
     {
-        Vector3 positionPlayer = _playerTransform.position;
-        positionPlayer.y = 0;
+        TransformTranslate();
 
-        Vector2 direction = (positionPlayer - transform.position).normalized;
-        transform.Translate(direction * Time.deltaTime * _speedMove);
-
-        float distance = Vector2.Distance(transform.position, positionPlayer);
-
-        if (distance > 10)
-        {
-            ResetGhost();
-        }
-        
-
-        if(Vector2.Distance(transform.position, positionPlayer) <= _distanceAttack)
+        if(Distance <= _distanceAttack)
         {
             Attack();
         }    
@@ -77,6 +65,9 @@ public class Ghost : Screamer
     
     private void Attack()
     {
-        Debug.Log("death");
+        Debug.Log("Аврора умерла в крепких объятиях призрака");
+        EventDeathPlayer?.Invoke();
     }
+
+    private void TransformTranslate()=> transform.Translate(Direction * Time.deltaTime * _speedMove);
 }
