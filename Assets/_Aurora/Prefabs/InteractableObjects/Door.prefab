@@ -288,7 +288,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7752168399734899480}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ObjectCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8715082679285094283}
   - component: {fileID: 3132273058441801772}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ObjectSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 2640700642815842281}
   - component: {fileID: 75503542415561255}
   - component: {fileID: 3191588604106835176}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,8 +446,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectMenu: {fileID: 3352302555646680623}
-  interObject: {fileID: 3191588604106835176}
   interactButton: {fileID: 6468102636719018390}
+  interactableObjectMask:
+    serializedVersion: 2
+    m_Bits: 128
+  interObject: {fileID: 3191588604106835176}
+  buttonTextLocalizeEvent: {fileID: 3387899654169628255}
   bodySprite: {fileID: 3132273058441801772}
   states: {fileID: 0}
 --- !u!114 &3191588604106835176

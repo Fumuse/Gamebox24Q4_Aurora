@@ -1,9 +1,5 @@
-﻿using System;
-using TMPro;
-using UnityEngine;
-using UnityEngine.Localization;
+﻿using UnityEngine;
 using UnityEngine.Localization.Components;
-using UnityEngine.Localization.Tables;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(IInteractable))]
@@ -54,8 +50,8 @@ public class InteractableObjectUI : MonoBehaviour
         
         interactButton.onClick.RemoveListener(interObject.Interact);
     }
-    
-    private void OnMouseEnter()
+
+    public void OnRayMouseEnter()
     {
         _mouseIn = true;
         if (interObject.IsInteracted) return;
@@ -64,7 +60,7 @@ public class InteractableObjectUI : MonoBehaviour
         ShowInteractMenu();
     }
 
-    private void OnMouseExit()
+    public void OnRayMouseExit()
     {
         _mouseIn = false;
         if (interObject.IsInteracted) return;

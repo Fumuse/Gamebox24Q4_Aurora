@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2126070780737491757}
   - component: {fileID: 4618188940339308450}
   - component: {fileID: 7604692861252507322}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: InterObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,6 +70,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectMenu: {fileID: 6692489457103041207}
   interactButton: {fileID: 5514938935705219056}
+  interactableObjectMask:
+    serializedVersion: 2
+    m_Bits: 128
   interObject: {fileID: 2126070780737491757}
   buttonTextLocalizeEvent: {fileID: 2587489449069490434}
   bodySprite: {fileID: 7467128186842217959}
@@ -142,7 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4431811051498773952}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ObjectCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8511123275284193209}
   - component: {fileID: 7467128186842217959}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ObjectSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
