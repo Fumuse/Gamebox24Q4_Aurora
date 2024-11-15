@@ -94,11 +94,74 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2038624548212736
-    m_Localized: (Aurora)
+    m_Localized: Aurora
     m_Metadata:
       m_Items: []
   - m_Id: 2068147471998976
     m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2040721532440576
+    m_Localized: Aurorushka, I'm so glad to see you, you haven't been to my house
+      for a long time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2041213041954816
+    m_Localized: And I'm very glad to see you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2651084326096896
+    m_Localized: We used to love playing hide-and-seek with Grandma. I was hiding
+      under the stairs, it was my favorite place. Now I understand that Grandma always
+      knew where I was hiding, but she let me enjoy the process. So where can I hide?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2651214307577856
+    m_Localized: Under the stairs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2651516431683584
+    m_Localized: In the attic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2651577903403008
+    m_Localized: In the shopping cart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2651658404679680
+    m_Localized: To the cellar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2651784296714240
+    m_Localized: Grandma quickly found me underneath it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2652072831275008
+    m_Localized: Even though it was dark, I wasn't afraid of the dark.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2652215840264192
+    m_Localized: Hiding in the laundry basket was not the best solution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2652274833149952
+    m_Localized: The darkest place in the house, sometimes it seems to me that ghosts
+      live there
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2652478739238912
+    m_Localized: How stupid it was to hope that it would work the same way as in
+      childhood. I'm not playing hide-and-seek, I'm fighting for my life!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2708650699706368
+    m_Localized: "The hidden answer  \n(two answers matched: hide-and-seek in the
+      basket and in the basement)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2671838774087680
+    m_Localized: How stupid it was to hope that it would work the same way as in
+      childhood. I'm not playing hide-and-seek, I'm fighting for my life!
     m_Metadata:
       m_Items: []
   references:

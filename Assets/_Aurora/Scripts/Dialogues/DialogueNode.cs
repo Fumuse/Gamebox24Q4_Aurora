@@ -19,24 +19,8 @@ public class Dialogue
     [field: SerializeField] public bool RepeatEndPhraze {get; private set; }
     [field: SerializeField] public DialogueEventObject Event { get; private set; }
 
-    public string Tag { get => _tag.GetLocalizedString(); private set { } }
-    public string DialogueText { get => _dialogueText.GetLocalizedString(); private set { } }
-
-    public void SubscribeToEvents()
-    {
-        _tag.StringChanged += OnTagStringChange;
-        _dialogueText.StringChanged += OnDialogueStrinChange;
-    }
-
-    public void UnsubscribeFromEvents()
-    {
-        _tag.StringChanged -= OnTagStringChange;
-        _dialogueText.StringChanged -= OnDialogueStrinChange;
-    }
-
-    private void OnDialogueStrinChange(string dialogueText)=> DialogueText = dialogueText;
-
-    private void OnTagStringChange(string tag)=>Tag = tag;
+    public LocalizedString Tag { get => _tag; private set { } }
+    public LocalizedString DialogueText { get => _dialogueText; private set { } }
 }
 
 [System.Serializable]
@@ -44,32 +28,15 @@ public class Response
 {
     public int ID;
 
-    public string Tag { get => _tag.GetLocalizedString();private set { } }
-    public string ResponseText { get => _responseText.GetLocalizedString(); private set { } }
 
     [SerializeField] private LocalizedString _tag;
     [SerializeField] private LocalizedString _responseText;
     [field: SerializeField] public DialogueNode NextDialogue { get; private set; }
-    //[field: SerializeField] public DialogueProvider DialogueProvider { get; private set; }
     [field: SerializeField] public List<Condition> Condition { get;private set; }
     [field: SerializeField] public string ColorText { get; private set; }
 
-    public void SubscribeToEvents()
-    {
-        _tag.StringChanged += OnTagStringChange;
-        _responseText.StringChanged += OnResponseStrinChange;
-    }
-
-    public void UnsubscribeFromEvents()
-    {
-        _tag.StringChanged -= OnTagStringChange;
-        _responseText.StringChanged -= OnResponseStrinChange;
-    }
-
-    private void OnResponseStrinChange(string responseText) => ResponseText = responseText;
-
-    private void OnTagStringChange(string tag) => Tag = tag;
-
+    public LocalizedString Tag { get => _tag; private set { } }
+    public LocalizedString ResponseText { get => _responseText; private set { } }
 }
 
 [System.Serializable]
@@ -78,18 +45,6 @@ public class Condition
     public string Action { get => _action.GetLocalizedString();private set { } }
     [SerializeField] private LocalizedString _action;
     public bool Required;
-
-    public void SubscribeToEvents()
-    {
-        _action.StringChanged += OnActionStrinChange;
-    }
-
-    public void UnsubscribeFromEvents()
-    {
-        _action.StringChanged -= OnActionStrinChange;
-    }
-
-    private void OnActionStrinChange(string dialogueText) => Action = dialogueText;
 }
 
 [System.Serializable]

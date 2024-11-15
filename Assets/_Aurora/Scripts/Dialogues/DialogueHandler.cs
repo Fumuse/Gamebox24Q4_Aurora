@@ -1,10 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Localization;
 
 public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
 {
@@ -88,8 +85,6 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
 
         InitDialogView();
         
-        SubscribeToEvents();
-
         _dialoguesQueue = new Queue<Dialogue>(_dialogue.Dialogue);
         string dialogEndID = _dialogue.EndDialoguesID;
         
@@ -113,7 +108,6 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
             {
                 _isDialogueStart = false;
                 SendEventEndDialog(dialogEndID);
-                UnsubscribeFromEvents();
                 return;
             }
         }
@@ -124,7 +118,6 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
         _dialogueView.Hide();
 
         SendEventEndDialog(dialogEndID);
-        UnsubscribeFromEvents();
     }
 
     private void SetRepeatPraza()
@@ -173,40 +166,4 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
     }
 
     private Dialogue NextDialogue => _dialoguesQueue.Dequeue();
-
-    private void SubscribeToEvents()
-    {
-        foreach(Dialogue dialog in _dialogue.Dialogue)
-        {
-            dialog.SubscribeToEvents();
-
-            foreach(Response response in dialog.Response)
-            {
-                response.SubscribeToEvents();
-            }
-
-            foreach(Condition condition in dialog.Condition)
-            {
-                condition.SubscribeToEvents();
-            }
-        }
-    }
-
-    private void UnsubscribeFromEvents()
-    {
-        foreach (Dialogue dialog in _dialogue.Dialogue)
-        {
-            dialog.UnsubscribeFromEvents();
-
-            foreach (Response response in dialog.Response)
-            {
-                response.UnsubscribeFromEvents();
-            }
-
-            foreach (Condition condition in dialog.Condition)
-            {
-                condition.UnsubscribeFromEvents();
-            }
-        }
-    }
 }

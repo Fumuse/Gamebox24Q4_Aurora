@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -37,14 +38,19 @@ public class DialogueView : MonoBehaviour
     public void Hide()
     {
        _canvas.enabled = false;
+        UnsubscribeFromEvents();
     }
+
+    delegate void ResponseMessage();
 
     public async UniTask SetText(Dialogue dialogue)
     {
         _dialogue = dialogue;
 
-        _dialogueText = _dialogue.DialogueText;
-        _tag = _dialogue.Tag;
+        SubscribingToEvents();
+
+        _dialogueText = _dialogue.DialogueText.GetLocalizedString();
+        _tag = _dialogue.Tag.GetLocalizedString();
 
         IsClickResponse = false;
         _isSkipDialog = false;
@@ -72,6 +78,55 @@ public class DialogueView : MonoBehaviour
             animationText += _dialogueText;
             _dialogueTMP.text = animationText;
         }
+        
+    }
+
+    private void SubscribingToEvents()
+    {
+        _dialogue.DialogueText.StringChanged += OnDialogueStringChange;
+        _dialogue.Tag.StringChanged += OnTagStringChange;
+
+        if (_dialogue.Response.Length > 0)
+        {
+            for (int i = 0; i < _dialogue.Response.Length; i++)
+            {
+                bool isResponce = CanDisplayResponce(_dialogue.Response[i]);
+                if (isResponce)
+                {
+                    int index = i;
+                    _dialogue.Response[i].ResponseText.StringChanged += (text) => OnStringResponseChange(text, index);
+                }
+            }
+        }
+    }
+
+    private void UnsubscribeFromEvents()
+    {
+        _dialogue.DialogueText.StringChanged -= OnDialogueStringChange;
+        _dialogue.Tag.StringChanged -= OnTagStringChange;
+
+        if (_dialogue.Response.Length > 0)
+        {
+            for (int i = 0; i < _dialogue.Response.Length; i++)
+            {
+                bool isResponce = CanDisplayResponce(_dialogue.Response[i]);
+                
+                if (isResponce)
+                {
+                    _dialogue.Response[i].ResponseText.StringChanged -= (text) => OnStringResponseChange(text, i);
+                }
+            }
+        }
+    }
+
+    private void OnTagStringChange(string tag)
+    {
+       _tag = tag;
+    }
+
+    private void OnDialogueStringChange(string dialogueText)
+    {
+        _dialogueTMP.text = $"<color=yellow>{_tag}: </color> {dialogueText}"; ;
     }
 
     public async UniTask WaitResponse(Dialogue dialogue)
@@ -135,17 +190,16 @@ public class DialogueView : MonoBehaviour
                     }
 
                     string colorTag = dialog.Response[i].ColorText;
-                    _responseText = dialog.Response[i].ResponseText;
+
+                    _responseText = dialog.Response[i].ResponseText.GetLocalizedString();
 
                     Buttons[i].GetComponentInChildren<TMP_Text>().text = colorTag != "" ? $"<color={colorTag}>{_responseText}</color>" : _responseText;
                     Buttons[i].gameObject.SetActive(true);
 
                     int responseID = dialog.Response[i].ID;
                     DialogueNode nextDialog = dialog.Response[i].NextDialogue;
-                    string responce = dialog.Response[i].ResponseText;
+                    string responce = dialog.Response[i].ResponseText.GetLocalizedString();
                     
-                    //DialogueProvider dialogProvider = dialog.Response[i].DialogueProvider;
-
                     Buttons[i].onClick.AddListener(() => OnResponseSelected(responseID, responce, nextDialog));
                 }
             }
@@ -154,6 +208,16 @@ public class DialogueView : MonoBehaviour
                 Buttons[i].gameObject.SetActive(false);
             }
         }
+    }
+
+    private void OnStringResponseChange(string value, int index)
+    {
+        if (_dialogue.Response.Length == 0) return;
+
+        if(index >= _dialogue.Response.Length) return;
+
+        string colorTag = _dialogue.Response[index].ColorText;
+        Buttons[index].GetComponentInChildren<TMP_Text>().text = colorTag != "" ? $"<color={colorTag}>{value}</color>" : value;
     }
 
     public void ClearViewResponces()
@@ -188,6 +252,7 @@ public class DialogueView : MonoBehaviour
         {
             NextResponseDialog?.Invoke(nextDialog);
         }
+        
     }
 
     
