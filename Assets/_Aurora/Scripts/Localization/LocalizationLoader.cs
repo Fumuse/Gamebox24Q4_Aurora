@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
-public class LocalizationLoader : PersistentSingleton<LocalizationLoader>
+public class LocalizationLoader : Singleton<LocalizationLoader>
 {
     private const string PreferredLocaleKey = "selected-locale";
     

@@ -1750,7 +1750,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2110946082}
         m_TargetAssemblyTypeName: PauseMenuController, Assembly-CSharp
         m_MethodName: Exit
         m_Mode: 1
@@ -2503,8 +2503,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 8ac7ba40edbbf9a4b9b951144dd45600, type: 2}
-  startInTutorial: 0
-  houseStage: 1
+  startInTutorial: 1
+  houseStage: 0
   house: {fileID: 645949065}
   cleanupEvents: {fileID: 722607795}
   providersManager: {fileID: 508506251}
@@ -3961,11 +3961,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rooms:
+  - {fileID: 573044117}
   - {fileID: 1583529928}
   - {fileID: 1188960396}
-  - {fileID: 420420010}
   - {fileID: 1395965568}
-  - {fileID: 573044117}
+  - {fileID: 420420010}
 --- !u!1 &658701219
 GameObject:
   m_ObjectHideFlags: 0
