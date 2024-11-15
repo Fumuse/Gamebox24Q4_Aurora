@@ -2468,13 +2468,15 @@ MonoBehaviour:
   startInTutorial: 0
   houseStage: 1
   house: {fileID: 645949065}
-  startRoom: {fileID: 1188960396}
+  interactableObjectLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
   cleanupEvents: {fileID: 722607795}
   providersManager: {fileID: 508506251}
   player: {fileID: 551965513}
   tutorial: {fileID: 918220936}
   inputReader: {fileID: 1644476376}
-  mouseHoverDetector: {fileID: 0}
+  mouseHoverDetector: {fileID: 1800937741}
 --- !u!4 &508506253
 Transform:
   m_ObjectHideFlags: 0
@@ -10060,9 +10062,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2675a1870ce3426380d11cb853a44404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableObjectMask:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1 &1804018925
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class GameManager : PersistentSingleton<GameManager>
     [SerializeField] private bool startInTutorial = true;
     [SerializeField] private HouseStageEnum houseStage = HouseStageEnum.Light;
     [SerializeField] private House house;
-    [SerializeField] private Room startRoom;
+    [SerializeField] private LayerMask interactableObjectLayerMask;
 
     [Header("Скрипты для инициализации")] 
     [SerializeField] private CleanupEvents cleanupEvents;
@@ -62,9 +62,9 @@ public class GameManager : PersistentSingleton<GameManager>
     public TagManager TagManager { get; private set; }
     
     public CleanupEvents CleanupEvents { get; private set; }
-    
-    public Room CurrentRoom { get; set; }
-    
+
+    public LayerMask InteractableObjectLayerMask => interactableObjectLayerMask;
+
     protected override void Awake()
     {
         base.Awake();
@@ -100,8 +100,6 @@ public class GameManager : PersistentSingleton<GameManager>
 
     private void InitObjects()
     {
-        CurrentRoom = startRoom;
-        
         foreach(Room room in house.Rooms)
         {
             foreach (InteractableObject interObject in room.InteractableObjects)
@@ -131,8 +129,6 @@ public class GameManager : PersistentSingleton<GameManager>
         inputReader ??= FindFirstObjectByType<InputReader>();
         cleanupEvents ??= FindAnyObjectByType<CleanupEvents>();
         mouseHoverDetector ??= FindAnyObjectByType<MouseHoverDetector>();
-
-        startRoom ??= house.Rooms.First();
     }
 
     public void InitPlayer()

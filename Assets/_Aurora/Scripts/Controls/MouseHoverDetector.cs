@@ -4,9 +4,10 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//TODO: можно не делать монобехом, а инициализировать из менеджера
 public class MouseHoverDetector : MonoBehaviour
 {
-    [SerializeField] private LayerMask interactableObjectMask;
+    private LayerMask _interactableObjectMask;
     
     private CancellationTokenSource _cts = new();
     private Camera _camera;
@@ -19,6 +20,7 @@ public class MouseHoverDetector : MonoBehaviour
     public void Init()
     {
         _camera = Camera.main;
+        _interactableObjectMask = GameManager.Instance.InteractableObjectLayerMask;
         Detector();
     }
 
@@ -40,7 +42,7 @@ public class MouseHoverDetector : MonoBehaviour
         while (true)
         {
             Vector2 mousePosition = _camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            RaycastHit2D[] hits = Physics2D.RaycastAll(mousePosition, Vector2.zero, interactableObjectMask);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(mousePosition, Vector2.zero, _interactableObjectMask);
 
             List<InteractableObjectUI> activeInCurrentIterate = new();
             if (hits.Length > 0)
