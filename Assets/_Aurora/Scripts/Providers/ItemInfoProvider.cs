@@ -2,13 +2,13 @@ using System;
 using System.Threading;
 using UnityEngine;
 
-public class DialogueProvider : MonoBehaviour, IAction
+public class ItemInfoProvider : MonoBehaviour, IAction
 {
     private IInteractable _lastInteractable;
     private ActionSettings _actionSettings;
     private CancellationTokenSource _cts;
 
-    [SerializeField] private DialogueHandler _dialog;
+    [SerializeField] private ItemInfoHandler _itemInfoHandler;
 
     private void OnEnable()
     {
@@ -26,12 +26,12 @@ public class DialogueProvider : MonoBehaviour, IAction
     {
         _actionSettings = settings;
 
-         DialogueNode newDialog = settings.DialogueRoot;
-        _dialog.StartNewDialog(newDialog);
+        ItemInfo item = settings.Item;
+        _itemInfoHandler.ShowItem(item);
 
         _lastInteractable.FinishInteract();
     }
-    
+
     private void OnInteracted(IInteractable interactable)
     {
         _lastInteractable = interactable;

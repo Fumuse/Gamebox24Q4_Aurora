@@ -8,8 +8,10 @@ public class ActionSettings : ScriptableObject
     [SerializeField] private string whisperTextKey;
     public string WhisperTextKey => whisperTextKey;
 
-    [SerializeField] private DialogueNode dialogueRoot;
+    //TODO: поменять на правильный объект
+     [SerializeField] private DialogueNode dialogueRoot;
     public DialogueNode DialogueRoot => dialogueRoot;
+
     [SerializeField] private ItemInfo item;
     public ItemInfo Item => item;
 
