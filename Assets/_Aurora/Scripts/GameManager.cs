@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : PersistentSingleton<GameManager>
 {
@@ -30,7 +28,7 @@ public class GameManager : PersistentSingleton<GameManager>
     #endregion
 
     #region Options
-    public bool TimeSpentWhenTeleport => !TutorialStage;
+    public bool ScalesSpentWhenTutorial => !TutorialStage;
 
     public HouseStageEnum CurrentStage
     {

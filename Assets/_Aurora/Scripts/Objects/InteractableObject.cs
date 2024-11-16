@@ -29,7 +29,25 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
     #endregion
 
     protected bool _isViewed = false;
-    public bool IsViewed => _isViewed;
+
+    public bool IsViewed
+    {
+        get => _isViewed;
+        private set
+        {
+            _isViewed = value;
+            
+            //TODO: это, в теории, можно сделать по-другому
+            if (_isViewed)
+            {
+                ui.ChangeVisionState(InteractableStateVisionEnum.Viewed);
+            }
+            else
+            {
+                ui.ChangeVisionState(InteractableStateVisionEnum.Default);
+            }
+        }
+    }
 
     private void OnValidate()
     {
@@ -62,12 +80,12 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
     {
         if (conditionToView == null)
         {
-            _isViewed = true;
+            IsViewed = true;
             this.enabled = true;
             return;
         }
 
-        if (_isViewed && !conditionToView.CanHideAfterView)
+        if (IsViewed && !conditionToView.CanHideAfterView)
         {
             if (!this.enabled)
             {
@@ -84,7 +102,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
         if (conditionToView.NeedToHideGlobal) this.gameObject.SetActive(needToShow);
         else this.enabled = needToShow;
         
-        _isViewed = needToShow;
+        IsViewed = needToShow;
     }
 
     /// <summary>
@@ -144,7 +162,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
         if (conditionToView == null || !conditionToView.IsViewOnFlashLight) return false;
         if (IsViewed) return false;
         
-        _isViewed = true;
+        IsViewed = true;
         CheckConditionToView();
         
         return true;

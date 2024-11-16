@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Timer : ISubscriberToCleanup
 {
+    private int _maxTimeToEnd;
     private int _timeToEnd;
 
     public static Action OnTimeEnded;
@@ -40,8 +41,11 @@ public class Timer : ISubscriberToCleanup
         }
     }
 
+    public int TimePasses => _maxTimeToEnd - _timeToEnd;
+
     public Timer(int timeToEnd)
     {
+        _maxTimeToEnd = timeToEnd;
         _timeToEnd = timeToEnd;
         SubscribeEvents();
     }
@@ -54,7 +58,7 @@ public class Timer : ISubscriberToCleanup
 
     public void SpendTime(int time)
     {
-        if (!GameManager.Instance.TimeSpentWhenTeleport) return;
+        if (!GameManager.Instance.ScalesSpentWhenTutorial) return;
         if (time < 0) return;
 
         TimeToEnd -= time;

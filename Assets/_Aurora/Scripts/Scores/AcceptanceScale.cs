@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AcceptanceScale
 {
+    private GameManager _manager;
     private int _currentScale;
 
     public static Action OnAcceptanceScaleExhausted;
@@ -23,6 +24,10 @@ public class AcceptanceScale
             }
             else
             {
+                if (_currentScale <= _manager.Settings.AcceptanceToBrokenStage)
+                {
+                    _manager.CurrentStage = HouseStageEnum.Broken;
+                }
                 OnAcceptanceScaleChanged?.Invoke();
             }
         }
@@ -31,10 +36,12 @@ public class AcceptanceScale
     public AcceptanceScale(int maxAcceptance)
     {
         _currentScale = maxAcceptance;
+        _manager = GameManager.Instance;
     }
 
     public void SpentAcceptance(int cost)
     {
+        if (!GameManager.Instance.ScalesSpentWhenTutorial) return;
         if (cost < 0) return;
         
         Current -= cost;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 
@@ -12,10 +13,12 @@ public class InteractableObjectUI : MonoBehaviour
 
     [Header("Objects sprites controller")] 
     [SerializeField] private SpriteRenderer bodySprite;
-    [SerializeField] private InteractableObjectState states;
+    [SerializeField] private InteractableObjectStateVisionPair[] states;
 
     private bool _mouseIn = false;
     private GraphicRaycaster _menuRaycaster;
+
+    private InteractableStateVisionEnum _currentStateVision = InteractableStateVisionEnum.Default;
 
     private void OnValidate()
     {
@@ -71,13 +74,21 @@ public class InteractableObjectUI : MonoBehaviour
     public void ChangeBodySpriteByStage(HouseStageEnum stage)
     {
         if (states == null) return;
+
+        InteractableObjectStateVisionPair pair = states.FirstOrDefault((statePair) => statePair.visionKey == _currentStateVision);
+        if (pair == null)
+            pair = states.FirstOrDefault((statePair) => statePair.visionKey == InteractableStateVisionEnum.Default);
+        if (pair == null) return;
         
-        if (stage == HouseStageEnum.Light && states.Light != null)
-            bodySprite.sprite = states.Light;
-        if (stage == HouseStageEnum.Dark && states.Dark != null)
-            bodySprite.sprite = states.Dark;
-        if (stage == HouseStageEnum.Broken && states.Broken != null)
-            bodySprite.sprite = states.Broken;
+        InteractableObjectState currentState = pair.interactableObjectState;
+        if (currentState == null) return;
+        
+        if (stage == HouseStageEnum.Light && currentState.Light != null)
+            bodySprite.sprite = currentState.Light;
+        if (stage == HouseStageEnum.Dark && currentState.Dark != null)
+            bodySprite.sprite = currentState.Dark;
+        if (stage == HouseStageEnum.Broken && currentState.Broken != null)
+            bodySprite.sprite = currentState.Broken;
     }
     
     private void ShowInteractMenu()
@@ -129,5 +140,11 @@ public class InteractableObjectUI : MonoBehaviour
     public void ChangeObjectName(string newNameLocalizationKey)
     {
         buttonTextLocalizeEvent.StringReference.TableEntryReference = newNameLocalizationKey;
+    }
+
+    public void ChangeVisionState(InteractableStateVisionEnum visionState)
+    {
+        _currentStateVision = visionState;
+        ChangeBodySpriteByStage(GameManager.Instance.CurrentStage);
     }
 }

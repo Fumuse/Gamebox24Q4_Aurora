@@ -16,6 +16,7 @@ public class Flashlight : MonoBehaviour
     public static bool flashlightActive = false;
 
     private CancellationTokenSource _cts;
+    private GameManager _manager;
 
     private void OnValidate()
     {
@@ -39,6 +40,11 @@ public class Flashlight : MonoBehaviour
         InputReader.OnRightMouseClicked -= OnRightMouseClicked;
     }
 
+    private void Start()
+    {
+        _manager = GameManager.Instance;
+    }
+
     private void OnRightMouseClicked(Vector2 mousePosition)
     {
         bool maskActive = mask.gameObject.activeInHierarchy;
@@ -59,6 +65,9 @@ public class Flashlight : MonoBehaviour
         mask.gameObject.SetActive(true);
         OnFlashLightTurnOn?.Invoke();
 
+        _manager.AcceptanceScale.SpentAcceptance(
+            _manager.Settings.AcceptanceFlashlightCost
+        );
         FollowMouse();
     }
 

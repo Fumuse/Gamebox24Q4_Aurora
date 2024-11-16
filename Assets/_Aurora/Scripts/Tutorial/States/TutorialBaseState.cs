@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Linq;
-using JetBrains.Annotations;
-using UnityEngine;
 
 public abstract class TutorialBaseState : State
 {
