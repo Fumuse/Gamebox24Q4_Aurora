@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(InteractableObjectUI))]
 public class InteractableObject : MonoBehaviour, IInteractable

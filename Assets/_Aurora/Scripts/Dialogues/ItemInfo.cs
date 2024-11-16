@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Localization;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Item", menuName = "Item/ItemInfo")]
 public class ItemInfo : ScriptableObject

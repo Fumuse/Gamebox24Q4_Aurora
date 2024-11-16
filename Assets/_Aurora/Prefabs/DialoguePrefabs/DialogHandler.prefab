@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c5fb4f42c38b04fb23bed47b5738cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogue: {fileID: 0}
-  _dialogueView: {fileID: 0}
-  _delayBeforeNextPhrase: 3000
-  _isDialogueTrigger: 0
+  dialogue: {fileID: 0}
+  dialogueView: {fileID: 0}
+  delayBeforeNextPhrase: 3000
+  isDialogueTrigger: 0
