@@ -11,11 +11,16 @@ public class WhisperProvider : MonoBehaviour, IAction
     [SerializeField] private TextMeshProUGUI whisperText;
     [SerializeField] private LocalizedString whisperLocalization;
     [SerializeField] private float fadeSpeed = 5f;
-    [SerializeField] private float timeToWaitToReadText = 2f;
+    [SerializeField] private float timeToWaitToReadGlobal = 1f;
+    [SerializeField] private float timeToWaitToReadOneChar = 0.05f;
 
     private IInteractable _lastInteractable;
     private ActionSettings _actionSettings;
     private CancellationTokenSource _cts;
+
+    private int _localizedTextCharsCount = 1;
+
+    public Action OnWhisperEnds;
 
     private void OnEnable()
     {
@@ -46,22 +51,33 @@ public class WhisperProvider : MonoBehaviour, IAction
         bool isCanceled = await whisperWrapper.FadeIn(this, _cts.Token, fadeSpeed);
         if (isCanceled) return;
 
-        isCanceled = await UniTask.WaitForSeconds(timeToWaitToReadText, cancellationToken: _cts.Token)
+        float timeToWaitToRead = (_localizedTextCharsCount * timeToWaitToReadOneChar) + timeToWaitToReadGlobal;
+        isCanceled = await UniTask.WaitForSeconds(timeToWaitToRead, cancellationToken: _cts.Token)
             .SuppressCancellationThrow();
         if (isCanceled) return;
 
         isCanceled = await whisperWrapper.FadeOut(this, _cts.Token, fadeSpeed);
         if (isCanceled) return;
 
-        _lastInteractable.FinishInteract();
+        OnWhisperEnds?.Invoke();
+        if (_lastInteractable != null)
+        {
+            if (_actionSettings != null)
+            {
+                this.AfterInteractChanges(_lastInteractable, _actionSettings);
+            }
+            _lastInteractable.FinishInteract();
+        }
     }
 
     private void SetWhisperLocalizationString()
     {
-        if (_actionSettings.WhisperTextKey == null) return;
+        if (_actionSettings.WhisperText == null) return;
 
-        whisperLocalization.TableEntryReference = _actionSettings.WhisperTextKey;
-        UpdateWhisperText(whisperLocalization.GetLocalizedString());
+        string whisperText = _actionSettings.WhisperText.GetLocalizedString();
+        UpdateWhisperText(whisperText);
+
+        _localizedTextCharsCount = whisperText.Length;
     }
 
     private void OnInteracted(IInteractable interactable)

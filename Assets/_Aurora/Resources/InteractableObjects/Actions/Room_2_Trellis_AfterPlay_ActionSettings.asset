@@ -12,11 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ad7679d8d844dbac99a13007c02d9e, type: 3}
   m_Name: Room_2_Trellis_AfterPlay_ActionSettings
   m_EditorClassIdentifier: 
-  whisperTextKey: WhisperText
+  whisperTextKey:
+    m_TableReference:
+      m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
+    m_TableEntryReference:
+      m_KeyId: 339593865228288
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   dialogueRoot: {fileID: 0}
-  catSceneClip: {fileID: 0}
+  catSceneClip:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
   timeCost: 0
   acceptanceCost: 0
-  changeObjectEventAfterPlay:
-    m_PersistentCalls:
-      m_Calls: []
+  changeObjectEventAfterPlay: {fileID: 0}
+  changeObjectSettingsAfterPlay: {fileID: 0}
+  tagsToAddAfterAction: []
+  references:
+    version: 2
+    RefIds: []
