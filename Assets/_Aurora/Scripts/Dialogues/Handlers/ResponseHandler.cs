@@ -1,12 +1,11 @@
 using Cysharp.Threading.Tasks;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class ResponseHandler : MonoBehaviour
 {
-    [SerializeField] private List<ResponceEvent> _responceEvents;
+    [SerializeField] private List<ResponseEvent> _responceEvents;
     [SerializeField] private List<DialogueEvent> _dialogueEvents;
     [SerializeField] private List<DialogueEvent> _endDialogEvents;
 
@@ -27,16 +26,15 @@ public class ResponseHandler : MonoBehaviour
     }
 
     /// <summary>
-    /// Вызывается после всех фраз, в конце всего диалога
+    /// Р’С‹Р·С‹РІР°РµС‚СЃСЏ РїРѕСЃР»Рµ РІСЃРµС… С„СЂР°Р·, РІ РєРѕРЅС†Рµ РІСЃРµРіРѕ РґРёР°Р»РѕРіР°
     /// </summary>
-    /// <param name="endDialogID">Id события</param>
+    /// <param name="endDialogID">Id СЃРѕР±С‹С‚РёСЏ</param>
     private void OnEndDialogEvent(string endDialogID)
     {
+        if (endDialogID == null) return;
         if (_endDialogEvents == null) return;
 
         DialogueEvent dialogueEvent = _endDialogEvents.Find(dialogEvent => dialogEvent.NameEvent == endDialogID);
-        Debug.Log($"{endDialogID}");
-
 
         if (dialogueEvent != null)
         {
@@ -46,7 +44,7 @@ public class ResponseHandler : MonoBehaviour
     }
 
     /// <summary>
-    /// Вызывается в конце каждой фразы. Диалог приостанавливается пока не будет вызван метод IDialogContinue EndEvent();
+    /// Р’С‹Р·С‹РІР°РµС‚СЃСЏ РІ РєРѕРЅС†Рµ РєР°Р¶РґРѕР№ С„СЂР°Р·С‹. Р”РёР°Р»РѕРі РїСЂРёРѕСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ РїРѕРєР° РЅРµ Р±СѓРґРµС‚ РІС‹Р·РІР°РЅ РјРµС‚РѕРґ IDialogContinue EndEvent();
     /// </summary>
     /// <param name="nameEvent"></param>
     /// <param name="handler"></param>
@@ -58,7 +56,7 @@ public class ResponseHandler : MonoBehaviour
         
         if (dialogueEvent != null)
         {
-            Debug.Log("как сцена или ещё что-нибудь и при завершении продолжиться диалог");
+            Debug.Log("РєР°Рє СЃС†РµРЅР° РёР»Рё РµС‰С‘ С‡С‚Рѕ-РЅРёР±СѓРґСЊ Рё РїСЂРё Р·Р°РІРµСЂС€РµРЅРёРё РїСЂРѕРґРѕР»Р¶РёС‚СЊСЃСЏ РґРёР°Р»РѕРі");
             _dialogHandler = handler;
             await TestDelay();
             dialogueEvent.Event.Invoke();
@@ -67,32 +65,31 @@ public class ResponseHandler : MonoBehaviour
     }
 
     /// <summary>
-    /// метод для теста. после 2 секунд будет продолжен диалог
+    /// РјРµС‚РѕРґ РґР»СЏ С‚РµСЃС‚Р°. РїРѕСЃР»Рµ 2 СЃРµРєСѓРЅРґ Р±СѓРґРµС‚ РїСЂРѕРґРѕР»Р¶РµРЅ РґРёР°Р»РѕРі
     /// </summary>
     /// <returns></returns>
     private async UniTask TestDelay()
     {
-        //что-то выполняем, показываем кат-сцену например
+        //С‡С‚Рѕ-С‚Рѕ РІС‹РїРѕР»РЅСЏРµРј, РїРѕРєР°Р·С‹РІР°РµРј РєР°С‚-СЃС†РµРЅСѓ РЅР°РїСЂРёРјРµСЂ
         await UniTask.Delay(2000);
         _dialogHandler.EndEvent();
     }
 
 
     /// <summary>
-    /// При нажатии на кнопку, выбор персонажа запускаем событие.
+    /// РџСЂРё РЅР°Р¶Р°С‚РёРё РЅР° РєРЅРѕРїРєСѓ, РІС‹Р±РѕСЂ РїРµСЂСЃРѕРЅР°Р¶Р° Р·Р°РїСѓСЃРєР°РµРј СЃРѕР±С‹С‚РёРµ.
     /// </summary>
-    /// <param name="responseID"></param>
-    private void OnClickResponse(int responseID)
+    /// <param name="responseType"></param>
+    private void OnClickResponse(DialogueEventsTypeEnum responseType)
     {
         if (_responceEvents == null) return;
 
-        ResponceEvent responceEvent = _responceEvents.Find(responseEvent => responseEvent.ResponceID == responseID);
+        ResponseEvent responseEvent = _responceEvents.Find(responseEvent => responseEvent.ResponseType == responseType);
           
-        if (responceEvent != null)
+        if (responseEvent != null)
         {
-           responceEvent.Event.Invoke();
-         }
-   
+            responseEvent.Event?.Invoke();
+        }
     }
 }
 
@@ -104,9 +101,9 @@ public class DialogueEvent
 }
 
 [System.Serializable]
-public class ResponceEvent
+public class ResponseEvent
 {
     public string NameEvent;
-    public int ResponceID;
+    public DialogueEventsTypeEnum ResponseType = DialogueEventsTypeEnum.Empty;
     public UnityEvent Event;
 }

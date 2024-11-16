@@ -39,6 +39,38 @@ MonoBehaviour:
     m_Key: MainMenu_Credits
     m_Metadata:
       m_Items: []
+  - m_Id: 3925550652747776
+    m_Key: DialogueReturn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3931267950473216
+    m_Key: DemoDialogue_SelectOneItem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3931270420918272
+    m_Key: DemoDialogue_ResultAnswer_Door
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3933918104678400
+    m_Key: DemoDialogue_ResultAnswer_Trellis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3973453060534272
+    m_Key: DemoDialogue_ResultAnswer_Curtains
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3973455883300864
+    m_Key: DemoDialogue_ResultAnswer_Teapot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3973628034314240
+    m_Key: DemoDialogue_Option_Kitchen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3973716735455232
+    m_Key: DemoDialogue_ResultAnswer_TeapotKitchen
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -1,6 +1,8 @@
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using UnityEngine;
 
 public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
@@ -8,11 +10,13 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
     public static event Action<string> EndDialogEvent;
     public static event Action<string, IDialogContinue> DialogEvent;
 
-    [SerializeField] private DialogueNode _dialogue;
-    [SerializeField] private DialogueView _dialogueView;
-    [SerializeField] private int _delayBeforeNextPhrase;
-    [SerializeField] private Queue<Dialogue> _dialoguesQueue;
-    [SerializeField] bool _isDialogueTrigger;
+    [SerializeField] private DialogueNode dialogue;
+    [SerializeField] private DialogueView dialogueView;
+    [SerializeField] private int delayBeforeNextPhrase;
+    [SerializeField] bool isDialogueTrigger;
+    
+    private Queue<Dialogue> _dialoguesQueue;
+    private CancellationTokenSource _cts = new();
 
     private bool _isDialogueStart;
     private Dialogue _currentDialog;
@@ -23,13 +27,15 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
     private void OnEnable()
     {
         DialogueView.NextResponseDialog += OnNextResponseDialog;
+        if (_cts == null) _cts = new();
     }
 
     private void OnDisable()
     {
         DialogueView.NextResponseDialog -= OnNextResponseDialog;
+        _cts?.Cancel();
     }
-    
+
     public void EndEvent() => _endEvent = true;
 
     private void OnNextResponseDialog(DialogueNode newDialog)
@@ -39,14 +45,14 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
 
     public void OnInteract()
     {
-        if (_isDialogueTrigger == false)
+        if (isDialogueTrigger == false)
         {
             return;
         }
 
-        if (_dialogue == null)
+        if (dialogue == null)
         {
-            Debug.Log("íå çàãðóæåí äèàëîã, ïðîâåðüòå â èíñïåêòîðå");
+            Debug.Log("ÐÐµ Ð·Ð°Ð³Ñ€ÑƒÐ¶ÐµÐ½ Ð´Ð¸Ð°Ð»Ð¾Ð³, Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑŒÑ‚Ðµ Ð² Ð¸Ð½ÑÐ¿ÐµÐºÑ‚Ð¾Ñ€Ðµ");
             return;
         }
 
@@ -56,38 +62,38 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
     public void StartNewDialog(DialogueNode newDialogue)
     {
         _currentDialog = null;
-        _dialogue = null;
+        dialogue = null;
         _dialoguesQueue = null;
-        _dialogue = newDialogue;
+        dialogue = newDialogue;
         _isDialogueStart = false;
 
         StartDialogue();
     }
 
-    public void SetNewDialog(DialogueNode dialog)=>_dialogue = dialog;
+    public void SetNewDialog(DialogueNode dialog) => dialogue = dialog;
 
     private bool CanCondition(List<Condition> conditions)
     {
         bool isCondition = false;
-        int count = conditions.FindAll(cond =>cond.Required==PlayerAction.HasAction(cond.Action)).Count;
+        int count = conditions.FindAll(cond => cond.Required == PlayerAction.HasAction(cond.Action)).Count;
 
-        if(count == conditions.Count)  isCondition = true;
+        if (count == conditions.Count) isCondition = true;
 
         return isCondition;
     }
 
     private async void StartDialogue()
     {
-        if (_isDialogueStart)  return;
-        
+        if (_isDialogueStart) return;
+
         _endEvent = false;
         _isDialogueStart = true;
 
         InitDialogView();
-        
-        _dialoguesQueue = new Queue<Dialogue>(_dialogue.Dialogue);
-        string dialogEndID = _dialogue.EndDialoguesID;
-        
+
+        _dialoguesQueue = new Queue<Dialogue>(dialogue.Dialogue);
+        string dialogEndID = dialogue.EndDialoguesID;
+
         while (_dialoguesQueue.Count > 0)
         {
             _currentDialog = NextDialogue;
@@ -99,11 +105,18 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
                 continue;
             }
 
-            await _dialogueView.SetText(_currentDialog);
-            await WaitDialogEvent(_currentDialog);
-            await _dialogueView.WaitResponse(_currentDialog);
-            await UniTask.Delay(_delayBeforeNextPhrase);
+            bool isCanceled = await dialogueView.SetText(_currentDialog).AttachExternalCancellation(_cts.Token)
+                .SuppressCancellationThrow();
+            if (isCanceled) return;
             
+            isCanceled = await WaitDialogEvent(_currentDialog).AttachExternalCancellation(_cts.Token)
+                .SuppressCancellationThrow();
+            if (isCanceled) return;
+            
+            isCanceled = await dialogueView.WaitResponse(_currentDialog).AttachExternalCancellation(_cts.Token)
+                .SuppressCancellationThrow();
+            if (isCanceled) return;
+
             if (_dialoguesQueue == null)
             {
                 _isDialogueStart = false;
@@ -114,8 +127,20 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
 
         SetRepeatPraza();
 
+        if (dialogue.Dialogue.Count == 1)
+        {
+            Dialogue firstDialogue = dialogue.Dialogue.FirstOrDefault();
+            if (firstDialogue != null && firstDialogue.ShowCloseDialogueButtonIfEnd)
+            {
+                dialogueView.ShowCloseDialogueButton();
+                bool isCanceledTask = await UniTask.WaitWhile(() => !dialogueView.IsCloseButtonClicked, 
+                    cancellationToken: _cts.Token).SuppressCancellationThrow();
+                if (isCanceledTask) return;
+            }
+        }
+
         _isDialogueStart = false;
-        _dialogueView.Hide();
+        dialogueView.Hide();
 
         SendEventEndDialog(dialogEndID);
     }
@@ -131,10 +156,7 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
 
     private void SendEventEndDialog(string endDialogID)
     {
-        if (endDialogID != "")
-        {
-            EndDialogEvent?.Invoke(endDialogID);
-        }
+        EndDialogEvent?.Invoke(endDialogID);
     }
 
     private async UniTask WaitDialogEvent(Dialogue dialog)
@@ -144,17 +166,15 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
 
         DialogEvent?.Invoke(dialog.Event.NameEvent, this);
 
-        while(_endEvent == false)
-        {
-            await UniTask.Yield();
-        }
+        bool isCanceled = await UniTask.WaitWhile(() => _endEvent == false, cancellationToken: _cts.Token)
+            .SuppressCancellationThrow();
     }
 
     private void InitDialogView()
     {
-        _dialogueView.Show();
-        _dialogueView.ClearText();
-        _dialogueView.ClearViewResponces();
+        dialogueView.Show();
+        dialogueView.ClearText();
+        dialogueView.ClearViewResponses();
     }
 
     private void SetRepeatEndPhrase(Dialogue currentDialog)

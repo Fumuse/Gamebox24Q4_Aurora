@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine.Localization;
 
 public static class PlayerAction
 {

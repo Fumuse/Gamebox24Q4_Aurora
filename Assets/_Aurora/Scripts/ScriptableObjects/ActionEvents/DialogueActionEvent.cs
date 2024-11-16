@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "DialogueActionEvent", menuName = "Actions/ActionEvents/DialogueActionEvent")]
 public class DialogueActionEvent : ActionEvent

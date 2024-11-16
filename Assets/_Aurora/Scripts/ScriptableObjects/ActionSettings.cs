@@ -10,6 +10,7 @@ public class ActionSettings : ScriptableObject
 
     [SerializeField] private DialogueNode dialogueRoot;
     public DialogueNode DialogueRoot => dialogueRoot;
+
     [SerializeField] private ItemInfo item;
     public ItemInfo Item => item;
 
