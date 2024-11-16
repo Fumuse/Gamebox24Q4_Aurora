@@ -66,7 +66,7 @@ public class Shadow : Screamer
     {
         if (_isIlluminated) return;
         
-        if (collision.TryGetComponent(out Flashlight flashlight))
+        if (collision.TryGetComponent(out FlashlightTEST flashlight))
         {
             _isIlluminated = true;
             UniTask task = Hide();

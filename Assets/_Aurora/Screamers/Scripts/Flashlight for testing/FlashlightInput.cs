@@ -1,14 +1,14 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Flashlight))]
+[RequireComponent(typeof(FlashlightTEST))]
 public class FlashlightInput : MonoBehaviour
 {
-    [SerializeField] private Flashlight _flashlight;
+    [SerializeField] private FlashlightTEST _flashlight;
     private bool _enabled;
 
     private void OnValidate()
     {
-        _flashlight??=GetComponent<Flashlight>();
+        _flashlight??=GetComponent<FlashlightTEST>();
     }
 
     private void Update()
