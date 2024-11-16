@@ -8,9 +8,11 @@ public class ActionSettings : ScriptableObject
     [SerializeField] private LocalizedString whisperTextKey;
     public LocalizedString WhisperText => whisperTextKey;
 
-    //TODO: поменять на правильный объект
-    [SerializeField] private ScriptableObject dialogueRoot;
-    public ScriptableObject DialogueRoot => dialogueRoot;
+    [SerializeField] private DialogueNode dialogueRoot;
+    public DialogueNode DialogueRoot => dialogueRoot;
+
+    [SerializeField] private ItemInfo item;
+    public ItemInfo Item => item;
 
     [SerializeField] private LocalizedAsset<VideoClip> catSceneClip;
     public LocalizedAsset<VideoClip> CatSceneClip => catSceneClip;
