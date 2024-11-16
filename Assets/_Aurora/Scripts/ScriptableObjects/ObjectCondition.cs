@@ -8,9 +8,10 @@ public abstract class ObjectCondition : ScriptableObject
     [SerializeField] protected bool hasTimeCondition = false;
     [SerializeField] protected int minTime;
     [SerializeField] protected int maxTime;
-    [SerializeField] protected Tag[] hasTags;
+    [SerializeField, Tooltip("Проверка на то, чтобы у игрока были какие-то теги")] protected Tag[] hasTags;
+    [SerializeField, Tooltip("Проверка на то, чтобы у игрока не было каких-то тегов")] protected Tag[] hasntTags;
 
-    public bool HasTagsCondition => hasTags.Length > 0;
+    public bool HasTagsCondition => hasTags.Length > 0 || hasntTags.Length > 0;
 
     public bool PassesTagsCondition
     {
@@ -21,6 +22,11 @@ public abstract class ObjectCondition : ScriptableObject
             foreach (Tag tag in hasTags)
             {
                 if (!GameManager.Instance.TagManager.HasTag(tag)) return false;
+            }
+            
+            foreach (Tag tag in hasntTags)
+            {
+                if (GameManager.Instance.TagManager.HasTag(tag)) return false;
             }
 
             return true;

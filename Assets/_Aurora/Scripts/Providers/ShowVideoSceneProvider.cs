@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -13,6 +14,8 @@ public class ShowVideoSceneProvider : MonoBehaviour, IAction
     private IInteractable _lastInteractable;
     private ActionSettings _actionSettings;
     private CancellationTokenSource _cts;
+
+    public Action OnVideoEndShowed;
 
     private void OnEnable()
     {
@@ -42,9 +45,8 @@ public class ShowVideoSceneProvider : MonoBehaviour, IAction
 
     private void SetVideoLocalizationClip()
     {
-        if (_actionSettings.CatSceneClipKey == null) return;
-        videoLocalization.TableEntryReference = _actionSettings.CatSceneClipKey;
-        UpdateVideoClip(videoLocalization.LoadAsset());
+        if (_actionSettings.CatSceneClip == null) return;
+        UpdateVideoClip(_actionSettings.CatSceneClip.LoadAsset());
     }
 
     private void UpdateVideoClip(VideoClip clip)
@@ -89,8 +91,9 @@ public class ShowVideoSceneProvider : MonoBehaviour, IAction
 
     private async void OnVideoFinished(VideoPlayer vp)
     {
+        OnVideoEndShowed?.Invoke();
         videoPlayer.loopPointReached -= OnVideoFinished;
-        
+
         bool result = await HideVideoCanvas();
         if (!result)
         {
@@ -99,13 +102,15 @@ public class ShowVideoSceneProvider : MonoBehaviour, IAction
         }
 
         ResetVideo(true);
-        
-        this.ChangeInteractableObjectAction(
-                _lastInteractable, 
-                _actionSettings.ChangeActionSettingsAfterPlay, 
-                _actionSettings.ChangeObjectEventAfterPlay
-            );
-        _lastInteractable.FinishInteract();
+
+        if (_lastInteractable != null)
+        {
+            if (_actionSettings != null)
+            {
+                this.AfterInteractChanges(_lastInteractable, _actionSettings);
+            }
+            _lastInteractable.FinishInteract();
+        }
     }
 
     private async void ShowVideoCanvas()

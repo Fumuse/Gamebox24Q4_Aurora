@@ -15,6 +15,9 @@ public class TeleportProvider : MonoBehaviour, IAction
     private IInteractable _lastInteractable;
     private IDoor _interactableDoor;
     private ActionSettings _actionSettings;
+    
+    public Action OnTeleportEnds;
+    public Action OnPlayerTeleported;
 
     private void OnValidate()
     {
@@ -66,19 +69,16 @@ public class TeleportProvider : MonoBehaviour, IAction
         isCanceled = await overlayWrapper.FadeOut(this, _cts.Token, fadeSpeed);
         if (isCanceled) return;
 
-        SpentTime();
-        
-        _interactableDoor.FinishInteract();
-    }
+        OnTeleportEnds?.Invoke();
 
-    /// <summary>
-    /// Spend time to teleport between rooms
-    /// </summary>
-    private void SpentTime()
-    {
-        GameManager.Instance.Timer.SpendTime(
-            _actionSettings.TimeCost
-        );
+        if (_interactableDoor != null)
+        {
+            if (_actionSettings != null)
+            {
+                this.AfterInteractChanges(_interactableDoor, _actionSettings);
+            }
+            _interactableDoor.FinishInteract();
+        }
     }
 
     private void TeleportPlayer()
@@ -94,6 +94,8 @@ public class TeleportProvider : MonoBehaviour, IAction
         newCameraPosition.y = connectedRoomPosition.y;
 
         mainCamera.transform.position = newCameraPosition;
+        
+        OnPlayerTeleported?.Invoke();
     }
     
     private void OnInteracted(IInteractable interactable)

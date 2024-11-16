@@ -26,7 +26,7 @@ public class DialogueProvider : MonoBehaviour, IAction
     {
         _actionSettings = settings;
 
-         DialogueNode newDialog = settings.DialogueRoot;
+        DialogueNode newDialog = settings.DialogueRoot;
         _dialog.StartNewDialog(newDialog);
 
         _lastInteractable.FinishInteract();

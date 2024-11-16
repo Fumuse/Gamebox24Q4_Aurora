@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.Localization;
 using UnityEngine.Video;
 
 [CreateAssetMenu(fileName = "ActionSettings", menuName = "Actions/ActionSettings")]
 public class ActionSettings : ScriptableObject
 {
-    [SerializeField] private string whisperTextKey;
-    public string WhisperTextKey => whisperTextKey;
+    [SerializeField] private LocalizedString whisperTextKey;
+    public LocalizedString WhisperText => whisperTextKey;
 
     [SerializeField] private DialogueNode dialogueRoot;
     public DialogueNode DialogueRoot => dialogueRoot;
     [SerializeField] private ItemInfo item;
     public ItemInfo Item => item;
 
-    [SerializeField] private string catSceneClipKey;
-    public string CatSceneClipKey => catSceneClipKey;
+    [SerializeField] private LocalizedAsset<VideoClip> catSceneClip;
+    public LocalizedAsset<VideoClip> CatSceneClip => catSceneClip;
 
     [SerializeField, Tooltip("Сколько времени расходуется за выполнение действия")] 
     private int timeCost = 0;
@@ -29,4 +29,7 @@ public class ActionSettings : ScriptableObject
     
     [SerializeField] private ActionSettings changeObjectSettingsAfterPlay;
     public ActionSettings ChangeActionSettingsAfterPlay => changeObjectSettingsAfterPlay;
+
+    [SerializeField] private Tag[] tagsToAddAfterAction;
+    public Tag[] TagsToAddAfterAction => tagsToAddAfterAction;
 }
