@@ -3,6 +3,12 @@
 [CreateAssetMenu(fileName = "InteractableObjectsCondition", menuName = "Conditions/InteractableObjectsCondition")]
 public class InteractableObjectCondition : ObjectCondition
 {
-    [SerializeField] protected bool viewOnlyOnFlashlight = false;
-    public bool IsViewOnlyOnFlashLight => viewOnlyOnFlashlight;
+    [SerializeField] protected bool viewOnFlashlight = false;
+    public bool IsViewOnFlashLight => viewOnFlashlight;
+
+    [SerializeField] protected bool canHideAfterView = false;
+    public bool CanHideAfterView => canHideAfterView;
+
+    [SerializeField] protected bool needToHideGlobal = false;
+    public bool NeedToHideGlobal => needToHideGlobal;
 }

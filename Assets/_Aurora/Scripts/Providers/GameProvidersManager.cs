@@ -20,4 +20,12 @@ public class GameProvidersManager : PersistentSingleton<GameProvidersManager>
         whisperProvider ??= FindFirstObjectByType<WhisperProvider>();
         videoSceneProvider ??= FindFirstObjectByType<ShowVideoSceneProvider>();
     }
+
+    public void Init()
+    {
+        if (Instance == null)
+        {
+            this.Awake();
+        }
+    }
 }
