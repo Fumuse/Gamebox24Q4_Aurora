@@ -167,6 +167,27 @@ MonoBehaviour:
       \u043E\u0448\u0438\u0431\u043B\u0438\u0441\u044C."
     m_Metadata:
       m_Items: []
+  - m_Id: 3994370570481664
+    m_Localized: Grandma greets Aurora with a warm smile and a glass of milk.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3994713966538752
+    m_Localized: Drink milk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3994795545751552
+    m_Localized: 'Strange...I think this milk has gone sour. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3995229010292736
+    m_Localized: Telling grandma about the sour milk.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3995974556217344
+    m_Localized: "Grandma replies \u201CSadly...\u201D and asks to go to the cellar
+      to get candles (huh?)."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
