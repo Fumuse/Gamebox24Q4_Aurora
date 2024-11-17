@@ -95,6 +95,10 @@ MonoBehaviour:
     m_Key: PauseMenu_LanguageHeader
     m_Metadata:
       m_Items: []
+  - m_Id: 2184078418407424
+    m_Key: TutorialPhotoAlbum_Loc3_Movie
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 9026372752308961477
@@ -117,6 +121,10 @@ MonoBehaviour:
           - en
           - ru
         - m_KeyId: 473821376512
+          m_TableCodes:
+          - en
+          - ru
+        - m_KeyId: 2184078418407424
           m_TableCodes:
           - en
           - ru

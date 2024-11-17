@@ -1,25 +1,31 @@
-﻿using UnityEngine;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(IInteractable))]
 public class InteractableObjectUI : MonoBehaviour
 {
     [SerializeField] private Canvas objectMenu;
-    [SerializeField, HideInInspector] private InteractableObject interObject;
     [SerializeField] private Button interactButton;
+    [SerializeField, HideInInspector] private InteractableObject interObject;
+    [SerializeField, HideInInspector] private LocalizeStringEvent buttonTextLocalizeEvent;
 
     [Header("Objects sprites controller")] 
     [SerializeField] private SpriteRenderer bodySprite;
-    [SerializeField] private InteractableObjectState states;
+    [SerializeField] private InteractableObjectStateVisionPair[] states;
 
     private bool _mouseIn = false;
     private GraphicRaycaster _menuRaycaster;
+
+    private InteractableStateVisionEnum _currentStateVision = InteractableStateVisionEnum.Default;
 
     private void OnValidate()
     {
         objectMenu ??= GetComponentInChildren<Canvas>();
         interObject ??= GetComponent<InteractableObject>();
         interactButton ??= GetComponentInChildren<Button>();
+        buttonTextLocalizeEvent ??= interactButton.GetComponentInChildren<LocalizeStringEvent>();
     }
 
     private void Awake()
@@ -47,17 +53,17 @@ public class InteractableObjectUI : MonoBehaviour
         
         interactButton.onClick.RemoveListener(interObject.Interact);
     }
-    
-    //TODO: изображения должны переключаться в зависимости от общего стейта игры, продумать
-    private void OnMouseEnter()
+
+    public void OnRayMouseEnter()
     {
         _mouseIn = true;
         if (interObject.IsInteracted) return;
+        if (!interObject.IsViewed) return;
         ChangeBodySpriteByStage(GameManager.Instance.OppositeSpriteStage);
         ShowInteractMenu();
     }
 
-    private void OnMouseExit()
+    public void OnRayMouseExit()
     {
         _mouseIn = false;
         if (interObject.IsInteracted) return;
@@ -68,13 +74,21 @@ public class InteractableObjectUI : MonoBehaviour
     public void ChangeBodySpriteByStage(HouseStageEnum stage)
     {
         if (states == null) return;
+
+        InteractableObjectStateVisionPair pair = states.FirstOrDefault((statePair) => statePair.visionKey == _currentStateVision);
+        if (pair == null)
+            pair = states.FirstOrDefault((statePair) => statePair.visionKey == InteractableStateVisionEnum.Default);
+        if (pair == null) return;
         
-        if (stage == HouseStageEnum.Light && states.Light != null)
-            bodySprite.sprite = states.Light;
-        if (stage == HouseStageEnum.Dark && states.Dark != null)
-            bodySprite.sprite = states.Dark;
-        if (stage == HouseStageEnum.Broken && states.Broken != null)
-            bodySprite.sprite = states.Broken;
+        InteractableObjectState currentState = pair.interactableObjectState;
+        if (currentState == null) return;
+        
+        if (stage == HouseStageEnum.Light && currentState.Light != null)
+            bodySprite.sprite = currentState.Light;
+        if (stage == HouseStageEnum.Dark && currentState.Dark != null)
+            bodySprite.sprite = currentState.Dark;
+        if (stage == HouseStageEnum.Broken && currentState.Broken != null)
+            bodySprite.sprite = currentState.Broken;
     }
     
     private void ShowInteractMenu()
@@ -121,5 +135,16 @@ public class InteractableObjectUI : MonoBehaviour
     {
         if (!interObject.Equals(interactable)) return;
         OnDeclineInteract();
+    }
+
+    public void ChangeObjectName(string newNameLocalizationKey)
+    {
+        buttonTextLocalizeEvent.StringReference.TableEntryReference = newNameLocalizationKey;
+    }
+
+    public void ChangeVisionState(InteractableStateVisionEnum visionState)
+    {
+        _currentStateVision = visionState;
+        ChangeBodySpriteByStage(GameManager.Instance.CurrentStage);
     }
 }

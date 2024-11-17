@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   timeToEnd: 240
-  teleportBetweenRoomsTimeCost: 5
+  maxAcceptance: 100
+  maxRoomShadowOverlayOpacity: 220
+  stepRoomShadowOverlayOpacity: 30

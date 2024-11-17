@@ -9,6 +9,9 @@ public class House : MonoBehaviour
 
     private void OnValidate()
     {
-        rooms = FindObjectsByType<Room>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        if (rooms.Length < 1)
+        {
+            rooms = FindObjectsByType<Room>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        }
     }
 }

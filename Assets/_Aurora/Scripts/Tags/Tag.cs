@@ -4,6 +4,11 @@ using UnityEngine;
 [Serializable]
 public class Tag
 {
-    [SerializeField] private string tagName;
-    public string Name => tagName;
+    [SerializeField] private TagEnum tagName;
+    public TagEnum Name => tagName;
+
+    public Tag(TagEnum tag)
+    {
+        tagName = tag;
+    }
 }

@@ -7,7 +7,6 @@ public class PlayerStateMachine : StateMachine
 {
     [SerializeField] private float speed = 7f;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private SpriteRenderer overlay;
 
     public float MovementSpeed => speed;
     public InputReader InputReader { get; private set; }
@@ -15,8 +14,8 @@ public class PlayerStateMachine : StateMachine
     public Animator Animator { get; private set; }
     public Camera MainCamera { get; private set; }
     public SpriteRenderer SpriteRenderer { get; private set; }
-    
-    private void Start()
+
+    public void Init()
     {
         InputReader = GetComponent<InputReader>();
         Сontroller = GetComponent<CharacterController>();
@@ -27,28 +26,15 @@ public class PlayerStateMachine : StateMachine
         SwitchState(new PlayerMoveState(this));
     }
 
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-    }
-
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-    }
-
     public void ChangePlayerSpriteByStage(HouseStageEnum stage)
     {
-        Color color = overlay.color;
         if (stage == HouseStageEnum.Light)
         {
-            color.a = 0f;
-            overlay.color = color;
+            spriteRenderer.color = Color.white;
         }
         else
         {
-            color.a = 210f / 255f;
-            overlay.color = color;
+            spriteRenderer.color = Color.gray;
         }
     }
 }

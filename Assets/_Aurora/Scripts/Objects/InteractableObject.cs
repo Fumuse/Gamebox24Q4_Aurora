@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(InteractableObjectUI))]
-public class InteractableObject : MonoBehaviour, IInteractable
+public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
 {
     [SerializeField] protected float positionOffset;
     [SerializeField] protected Transform objectPosition;
@@ -28,18 +28,51 @@ public class InteractableObject : MonoBehaviour, IInteractable
     public static event CancelInteract OnCancelInteract;
     #endregion
 
+    protected bool _isViewed = false;
+
+    public bool IsViewed
+    {
+        get => _isViewed;
+        private set
+        {
+            _isViewed = value;
+            
+            //TODO: это, в теории, можно сделать по-другому
+            if (_isViewed)
+            {
+                ui.ChangeVisionState(InteractableStateVisionEnum.Viewed);
+            }
+            else
+            {
+                ui.ChangeVisionState(InteractableStateVisionEnum.Default);
+            }
+        }
+    }
+
     private void OnValidate()
     {
         objectPosition ??= this.transform;
         ui ??= GetComponent<InteractableObjectUI>();
     }
 
-    protected void OnEnable()
+    public virtual void Init()
     {
         CheckConditionToView();
+        
+        TagManager.OnTagAdded += CheckConditionToView;
+        TagManager.OnTagRemoved += CheckConditionToView;
+        AcceptanceScale.OnAcceptanceScaleChanged += CheckConditionToView;
+        Timer.OnTimeChanged += CheckConditionToView;
     }
 
-    //TODO: эта проверка должна быть у каждого объекта после всех триггеров
+    protected void OnDestroy()
+    {
+        TagManager.OnTagAdded -= CheckConditionToView;
+        TagManager.OnTagRemoved -= CheckConditionToView;
+        AcceptanceScale.OnAcceptanceScaleChanged -= CheckConditionToView;
+        Timer.OnTimeChanged -= CheckConditionToView;
+    }
+
     /// <summary>
     /// Проверка условий отображения объекта
     /// </summary>
@@ -47,16 +80,29 @@ public class InteractableObject : MonoBehaviour, IInteractable
     {
         if (conditionToView == null)
         {
-            this.gameObject.SetActive(true);
+            IsViewed = true;
+            this.enabled = true;
             return;
         }
 
-        bool needToHide = false;
-        needToHide |= !conditionToView.PassesTagsCondition;
-        needToHide |= !conditionToView.PassesTimeCondition;
-        needToHide |= !conditionToView.PassesAcceptanceCondition;
+        if (IsViewed && !conditionToView.CanHideAfterView)
+        {
+            if (!this.enabled)
+            {
+                this.enabled = true;
+            }
 
-        this.gameObject.SetActive(!needToHide);
+            return;
+        }
+
+        bool needToShow = conditionToView.PassesTagsCondition;
+        if (!conditionToView.PassesTimeCondition) needToShow = false;
+        if (!conditionToView.PassesAcceptanceCondition) needToShow = false;
+
+        if (conditionToView.NeedToHideGlobal) this.gameObject.SetActive(needToShow);
+        else this.enabled = needToShow;
+        
+        IsViewed = needToShow;
     }
 
     /// <summary>
@@ -109,5 +155,16 @@ public class InteractableObject : MonoBehaviour, IInteractable
     public void ChangeActionProvider(ListedUnityEvent actions)
     {
         actionProvider = actions;
+    }
+
+    public bool Illuminate()
+    {
+        if (conditionToView == null || !conditionToView.IsViewOnFlashLight) return false;
+        if (IsViewed) return false;
+        
+        IsViewed = true;
+        CheckConditionToView();
+        
+        return true;
     }
 }
