@@ -2,7 +2,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class TeleportProvider : MonoBehaviour, IAction
 {
@@ -11,12 +10,14 @@ public class TeleportProvider : MonoBehaviour, IAction
     [SerializeField] private float fadeSpeed = 2f;
     [SerializeField] private float timeToWaitBetweenRooms = 1f;
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private UnityEvent eventExitFromRoom;
-
+    
     private CancellationTokenSource _cts;
     private IInteractable _lastInteractable;
     private IDoor _interactableDoor;
     private ActionSettings _actionSettings;
+    
+    public Action OnTeleportEnds;
+    public Action OnPlayerTeleported;
 
     private void OnValidate()
     {
@@ -68,21 +69,16 @@ public class TeleportProvider : MonoBehaviour, IAction
         isCanceled = await overlayWrapper.FadeOut(this, _cts.Token, fadeSpeed);
         if (isCanceled) return;
 
-        SpentTime();
-        
-        _interactableDoor.FinishInteract();
-       
-        eventExitFromRoom?.Invoke();
-    }
+        OnTeleportEnds?.Invoke();
 
-    /// <summary>
-    /// Spend time to teleport between rooms
-    /// </summary>
-    private void SpentTime()
-    {
-        GameManager.Instance.Timer.SpendTime(
-            _actionSettings.TimeCost
-        );
+        if (_interactableDoor != null)
+        {
+            if (_actionSettings != null)
+            {
+                this.AfterInteractChanges(_interactableDoor, _actionSettings);
+            }
+            _interactableDoor.FinishInteract();
+        }
     }
 
     private void TeleportPlayer()
@@ -98,6 +94,8 @@ public class TeleportProvider : MonoBehaviour, IAction
         newCameraPosition.y = connectedRoomPosition.y;
 
         mainCamera.transform.position = newCameraPosition;
+        
+        OnPlayerTeleported?.Invoke();
     }
     
     private void OnInteracted(IInteractable interactable)

@@ -18,8 +18,8 @@ public abstract class PlayerBaseState : State
     protected readonly int moveAnimParamHash = Animator.StringToHash("MoveSpeed");
     protected readonly int moveAnimBlendTreeHash = Animator.StringToHash("MoveBlendTree");
     
-    protected const float AnimationDampTime = 0.1f;
-    protected const float CrossFadeDuration = 0.1f;
+    protected const float AnimationDampTime = 0f;
+    protected const float CrossFadeDuration = 0f;
 
     #endregion
     
@@ -73,6 +73,9 @@ public abstract class PlayerBaseState : State
 
     protected void CheckClickToUI()
     {
-        isClickedToUI = EventSystem.current.IsPointerOverGameObject();
+        if (EventSystem.current != null)
+        {
+            isClickedToUI = EventSystem.current.IsPointerOverGameObject();
+        }
     }
 }

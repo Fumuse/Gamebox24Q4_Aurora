@@ -2,12 +2,16 @@
 
 public class PlayerMoveState : PlayerBaseState
 {
+    private LayerMask _interactableObjectMask;
+    
     public PlayerMoveState(PlayerStateMachine stateMachine) : base(stateMachine)
     {}
 
     public override void Enter()
     {
         InputReader.OnMouseClicked += OnMouseClicked;
+
+        _interactableObjectMask = GameManager.Instance.InteractableObjectLayerMask;
         
         stateMachine.Animator.CrossFadeInFixedTime(moveAnimBlendTreeHash, CrossFadeDuration);
     }
@@ -31,14 +35,17 @@ public class PlayerMoveState : PlayerBaseState
         if (isClickedToUI) return;
         
         targetPosition = stateMachine.MainCamera.ScreenToWorldPoint(mousePosition);
-        Collider2D clickedCollider = Physics2D.OverlapPoint(targetPosition);
+        Collider2D clickedCollider = Physics2D.OverlapPoint(targetPosition, _interactableObjectMask);
 
         if (clickedCollider != null)
         {
             if (clickedCollider.TryGetComponent(out IInteractable interactable))
             {
-                stateMachine.SwitchState(new PlayerInteractState(stateMachine, interactable));
-                return;
+                if (interactable.IsViewed)
+                {
+                    stateMachine.SwitchState(new PlayerInteractState(stateMachine, interactable));
+                    return;
+                }
             }
         }
 

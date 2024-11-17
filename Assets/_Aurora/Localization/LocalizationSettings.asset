@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: LocalizationSettings
   m_EditorClassIdentifier: 
   m_StartupSelectors:
+  - rid: 9026372825281462883
   - rid: 9026372670568529998
   - rid: 9026372670568529999
-  - rid: 9026372670568530000
+  - rid: 9026372825281462888
   m_AvailableLocales:
     rid: 9026372670568530001
   m_AssetDatabase:
@@ -27,7 +28,7 @@ MonoBehaviour:
   m_ProjectLocaleIdentifier:
     m_Code: en
   m_PreloadBehavior: 1
-  m_InitializeSynchronously: 0
+  m_InitializeSynchronously: 1
   references:
     version: 2
     RefIds:
@@ -40,11 +41,6 @@ MonoBehaviour:
     - rid: 9026372670568529999
       type: {class: SystemLocaleSelector, ns: UnityEngine.Localization.Settings, asm: Unity.Localization}
       data: 
-    - rid: 9026372670568530000
-      type: {class: SpecificLocaleSelector, ns: UnityEngine.Localization.Settings, asm: Unity.Localization}
-      data:
-        m_LocaleId:
-          m_Code: en
     - rid: 9026372670568530001
       type: {class: LocalesProvider, ns: UnityEngine.Localization.Settings, asm: Unity.Localization}
       data: 
@@ -52,7 +48,7 @@ MonoBehaviour:
       type: {class: LocalizedAssetDatabase, ns: UnityEngine.Localization.Settings, asm: Unity.Localization}
       data:
         m_DefaultTableReference:
-          m_TableCollectionName: 
+          m_TableCollectionName: LocalizationAssetTable
         m_CustomTableProvider:
           rid: -2
         m_CustomTablePostprocessor:
@@ -63,7 +59,7 @@ MonoBehaviour:
       type: {class: LocalizedStringDatabase, ns: UnityEngine.Localization.Settings, asm: Unity.Localization}
       data:
         m_DefaultTableReference:
-          m_TableCollectionName: 
+          m_TableCollectionName: LocalizationTable
         m_CustomTableProvider:
           rid: -2
         m_CustomTablePostprocessor:
@@ -205,3 +201,12 @@ MonoBehaviour:
         - default
         - d
         - 
+    - rid: 9026372825281462883
+      type: {class: PlayerPrefLocaleSelector, ns: UnityEngine.Localization.Settings, asm: Unity.Localization}
+      data:
+        m_PlayerPreferenceKey: selected-locale
+    - rid: 9026372825281462888
+      type: {class: SpecificLocaleSelector, ns: UnityEngine.Localization.Settings, asm: Unity.Localization}
+      data:
+        m_LocaleId:
+          m_Code: en

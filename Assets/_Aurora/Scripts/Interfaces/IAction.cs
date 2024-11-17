@@ -1,6 +1,4 @@
-﻿using JetBrains.Annotations;
-
-public interface IAction
+﻿public interface IAction
 {
-    public void Execute([CanBeNull] ActionSettings settings);
+    public void Execute(ActionSettings settings);
 }

@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 public class TagManager
 {
     private static TagManager _instance;
     private List<Tag> _currentTags;
+
+    public static Action OnTagAdded;
+    public static Action OnTagRemoved;
 
     public TagManager()
     {
@@ -12,19 +16,27 @@ public class TagManager
 
     public void AddTag(Tag tag)
     {
+        if (HasTag(tag)) return;
         _currentTags.Add(tag);
+        
+        OnTagAdded?.Invoke();
     }
 
     public void RemoveTag(Tag tag)
     {
-        if (HasTag(tag))
-        {
-            _currentTags.Remove(tag);
-        }
+        if (!HasTag(tag)) return;
+        _currentTags.Remove(tag);
+        
+        OnTagRemoved?.Invoke();
     }
 
     public bool HasTag(Tag tag)
     {
-        return _currentTags.Contains(tag);
+        foreach (Tag inTags in _currentTags)
+        {
+            if (tag.Name == inTags.Name) return true;
+        }
+
+        return false;
     }
 }

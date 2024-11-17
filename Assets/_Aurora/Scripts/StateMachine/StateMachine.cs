@@ -11,7 +11,7 @@ public abstract class StateMachine : MonoBehaviour
     {
         _currentState?.Exit();
         _currentState = state;
-        _currentState.Enter();
+        _currentState?.Enter();
     }
 
     protected virtual void OnEnable()
@@ -30,6 +30,12 @@ public abstract class StateMachine : MonoBehaviour
 
         while (true)
         {
+            if (PauseMenuController.InPause)
+            {
+                bool isAwaitCanceled = await UniTask.WaitWhile(() => PauseMenuController.InPause, 
+                    cancellationToken: _cts.Token).SuppressCancellationThrow();
+                if (isAwaitCanceled) return;
+            }
             AsyncUpdate();
             bool isCanceled = await UniTask.WaitForEndOfFrame(this, _cts.Token).SuppressCancellationThrow();
             if (isCanceled) return;

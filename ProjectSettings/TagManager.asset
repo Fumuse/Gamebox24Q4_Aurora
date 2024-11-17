@@ -12,8 +12,8 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
+  - InteractableObject
+  - Flashlight
   - 
   - Room
   - 
@@ -52,6 +52,9 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 796773735
+    locked: 0
+  - name: Flashlight
+    uniqueID: 3088128951
     locked: 0
   - name: GlobalUI
     uniqueID: 2273496755

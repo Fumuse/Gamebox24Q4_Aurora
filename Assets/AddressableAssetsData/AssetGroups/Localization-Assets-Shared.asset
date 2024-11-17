@@ -25,6 +25,20 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 94a2f00d9aef13840b8952cad85e296b
+    m_Address: PhotoalbumMovie
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 980aabecffe4923489c28c3586e81940
+    m_Address: TutorialMovie
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: afe90ce8353ce6444a7d66400b66a0fc
     m_Address: Trellis_Scene
     m_ReadOnly: 1

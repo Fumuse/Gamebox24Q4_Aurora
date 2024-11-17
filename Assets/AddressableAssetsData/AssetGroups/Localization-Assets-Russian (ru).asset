@@ -14,7 +14,109 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Localization-Assets-Russian (ru)
   m_GUID: 4732ccb80d853db4c9877fb811861436
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 103cb749de3b03c419c5f825807dc4db
+    m_Address: sound
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 10a7598dbade4a04d93c9e74a1f83514
+    m_Address: language
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1cb6fb111400146419e014713de61895
+    m_Address: settings_language
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 39b1427cb0a8cd64794707b3dc18401e
+    m_Address: settings_sound
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 42a06a0a244fd8645a2f04058533dec2
+    m_Address: creators_hover
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4358020d3e0b02947b0a965888b5923d
+    m_Address: exit
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c699d10b89880748ae0c6411c4159f4
+    m_Address: game_logo
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4dbd94af664fdf44b935c55e2d141759
+    m_Address: new_game_hover
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5463770485cc386408e9b397aa3e9fd4
+    m_Address: settings_hover
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5914f6611b470214fb021738f8f6895b
+    m_Address: pause_fon
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60981a50ce466384fbb582a69ff0d3c9
+    m_Address: exit_hover
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 69321de41fddc15499244a37e1e9494b
+    m_Address: new_game
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 98aa395762e26634b879ae6dfccc1c9b
+    m_Address: back
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 99bffe535b990714e9a777e0ee394841
+    m_Address: exit_hover
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b851ee0f2bb1202488421caa606b6409
+    m_Address: back_hover
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf3307cd0b0f61a49aa38d21c0e6ff15
+    m_Address: creators
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa5755ae5f74f1545bdac27f0f12dec2
+    m_Address: settings
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: f6e2ef50d5e71aa4084ffae29d126493, type: 2}
   m_SchemaSet:

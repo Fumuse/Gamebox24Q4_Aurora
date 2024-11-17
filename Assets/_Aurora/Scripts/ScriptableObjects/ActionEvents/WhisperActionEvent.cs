@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "WhisperActionEvent", menuName = "Actions/ActionEvents/WhisperActionEvent")]
 public class WhisperActionEvent : ActionEvent
