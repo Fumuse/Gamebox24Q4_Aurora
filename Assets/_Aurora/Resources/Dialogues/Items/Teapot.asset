@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54589a71ca44a984989351a991e23208, type: 3}
+  m_Name: Teapot
+  m_EditorClassIdentifier: 
+  _nameItem:
+    m_TableReference:
+      m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
+    m_TableEntryReference:
+      m_KeyId: 530511589376
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _itemSprite: {fileID: -6268023519088717812, guid: cc596967226775348b3e64241af3f1cf, type: 3}
+  _description:
+    m_TableReference:
+      m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
+    m_TableEntryReference:
+      m_KeyId: 339593865228288
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

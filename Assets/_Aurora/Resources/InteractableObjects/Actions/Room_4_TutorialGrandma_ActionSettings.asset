@@ -14,14 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whisperTextKey:
     m_TableReference:
-      m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
+      m_TableCollectionName: 
     m_TableEntryReference:
-      m_KeyId: 339593865228288
+      m_KeyId: 0
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  dialogueRoot: {fileID: 0}
+  dialogueRoot: {fileID: 11400000, guid: 4cd61e94fd1bb1843a9d1c401fe894ce, type: 2}
+  item: {fileID: 0}
   catSceneClip:
     m_TableReference:
       m_TableCollectionName: 
@@ -32,8 +33,9 @@ MonoBehaviour:
     m_WaitForCompletion: 0
   timeCost: 0
   acceptanceCost: 0
-  changeObjectEventAfterPlay: {fileID: 0}
-  changeObjectSettingsAfterPlay: {fileID: 0}
+  changeObjectEventAfterPlay: {fileID: 11400000, guid: 446033b48e0089a49afb5b93df55e1bd, type: 2}
+  changeObjectSettingsAfterPlay: {fileID: 11400000, guid: 91857072b377a854a936830bacf64b71, type: 2}
+  tagsToAddAfterAction: []
   references:
     version: 2
     RefIds: []
