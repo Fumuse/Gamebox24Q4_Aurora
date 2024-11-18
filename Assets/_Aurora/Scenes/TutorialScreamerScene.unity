@@ -847,6 +847,14 @@ PrefabInstance:
       propertyPath: screamerType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6982833602506687032, guid: 6d77cc8eaa42d194b8e2a870a940a4ab, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982833602506687032, guid: 6d77cc8eaa42d194b8e2a870a940a4ab, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 743708801
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -959,7 +967,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000a15b4d60b7b9c9fdd9e0475c67cd7d2fb3ce8287b71b11b8
+  m_ApplyToSortingLayers: 00000000a15b4d60b7b9c9fdd9e0475c67cd7d2fb3ce8287b71b11b88118542c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -3081,8 +3089,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 8ac7ba40edbbf9a4b9b951144dd45600, type: 2}
-  startInTutorial: 1
-  houseStage: 0
+  startInTutorial: 0
+  houseStage: 1
   house: {fileID: 645949065}
   interactableObjectLayerMask:
     serializedVersion: 2
@@ -4135,6 +4143,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8302742365961787497, guid: b7b5ff2c56606374ea93d480c5e59421, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8302742365961787497, guid: b7b5ff2c56606374ea93d480c5e59421, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 743708801
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4547,7 +4563,7 @@ MonoBehaviour:
   m_Intensity: 3
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000a15b4d60b7b9c9fdd9e0475c67cd7d2fb3ce8287b71b11b8
+  m_ApplyToSortingLayers: 00000000a15b4d60b7b9c9fdd9e0475c67cd7d2fb3ce8287b71b11b88118542c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -5484,7 +5500,7 @@ SpriteMask:
   m_MaskAlphaCutoff: 0.25
   m_FrontSortingLayerID: -1206838345
   m_BackSortingLayerID: 1548214489
-  m_FrontSortingLayer: 5
+  m_FrontSortingLayer: 6
   m_BackSortingLayer: 3
   m_FrontSortingOrder: 1
   m_BackSortingOrder: 0
@@ -5533,7 +5549,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1206838345
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 68701f1556ec69544911f1a73a5dcc5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
@@ -13110,7 +13126,7 @@ MonoBehaviour:
   m_Intensity: 3
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000a15b4d60b7b9c9fdd9e0475c67cd7d2fb3ce8287b71b11b8
+  m_ApplyToSortingLayers: 00000000a15b4d60b7b9c9fdd9e0475c67cd7d2fb3ce8287b71b11b88118542c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -13967,7 +13983,7 @@ MonoBehaviour:
   m_ReferenceResolution: {x: 2560, y: 1440}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
-  m_PhysicalUnit: 3
+  m_PhysicalUnit: 4
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
@@ -14830,6 +14846,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: c7dd3fbcdc70af242adb39df13f6c817, type: 3}
+    - target: {fileID: 8715822332419662609, guid: ddad57d5eb0adb847b79effec0593706, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8715822332419662609, guid: ddad57d5eb0adb847b79effec0593706, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 743708801
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

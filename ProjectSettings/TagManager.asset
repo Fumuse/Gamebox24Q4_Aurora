@@ -53,6 +53,9 @@ TagManager:
   - name: Foreground
     uniqueID: 796773735
     locked: 0
+  - name: Monster
+    uniqueID: 743708801
+    locked: 0
   - name: Flashlight
     uniqueID: 3088128951
     locked: 0
