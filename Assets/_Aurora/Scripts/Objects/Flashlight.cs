@@ -12,6 +12,9 @@ public class Flashlight : MonoBehaviour
     public delegate void FlashlightFindObject(IInteractable interactable);
     public static event FlashlightFindObject OnFlashlightFindObject;
     
+    public delegate void FlashlightFindScreamer(Screamer screamer);
+    public static event FlashlightFindScreamer OnFlashlightFindScreamer;
+    
     public static Action OnFlashLightTurnOn;
     public static bool flashlightActive = false;
 
@@ -101,6 +104,10 @@ public class Flashlight : MonoBehaviour
                     OnFlashlightFindObject?.Invoke(interactable);
                 }
             }
+        }
+        else if (col.TryGetComponent(out Screamer screamer))
+        {
+            OnFlashlightFindScreamer?.Invoke(screamer);
         }
     }
 }

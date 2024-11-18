@@ -1,3 +1,5 @@
+using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -6,6 +8,7 @@ public class ScreamerView : MonoBehaviour
 {
     [SerializeField] protected Animator _animator;
     [SerializeField] protected SpriteRenderer[] _spriteRenderers;
+    [SerializeField] protected SpriteRenderer renderForFullBody;
     [SerializeField] private float _fateDuration = 3.2f;
     [SerializeField] private bool _FlipXInversion;
 
@@ -14,20 +17,36 @@ public class ScreamerView : MonoBehaviour
     private Color _transparentColor;
     private float _defaultAlpha = 0.85f;
 
+    private CancellationTokenSource _cts = new();
+
+    public Action OnIdleAnimationEnded;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-        
+
         if (_spriteRenderers.Length > 0)
         {
             _defaultColor = _spriteRenderers[0].color;
         }
     }
 
+    private void OnEnable()
+    {
+        if (_cts == null)
+            _cts = new();
+
+        ChangeSpritesVisible(false);
+    }
+
+    private void OnDisable()
+    {
+        _cts?.Cancel();
+    }
+
     private void OnValidate()
     {
-        _animator??=GetComponent<Animator>();
+        _animator ??= GetComponent<Animator>();
         _spriteRenderers ??= GetComponentsInChildren<SpriteRenderer>();
     }
 
@@ -35,7 +54,9 @@ public class ScreamerView : MonoBehaviour
     {
         for (int i = 0; i < _spriteRenderers.Length; i++)
         {
-            _spriteRenderers[i].flipX = _FlipXInversion ? (playerPosition.x - transform.position.x) > 0 : (transform.position.x - playerPosition.x) > 0;
+            _spriteRenderers[i].flipX = _FlipXInversion
+                ? (playerPosition.x - transform.position.x) > 0
+                : (transform.position.x - playerPosition.x) > 0;
         }
     }
 
@@ -47,23 +68,52 @@ public class ScreamerView : MonoBehaviour
         {
             sprite.color = newColor;
         }
+
+        if (renderForFullBody != null)
+        {
+            renderForFullBody.color = newColor;
+        }
     }
 
-    public async UniTask SetFide(bool visible)
+    public async UniTask SetFade(bool visible)
     {
         float elapsedTime = 0f;
         while (elapsedTime < _fateDuration)
         {
+            bool isCanceled = await UniTask.WaitForEndOfFrame(this, _cts.Token).SuppressCancellationThrow();
+            if (isCanceled) return;
+            
             elapsedTime += Time.deltaTime;
-            float newAlpha = visible ? Mathf.Clamp01(elapsedTime / _fateDuration) * _defaultAlpha : _defaultAlpha - Mathf.Clamp01(elapsedTime / _fateDuration);
+            float newAlpha = visible
+                ? Mathf.Clamp01(elapsedTime / _fateDuration) * _defaultAlpha
+                : _defaultAlpha - Mathf.Clamp01(elapsedTime / _fateDuration);
             float alpha = newAlpha;
             SetNewColorAlpha(alpha);
-            await UniTask.WaitForEndOfFrame();
         }
 
         SetNewColorAlpha(visible ? _defaultAlpha : 0);
     }
 
-    public void AnimationMove(bool isMove)=>
+    public void AnimationMove(bool isMove)
+    {
         _animator.SetBool(_moveAnimationHash, isMove);
+        ChangeSpritesVisible(isMove);
+    }
+
+    private void ChangeSpritesVisible(bool isMove)
+    {
+        if (renderForFullBody != null)
+        {
+            renderForFullBody.gameObject.SetActive(!isMove);
+            foreach (SpriteRenderer render in _spriteRenderers)
+            {
+                render.gameObject.SetActive(isMove);
+            }
+        }
+    }
+
+    public void IdleAnimationEnded()
+    {
+        OnIdleAnimationEnded?.Invoke();
+    }
 }

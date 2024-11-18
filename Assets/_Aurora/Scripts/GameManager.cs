@@ -156,6 +156,7 @@ public class GameManager : PersistentSingleton<GameManager>
     public void EndTutorial()
     {
         TutorialStage = false;
+        TagManager.AddTag(new Tag(TagEnum.TutorialEnded));
         tutorial.EndTutorial();
     }
     #endregion

@@ -12,7 +12,7 @@ public class ScreamerTrigger : MonoBehaviour
 
         if (_screamer) 
         {
-            if (collision.TryGetComponent(out FlashlightTEST flashlight)) //поменять на Flashlight
+            if (collision.TryGetComponent(out FlashlightTEST flashlight)) //РїРѕРјРµРЅСЏС‚СЊ РЅР° Flashlight
             {
                 _isTrigger = true;
                 _screamer.transform.position = _positionSpawn.position;

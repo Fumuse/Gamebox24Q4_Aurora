@@ -33,4 +33,9 @@ public class ActionSettings : ScriptableObject
 
     [SerializeField] private Tag[] tagsToAddAfterAction;
     public Tag[] TagsToAddAfterAction => tagsToAddAfterAction;
+
+    [SerializeField] private ScreamerEnum screamerType;
+    public ScreamerEnum ScreamerType => screamerType;
+    [SerializeField] private Vector3 screamerSpawnPosition;
+    public Vector3 ScreamerSpawnPosition => screamerSpawnPosition;
 }

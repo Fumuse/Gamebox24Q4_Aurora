@@ -36,6 +36,8 @@ MonoBehaviour:
   changeObjectEventAfterPlay: {fileID: 11400000, guid: 446033b48e0089a49afb5b93df55e1bd, type: 2}
   changeObjectSettingsAfterPlay: {fileID: 11400000, guid: 91857072b377a854a936830bacf64b71, type: 2}
   tagsToAddAfterAction: []
+  screamerType: 1
+  screamerSpawnPosition: {x: 0, y: 0, z: 0}
   references:
     version: 2
     RefIds: []

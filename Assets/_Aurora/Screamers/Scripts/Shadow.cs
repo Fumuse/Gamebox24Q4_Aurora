@@ -1,47 +1,69 @@
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /// <summary>
-/// Два вида тени:
+/// Р”РІР° РІРёРґР° С‚РµРЅРё:
 /// <para>
-/// 1. появляется в рандомном месте на сцене. либо исцезат практически сразу как повиласьь, 
-/// либо будет на сцене, пока не навидем мышкой либо фонариком
+/// 1. РїРѕСЏРІР»СЏРµС‚СЃСЏ РІ СЂР°РЅРґРѕРјРЅРѕРј РјРµСЃС‚Рµ РЅР° СЃС†РµРЅРµ. Р»РёР±Рѕ РёСЃС†РµР·Р°С‚ РїСЂР°РєС‚РёС‡РµСЃРєРё СЃСЂР°Р·Сѓ РєР°Рє РїРѕРІРёР»Р°СЃСЊ, 
+/// Р»РёР±Рѕ Р±СѓРґРµС‚ РЅР° СЃС†РµРЅРµ, РїРѕРєР° РЅРµ РЅР°РІРµРґРµРј РјС‹С€РєРѕР№ Р»РёР±Рѕ С„РѕРЅР°СЂРёРєРѕРј
 /// </para>
-/// 2. повляются сразу после диалогов (метод: SpawnBehindTheBack()) исчезает если персонаж отошел от тени, либо навел мышкой/фонариком
+/// 2. РїРѕРІР»СЏСЋС‚СЃСЏ СЃСЂР°Р·Сѓ РїРѕСЃР»Рµ РґРёР°Р»РѕРіРѕРІ (РјРµС‚РѕРґ: SpawnBehindTheBack()) РёСЃС‡РµР·Р°РµС‚ РµСЃР»Рё РїРµСЂСЃРѕРЅР°Р¶ РѕС‚РѕС€РµР» РѕС‚ С‚РµРЅРё, Р»РёР±Рѕ РЅР°РІРµР» РјС‹С€РєРѕР№/С„РѕРЅР°СЂРёРєРѕРј
 /// <para>
-/// все тени безодиные, на персонажа не нападают.
-/// </para>para>
+/// РІСЃРµ С‚РµРЅРё Р±РµР·РѕР±РёРґРЅС‹Рµ, РЅР° РїРµСЂСЃРѕРЅР°Р¶Р° РЅРµ РЅР°РїР°РґР°СЋС‚.
+/// </para>
 /// </summary>
-
 public class Shadow : Screamer
 {
-    [SerializeField] private float _timeLife;
-    [SerializeField] private int _timeoutBeforeSpawn = 1500;
-    [SerializeField] private bool _showShadowInStart;
-    [SerializeField] private float _defaultAlpha = 0.85f;
+    [SerializeField] private int timeoutBeforeSpawn = 1500;
+    [SerializeField] private bool showShadowInStart;
+    [SerializeField] private float defaultAlpha = 0.85f;
 
+    private Camera _camera;
+    
     private bool _isIlluminated;
     private bool _isSpawnBehindTheBack;
     private float _distanceHideShadow = 2.5f;
-    private const float _xPositionMin = -1.75f;
-    private const float _xPositionMax = 6.57f;
-    private const float _yPositionMin = -0.76f;
-    private const float _yPositionMax = -1.73f;
-    private const float _yOffsetPositionShadow = -1.5f;
+    private const float XPositionMin = -1.75f;
+    private const float XPositionMax = 6.57f;
+    private const float YPositionMin = -0.76f;
+    private const float YPositionMax = -1.73f;
+    private const float YOffsetPositionShadow = -1.5f;
+
+    private CancellationTokenSource _cts = new();
+
+    private Vector3 CameraPosition => _camera.transform.position;
 
     private void Start()
     {
+        _camera = Camera.main;
+    }
+
+    private void OnEnable()
+    {
+        _cts ??= new();
+        
         int alpha = 0;
 
-        if (_showShadowInStart)
+        if (showShadowInStart)
         {
             _isIlluminated = false;
             _isSpawnBehindTheBack = false;
 
-            alpha = 1;    
+            alpha = 1;
         }
-          
+
         _screamerView.SetNewColorAlpha(alpha);
+
+        Flashlight.OnFlashlightFindScreamer += OnFlashlightFindScreamer;
+    }
+
+    private void OnDisable()
+    {
+        _cts?.Cancel();
+        
+        Flashlight.OnFlashlightFindScreamer -= OnFlashlightFindScreamer;
     }
 
     private async void Update()
@@ -62,40 +84,39 @@ public class Shadow : Screamer
         }
     }
 
-    private async void OnTriggerEnter2D(Collider2D collision)
+    private async void OnFlashlightFindScreamer(Screamer screamer)
     {
+        if (!screamer.Equals(this)) return;
         if (_isIlluminated) return;
         
-        if (collision.TryGetComponent(out FlashlightTEST flashlight))
-        {
-            _isIlluminated = true;
-            UniTask task = Hide();
-            await task;
-        }
+        _isIlluminated = true;
+        await Hide().AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
     }
 
     private async void OnMouseEnter()
     {
         if (_isIlluminated) return;
+        if (showShadowInStart) return;
 
-        if (_showShadowInStart) return;
-        
         _isIlluminated = true;
-        UniTask task = Hide();
-        await task;
+        await Hide().AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
     }
 
     public void SpawnBehindTheBack()
     {
+        if (!gameObject.activeInHierarchy)
+            gameObject.SetActive(true);
+        
         _isIlluminated = false;
         _isSpawnBehindTheBack = true;
 
         Vector2 position = PlayerPosition;
-        position.y = _yOffsetPositionShadow;
+        position.y = YOffsetPositionShadow;
         transform.position = position;
 
         FlipX();
-       _screamerView.SetNewColorAlpha(_defaultAlpha);
+        
+        _screamerView.SetNewColorAlpha(defaultAlpha);
     }
 
     public async void Spawn()
@@ -103,10 +124,12 @@ public class Shadow : Screamer
         _isIlluminated = false;
         _isSpawnBehindTheBack = false;
 
-        await UniTask.Delay(_timeoutBeforeSpawn);
+        bool isCanceled = await UniTask.Delay(timeoutBeforeSpawn, cancellationToken: _cts.Token).SuppressCancellationThrow();
+        if (isCanceled) return;
         transform.position = RandomPosition();
 
-        await Show();
+        isCanceled = await Show().AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
+        if (isCanceled) return;
 
         if (Random.Range(0, 50) > 20)
         {
@@ -120,5 +143,9 @@ public class Shadow : Screamer
         Spawn();
     }
 
-    private Vector3 RandomPosition() =>new Vector2(Random.Range(Camera.main.transform.position.x + _xPositionMin, Camera.main.transform.position.x+_xPositionMax), Random.Range( _yPositionMin, _yPositionMax));
+    private Vector3 RandomPosition() => new Vector2(
+                Random.Range(CameraPosition.x + XPositionMin,
+                    CameraPosition.x + XPositionMax), 
+                Random.Range(YPositionMin, YPositionMax)
+            );
 }

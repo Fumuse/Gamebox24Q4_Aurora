@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/_Aurora/Scenes/MainMenu.unity
     guid: 6aeb4cd158882a74f954eb75a5a9cbda
   - enabled: 1
+    path: Assets/_Aurora/Scenes/TutorialScreamerScene.unity
+    guid: 835be4f3bfe15684c9d6be9d4203ab61
+  - enabled: 0
     path: Assets/_Aurora/Scenes/TutorialScene.unity
     guid: d531dfafe15412e4397828ab3186755e
   m_configObjects:
