@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 public class CellarState : TutorialBaseState
 {
@@ -9,6 +10,7 @@ public class CellarState : TutorialBaseState
     private TagManager _tagManager;
     private Tag _interactCorpseTag;
     private IInteractable _grandmaCorpse;
+    private IInteractable _lastInteractable;
 
     private CancellationTokenSource _cts;
 
@@ -34,6 +36,7 @@ public class CellarState : TutorialBaseState
         _teleportProvider.OnPlayerTeleported += OnPlayerTeleportedToCellar;
         
         Flashlight.OnFlashlightFindObject += OnFlashlightFindObject;
+        InteractableObject.OnInteracted += OnInteracted;
         
         _grandmaCorpse = GetInteractableByKey("Room_5_GrandmaCorpse");
     }
@@ -126,13 +129,14 @@ public class CellarState : TutorialBaseState
     private void OnPlayerTeleportedToFirstRoom()
     {
         LockDoor("Room_1_DoorDown");
-        UnlockDoor("Room_1_DoorLeft");
         stateMachine.SwitchState(new TryToEscapeStage(stateMachine));
     }
 
-    //TODO: как-то отследить, чтобы не был диалог из другого инстанса (???)
+    
     private void OnWhisperEnds()
     {
+        if (!_lastInteractable.Equals(_grandmaCorpse)) return;
+        
         if (!_grandmaSays1Sentence)
         {
             _grandmaSays1Sentence = true;
@@ -158,5 +162,13 @@ public class CellarState : TutorialBaseState
         _playerSawCorpseByFlashlight = true;
 
         Flashlight.OnFlashlightFindObject -= OnFlashlightFindObject;
+    }
+
+    private void OnInteracted(IInteractable interactable)
+    {
+        if (!interactable.Equals(_grandmaCorpse)) return;
+        
+        _lastInteractable = interactable;
+        InteractableObject.OnInteracted -= OnInteracted;
     }
 }

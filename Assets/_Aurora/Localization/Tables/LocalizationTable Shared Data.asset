@@ -143,6 +143,18 @@ MonoBehaviour:
     m_Key: Room_4_Tutorial_GrandmaDialogue_SayGrandmaAboutMilk_Content
     m_Metadata:
       m_Items: []
+  - m_Id: 4343657787584512
+    m_Key: Room_5_Candlebox_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4343722748964864
+    m_Key: Room_5_Candlebox_Takeit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4343747033985024
+    m_Key: Room_5_Candlebox_CandlesTaken_Content
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

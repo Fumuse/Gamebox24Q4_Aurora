@@ -1,4 +1,7 @@
-﻿public enum InteractableStateVisionEnum
+﻿using System;
+
+[Serializable]
+public enum InteractableStateVisionEnum
 {
     Default,
     Viewed,

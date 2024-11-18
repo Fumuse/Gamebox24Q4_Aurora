@@ -58,4 +58,13 @@ public class TutorialStateMachine : StateMachine
             pair.door.gameObject.SetActive(true);
         }
     }
+    
+    private void LockDoor(string doorKey)
+    {
+        foreach (DoorKeyPair pair in DoorsMap)
+        {
+            if (pair.doorKey != doorKey) continue;
+            pair.door.gameObject.SetActive(false);
+        }
+    }
 }

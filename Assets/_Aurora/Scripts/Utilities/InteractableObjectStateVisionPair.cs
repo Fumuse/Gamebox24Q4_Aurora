@@ -1,10 +1,9 @@
 ﻿using System;
+using UnityEngine;
 
 [Serializable]
 public class InteractableObjectStateVisionPair
 {
-    public InteractableStateVisionEnum visionKey;
-    public InteractableObjectState interactableObjectState;  
-    
-    
+    [SerializeField] public InteractableStateVisionEnum visionKey;
+    [SerializeField] public InteractableObjectState interactableObjectState;
 }

@@ -38,6 +38,7 @@ public class WhisperProvider : MonoBehaviour, IAction
 
     public void Execute(ActionSettings settings)
     {
+        _cts?.Cancel();
         _cts = new();
         
         _actionSettings = settings;

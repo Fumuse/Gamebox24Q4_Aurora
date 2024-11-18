@@ -188,6 +188,21 @@ MonoBehaviour:
       to get candles (huh?)."
     m_Metadata:
       m_Items: []
+  - m_Id: 4343722748964864
+    m_Localized: Take a candle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4343657787584512
+    m_Localized: It's a candle box, and they have candles in them.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4343747033985024
+    m_Localized: You took a candle and with a wave of your mind you decided to light
+      it at once. It took a few moments for the wick to ignite from the burning candle
+      on the shelves here, and the two sources of light illuminated the thick darkness
+      of the room.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

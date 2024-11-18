@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: "\u0421\u043B\u043E\u0439 5"
+    m_Hash: 957229579
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: "\u0421\u043B\u043E\u0439 5"
+      m_Hash: 957229579
+      m_Sprite: {fileID: -7182646278362336004, guid: 5e6aded1fa536514f924fe87bd6db11d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -7182646278362336004, guid: 5e6aded1fa536514f924fe87bd6db11d, type: 3}
+    - m_Name: "\u0421\u043B\u043E\u0439 4"
+      m_Hash: 235477661
+      m_Sprite: {fileID: 5444932760641993905, guid: 5e6aded1fa536514f924fe87bd6db11d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 5444932760641993905, guid: 5e6aded1fa536514f924fe87bd6db11d, type: 3}
+    - m_Name: "\u0421\u043B\u043E\u0439 3"
+      m_Hash: 275615550
+      m_Sprite: {fileID: -5048903316894849357, guid: 5e6aded1fa536514f924fe87bd6db11d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -5048903316894849357, guid: 5e6aded1fa536514f924fe87bd6db11d, type: 3}
+    - m_Name: "\u0421\u043B\u043E\u0439 1"
+      m_Hash: 1046736402
+      m_Sprite: {fileID: 8089687677254610123, guid: 5e6aded1fa536514f924fe87bd6db11d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 8089687677254610123, guid: 5e6aded1fa536514f924fe87bd6db11d, type: 3}
+    - m_Name: "\u0421\u043B\u043E\u0439 2"
+      m_Hash: 661307304
+      m_Sprite: {fileID: 7087115122137407682, guid: 5e6aded1fa536514f924fe87bd6db11d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 7087115122137407682, guid: 5e6aded1fa536514f924fe87bd6db11d, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 5
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638671911621383886
+  m_Version: 1
