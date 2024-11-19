@@ -33,6 +33,8 @@ public class ActionSettings : ScriptableObject
 
     [SerializeField] private Tag[] tagsToAddAfterAction;
     public Tag[] TagsToAddAfterAction => tagsToAddAfterAction;
+    [SerializeField] private bool addTagsInTutorial = true;
+    public bool AddTagsInTutorial => addTagsInTutorial;
 
     [SerializeField] private ScreamerEnum screamerType;
     public ScreamerEnum ScreamerType => screamerType;

@@ -12,6 +12,7 @@ public static class ActionProviderExtension
     public static void AddingTagsAfterInteract(this IAction action, ActionSettings actionSettings)
     {
         if (actionSettings.TagsToAddAfterAction.Length < 1) return;
+        if (!actionSettings.AddTagsInTutorial && GameManager.Instance.TutorialStage) return;
 
         foreach (Tag tag in actionSettings.TagsToAddAfterAction)
         {

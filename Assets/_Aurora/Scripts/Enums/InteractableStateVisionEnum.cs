@@ -3,6 +3,6 @@
 [Serializable]
 public enum InteractableStateVisionEnum
 {
-    Default,
-    Viewed,
+    Default = 0,
+    Viewed = 1,
 }

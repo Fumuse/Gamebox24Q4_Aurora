@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ad7679d8d844dbac99a13007c02d9e, type: 3}
+  m_Name: Loc_1_TutorialExitDoor_ActionSettings
+  m_EditorClassIdentifier: 
+  whisperTextKey:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  dialogueRoot: {fileID: 0}
+  item: {fileID: 0}
+  catSceneClip:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  timeCost: 0
+  acceptanceCost: 0
+  changeObjectEventAfterPlay: {fileID: 11400000, guid: 5eb4b04c016f85d4aa1830d3058697d7, type: 2}
+  changeObjectSettingsAfterPlay: {fileID: 11400000, guid: 7b3b2247bc9499447a2d02a1a3d754f7, type: 2}
+  tagsToAddAfterAction: []
+  screamerType: 3
+  screamerSpawnPosition: {x: 4, y: -4, z: 0}
+  references:
+    version: 2
+    RefIds: []

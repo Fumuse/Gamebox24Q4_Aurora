@@ -44,6 +44,8 @@ public abstract class Screamer : MonoBehaviour
 
     protected virtual async UniTask Show()
     {
+        FlipX();
+        
         if (!gameObject.activeInHierarchy)
             gameObject.SetActive(true);
 

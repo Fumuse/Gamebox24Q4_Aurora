@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class PlayerMoveState : PlayerBaseState
 {
@@ -35,18 +37,32 @@ public class PlayerMoveState : PlayerBaseState
         if (isClickedToUI) return;
         
         targetPosition = stateMachine.MainCamera.ScreenToWorldPoint(mousePosition);
-        Collider2D clickedCollider = Physics2D.OverlapPoint(targetPosition, _interactableObjectMask);
+        Collider2D[] clickedColliders = Physics2D.OverlapPointAll(targetPosition, _interactableObjectMask);
 
-        if (clickedCollider != null)
+        List<IInteractable> clickedItems = new();
+        if (clickedColliders is {Length: > 0})
         {
-            if (clickedCollider.TryGetComponent(out IInteractable interactable))
+            foreach (Collider2D clickedCollider in clickedColliders)
             {
-                if (interactable.IsViewed)
+                if (clickedCollider.TryGetComponent(out IInteractable interactable))
                 {
-                    stateMachine.SwitchState(new PlayerInteractState(stateMachine, interactable));
-                    return;
+                    if (interactable.IsViewed)
+                    {
+                        clickedItems.Add(interactable);
+                    }
                 }
             }
+        }
+
+        if (clickedItems.Count > 0)
+        {
+            if (clickedItems.Count > 1)
+            {
+                clickedItems.Sort((a, b) => b.ClickSort.CompareTo(a.ClickSort));
+            }
+            
+            stateMachine.SwitchState(new PlayerInteractState(stateMachine, clickedItems.FirstOrDefault()));
+            return;
         }
 
         isMoving = true; 

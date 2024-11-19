@@ -155,6 +155,62 @@ MonoBehaviour:
     m_Key: Room_5_Candlebox_CandlesTaken_Content
     m_Metadata:
       m_Items: []
+  - m_Id: 4652276567535616
+    m_Key: Loc_1_Broom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4653694917570560
+    m_Key: Loc_1_AurorasInscription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4654091233161216
+    m_Key: Loc_1_Plants
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4654170606170112
+    m_Key: Loc_1_WalkingStick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4863519463075840
+    m_Key: Loc_2_Goose
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4863523468636160
+    m_Key: Loc_2_PhotoAlbum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4863525515456512
+    m_Key: Loc_2_Statuette
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4863528090759168
+    m_Key: Loc_2_SetOfPlates
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4967866051489792
+    m_Key: Loc_3_Basket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4967916517355520
+    m_Key: Loc_3_Bear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4967918199271424
+    m_Key: Loc_3_Photo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4973127856189440
+    m_Key: Loc_3_TV
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4973147829465088
+    m_Key: Loc_3_Window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4973163751043072
+    m_Key: Loc_3_MatryoshkaDolls
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

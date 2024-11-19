@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class GameManager : PersistentSingleton<GameManager>
 {
@@ -16,6 +17,8 @@ public class GameManager : PersistentSingleton<GameManager>
     [SerializeField] private InputReader inputReader;
     [SerializeField] private MouseHoverDetector mouseHoverDetector;
 
+    public static Action OnTutorialStateChanged;
+
     public GameSettings Settings => settings;
 
     #region GameStages
@@ -23,7 +26,11 @@ public class GameManager : PersistentSingleton<GameManager>
     public bool TutorialStage
     {
         get => _tutorialStage;
-        private set => _tutorialStage = value;
+        private set
+        {
+            _tutorialStage = value;
+            OnTutorialStateChanged?.Invoke();
+        }
     }
     #endregion
 
@@ -93,7 +100,7 @@ public class GameManager : PersistentSingleton<GameManager>
     private void InitSettings()
     {
         //QualitySettings.vSyncCount = 1;
-        Application.targetFrameRate = 36;
+        Application.targetFrameRate = 36; 
     }
 
     private void InitObjects()
@@ -145,6 +152,7 @@ public class GameManager : PersistentSingleton<GameManager>
     {
         if (!startInTutorial)
         {
+            TagManager.AddTag(new Tag(TagEnum.TutorialEnded));
             InitPlayer();
             return;
         }
@@ -156,7 +164,6 @@ public class GameManager : PersistentSingleton<GameManager>
     public void EndTutorial()
     {
         TutorialStage = false;
-        TagManager.AddTag(new Tag(TagEnum.TutorialEnded));
         tutorial.EndTutorial();
     }
     #endregion

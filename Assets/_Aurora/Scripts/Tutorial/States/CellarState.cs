@@ -97,7 +97,7 @@ public class CellarState : TutorialBaseState
     {
         //Включаем проход в предбанник
         UnlockDoor("Room_5_DoorUp");
-        _teleportProvider.OnPlayerTeleported += OnPlayerTeleportedToFirstRoom;
+        _teleportProvider.OnTeleportEnds += OnPlayerTeleportedToFirstRoom;
     }
 
     public override void Tick()
@@ -115,7 +115,7 @@ public class CellarState : TutorialBaseState
     public override void Exit()
     {
         _whisperProvider.OnWhisperEnds -= OnWhisperEnds;
-        _teleportProvider.OnPlayerTeleported -= OnPlayerTeleportedToFirstRoom;
+        _teleportProvider.OnTeleportEnds -= OnPlayerTeleportedToFirstRoom;
     }
 
     private void OnPlayerTeleportedToCellar()
@@ -128,11 +128,9 @@ public class CellarState : TutorialBaseState
 
     private void OnPlayerTeleportedToFirstRoom()
     {
-        LockDoor("Room_1_DoorDown");
         stateMachine.SwitchState(new TryToEscapeStage(stateMachine));
     }
 
-    
     private void OnWhisperEnds()
     {
         if (!_lastInteractable.Equals(_grandmaCorpse)) return;

@@ -69,8 +69,6 @@ public class TeleportProvider : MonoBehaviour, IAction
         isCanceled = await overlayWrapper.FadeOut(this, _cts.Token, fadeSpeed);
         if (isCanceled) return;
 
-        OnTeleportEnds?.Invoke();
-
         if (_interactableDoor != null)
         {
             if (_actionSettings != null)
@@ -79,6 +77,8 @@ public class TeleportProvider : MonoBehaviour, IAction
             }
             _interactableDoor.FinishInteract();
         }
+
+        OnTeleportEnds?.Invoke();
     }
 
     private void TeleportPlayer()

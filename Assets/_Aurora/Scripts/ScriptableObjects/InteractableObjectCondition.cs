@@ -11,4 +11,7 @@ public class InteractableObjectCondition : ObjectCondition
 
     [SerializeField] protected bool needToHideGlobal = false;
     public bool NeedToHideGlobal => needToHideGlobal;
+
+    [SerializeField] protected bool needToHideInTutorial = false;
+    public bool NeedToHideInTutorial => needToHideInTutorial;
 }

@@ -4,10 +4,14 @@ using UnityEngine;
 [RequireComponent(typeof(InteractableObjectUI))]
 public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
 {
-    [SerializeField] protected float positionOffset;
-    [SerializeField] protected Transform objectPosition;
-    [SerializeField] protected ListedUnityEvent actionProvider;
+    [Header("Настройки для отображения и взаимодействия")]
     [SerializeField] protected InteractableObjectCondition conditionToView;
+    [SerializeField] protected float positionOffset;
+    [SerializeField] protected int clickSort = 100;
+    [SerializeField] protected ListedUnityEvent actionProvider;
+    
+    [Header("Подключение зависимостей")]
+    [SerializeField] protected Transform objectPosition;
     [SerializeField] private InteractableObjectUI ui;
 
     public bool IsInteracted { get; private set; }
@@ -15,6 +19,8 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
     public float Offset => positionOffset;
 
     public GameObject GameObject => this.gameObject;
+    
+    public int ClickSort => clickSort;
 
     #region События
     public Action onPreInteract;
@@ -63,6 +69,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
         TagManager.OnTagRemoved += CheckConditionToView;
         AcceptanceScale.OnAcceptanceScaleChanged += CheckConditionToView;
         Timer.OnTimeChanged += CheckConditionToView;
+        GameManager.OnTutorialStateChanged += CheckConditionToView;
     }
 
     protected void OnDestroy()
@@ -71,6 +78,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
         TagManager.OnTagRemoved -= CheckConditionToView;
         AcceptanceScale.OnAcceptanceScaleChanged -= CheckConditionToView;
         Timer.OnTimeChanged -= CheckConditionToView;
+        GameManager.OnTutorialStateChanged -= CheckConditionToView;
     }
 
     /// <summary>
@@ -99,8 +107,19 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
         if (!conditionToView.PassesTimeCondition) needToShow = false;
         if (!conditionToView.PassesAcceptanceCondition) needToShow = false;
 
-        if (conditionToView.NeedToHideGlobal) this.gameObject.SetActive(needToShow);
-        else this.enabled = needToShow;
+        if (conditionToView.NeedToHideGlobal)
+        {
+            this.gameObject.SetActive(needToShow);
+        }
+        else
+        {
+            this.enabled = needToShow;
+        }
+
+        if (conditionToView.NeedToHideInTutorial)
+        {
+            ui.BodySprite.enabled = !GameManager.Instance.TutorialStage;
+        }
         
         IsViewed = needToShow;
     }

@@ -203,6 +203,62 @@ MonoBehaviour:
       of the room.
     m_Metadata:
       m_Items: []
+  - m_Id: 4652276567535616
+    m_Localized: Broom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4653694917570560
+    m_Localized: Inscription "Aurora"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4654091233161216
+    m_Localized: Plants
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4654170606170112
+    m_Localized: Walking stick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4863519463075840
+    m_Localized: Goose
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4863523468636160
+    m_Localized: Photo album
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4863525515456512
+    m_Localized: Clay statuette
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4863528090759168
+    m_Localized: Set of plates
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4967866051489792
+    m_Localized: Basket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4967916517355520
+    m_Localized: Teddy bear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4967918199271424
+    m_Localized: Granddaughter's photo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4973127856189440
+    m_Localized: TV
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4973147829465088
+    m_Localized: Window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4973163751043072
+    m_Localized: Matryoshka dolls
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

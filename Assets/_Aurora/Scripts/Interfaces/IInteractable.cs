@@ -6,6 +6,7 @@ public interface IInteractable
     public Vector3 Position { get; }
     public float Offset { get; }
     public GameObject GameObject { get; }
+    public int ClickSort { get; }
     
     public bool IsViewed { get; }
     

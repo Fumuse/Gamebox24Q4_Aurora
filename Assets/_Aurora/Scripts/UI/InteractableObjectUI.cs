@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Localization.Components;
@@ -13,7 +14,9 @@ public class InteractableObjectUI : MonoBehaviour
 
     [Header("Objects sprites controller")] 
     [SerializeField] private SpriteRenderer bodySprite;
-    [SerializeField] private InteractableObjectStateVisionPair[] states;
+    [SerializeField] private List<InteractableObjectStateVisionPair> visionStates;
+
+    public SpriteRenderer BodySprite => bodySprite;
 
     private bool _mouseIn = false;
     private GraphicRaycaster _menuRaycaster;
@@ -25,7 +28,7 @@ public class InteractableObjectUI : MonoBehaviour
         objectMenu ??= GetComponentInChildren<Canvas>();
         interObject ??= GetComponent<InteractableObject>();
         interactButton ??= GetComponentInChildren<Button>();
-        buttonTextLocalizeEvent ??= interactButton.GetComponentInChildren<LocalizeStringEvent>();
+        buttonTextLocalizeEvent ??= GetComponent<LocalizeStringEvent>();
     }
 
     private void Awake()
@@ -73,11 +76,11 @@ public class InteractableObjectUI : MonoBehaviour
 
     public void ChangeBodySpriteByStage(HouseStageEnum stage)
     {
-        if (states == null) return;
+        if (visionStates == null) return;
 
-        InteractableObjectStateVisionPair pair = states.FirstOrDefault((statePair) => statePair.visionKey == _currentStateVision);
+        InteractableObjectStateVisionPair pair = visionStates.FirstOrDefault((statePair) => statePair.visionKey == _currentStateVision);
         if (pair == null)
-            pair = states.FirstOrDefault((statePair) => statePair.visionKey == InteractableStateVisionEnum.Default);
+            pair = visionStates.FirstOrDefault((statePair) => statePair.visionKey == InteractableStateVisionEnum.Default);
         if (pair == null) return;
         
         InteractableObjectState currentState = pair.interactableObjectState;
