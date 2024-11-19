@@ -60,7 +60,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1661868933672960
-    m_Key: CandleBox
+    m_Key: Loc_5_CandleBox
     m_Metadata:
       m_Items: []
   - m_Id: 1675506230784000
@@ -124,35 +124,35 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3994370570481664
-    m_Key: Room_4_Tutorial_GrandmaDialogue_Content
+    m_Key: Loc_4_Tutorial_GrandmaDialogue_Content
     m_Metadata:
       m_Items: []
   - m_Id: 3994713966538752
-    m_Key: Room_4_Tutorial_GrandmaDialogue_DrinkMilk
+    m_Key: Loc_4_Tutorial_GrandmaDialogue_DrinkMilk
     m_Metadata:
       m_Items: []
   - m_Id: 3994795545751552
-    m_Key: Room_4_Tutorial_GrandmaDialogue_DrinkMilk_Content
+    m_Key: Loc_4_Tutorial_GrandmaDialogue_DrinkMilk_Content
     m_Metadata:
       m_Items: []
   - m_Id: 3995229010292736
-    m_Key: Room_4_Tutorial_GrandmaDialogue_SayGrandmaAboutMilk
+    m_Key: Loc_4_Tutorial_GrandmaDialogue_SayGrandmaAboutMilk
     m_Metadata:
       m_Items: []
   - m_Id: 3995974556217344
-    m_Key: Room_4_Tutorial_GrandmaDialogue_SayGrandmaAboutMilk_Content
+    m_Key: Loc_4_Tutorial_GrandmaDialogue_SayGrandmaAboutMilk_Content
     m_Metadata:
       m_Items: []
   - m_Id: 4343657787584512
-    m_Key: Room_5_Candlebox_Content
+    m_Key: Loc_5_Candlebox_Content
     m_Metadata:
       m_Items: []
   - m_Id: 4343722748964864
-    m_Key: Room_5_Candlebox_Takeit
+    m_Key: Loc_5_Candlebox_Takeit
     m_Metadata:
       m_Items: []
   - m_Id: 4343747033985024
-    m_Key: Room_5_Candlebox_CandlesTaken_Content
+    m_Key: Loc_5_Candlebox_CandlesTaken_Content
     m_Metadata:
       m_Items: []
   - m_Id: 4652276567535616
@@ -209,6 +209,66 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 4973163751043072
     m_Key: Loc_3_MatryoshkaDolls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5011872588394496
+    m_Key: Loc_4_Garlic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012101266042880
+    m_Key: Loc_4_Calendar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012252659445760
+    m_Key: Loc_4_Matches
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012373514121216
+    m_Key: Loc_4_PhotoAlbum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012530456588288
+    m_Key: Loc_4_Salt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012603424894976
+    m_Key: Loc_4_Seasonings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5038409735892992
+    m_Key: Loc_5_Diary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5038759473737728
+    m_Key: Loc_5_BurningCandle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5039119038836736
+    m_Key: Loc_5_ClothingBox
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5061565133516800
+    m_Key: Loc_6_Window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5061982462570496
+    m_Key: Loc_6_Gramophone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5062122820759552
+    m_Key: Loc_6_FloorLamp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5062169708883968
+    m_Key: Loc_6_Painting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5062276416172032
+    m_Key: Loc_6_ChristmasDecorations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5062300193681408
+    m_Key: Loc_6_Chest
     m_Metadata:
       m_Items: []
   m_Metadata:

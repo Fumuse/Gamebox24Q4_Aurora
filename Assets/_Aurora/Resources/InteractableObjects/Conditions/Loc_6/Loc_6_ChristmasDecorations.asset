@@ -10,15 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f11defd4e3d84dcb92bce55859470de5, type: 3}
-  m_Name: Loc_5_GrandmaCorpse_Condition
+  m_Name: Loc_6_ChristmasDecorations
   m_EditorClassIdentifier: 
   hasAcceptanceCondition: 0
   minAcceptanceScale: 0
-  maxAcceptanceScale: 0
+  maxAcceptanceScale: 100
   hasTimeCondition: 0
   minTime: 0
   maxTime: 0
   hasTags:
-  - tagName: 0
+  - tagName: 60
   hasntTags: []
   viewOnFlashlight: 1
+  canHideAfterView: 0
+  needToHideGlobal: 0
+  needToHideInTutorial: 0

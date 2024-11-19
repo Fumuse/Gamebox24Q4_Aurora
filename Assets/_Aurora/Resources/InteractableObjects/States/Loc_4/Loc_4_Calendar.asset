@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b28c49fcfd7488d84c31c4971588691, type: 3}
-  m_Name: Loc_5_CandleBox
+  m_Name: Loc_4_Calendar
   m_EditorClassIdentifier: 
-  light: {fileID: 21300000, guid: 5920e1ff7f5049e45895fbc24c329fe7, type: 3}
-  dark: {fileID: 21300000, guid: 0eb7ec576a403b741af2c2912dc66509, type: 3}
-  broken: {fileID: 21300000, guid: 0eb7ec576a403b741af2c2912dc66509, type: 3}
+  light: {fileID: 21300000, guid: 2952cd61c79739048b50c128d8d6b62e, type: 3}
+  dark: {fileID: 21300000, guid: 1309c92d0b352274e82c5f815262891d, type: 3}
+  broken: {fileID: 21300000, guid: 1309c92d0b352274e82c5f815262891d, type: 3}

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b28c49fcfd7488d84c31c4971588691, type: 3}
-  m_Name: Loc_5_CandleBox
+  m_Name: Loc_4_Salt
   m_EditorClassIdentifier: 
-  light: {fileID: 21300000, guid: 5920e1ff7f5049e45895fbc24c329fe7, type: 3}
-  dark: {fileID: 21300000, guid: 0eb7ec576a403b741af2c2912dc66509, type: 3}
-  broken: {fileID: 21300000, guid: 0eb7ec576a403b741af2c2912dc66509, type: 3}
+  light: {fileID: 21300000, guid: fd54638f9fd4073458994a792d88ff3b, type: 3}
+  dark: {fileID: 21300000, guid: 8a022d01bc0361a4d8e578165d087caf, type: 3}
+  broken: {fileID: 21300000, guid: 8a022d01bc0361a4d8e578165d087caf, type: 3}

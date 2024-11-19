@@ -37,6 +37,7 @@ MonoBehaviour:
   changeObjectSettingsAfterPlay: {fileID: 0}
   tagsToAddAfterAction:
   - tagName: 0
+  addTagsInTutorial: 1
   screamerType: 0
   screamerSpawnPosition: {x: 0, y: 0, z: 0}
   references:

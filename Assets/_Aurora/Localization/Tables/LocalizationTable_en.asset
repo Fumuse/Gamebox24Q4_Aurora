@@ -259,6 +259,66 @@ MonoBehaviour:
     m_Localized: Matryoshka dolls
     m_Metadata:
       m_Items: []
+  - m_Id: 5011872588394496
+    m_Localized: "Garlic\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012101266042880
+    m_Localized: Calendar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012252659445760
+    m_Localized: Matches
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012373514121216
+    m_Localized: Photo album
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012530456588288
+    m_Localized: Salt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012603424894976
+    m_Localized: Seasonings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5038409735892992
+    m_Localized: Grandma's old diary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5038759473737728
+    m_Localized: Burning candle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5039119038836736
+    m_Localized: Clothing box
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5061565133516800
+    m_Localized: Window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5061982462570496
+    m_Localized: Gramophone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5062122820759552
+    m_Localized: Floor lamp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5062169708883968
+    m_Localized: Painting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5062276416172032
+    m_Localized: Christmas tree decorations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5062300193681408
+    m_Localized: Chest
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
