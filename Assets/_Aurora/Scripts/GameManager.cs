@@ -67,6 +67,8 @@ public class GameManager : PersistentSingleton<GameManager>
     public TagManager TagManager { get; private set; }
     
     public CleanupEvents CleanupEvents { get; private set; }
+    
+    public AmbienceController AmbienceController { get; private set; }
 
     public LayerMask InteractableObjectLayerMask => interactableObjectLayerMask;
 
@@ -93,6 +95,7 @@ public class GameManager : PersistentSingleton<GameManager>
 
         inputReader.Init();
         providersManager.Init();
+        AmbienceController = new AmbienceController();
         InitObjects();
         mouseHoverDetector.Init();
     }

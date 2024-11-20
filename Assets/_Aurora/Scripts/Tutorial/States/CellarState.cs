@@ -126,7 +126,7 @@ public class CellarState : TutorialBaseState
         SayAboutInteract();
     }
 
-    private void OnPlayerTeleportedToFirstRoom()
+    private void OnPlayerTeleportedToFirstRoom(Room room)
     {
         stateMachine.SwitchState(new TryToEscapeStage(stateMachine));
     }

@@ -50,6 +50,7 @@ public class Flashlight : MonoBehaviour
 
     private void OnRightMouseClicked(Vector2 mousePosition)
     {
+        if (GameManager.Instance.CurrentStage == HouseStageEnum.Light) return;
         bool maskActive = mask.gameObject.activeInHierarchy;
         flashlightActive = !maskActive;
         if (maskActive)

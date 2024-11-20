@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerInteractState : PlayerBaseState
 {
     private IInteractable _interactable;
 
     private bool _playerMovingToItem = true;
+
+    public static Action OnPlayerInteracted;
+    public static Action OnPlayerExitInteract;
 
     public PlayerInteractState(PlayerStateMachine stateMachine, IInteractable interactable) : base(stateMachine)
     {
@@ -57,6 +61,7 @@ public class PlayerInteractState : PlayerBaseState
         base.OnEndMove -= OnEndMoving;
         InputReader.OnMouseClicked -= OnMouseClicked;
         PauseMenuController.OnPauseChanged -= OnPauseChanged;
+        OnPlayerExitInteract?.Invoke();
     }
 
     private void OnEndMoving()
@@ -99,6 +104,7 @@ public class PlayerInteractState : PlayerBaseState
         
         InputReader.OnMouseClicked -= OnMouseClicked;
         InteractableObject.OnInteracted -= OnInteracted;
+        OnPlayerInteracted?.Invoke();
     }
 
     private void OnCancelInteract(IInteractable interactable)

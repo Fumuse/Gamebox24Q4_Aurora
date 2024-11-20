@@ -16,7 +16,7 @@ public class TeleportProvider : MonoBehaviour, IAction
     private IDoor _interactableDoor;
     private ActionSettings _actionSettings;
     
-    public Action OnTeleportEnds;
+    public Action<Room> OnTeleportEnds;
     public Action OnPlayerTeleported;
 
     private void OnValidate()
@@ -76,9 +76,9 @@ public class TeleportProvider : MonoBehaviour, IAction
                 this.AfterInteractChanges(_interactableDoor, _actionSettings);
             }
             _interactableDoor.FinishInteract();
-        }
 
-        OnTeleportEnds?.Invoke();
+            OnTeleportEnds?.Invoke(_interactableDoor.ConnectedDoor.Room);
+        }
     }
 
     private void TeleportPlayer()

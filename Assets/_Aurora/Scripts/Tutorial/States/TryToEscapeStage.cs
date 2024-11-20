@@ -35,7 +35,7 @@
         GameManager.Instance.TagManager.AddTag(new Tag(TagEnum.TutorialEnded));
     }
 
-    private void OnTeleportEnds()
+    private void OnTeleportEnds(Room room)
     {
         GameManager.Instance.EndTutorial();
     }
