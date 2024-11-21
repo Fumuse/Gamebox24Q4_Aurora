@@ -45,11 +45,16 @@ public class AmbienceAnimation : MonoBehaviour
 
     public void ShowSprite()
     {
-        if (!ShowInStages.Contains(GameManager.Instance.CurrentStage)) return;
-        
-        if (!gameObject.activeInHierarchy)
+        if (ShowInStages.Contains(GameManager.Instance.CurrentStage))
         {
-            gameObject.SetActive(true);
+            if (!gameObject.activeInHierarchy)
+            {
+                gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            Hide();
         }
     }
 
