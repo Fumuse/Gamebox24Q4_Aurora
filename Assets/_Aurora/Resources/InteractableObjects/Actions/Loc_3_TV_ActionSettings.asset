@@ -21,7 +21,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  dialogueRoot: {fileID: 0}
+  dialogueRoot: {fileID: 11400000, guid: e4bf570b5bea7e042ae3a41bafc52e18, type: 2}
   item: {fileID: 0}
   catSceneClip:
     m_TableReference:

@@ -14,6 +14,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
     [SerializeField] protected Transform objectPosition;
     [SerializeField] private InteractableObjectUI ui;
 
+    public bool IsInteractBlocked { get; private set; }
     public bool IsInteracted { get; private set; }
     public Vector3 Position => objectPosition.position;
     public float Offset => positionOffset;
@@ -129,6 +130,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
     /// </summary>
     public virtual void Interact()
     {
+        Debug.Log($"Start interact {Time.time}");
         OnInteracted?.Invoke(this);
         
         actionProvider?.Invoke();
@@ -166,6 +168,17 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
         OnCancelInteract?.Invoke(this);
     }
 
+    public void BlockInteract()
+    {
+        IsInteractBlocked = true;
+        ChangeBodySpriteByStage(GameManager.Instance.CurrentStage);
+    }
+
+    public void UnblockInteract()
+    {
+        IsInteractBlocked = false;
+    }
+
     public void ChangeBodySpriteByStage(HouseStageEnum stage)
     {
         ui.ChangeBodySpriteByStage(stage);
@@ -185,5 +198,15 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
         CheckConditionToView();
         
         return true;
+    }
+
+    public static void BlockInteractedObject(IInteractable interactable)
+    {
+        interactable.BlockInteract();
+    }
+
+    public static void UnblockInteractedObject(IInteractable interactable)
+    {
+        interactable.UnblockInteract();
     }
 }

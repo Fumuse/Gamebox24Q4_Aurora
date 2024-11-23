@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93dc4f728fb06d34f9fd04d73bbb4ee5, type: 3}
+  m_Name: EndDialoguesLibraryAsset
+  m_EditorClassIdentifier: 
+  categories:
+  - categoryName: Escape
+    dialogues:
+    - {fileID: 11400000, guid: 6f7f54ffea546e24395ffb435310053d, type: 2}
+    - {fileID: 11400000, guid: 9927b13ebe59f8d4eab06f9a60de0169, type: 2}
+    - {fileID: 11400000, guid: a11cbdb5599b78d4090f59420567e8ad, type: 2}
+    - {fileID: 11400000, guid: 740cd47d98d9d76499f5ad50993104e4, type: 2}

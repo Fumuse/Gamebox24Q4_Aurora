@@ -11,6 +11,9 @@ public class MoveTutorialState : TutorialBaseState
 
     private bool _grandmaCallsEnded = false;
     private bool _sayAboutMovingEnded = false;
+    private bool _sayAboutInteract_1_Ended = false;
+
+    private InteractableObject _leftDoor;
     
     public MoveTutorialState(TutorialStateMachine stateMachine) : base(stateMachine)
     {}
@@ -22,6 +25,7 @@ public class MoveTutorialState : TutorialBaseState
         _teleportProvider = GameProvidersManager.Instance.TeleportProvider;
         _whisperProvider = GameProvidersManager.Instance.WhisperProvider;
         _whisperProvider.OnWhisperEnds += OnWhisperEnds;
+        
         GrandmaCalls();
         SayAboutMoving();
     }
@@ -72,11 +76,19 @@ public class MoveTutorialState : TutorialBaseState
         if (!_sayAboutMovingEnded)
         {
             _sayAboutMovingEnded = true;
+            return;
+        }
+
+        if (!_sayAboutInteract_1_Ended)
+        {
+            _sayAboutInteract_1_Ended = true;
+            
         }
     }
 
     private void OnPlayerTeleported()
     {
+        _whisperProvider.Cancel();
         stateMachine.SwitchState(new TrellisWatchState(stateMachine));
     }
 

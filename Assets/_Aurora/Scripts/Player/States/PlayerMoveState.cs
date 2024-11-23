@@ -46,10 +46,10 @@ public class PlayerMoveState : PlayerBaseState
             {
                 if (clickedCollider.TryGetComponent(out IInteractable interactable))
                 {
-                    if (interactable.IsViewed)
-                    {
-                        clickedItems.Add(interactable);
-                    }
+                    if (interactable.IsInteractBlocked) continue;
+                    if (!interactable.IsViewed) continue;
+                    
+                    clickedItems.Add(interactable);
                 }
             }
         }

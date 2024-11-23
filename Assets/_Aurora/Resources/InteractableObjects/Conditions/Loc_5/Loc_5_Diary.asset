@@ -20,6 +20,7 @@ MonoBehaviour:
   maxTime: 0
   hasTags:
   - tagName: 50
+  - tagName: 2
   hasntTags: []
   viewOnFlashlight: 1
   canHideAfterView: 0

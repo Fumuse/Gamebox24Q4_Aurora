@@ -52,6 +52,13 @@ public class WhisperProvider : MonoBehaviour, IAction
         bool isCanceled = await whisperWrapper.FadeIn(this, _cts.Token, fadeSpeed);
         if (isCanceled) return;
 
+        bool whisperEndedInStart = false;
+        if (_actionSettings != null && !_actionSettings.WhisperBlockedMoveState)
+        {
+            whisperEndedInStart = true;
+            EndWhisperInteract();
+        }
+
         float timeToWaitToRead = (_localizedTextCharsCount * timeToWaitToReadOneChar) + timeToWaitToReadGlobal;
         isCanceled = await UniTask.WaitForSeconds(timeToWaitToRead, cancellationToken: _cts.Token)
             .SuppressCancellationThrow();
@@ -59,8 +66,16 @@ public class WhisperProvider : MonoBehaviour, IAction
 
         isCanceled = await whisperWrapper.FadeOut(this, _cts.Token, fadeSpeed);
         if (isCanceled) return;
-
+        
         OnWhisperEnds?.Invoke();
+        if (!whisperEndedInStart)
+        {
+            EndWhisperInteract();
+        }
+    }
+
+    private void EndWhisperInteract()
+    {
         if (_lastInteractable != null)
         {
             if (_actionSettings != null)
@@ -89,5 +104,13 @@ public class WhisperProvider : MonoBehaviour, IAction
     private void UpdateWhisperText(string text)
     {
         whisperText.text = text;
+    }
+
+    public async void Cancel()
+    {
+        _cts?.Cancel();
+        _cts = new();
+
+       await whisperWrapper.FadeIn(this, _cts.Token, fadeSpeed);
     }
 }

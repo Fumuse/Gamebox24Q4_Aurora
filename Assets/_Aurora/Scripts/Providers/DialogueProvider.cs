@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using UnityEngine;
 
@@ -8,6 +9,11 @@ public class DialogueProvider : MonoBehaviour, IAction
     private CancellationTokenSource _cts;
 
     [SerializeField] private DialogueHandler dialog;
+
+    public delegate void DialogueChangeHandler(IInteractable interactable, ref DialogueNode dialogueNode, ActionSettings settings);
+    public static event DialogueChangeHandler OnDialogueChangeHandler;
+
+    public static Action OnDialogEnded;
 
     private void OnEnable()
     {
@@ -27,11 +33,17 @@ public class DialogueProvider : MonoBehaviour, IAction
 
     public void Execute(ActionSettings settings)
     {
+        Debug.Log($"Start dialogue {Time.time}");
         _actionSettings = settings;
 
         if (settings != null && settings.DialogueRoot != null)
         {
             DialogueNode newDialog = settings.DialogueRoot;
+            OnDialogueChangeHandler?.Invoke(
+                    _lastInteractable, 
+                    ref newDialog, 
+                    _actionSettings
+                );
             dialog.StartNewDialog(newDialog);
         }
         else EndDialogEvent(default);
@@ -52,5 +64,13 @@ public class DialogueProvider : MonoBehaviour, IAction
             }
             _lastInteractable.FinishInteract();
         }
+        
+        OnDialogEnded?.Invoke();
+    }
+
+    public void Cancel()
+    {
+        dialog.CancelDialogue();
+        OnDialogEnded?.Invoke();
     }
 }

@@ -48,7 +48,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1440026478276608
-    m_Localized: Aurora, honey, I'm in the kitchen!
+    m_Localized: <b>Grandma:</b> "Aurora, honey, I'm in the kitchen!"
     m_Metadata:
       m_Items: []
   - m_Id: 1440180677668864
@@ -81,16 +81,16 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1709268259860480
-    m_Localized: Sadly...
+    m_Localized: 'She showed up, she''s dust-free! '
     m_Metadata:
       m_Items: []
   - m_Id: 1709271552389120
-    m_Localized: We'll talk to you before the first rooster crows. And don't forget
-      the candles - we'll be looking at photos
+    m_Localized: 'Remember, Aurora: we''ll talk to you again before the first roosters;
+      don''t forget the candles, we''ll need them.'
     m_Metadata:
       m_Items: []
   - m_Id: 1709304473481216
-    m_Localized: Turn that light off, it's annoying!
+    m_Localized: 'And turn that damn flashlight off, it''s annoying me! '
     m_Metadata:
       m_Items: []
   - m_Id: 2782144531951616
@@ -168,39 +168,37 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3994370570481664
-    m_Localized: Grandma greets Aurora with a warm smile and a glass of milk.
+    m_Localized: "<b>Grandmother:</b> \u201CYou're here, you're not dusty. You forgot
+      all about Grandma. Now we'll sit down to the table. Go down to the cellar and
+      get some cucumbers.\u201D"
     m_Metadata:
       m_Items: []
   - m_Id: 3994713966538752
-    m_Localized: Drink milk
+    m_Localized: I have to go to the cellar ...
     m_Metadata:
       m_Items: []
-  - m_Id: 3994795545751552
-    m_Localized: 'Strange...I think this milk has gone sour. '
+  - m_Id: 6372791451676672
+    m_Localized: ...
     m_Metadata:
       m_Items: []
-  - m_Id: 3995229010292736
-    m_Localized: Telling grandma about the sour milk.
+  - m_Id: 6372703597785088
+    m_Localized: What the--
     m_Metadata:
       m_Items: []
-  - m_Id: 3995974556217344
-    m_Localized: "Grandma replies \u201CSadly...\u201D and asks to go to the cellar
-      to get candles (huh?)."
+  - m_Id: 6371634301923328
+    m_Localized: I don't have time for this right now.
     m_Metadata:
       m_Items: []
   - m_Id: 4343722748964864
-    m_Localized: Take a candle
+    m_Localized: I could use some candles. I'm gonna grab a couple.
     m_Metadata:
       m_Items: []
   - m_Id: 4343657787584512
-    m_Localized: It's a candle box, and they have candles in them.
+    m_Localized: They're candles.
     m_Metadata:
       m_Items: []
   - m_Id: 4343747033985024
-    m_Localized: You took a candle and with a wave of your mind you decided to light
-      it at once. It took a few moments for the wick to ignite from the burning candle
-      on the shelves here, and the two sources of light illuminated the thick darkness
-      of the room.
+    m_Localized: I take a couple candles from the box and take them with me.
     m_Metadata:
       m_Items: []
   - m_Id: 4652276567535616
@@ -317,6 +315,42 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 5062300193681408
     m_Localized: Chest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5420658564820992
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5782008289849344
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6010746050998272
+    m_Localized: <color=yellow>Use <b>LMB</b> to interact</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6010965236936704
+    m_Localized: <color=yellow>Use <b>LMB</b> on the item name to continue the interaction</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6038903403606016
+    m_Localized: <b>Aurora:</b> "An old album. Grandma was missed me..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6372814830727168
+    m_Localized: "\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410!!!!!!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6388086237065216
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6405853342363648
+    m_Localized: <b>Aurora:</b> "I should think of something..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6406266909126656
+    m_Localized: <color=yellow>Explore the room</color>
     m_Metadata:
       m_Items: []
   references:

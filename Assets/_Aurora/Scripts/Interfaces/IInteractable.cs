@@ -2,6 +2,7 @@
 
 public interface IInteractable
 {
+    public bool IsInteractBlocked { get; }
     public bool IsInteracted { get; }
     public Vector3 Position { get; }
     public float Offset { get; }
@@ -14,6 +15,8 @@ public interface IInteractable
     public void Interact();
     public void DeclineInteract();
     public void FinishInteract();
+    public void BlockInteract();
+    public void UnblockInteract();
     
     public void ChangeActionProvider(ListedUnityEvent actions);
 }

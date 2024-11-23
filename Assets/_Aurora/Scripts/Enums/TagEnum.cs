@@ -10,4 +10,9 @@
     InteractWithItemInLoc4 = 40,
     InteractWithItemInLoc5 = 50,
     InteractWithItemInLoc6 = 60,
+    
+    TVOn = 100,
+    CandleTaken = 110,
+    GarlicTaken = 120,
+    BearTaken = 130,
 }

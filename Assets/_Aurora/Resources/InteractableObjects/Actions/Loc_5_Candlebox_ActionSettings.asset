@@ -21,6 +21,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  whisperBlockedMoveState: 1
   dialogueRoot: {fileID: 11400000, guid: 9fe0cdacf5bf5a54aa8a70e2bb60d85a, type: 2}
   item: {fileID: 0}
   catSceneClip:
@@ -35,8 +36,7 @@ MonoBehaviour:
   acceptanceCost: 0
   changeObjectEventAfterPlay: {fileID: 0}
   changeObjectSettingsAfterPlay: {fileID: 0}
-  tagsToAddAfterAction:
-  - tagName: 0
+  tagsToAddAfterAction: []
   addTagsInTutorial: 1
   screamerType: 0
   screamerSpawnPosition: {x: 0, y: 0, z: 0}

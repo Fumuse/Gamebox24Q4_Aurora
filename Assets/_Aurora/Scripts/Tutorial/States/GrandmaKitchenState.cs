@@ -31,6 +31,7 @@
     {
         if (!interactable.Equals(_grandma)) return;
         
+        InteractableObject.BlockInteractedObject(_grandma);
         InteractableObject.OnCancelInteract -= OnCancelInteract;
         
         //Изменяем направление двери Room_4_DoorLeft до Loc_1
@@ -46,6 +47,7 @@
 
     private void OnPlayerTeleported()
     {
+        InteractableObject.UnblockInteractedObject(_grandma);
         stateMachine.SwitchState(new CellarState(stateMachine));
     }
 }

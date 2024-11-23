@@ -37,4 +37,19 @@ public class PlayerStateMachine : StateMachine
             spriteRenderer.color = Color.gray;
         }
     }
+
+    public void BlockMove()
+    {
+        SwitchState(null);
+    }
+
+    public void UnblockMove()
+    {
+        SwitchState(new PlayerMoveState(this));
+    }
+
+    public void Die()
+    {
+        SwitchState(null);
+    }
 }

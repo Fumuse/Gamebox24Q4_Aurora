@@ -10,7 +10,9 @@ public class CellarState : TutorialBaseState
     private TagManager _tagManager;
     private Tag _interactCorpseTag;
     private IInteractable _grandmaCorpse;
+    private IInteractable _candleBox;
     private IInteractable _lastInteractable;
+    private PlayerStateMachine _player;
 
     private CancellationTokenSource _cts;
 
@@ -30,6 +32,7 @@ public class CellarState : TutorialBaseState
         _teleportProvider = GameProvidersManager.Instance.TeleportProvider;
         _whisperProvider = GameProvidersManager.Instance.WhisperProvider;
         _tagManager = GameManager.Instance.TagManager;
+        _player = GameManager.Instance.Player;
 
         _interactCorpseTag = new Tag(TagEnum.InteractWithGrandmaCorpse);
         
@@ -39,6 +42,7 @@ public class CellarState : TutorialBaseState
         InteractableObject.OnInteracted += OnInteracted;
         
         _grandmaCorpse = GetInteractableByKey("Room_5_GrandmaCorpse");
+        _candleBox = GetInteractableByKey("Room_5_CandleBox");
     }
 
     private async void SayAboutInteract()
@@ -95,6 +99,8 @@ public class CellarState : TutorialBaseState
 
     private void PreEscape()
     {
+        _player.UnblockMove();
+        
         //Включаем проход в предбанник
         UnlockDoor("Room_5_DoorUp");
         _teleportProvider.OnTeleportEnds += OnPlayerTeleportedToFirstRoom;
@@ -116,6 +122,7 @@ public class CellarState : TutorialBaseState
     {
         _whisperProvider.OnWhisperEnds -= OnWhisperEnds;
         _teleportProvider.OnTeleportEnds -= OnPlayerTeleportedToFirstRoom;
+        InteractableObject.OnInteracted -= OnInteracted;
     }
 
     private void OnPlayerTeleportedToCellar()
@@ -128,6 +135,7 @@ public class CellarState : TutorialBaseState
 
     private void OnPlayerTeleportedToFirstRoom(Room room)
     {
+        InteractableObject.UnblockInteractedObject(_candleBox);
         stateMachine.SwitchState(new TryToEscapeStage(stateMachine));
     }
 
@@ -164,9 +172,18 @@ public class CellarState : TutorialBaseState
 
     private void OnInteracted(IInteractable interactable)
     {
+        if (interactable.Equals(_candleBox))
+        {
+            if (_tagManager.HasTag(new Tag(TagEnum.CandleTaken)))
+            {
+                InteractableObject.BlockInteractedObject(_candleBox);
+            }
+            return;
+        }
         if (!interactable.Equals(_grandmaCorpse)) return;
         
+        _player.BlockMove();
+        InteractableObject.BlockInteractedObject(_grandmaCorpse);
         _lastInteractable = interactable;
-        InteractableObject.OnInteracted -= OnInteracted;
     }
 }

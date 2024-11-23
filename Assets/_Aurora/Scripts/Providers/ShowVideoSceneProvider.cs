@@ -16,6 +16,7 @@ public class ShowVideoSceneProvider : MonoBehaviour, IAction
     private CancellationTokenSource _cts;
 
     public Action OnVideoEndShowed;
+    public static Action OnVideoHiddenAfterEnd;
 
     private void OnEnable()
     {
@@ -111,6 +112,7 @@ public class ShowVideoSceneProvider : MonoBehaviour, IAction
             }
             _lastInteractable.FinishInteract();
         }
+        OnVideoHiddenAfterEnd?.Invoke();
     }
 
     private async void ShowVideoCanvas()

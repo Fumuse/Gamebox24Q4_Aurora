@@ -1,7 +1,15 @@
-﻿public class TryToEscapeStage : TutorialBaseState
+﻿using System.Threading;
+using Cysharp.Threading.Tasks;
+
+public class TryToEscapeStage : TutorialBaseState
 {
     private IInteractable _exitDoor;
     private TeleportProvider _teleportProvider;
+    private WhisperProvider _whisperProvider;
+
+    private CancellationTokenSource _cts = new();
+
+    private bool _auroraSaysEnd = false;
     
     public TryToEscapeStage(TutorialStateMachine stateMachine) : base(stateMachine)
     {}
@@ -14,6 +22,9 @@
         LockDoor("Room_1_DoorDown");
         UnlockDoor("Room_1_ExitHouseDoor");
         _teleportProvider = GameProvidersManager.Instance.TeleportProvider;
+        
+        _whisperProvider = GameProvidersManager.Instance.WhisperProvider;
+        _whisperProvider.OnWhisperEnds += OnWhisperEnds;
         
         _teleportProvider.OnPlayerTeleported += OnPlayerTeleported;
         _teleportProvider.OnTeleportEnds += OnTeleportEnds;
@@ -37,7 +48,46 @@
 
     private void OnTeleportEnds(Room room)
     {
+        AuroraSays();
+        SayAboutExploring();
         GameManager.Instance.EndTutorial();
+    }
+
+    private async void AuroraSays()
+    {
+        ActionSettings setting = GetSettingByKey("TutorialEnd_AuroraSays");
+        if (setting == null) return;        
+        
+        bool isCanceled = await UniTask.WaitForSeconds(.5f, cancellationToken: _cts.Token)
+            .SuppressCancellationThrow();
+        if (isCanceled) return;
+
+        _whisperProvider.Execute(setting);
+    }
+
+    private async void SayAboutExploring()
+    {
+        bool isCanceled = await UniTask.WaitUntil(() => _auroraSaysEnd, cancellationToken: _cts.Token)
+            .SuppressCancellationThrow();
+        if (isCanceled) return;
+        
+        ActionSettings setting = GetSettingByKey("TutorialEnd_SayAboutExploring");
+        if (setting == null) return;        
+        
+        isCanceled = await UniTask.WaitForSeconds(.5f, cancellationToken: _cts.Token)
+            .SuppressCancellationThrow();
+        if (isCanceled) return;
+
+        _whisperProvider.Execute(setting);
+    }
+
+    private void OnWhisperEnds()
+    {
+        if (!_auroraSaysEnd)
+        {
+            _auroraSaysEnd = true;
+            return;
+        }
     }
 
     private void OnCancelInteract(IInteractable interactable)

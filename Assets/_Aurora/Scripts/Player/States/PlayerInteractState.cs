@@ -59,6 +59,7 @@ public class PlayerInteractState : PlayerBaseState
     public override void Exit()
     {
         base.OnEndMove -= OnEndMoving;
+        InteractableObject.OnCancelInteract -= OnCancelInteract;
         InputReader.OnMouseClicked -= OnMouseClicked;
         PauseMenuController.OnPauseChanged -= OnPauseChanged;
         OnPlayerExitInteract?.Invoke();

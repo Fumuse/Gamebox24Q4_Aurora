@@ -1,20 +1,23 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Slenderman : Screamer
 {
     [SerializeField] private float speedMove;
     [SerializeField] private float distanceAttack;
-    [SerializeField] private UnityEvent eventDeathPlayer;
 
     private CancellationTokenSource _cts = new();
     private bool _isActivate;
     private bool _readyToMove;
     private Vector2 _defaultPosition;
 
+    private bool _playerAttacked = false;
+
     private TeleportProvider _teleportProvider;
+
+    public static Action<PlayerStateMachine> PlayerDeadFromScreamer;
 
     private void Start()
     {
@@ -43,6 +46,7 @@ public class Slenderman : Screamer
     private void Update()
     {
         if (_readyToMove == false) return;
+        if (_playerAttacked) return;
 
         Move();
     }
@@ -101,8 +105,9 @@ public class Slenderman : Screamer
 
     private void Attack()
     {
+        _playerAttacked = true;
         Debug.Log("Аврора умерла в крепких объятиях призрака");
-        eventDeathPlayer?.Invoke();
+        PlayerDeadFromScreamer?.Invoke(Player);
     }
 
     private void TransformTranslate() => transform.Translate(Direction * Time.deltaTime * speedMove, Space.World);

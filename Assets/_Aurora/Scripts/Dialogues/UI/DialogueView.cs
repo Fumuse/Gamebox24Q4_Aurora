@@ -3,6 +3,7 @@ using System;
 using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.UI;
 
 public class DialogueView : MonoBehaviour
@@ -177,8 +178,7 @@ public class DialogueView : MonoBehaviour
 
         if (index >= _dialogue.Response.Length) return;
 
-        string colorTag = _dialogue.Response[index].ColorText;
-        _buttonsTmp[index].text = colorTag != "" ? $"<color={colorTag}>{value}</color>" : value;
+        _buttonsTmp[index].text = value;
     }
 
     private void OnSpriteResponseChange(Sprite sprite)
@@ -210,14 +210,13 @@ public class DialogueView : MonoBehaviour
 
     private bool CanDisplayResponse(Response response)
     {
-        if (response.Condition.Count == 0) return true;
+        if (response.Condition == null) return true;
 
-        bool isCondition = false;
-        int count = response.Condition.FindAll(cond => cond.Required == PlayerAction.HasAction(cond.Action)).Count;
+        bool needToShow = response.Condition.PassesTagsCondition;
+        if (!response.Condition.PassesTimeCondition) needToShow = false;
+        if (!response.Condition.PassesAcceptanceCondition) needToShow = false;
 
-        if (count == response.Condition.Count) isCondition = true;
-
-        return isCondition;
+        return needToShow;
     }
 
     private void ButtonResponseInitialize(Dialogue dialog)
@@ -244,11 +243,8 @@ public class DialogueView : MonoBehaviour
 
                     Response response = dialog.Response[i];
 
-                    string colorTag = response.ColorText;
-
                     _responseText = response.ResponseText.GetLocalizedString();
-
-                    _buttonsTmp[i].text = colorTag != "" ? $"<color={colorTag}>{_responseText}</color>" : _responseText;
+                    _buttonsTmp[i].text = _responseText;
                     Buttons[i].gameObject.SetActive(true);
 
                     DialogueEventsTypeEnum responseEventType = response.EventType;
@@ -295,8 +291,8 @@ public class DialogueView : MonoBehaviour
 
     private void OnResponseSelected(DialogueEventsTypeEnum responseType, Response response, DialogueNode nextDialog)
     {
-        string responseAction = response.ResponseText.GetLocalizedString();
-        PlayerAction.PerformAction(responseAction);
+        // string responseAction = response.ResponseText.GetLocalizedString();
+        // PlayerAction.PerformAction(responseAction);
 
         isClickResponse = true;
         HideButtons();
@@ -305,6 +301,14 @@ public class DialogueView : MonoBehaviour
             response.imageToShowAfterResponse.LoadAsset() : null;
         
         ClickResponse?.Invoke(responseType);
+
+        if (response.TagsToAddAfterAction.Length > 0)
+        {
+            foreach (Tag tag in response.TagsToAddAfterAction)
+            {
+                GameManager.Instance.TagManager.AddTag(tag);
+            }
+        }
 
         if (nextDialog)
         {
@@ -317,6 +321,15 @@ public class DialogueView : MonoBehaviour
         if (containerToShowSomeImage == null) return;
 
         _needToShowSomeImage = true;
+    }
+
+    public void ChangeSomeImageAction(Sprite sprite)
+    {
+        if (containerToShowSomeImage == null) return;
+        TriggerSomeImageAction();
+
+        _needToShowSomeImage = true;
+        _someImageSpriteFromResponse = sprite;
     }
 
     private void ShowSomeImageContainer()

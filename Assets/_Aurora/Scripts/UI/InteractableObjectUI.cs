@@ -62,6 +62,7 @@ public class InteractableObjectUI : MonoBehaviour
         _mouseIn = true;
         if (interObject.IsInteracted) return;
         if (!interObject.IsViewed) return;
+        if (interObject.IsInteractBlocked) return;
         ChangeBodySpriteByStage(GameManager.Instance.OppositeSpriteStage);
         ShowInteractMenu();
     }

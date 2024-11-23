@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuController : MonoBehaviour
+public class MenuController : SceneController
 {
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject settingsMenu;
@@ -12,8 +12,6 @@ public class MenuController : MonoBehaviour
     
     private bool _settingsOpened = false;
     private bool _creditsOpened = false;
-
-    private CancellationTokenSource _cts;
 
     private void Start()
     {
@@ -36,12 +34,6 @@ public class MenuController : MonoBehaviour
     {
         LoadSceneAsync(gameSceneIndex);
     }
-
-    private async void LoadSceneAsync(int sceneIndex)
-    {
-        await SceneManager.LoadSceneAsync(sceneIndex).WithCancellation(_cts.Token)
-            .SuppressCancellationThrow();
-    }
     
     public void ToggleSettings()
     {
@@ -59,10 +51,5 @@ public class MenuController : MonoBehaviour
         creditsMenu.SetActive(!_creditsOpened);
         _creditsOpened = !_creditsOpened;
         mainMenu.SetActive(!_creditsOpened);
-    }
-
-    public void Exit()
-    {
-        Application.Quit();
     }
 }

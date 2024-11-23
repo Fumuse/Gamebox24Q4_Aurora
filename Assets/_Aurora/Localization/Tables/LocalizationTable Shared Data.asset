@@ -128,19 +128,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3994713966538752
-    m_Key: Loc_4_Tutorial_GrandmaDialogue_DrinkMilk
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3994795545751552
-    m_Key: Loc_4_Tutorial_GrandmaDialogue_DrinkMilk_Content
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3995229010292736
-    m_Key: Loc_4_Tutorial_GrandmaDialogue_SayGrandmaAboutMilk
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3995974556217344
-    m_Key: Loc_4_Tutorial_GrandmaDialogue_SayGrandmaAboutMilk_Content
+    m_Key: Loc_4_Tutorial_GrandmaDialogue_Option_GoToTheCellar
     m_Metadata:
       m_Items: []
   - m_Id: 4343657787584512
@@ -269,6 +257,218 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 5062300193681408
     m_Key: Loc_6_Chest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5420225800728576
+    m_Key: Loc_6_Window_EndDialogue_Content_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5420509260181504
+    m_Key: Loc_6_Window_EndDialogue_1_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5420563744190464
+    m_Key: Loc_6_Window_EndDialogue_1_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5420635450011648
+    m_Key: Loc_6_Window_EndDialogue_1_Option_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5420645684113408
+    m_Key: Loc_6_Window_EndDialogue_1_Option_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5420658564820992
+    m_Key: ContinueDialogue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5421053164941312
+    m_Key: Loc_6_Window_EndDialogue_Reaction_1_To_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5421132365983744
+    m_Key: Loc_6_Window_EndDialogue_Reaction_1_To_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5421178809511936
+    m_Key: Loc_6_Window_EndDialogue_Reaction_1_To_Option_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5421186736746496
+    m_Key: Loc_6_Window_EndDialogue_Reaction_1_To_Option_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5421882991210496
+    m_Key: Loc_6_Window_EndDialogue_Content_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5580538370093056
+    m_Key: Loc_6_Window_EndDialogue_2_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5580765189664768
+    m_Key: Loc_6_Window_EndDialogue_2_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5580768398307328
+    m_Key: Loc_6_Window_EndDialogue_2_Option_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5580769639821312
+    m_Key: Loc_6_Window_EndDialogue_2_Option_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5580909477916672
+    m_Key: Loc_6_Window_EndDialogue_Reaction_2_To_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5580961319514112
+    m_Key: Loc_6_Window_EndDialogue_Reaction_2_To_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5580962548445184
+    m_Key: Loc_6_Window_EndDialogue_Reaction_2_To_Option_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5580963773181952
+    m_Key: Loc_6_Window_EndDialogue_Reaction_2_To_Option_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581129129422848
+    m_Key: Loc_6_Window_EndDialogue_Content_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581203246968832
+    m_Key: Loc_6_Window_EndDialogue_3_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581221332807680
+    m_Key: Loc_6_Window_EndDialogue_3_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581222888894464
+    m_Key: Loc_6_Window_EndDialogue_3_Option_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581223744532480
+    m_Key: Loc_6_Window_EndDialogue_3_Option_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581343005372416
+    m_Key: Loc_6_Window_EndDialogue_Reaction_3_To_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581360390762496
+    m_Key: Loc_6_Window_EndDialogue_Reaction_3_To_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581361560973312
+    m_Key: Loc_6_Window_EndDialogue_Reaction_3_To_Option_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581362441777152
+    m_Key: Loc_6_Window_EndDialogue_Reaction_3_To_Option_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5768344895778816
+    m_Key: Loc_6_Window_EndDialogue_Final_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5768395021905920
+    m_Key: Loc_6_Window_EndDialogue_Final_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5768411690070016
+    m_Key: Loc_6_Window_EndDialogue_Final_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5768417121693696
+    m_Key: Loc_6_Window_EndDialogue_Final_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5771501424111616
+    m_Key: Loc_3_TV_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5771557388709888
+    m_Key: Loc_3_TV_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5771592260153344
+    m_Key: Loc_3_TV_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5771608135593984
+    m_Key: Loc_3_TV_Reaction_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5781970889240576
+    m_Key: Loc_4_Garlic_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5782008289849344
+    m_Key: Loc_4_Garlic_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5782031656316928
+    m_Key: Loc_4_Garlic_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5782044029513728
+    m_Key: Loc_4_Garlic_Reaction_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6010746050998272
+    m_Key: Tutorial_Interact_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6010965236936704
+    m_Key: Tutorial_Interact_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6038903403606016
+    m_Key: Tutorial_AuroraSaysAboutPhotoAlbum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6371634301923328
+    m_Key: Loc_5_Candlebox_NotTakeit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6372703597785088
+    m_Key: Loc_5_GrandmaCorpse_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6372791451676672
+    m_Key: Loc_5_GrandmaCorpse_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6372814830727168
+    m_Key: Loc_5_GrandmaCorpse_Reaction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6388086237065216
+    m_Key: Loc_3_Trellis_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6388120932347904
+    m_Key: Loc_3_Trellis_Content_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6388139525697536
+    m_Key: Loc_3_Trellis_Content_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6388147968831488
+    m_Key: Loc_3_Trellis_Content_Reaction_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6405853342363648
+    m_Key: TutorialEnd_Loc_2_AuroraSays
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6406266909126656
+    m_Key: TutorialEnd_Loc_2_SayAboutExploring
     m_Metadata:
       m_Items: []
   m_Metadata:

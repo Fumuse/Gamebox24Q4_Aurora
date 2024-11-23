@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -7,12 +8,15 @@ public abstract class Screamer : MonoBehaviour
     [SerializeField] protected ScreamerEnum screamerType;
     [SerializeField] protected ScreamerView _screamerView;
     [SerializeField, HideInInspector] private Transform _playerTransform;
+
+    private PlayerStateMachine _player;
     
     public ScreamerEnum ScreamerType => screamerType;
 
     protected bool _isShow;
 
     protected Vector2 PlayerPosition => _playerTransform.position;
+    protected PlayerStateMachine Player => _player;
 
     protected Vector2 Direction
     {
@@ -38,6 +42,11 @@ public abstract class Screamer : MonoBehaviour
         }
 
         _screamerView ??= GetComponent<ScreamerView>();
+    }
+
+    private void Awake()
+    {
+        _player = _playerTransform.GetComponent<PlayerStateMachine>();
     }
 
     public abstract void Activate(bool activate);

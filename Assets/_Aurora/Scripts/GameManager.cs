@@ -72,6 +72,8 @@ public class GameManager : PersistentSingleton<GameManager>
 
     public LayerMask InteractableObjectLayerMask => interactableObjectLayerMask;
 
+    public PlayerStateMachine Player => player;
+
     protected override void Awake()
     {
         base.Awake();

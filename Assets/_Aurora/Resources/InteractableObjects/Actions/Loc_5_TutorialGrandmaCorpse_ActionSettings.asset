@@ -21,7 +21,9 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  dialogueRoot: {fileID: 0}
+  whisperBlockedMoveState: 1
+  dialogueRoot: {fileID: 11400000, guid: 14d15891eaa725c49877383d901529f2, type: 2}
+  item: {fileID: 0}
   catSceneClip:
     m_TableReference:
       m_TableCollectionName: 
@@ -36,6 +38,9 @@ MonoBehaviour:
   changeObjectSettingsAfterPlay: {fileID: 0}
   tagsToAddAfterAction:
   - tagName: 1
+  addTagsInTutorial: 1
+  screamerType: 0
+  screamerSpawnPosition: {x: 0, y: 0, z: 0}
   references:
     version: 2
     RefIds: []
