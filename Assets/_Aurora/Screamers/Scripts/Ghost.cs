@@ -106,7 +106,6 @@ public class Ghost : Screamer
 
     private void Attack()
     {
-        Debug.Log("Аврора умерла в крепких объятиях призрака");
         EventDeathPlayer?.Invoke();
     }
 

@@ -10,6 +10,7 @@ public class EndGameHandler : MonoBehaviour
     [SerializeField] private SceneController controller;
 
     private CancellationTokenSource _cts = new();
+    private ShowVideoSceneProvider _videoSceneProvider;
 
     private void OnEnable()
     {
@@ -26,8 +27,8 @@ public class EndGameHandler : MonoBehaviour
 
     private void OnDeath()
     {
-        ShowVideoSceneProvider videoSceneProvider = GameProvidersManager.Instance.VideoSceneProvider;
-        videoSceneProvider.Execute(deathMovieSettings);
+        _videoSceneProvider = GameProvidersManager.Instance.VideoSceneProvider;
+        _videoSceneProvider.Execute(deathMovieSettings);
 
         ShowVideoSceneProvider.OnVideoHiddenAfterEnd += OnVideoHiddenAfterEnd;
     }
@@ -48,6 +49,7 @@ public class EndGameHandler : MonoBehaviour
         //     .AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
         // if (isCanceled) return;
         
+        _videoSceneProvider.VideoPlayerWrapper.gameObject.SetActive(false);
         controller.GameEnd();
     }
 

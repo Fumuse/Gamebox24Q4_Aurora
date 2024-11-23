@@ -40,6 +40,7 @@ public class CellarState : TutorialBaseState
         
         Flashlight.OnFlashlightFindObject += OnFlashlightFindObject;
         InteractableObject.OnInteracted += OnInteracted;
+        InteractableObject.OnCancelInteract += OnCancelInteract;
         
         _grandmaCorpse = GetInteractableByKey("Room_5_GrandmaCorpse");
         _candleBox = GetInteractableByKey("Room_5_CandleBox");
@@ -123,6 +124,7 @@ public class CellarState : TutorialBaseState
         _whisperProvider.OnWhisperEnds -= OnWhisperEnds;
         _teleportProvider.OnTeleportEnds -= OnPlayerTeleportedToFirstRoom;
         InteractableObject.OnInteracted -= OnInteracted;
+        InteractableObject.OnCancelInteract -= OnCancelInteract;
     }
 
     private void OnPlayerTeleportedToCellar()
@@ -172,18 +174,20 @@ public class CellarState : TutorialBaseState
 
     private void OnInteracted(IInteractable interactable)
     {
-        if (interactable.Equals(_candleBox))
-        {
-            if (_tagManager.HasTag(new Tag(TagEnum.CandleTaken)))
-            {
-                InteractableObject.BlockInteractedObject(_candleBox);
-            }
-            return;
-        }
         if (!interactable.Equals(_grandmaCorpse)) return;
         
         _player.BlockMove();
         InteractableObject.BlockInteractedObject(_grandmaCorpse);
         _lastInteractable = interactable;
+    }
+
+    private void OnCancelInteract(IInteractable interactable)
+    {
+        if (!interactable.Equals(_candleBox)) return;
+
+        if (_tagManager.HasTag(new Tag(TagEnum.CandleTaken)))
+        {
+            InteractableObject.BlockInteractedObject(_candleBox);
+        }
     }
 }

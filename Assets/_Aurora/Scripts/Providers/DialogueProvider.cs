@@ -33,7 +33,6 @@ public class DialogueProvider : MonoBehaviour, IAction
 
     public void Execute(ActionSettings settings)
     {
-        Debug.Log($"Start dialogue {Time.time}");
         _actionSettings = settings;
 
         if (settings != null && settings.DialogueRoot != null)

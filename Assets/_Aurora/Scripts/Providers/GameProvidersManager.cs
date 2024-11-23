@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GameProvidersManager : PersistentSingleton<GameProvidersManager>
+public class GameProvidersManager : Singleton<GameProvidersManager>
 {
     [SerializeField] private DialogueProvider dialogueProvider;
     [SerializeField] private ItemInfoProvider itemInfoProvider;

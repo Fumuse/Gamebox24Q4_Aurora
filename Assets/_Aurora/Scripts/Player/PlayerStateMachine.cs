@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 [RequireComponent(typeof(InputReader))]
 [RequireComponent(typeof(CharacterController))]
@@ -7,6 +8,8 @@ public class PlayerStateMachine : StateMachine
 {
     [SerializeField] private float speed = 7f;
     [SerializeField] private SpriteRenderer spriteRenderer;
+
+    protected override PlayerLoopTiming UpdateYield => PlayerLoopTiming.FixedUpdate;
 
     public float MovementSpeed => speed;
     public InputReader InputReader { get; private set; }
@@ -24,6 +27,11 @@ public class PlayerStateMachine : StateMachine
         SpriteRenderer = spriteRenderer;
         
         SwitchState(new PlayerMoveState(this));
+    }
+    
+    protected override void UpdateLoop()
+    {
+        base.UpdateLoop();
     }
 
     public void ChangePlayerSpriteByStage(HouseStageEnum stage)

@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(InteractableObjectUI))]
-public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
+public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, IDestroyable
 {
     [Header("Настройки для отображения и взаимодействия")]
     [SerializeField] protected InteractableObjectCondition conditionToView;
@@ -66,6 +66,9 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
     {
         CheckConditionToView();
         
+        //Добавляем объект в списки на удаление, чтобы удалились даже те, что были скрыты при перезагрузке сцены
+        DestroyWatcher.ListToDestroy.Add(this);
+        
         TagManager.OnTagAdded += CheckConditionToView;
         TagManager.OnTagRemoved += CheckConditionToView;
         AcceptanceScale.OnAcceptanceScaleChanged += CheckConditionToView;
@@ -75,6 +78,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
 
     protected void OnDestroy()
     {
+        Debug.Log($"Destroyed game interactable item {gameObject.name}");
         TagManager.OnTagAdded -= CheckConditionToView;
         TagManager.OnTagRemoved -= CheckConditionToView;
         AcceptanceScale.OnAcceptanceScaleChanged -= CheckConditionToView;
@@ -108,6 +112,8 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
         if (!conditionToView.PassesTimeCondition) needToShow = false;
         if (!conditionToView.PassesAcceptanceCondition) needToShow = false;
 
+        Debug.Log(conditionToView);
+        Debug.Log(gameObject);
         if (conditionToView.NeedToHideGlobal)
         {
             this.gameObject.SetActive(needToShow);
@@ -130,7 +136,6 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
     /// </summary>
     public virtual void Interact()
     {
-        Debug.Log($"Start interact {Time.time}");
         OnInteracted?.Invoke(this);
         
         actionProvider?.Invoke();
@@ -208,5 +213,11 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated
     public static void UnblockInteractedObject(IInteractable interactable)
     {
         interactable.UnblockInteract();
+    }
+
+    public void DestroyObject()
+    {
+        if (!this) return;
+        OnDestroy();
     }
 }

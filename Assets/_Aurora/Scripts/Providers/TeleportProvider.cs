@@ -15,6 +15,9 @@ public class TeleportProvider : MonoBehaviour, IAction
     private IInteractable _lastInteractable;
     private IDoor _interactableDoor;
     private ActionSettings _actionSettings;
+
+    private CharacterController _controller;
+    private Collider2D _playerCollider;
     
     public Action<Room> OnTeleportEnds;
     public Action OnPlayerTeleported;
@@ -34,6 +37,11 @@ public class TeleportProvider : MonoBehaviour, IAction
     {
         _cts?.Cancel();
         InteractableObject.OnInteracted -= OnInteracted;
+    }
+
+    private void Awake()
+    {
+        _controller = player.GetComponent<CharacterController>();
     }
 
     public void Execute(ActionSettings settings)
@@ -83,10 +91,14 @@ public class TeleportProvider : MonoBehaviour, IAction
 
     private void TeleportPlayer()
     {
+        _controller.enabled = false;
+        
         Vector3 newPlayerPosition = player.position;
         newPlayerPosition.x = _interactableDoor.ConnectedDoor.Transform.position.x;
-
+        
         player.position = newPlayerPosition;
+        
+        _controller.enabled = true;
 
         Vector3 connectedRoomPosition = _interactableDoor.ConnectedDoor.Room.transform.position;
         Vector3 newCameraPosition = mainCamera.transform.position;

@@ -24,4 +24,4 @@ MonoBehaviour:
   viewOnFlashlight: 0
   canHideAfterView: 0
   needToHideGlobal: 1
-  needToHideInTutorial: 1
+  needToHideInTutorial: 0

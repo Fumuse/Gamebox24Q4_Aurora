@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class GameManager : PersistentSingleton<GameManager>
+public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private GameSettings settings;
     [SerializeField] private bool startInTutorial = true;
@@ -105,7 +105,7 @@ public class GameManager : PersistentSingleton<GameManager>
     private void InitSettings()
     {
         //QualitySettings.vSyncCount = 1;
-        Application.targetFrameRate = 36; 
+        Application.targetFrameRate = 26;
     }
 
     private void InitObjects()

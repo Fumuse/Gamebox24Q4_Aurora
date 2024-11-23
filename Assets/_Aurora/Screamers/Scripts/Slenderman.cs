@@ -106,7 +106,6 @@ public class Slenderman : Screamer
     private void Attack()
     {
         _playerAttacked = true;
-        Debug.Log("Аврора умерла в крепких объятиях призрака");
         PlayerDeadFromScreamer?.Invoke(Player);
     }
 

@@ -89,9 +89,12 @@ public class PlayerInteractState : PlayerBaseState
                     return;
                 }
 
-                _interactable.DeclineInteract();
-                stateMachine.SwitchState(new PlayerInteractState(stateMachine, interactable));
-                return;
+                if (!interactable.IsInteractBlocked && interactable.IsViewed)
+                {
+                    _interactable.DeclineInteract();
+                    stateMachine.SwitchState(new PlayerInteractState(stateMachine, interactable));
+                    return;
+                }
             }
         }
 

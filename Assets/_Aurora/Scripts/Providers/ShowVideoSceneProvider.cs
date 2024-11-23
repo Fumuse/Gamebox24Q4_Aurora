@@ -18,6 +18,8 @@ public class ShowVideoSceneProvider : MonoBehaviour, IAction
     public Action OnVideoEndShowed;
     public static Action OnVideoHiddenAfterEnd;
 
+    public CanvasGroup VideoPlayerWrapper => videoPlayerWrapper;
+
     private void OnEnable()
     {
         _cts = new();

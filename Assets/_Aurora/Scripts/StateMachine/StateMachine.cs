@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -6,6 +7,8 @@ public abstract class StateMachine : MonoBehaviour
 {
     private State _currentState;
     private CancellationTokenSource _cts;
+
+    protected virtual PlayerLoopTiming UpdateYield => PlayerLoopTiming.Update;
 
     public void SwitchState(State state)
     {
@@ -24,7 +27,7 @@ public abstract class StateMachine : MonoBehaviour
         _cts?.Cancel();
     }
 
-    private async void UpdateLoop()
+    protected virtual async void UpdateLoop()
     {
         _cts = new();
 
@@ -37,7 +40,8 @@ public abstract class StateMachine : MonoBehaviour
                 if (isAwaitCanceled) return;
             }
             AsyncUpdate();
-            bool isCanceled = await UniTask.WaitForEndOfFrame(this, _cts.Token).SuppressCancellationThrow();
+
+            bool isCanceled = await UniTask.Yield(UpdateYield, _cts.Token).SuppressCancellationThrow();
             if (isCanceled) return;
         }
     }
@@ -45,5 +49,10 @@ public abstract class StateMachine : MonoBehaviour
     private void AsyncUpdate()
     {
         _currentState?.Tick();
+    }
+
+    private void OnDestroy()
+    {
+        _currentState?.Exit();
     }
 }
