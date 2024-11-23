@@ -89,7 +89,6 @@ public class AmbienceController : ISubscriberToCleanup
                 .SuppressCancellationThrow();
             if (isCanceled) return;
             
-            Debug.Log(animation);
             animation.Show();
             
             isCanceled = await UniTask.WaitForSeconds(_timeToWaitBetweenAnimations, cancellationToken: _cts.Token)

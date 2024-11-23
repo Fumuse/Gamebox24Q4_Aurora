@@ -65,8 +65,6 @@ public class WindowLoc6_DialogueProvider : IChangeDialogueProvider
             dialogueNode = GetEndDialogueByPoints();
         }
         
-        Debug.Log(DialoguePoints);
-        
         _dialogueView.ChangeSomeImageAction(GetSpriteByPoints());
     }
 

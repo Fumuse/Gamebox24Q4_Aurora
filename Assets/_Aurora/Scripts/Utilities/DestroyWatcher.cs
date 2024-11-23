@@ -8,10 +8,8 @@ public class DestroyWatcher : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log(ListToDestroy.Count);
         foreach (IDestroyable destroyObject in ListToDestroy)
         {
-            Debug.Log(destroyObject);
             destroyObject.DestroyObject();
         }
     }

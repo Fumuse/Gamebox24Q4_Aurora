@@ -78,7 +78,6 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
 
     protected void OnDestroy()
     {
-        Debug.Log($"Destroyed game interactable item {gameObject.name}");
         TagManager.OnTagAdded -= CheckConditionToView;
         TagManager.OnTagRemoved -= CheckConditionToView;
         AcceptanceScale.OnAcceptanceScaleChanged -= CheckConditionToView;
@@ -112,8 +111,6 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
         if (!conditionToView.PassesTimeCondition) needToShow = false;
         if (!conditionToView.PassesAcceptanceCondition) needToShow = false;
 
-        Debug.Log(conditionToView);
-        Debug.Log(gameObject);
         if (conditionToView.NeedToHideGlobal)
         {
             this.gameObject.SetActive(needToShow);

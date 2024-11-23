@@ -59,7 +59,7 @@ public class ResponseHandler : MonoBehaviour
         
         if (dialogueEvent != null)
         {
-            Debug.Log("как сцена или ещё что-нибудь и при завершении продолжиться диалог");
+            Debug.Log("Кат. сцена или ещё что-нибудь и при завершении продолжиться диалог");
             _dialogHandler = handler;
             await TestDelay();
             dialogueEvent.Event.Invoke();
