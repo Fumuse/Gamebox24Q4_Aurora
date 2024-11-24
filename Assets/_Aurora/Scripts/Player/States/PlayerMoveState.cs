@@ -23,7 +23,7 @@ public class PlayerMoveState : PlayerBaseState
         CheckClickToUI();
         Rotate();
         Move();
-
+        
         MoveAnimation();
     }
 
@@ -65,6 +65,6 @@ public class PlayerMoveState : PlayerBaseState
             return;
         }
 
-        isMoving = true; 
+        IsMoving = true; 
     }
 }

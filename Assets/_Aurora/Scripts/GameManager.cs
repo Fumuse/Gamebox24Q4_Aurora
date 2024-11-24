@@ -104,8 +104,8 @@ public class GameManager : Singleton<GameManager>
 
     private void InitSettings()
     {
-        //QualitySettings.vSyncCount = 1;
-        Application.targetFrameRate = 26;
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 36;
     }
 
     private void InitObjects()

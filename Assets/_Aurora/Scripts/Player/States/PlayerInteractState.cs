@@ -30,7 +30,7 @@ public class PlayerInteractState : PlayerBaseState
         Vector3 offset = _interactable.Offset * GetMoveDirection();
         targetPosition = _interactable.Position - offset;
         
-        isMoving = true; 
+        IsMoving = true; 
         
         stateMachine.Animator.CrossFadeInFixedTime(moveAnimBlendTreeHash, CrossFadeDuration);
     }

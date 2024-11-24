@@ -9,7 +9,7 @@ public class PlayerStateMachine : StateMachine
     [SerializeField] private float speed = 7f;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    protected override PlayerLoopTiming UpdateYield => PlayerLoopTiming.FixedUpdate;
+    protected override PlayerLoopTiming UpdateYield => PlayerLoopTiming.Update;
 
     public float MovementSpeed => speed;
     public InputReader InputReader { get; private set; }
