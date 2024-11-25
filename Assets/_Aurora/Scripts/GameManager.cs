@@ -210,7 +210,7 @@ public class GameManager : Singleton<GameManager>
         Tag gramophoneTag = new Tag(TagEnum.GramophoneTaken);
         if (!TagManager.HasTag(gramophoneTag)) return;
         
-        Tag twigTag = new Tag(TagEnum.BroomTwigTaken);
+        Tag twigTag = new Tag(TagEnum.WalkingStickTaken);
         if (!TagManager.HasTag(twigTag)) return;
         
         Tag bearTag = new Tag(TagEnum.BearTaken);

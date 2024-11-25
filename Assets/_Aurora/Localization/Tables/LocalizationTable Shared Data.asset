@@ -927,6 +927,14 @@ MonoBehaviour:
     m_Key: Loc_4_PhotoAlbum_EndDialogue_Content_3
     m_Metadata:
       m_Items: []
+  - m_Id: 6933074180075520
+    m_Key: Loc_2_SetOfPlates_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6933673831329792
+    m_Key: Loc_4_Seasonings_Content
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

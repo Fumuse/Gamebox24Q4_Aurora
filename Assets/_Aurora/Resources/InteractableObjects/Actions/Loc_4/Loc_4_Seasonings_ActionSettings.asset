@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whisperTextKey:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 6933673831329792
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

@@ -38,8 +38,8 @@ MonoBehaviour:
   changeObjectSettingsAfterPlay: {fileID: 0}
   tagsToAddAfterAction: []
   addTagsInTutorial: 1
-  screamerType: 0
-  screamerSpawnPosition: {x: 0, y: 0, z: 0}
+  screamerType: 3
+  screamerSpawnPosition: {x: -113, y: -4, z: 0}
   references:
     version: 2
     RefIds: []
