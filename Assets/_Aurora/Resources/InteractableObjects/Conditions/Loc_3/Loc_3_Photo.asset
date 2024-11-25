@@ -20,9 +20,8 @@ MonoBehaviour:
   maxTime: 0
   hasTags:
   - tagName: 2
-  - tagName: 30
   hasntTags: []
-  viewOnFlashlight: 1
+  viewOnFlashlight: 0
   canHideAfterView: 0
   needToHideGlobal: 0
   needToHideInTutorial: 0

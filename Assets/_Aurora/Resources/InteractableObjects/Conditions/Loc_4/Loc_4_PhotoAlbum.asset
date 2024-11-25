@@ -21,6 +21,8 @@ MonoBehaviour:
   hasTags:
   - tagName: 2
   - tagName: 130
+  - tagName: 150
+  - tagName: 230
   hasntTags: []
   viewOnFlashlight: 0
   canHideAfterView: 0

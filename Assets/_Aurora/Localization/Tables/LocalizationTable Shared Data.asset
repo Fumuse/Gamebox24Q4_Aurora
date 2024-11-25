@@ -448,19 +448,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6388086237065216
-    m_Key: Loc_3_Trellis_Content
+    m_Key: Loc_2_Trellis_Content
     m_Metadata:
       m_Items: []
   - m_Id: 6388120932347904
-    m_Key: Loc_3_Trellis_Content_Option_1
+    m_Key: Loc_2_Trellis_Content_Option_1
     m_Metadata:
       m_Items: []
   - m_Id: 6388139525697536
-    m_Key: Loc_3_Trellis_Content_Option_2
+    m_Key: Loc_2_Trellis_Content_Option_2
     m_Metadata:
       m_Items: []
   - m_Id: 6388147968831488
-    m_Key: Loc_3_Trellis_Content_Reaction_1
+    m_Key: Loc_2_Trellis_Content_Reaction_1
     m_Metadata:
       m_Items: []
   - m_Id: 6405853342363648
@@ -469,6 +469,462 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 6406266909126656
     m_Key: TutorialEnd_Loc_2_SayAboutExploring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6716068390531072
+    m_Key: Loc_1_Broom_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6716121368784896
+    m_Key: Loc_1_Broom_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6716305330958336
+    m_Key: Loc_1_Broom_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6716315942547456
+    m_Key: Loc_1_Broom_Option_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6716346326085632
+    m_Key: Loc_1_Broom_Reaction_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6716369210208256
+    m_Key: Loc_1_Broom_Reaction_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6737412339560448
+    m_Key: Loc_1_Broom_Reaction_1_UnIn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6743582404014080
+    m_Key: Loc_1_WalkingStick_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6743713782198272
+    m_Key: Loc_1_WalkingStick_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6743736439828480
+    m_Key: Loc_1_WalkingStick_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6743780467437568
+    m_Key: Loc_1_WalkingStick_Reaction_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6744000014086144
+    m_Key: Loc_1_WalkingStick_Reaction_1_UnIn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6751320043450368
+    m_Key: Loc_1_AurorasInscription_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6751448141688832
+    m_Key: Loc_1_AurorasInscription_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6751450205286400
+    m_Key: Loc_1_AurorasInscription_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6751508443197440
+    m_Key: Loc_1_AurorasInscription_Reaction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6757360864620544
+    m_Key: Loc_2_PhotoAlbum_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6757399406080000
+    m_Key: Loc_2_PhotoAlbum_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6757421241626624
+    m_Key: Loc_2_PhotoAlbum_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6757434961195008
+    m_Key: Loc_2_PhotoAlbum_Reaction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6759111416115200
+    m_Key: Loc_2_Goose_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6759577839497216
+    m_Key: Loc_2_Statuette_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6764136641097728
+    m_Key: Loc_5_CandleBox_TakenReaction_UnIn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6767419342483456
+    m_Key: Loc_5_Diary_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6767472094244864
+    m_Key: Loc_5_Diary_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6767498841321472
+    m_Key: Loc_5_Diary_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6767515832446976
+    m_Key: Loc_5_Diary_Option_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6767525559037952
+    m_Key: Loc_5_Diary_Option_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6767539521875968
+    m_Key: Loc_5_Diary_Reaction_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6767566029877248
+    m_Key: Loc_5_Diary_Reaction_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6767571809628160
+    m_Key: Loc_5_Diary_Reaction_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6769171299069952
+    m_Key: Loc_5_ClothingBox_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6769233014059008
+    m_Key: Loc_5_ClothingBox_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6769251578048512
+    m_Key: Loc_5_ClothingBox_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6769269902962688
+    m_Key: Loc_5_ClothingBox_Reaction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6792105132584960
+    m_Key: Loc_3_Bear_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6792162103816192
+    m_Key: Loc_3_Bear_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6792187835871232
+    m_Key: Loc_3_Bear_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6792231628599296
+    m_Key: Loc_3_Bear_Reaction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6793830119796736
+    m_Key: Loc_3_Photo_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6793852525768704
+    m_Key: Loc_3_Photo_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6793875313422336
+    m_Key: Loc_3_Photo_Reaction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6795026389823488
+    m_Key: Loc_3_MatryoshkaDolls_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6795071486980096
+    m_Key: Loc_3_MatryoshkaDolls_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6795110955380736
+    m_Key: Loc_3_MatryoshkaDolls_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6795121457917952
+    m_Key: Loc_3_MatryoshkaDolls_Reaction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6799350494949376
+    m_Key: Loc_4_Salt_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6799388226908160
+    m_Key: Loc_4_Salt_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6799407193550848
+    m_Key: Loc_4_Salt_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6799424314699776
+    m_Key: Loc_4_Salt_Reaction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6799495626256384
+    m_Key: Loc_4_Salt_Reaction_UnIn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6800025010335744
+    m_Key: Loc_4_Calendar_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6802303888945152
+    m_Key: Loc_6_Gramophone_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6802394838233088
+    m_Key: Loc_6_Gramophone_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6802463532544000
+    m_Key: Loc_6_Gramophone_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6802777144848384
+    m_Key: Loc_6_Gramophone_Reaction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6802832996200448
+    m_Key: Loc_6_Painting_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6802944610824192
+    m_Key: Loc_6_Painting_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6802967926960128
+    m_Key: Loc_6_Painting_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6802987032014848
+    m_Key: Loc_6_Painting_Reaction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803107752472576
+    m_Key: Loc_6_ChristmasDecorations_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803172348948480
+    m_Key: Loc_6_ChristmasDecorations_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803196784963584
+    m_Key: Loc_6_ChristmasDecorations_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803208642260992
+    m_Key: Loc_6_ChristmasDecorations_Reaction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803246219030528
+    m_Key: Loc_6_Chest_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803304586964992
+    m_Key: Loc_6_Chest_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803322064629760
+    m_Key: Loc_6_Chest_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803332990791680
+    m_Key: Loc_6_Chest_Reaction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6819860352102400
+    m_Key: Loc_6_Gramophone_Reaction_UnIn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6820244890087424
+    m_Key: Loc_3_Bear_Reaction_UnIn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6821003778093056
+    m_Key: Loc_2_Statuette_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6821024644755456
+    m_Key: Loc_2_Statuette_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6821068286488576
+    m_Key: Loc_2_Statuette_Reaction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6830526081298432
+    m_Key: Loc_1_Plants_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6830558536822784
+    m_Key: Loc_1_Plants_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6830576240979968
+    m_Key: Loc_1_Plants_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6830585489420288
+    m_Key: Loc_1_Plants_Reaction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6849285437288448
+    m_Key: Loc_3_Window_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6850526594756608
+    m_Key: Loc_4_Matches_Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6850528658354176
+    m_Key: Loc_4_Matches_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6850580105687040
+    m_Key: Loc_4_Matches_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6850625769074688
+    m_Key: Loc_4_Matches_Reaction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6851890972487680
+    m_Key: Loc_4_Calendar_Content_UnIn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6862445007368192
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Content_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6862510052634624
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Content_1_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6862554268987392
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Content_1_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6862572644233216
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Content_1_Option_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6862578067468288
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Content_1_Option_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6862591464075264
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Reaction_1_To_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863066913599488
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Reaction_1_To_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863084374487040
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Reaction_1_To_Option_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863092368830464
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Reaction_1_To_Option_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863226070659072
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Content_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863303841443840
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Content_2_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863317263216640
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Content_2_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863318546673664
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Content_2_Option_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863319368757248
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Content_2_Option_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863741512871936
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Reaction_2_To_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863764191473664
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Reaction_2_To_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863766036967424
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Reaction_2_To_Option_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863768301891584
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Reaction_2_To_Option_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863976289038336
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Content_3_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6864186947956736
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Content_3_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6864200180985856
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Content_3_Option_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6864210939375616
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Content_3_Option_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6864245018095616
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Reaction_3_To_Option_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6864279616909312
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Reaction_3_To_Option_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6864302912073728
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Reaction_3_To_Option_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6864309488742400
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Reaction_3_To_Option_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6865060441124864
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Final_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6865090933714944
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Final_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6865106712686592
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Final_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6865118691618816
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Final_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6865803533381632
+    m_Key: Loc_4_PhotoAlbum_EndDialogue_Content_3
     m_Metadata:
       m_Items: []
   m_Metadata:

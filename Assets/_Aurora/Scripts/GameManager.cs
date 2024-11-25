@@ -16,6 +16,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private TutorialStateMachine tutorial;
     [SerializeField] private InputReader inputReader;
     [SerializeField] private MouseHoverDetector mouseHoverDetector;
+    [SerializeField] private UnconditionalInformationHandler unconditionalInformationHandler;
 
     public static Action OnTutorialStateChanged;
 
@@ -81,6 +82,41 @@ public class GameManager : Singleton<GameManager>
         Init();
     }
 
+    private void OnValidate()
+    {
+        if (settings == null)
+        {
+            Debug.LogError("You need to attach the game settings to game manager!");
+        }
+
+        house ??= FindFirstObjectByType<House>();
+        player ??= FindFirstObjectByType<PlayerStateMachine>();
+        tutorial ??= FindFirstObjectByType<TutorialStateMachine>();
+        providersManager ??= FindFirstObjectByType<GameProvidersManager>();
+        inputReader ??= FindFirstObjectByType<InputReader>();
+        cleanupEvents ??= FindAnyObjectByType<CleanupEvents>();
+        mouseHoverDetector ??= FindAnyObjectByType<MouseHoverDetector>();
+        unconditionalInformationHandler ??= FindAnyObjectByType<UnconditionalInformationHandler>();
+    }
+
+    private void Start()
+    {
+        ChangeHouseSprites();
+        StartTutorial();
+    }
+
+    private void OnEnable()
+    {
+        TagManager.OnTagAdded += OnTagAdded;
+    }
+
+    private void OnDisable()
+    {
+        TagManager.OnTagAdded -= OnTagAdded;
+    }
+
+    #region Initing project
+
     /// <summary>
     /// Единая точка входа
     /// </summary>
@@ -97,6 +133,7 @@ public class GameManager : Singleton<GameManager>
 
         inputReader.Init();
         providersManager.Init();
+        unconditionalInformationHandler.Init();
         AmbienceController = new AmbienceController();
         InitObjects();
         mouseHoverDetector.Init();
@@ -125,32 +162,12 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    private void OnValidate()
-    {
-        if (settings == null)
-        {
-            Debug.LogError("You need to attach the game settings to game manager!");
-        }
-
-        house ??= FindFirstObjectByType<House>();
-        player ??= FindFirstObjectByType<PlayerStateMachine>();
-        tutorial ??= FindFirstObjectByType<TutorialStateMachine>();
-        providersManager ??= FindFirstObjectByType<GameProvidersManager>();
-        inputReader ??= FindFirstObjectByType<InputReader>();
-        cleanupEvents ??= FindAnyObjectByType<CleanupEvents>();
-        mouseHoverDetector ??= FindAnyObjectByType<MouseHoverDetector>();
-    }
-
     public void InitPlayer()
     {
         player.Init();
     }
 
-    private void Start()
-    {
-        ChangeHouseSprites();
-        StartTutorial();
-    }
+    #endregion
 
     #region Tutorial
     private void StartTutorial()
@@ -181,5 +198,37 @@ public class GameManager : Singleton<GameManager>
         }
 
         player.ChangePlayerSpriteByStage(houseStage);
+    }
+
+    private void OnTagAdded()
+    {
+        PhotoAlbumManage();
+    }
+
+    private void PhotoAlbumManage()
+    {
+        Tag gramophoneTag = new Tag(TagEnum.GramophoneTaken);
+        if (!TagManager.HasTag(gramophoneTag)) return;
+        
+        Tag twigTag = new Tag(TagEnum.BroomTwigTaken);
+        if (!TagManager.HasTag(twigTag)) return;
+        
+        Tag bearTag = new Tag(TagEnum.BearTaken);
+        if (!TagManager.HasTag(bearTag)) return;
+
+        foreach (Room room in house.Rooms)
+        {
+            foreach (InteractableObject interObject in room.InteractableObjects)
+            {
+                if (interObject.CompareTag("Loc_2_PhotoAlbum"))
+                {
+                    TagManager.AddTag(new Tag(TagEnum.PhotoAlbumIsAssembled));
+                    
+                    interObject.enabled = false;
+                    interObject.gameObject.SetActive(false);
+                    break;
+                }
+            }
+        }
     }
 }

@@ -41,7 +41,7 @@ public class AlbumWatchState : TutorialBaseState
         
         ActionSettings setting = GetSettingByKey("TutorialAskAboutPhotoAlbum");
         if (setting == null) return;
-        _whisperProvider.Execute(setting);
+        _whisperProvider.EmptyExecute(setting);
     }
     
     private void OnCancelInteract(IInteractable interactable)

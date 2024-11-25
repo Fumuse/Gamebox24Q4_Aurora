@@ -9,7 +9,7 @@ public class ScreamerView : MonoBehaviour
     [SerializeField] protected Animator _animator;
     [SerializeField] protected SpriteRenderer[] _spriteRenderers;
     [SerializeField] protected SpriteRenderer renderForFullBody;
-    [SerializeField] private float _fateDuration = 3.2f;
+    [SerializeField] private float fadeDuration = 3.2f;
     [SerializeField] private bool _FlipXInversion;
 
     private int _moveAnimationHash = Animator.StringToHash("isMove");
@@ -33,8 +33,7 @@ public class ScreamerView : MonoBehaviour
 
     private void OnEnable()
     {
-        if (_cts == null)
-            _cts = new();
+        _cts = new();
 
         ChangeSpritesVisible(false);
     }
@@ -78,15 +77,14 @@ public class ScreamerView : MonoBehaviour
     public async UniTask SetFade(bool visible)
     {
         float elapsedTime = 0f;
-        while (elapsedTime < _fateDuration)
+        while (elapsedTime < fadeDuration)
         {
             bool isCanceled = await UniTask.WaitForEndOfFrame(this, _cts.Token).SuppressCancellationThrow();
             if (isCanceled) return;
             
             elapsedTime += Time.deltaTime;
-            float newAlpha = visible
-                ? Mathf.Clamp01(elapsedTime / _fateDuration) * _defaultAlpha
-                : _defaultAlpha - Mathf.Clamp01(elapsedTime / _fateDuration);
+            float newAlpha = visible ? Mathf.Clamp01(elapsedTime / fadeDuration) * _defaultAlpha
+                : _defaultAlpha - Mathf.Clamp01(elapsedTime / fadeDuration);
             float alpha = newAlpha;
             SetNewColorAlpha(alpha);
         }

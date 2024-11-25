@@ -5,7 +5,7 @@ public interface IInteractable
     public bool IsInteractBlocked { get; }
     public bool IsInteracted { get; }
     public Vector3 Position { get; }
-    public float Offset { get; }
+    public float Offset { get; set; }
     public GameObject GameObject { get; }
     public int ClickSort { get; }
     

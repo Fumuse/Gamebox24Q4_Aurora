@@ -59,14 +59,14 @@ public class TrellisWatchState : TutorialBaseState
     {
         ActionSettings setting = GetSettingByKey("TutorialInteract_1");
         if (setting == null) return;
-        _whisperProvider.Execute(setting);
+        _whisperProvider.EmptyExecute(setting);
     }
 
     private void SayAboutInteractMenu()
     {
         ActionSettings setting = GetSettingByKey("TutorialInteract_2");
         if (setting == null) return;
-        _whisperProvider.Execute(setting);
+        _whisperProvider.EmptyExecute(setting);
     }
 
     private void OnPreInteractTrellis()

@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public abstract class Screamer : MonoBehaviour
     [SerializeField, HideInInspector] private Transform _playerTransform;
 
     private PlayerStateMachine _player;
+    private CancellationTokenSource _cts = new();
     
     public ScreamerEnum ScreamerType => screamerType;
 
@@ -44,6 +46,16 @@ public abstract class Screamer : MonoBehaviour
         _screamerView ??= GetComponent<ScreamerView>();
     }
 
+    private void OnEnable()
+    {
+        _cts = new();
+    }
+
+    private void OnDisable()
+    {
+        _cts?.Cancel();
+    }
+
     private void Awake()
     {
         _player = _playerTransform.GetComponent<PlayerStateMachine>();
@@ -59,14 +71,15 @@ public abstract class Screamer : MonoBehaviour
             gameObject.SetActive(true);
 
         _isShow = true;
-        await _screamerView.SetFade(_isShow);
+        await _screamerView.SetFade(_isShow).AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
     }
 
     protected async UniTask Hide()
     {
         _isShow = false;
-        await _screamerView.SetFade(_isShow);
-        
+        bool isCanceled = await _screamerView.SetFade(_isShow).AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
+        if (isCanceled) return;
+
         gameObject.SetActive(false);
     }
 

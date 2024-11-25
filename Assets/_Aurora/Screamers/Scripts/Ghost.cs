@@ -28,7 +28,7 @@ public class Ghost : Screamer
 
     private void OnEnable()
     {
-        if (_cts == null) _cts = new();
+        _cts = new();
 
         _screamerView.OnIdleAnimationEnded += OnIdleAnimationEnded;
         

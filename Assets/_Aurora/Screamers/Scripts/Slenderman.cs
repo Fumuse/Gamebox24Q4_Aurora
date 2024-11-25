@@ -14,6 +14,7 @@ public class Slenderman : Screamer
     private Vector2 _defaultPosition;
 
     private bool _playerAttacked = false;
+    private bool _isIdleAnimationEnded = false;
 
     private TeleportProvider _teleportProvider;
 
@@ -28,7 +29,9 @@ public class Slenderman : Screamer
 
     private void OnEnable()
     {
-        if (_cts == null) _cts = new();
+        _cts = new();
+        
+        _screamerView.OnIdleAnimationEnded += OnIdleAnimationEnded;
         
         if (_teleportProvider == null)
             _teleportProvider = GameProvidersManager.Instance.TeleportProvider;
@@ -40,6 +43,7 @@ public class Slenderman : Screamer
     {
         _cts?.Cancel();
         
+        _screamerView.OnIdleAnimationEnded -= OnIdleAnimationEnded;
         _teleportProvider.OnPlayerTeleported -= OnPlayerTeleported;
     }
 
@@ -89,7 +93,11 @@ public class Slenderman : Screamer
 
     protected override async UniTask Show()
     {
-        await base.Show().AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
+        bool isCanceled = await base.Show().AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
+        if (isCanceled) return;
+        
+        await UniTask.WaitUntil(() => _isIdleAnimationEnded, 
+            cancellationToken: _cts.Token).SuppressCancellationThrow();
     }
 
     private void Move()
@@ -114,5 +122,10 @@ public class Slenderman : Screamer
     private void OnPlayerTeleported()
     {
         ResetGhost();
+    }
+    
+    private void OnIdleAnimationEnded()
+    {
+        _isIdleAnimationEnded = true;
     }
 }

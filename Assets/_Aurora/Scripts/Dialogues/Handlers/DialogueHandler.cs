@@ -32,7 +32,7 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
     private void OnEnable()
     {
         DialogueView.NextResponseDialog += OnNextResponseDialog;
-        if (_cts == null) _cts = new();
+        _cts = new();
     }
 
     private void OnDisable()

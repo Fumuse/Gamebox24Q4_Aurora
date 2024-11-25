@@ -65,8 +65,7 @@ public class DialogueView : MonoBehaviour
 
     private void OnEnable()
     {
-        if (_cts == null)
-            _cts = new();
+        _cts = new();
     }
 
     private void OnDisable()
@@ -308,6 +307,16 @@ public class DialogueView : MonoBehaviour
             {
                 GameManager.Instance.TagManager.AddTag(tag);
             }
+        }
+
+        if (response.AcceptanceScaleCost > 0)
+        {
+            GameManager.Instance.AcceptanceScale.SpentAcceptance(response.AcceptanceScaleCost);
+        }
+
+        if (response.TimeCost > 0)
+        {
+            GameManager.Instance.Timer.SpendTime(response.TimeCost);
         }
 
         if (nextDialog)

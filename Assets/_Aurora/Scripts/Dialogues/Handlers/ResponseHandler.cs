@@ -43,7 +43,6 @@ public class ResponseHandler : MonoBehaviour
         {
             dialogueEvent.Event.Invoke();
         }
-
     }
 
     /// <summary>

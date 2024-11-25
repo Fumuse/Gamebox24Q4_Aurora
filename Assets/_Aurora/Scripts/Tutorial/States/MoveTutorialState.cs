@@ -39,7 +39,7 @@ public class MoveTutorialState : TutorialBaseState
             .SuppressCancellationThrow();
         if (isCanceled) return;
 
-        _whisperProvider.Execute(setting);
+        _whisperProvider.EmptyExecute(setting);
     }
 
     private async void SayAboutMoving()
@@ -62,7 +62,7 @@ public class MoveTutorialState : TutorialBaseState
             .SuppressCancellationThrow();
         if (isCanceled) return;
         
-        _whisperProvider.Execute(setting);
+        _whisperProvider.EmptyExecute(setting);
     }
 
     private void OnWhisperEnds()

@@ -18,6 +18,17 @@ public class PlayerStateMachine : StateMachine
     public Camera MainCamera { get; private set; }
     public SpriteRenderer SpriteRenderer { get; private set; }
 
+    public Vector2 LookDirection
+    {
+        get
+        {
+            if (SpriteRenderer.flipX)
+                return Vector2.right;
+
+            return Vector2.left;
+        }
+    }
+
     public void Init()
     {
         InputReader = GetComponent<InputReader>();

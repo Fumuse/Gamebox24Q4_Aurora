@@ -63,6 +63,12 @@ public class DialogueChangeHandler : MonoBehaviour
                     _providers.Add(pair.key, provider);
                     break;
                 }
+                case "Loc_4_PhotoAlbum":
+                {
+                    provider = new PhotoAlbumLoc4_DialogueProvider(dialogueView, spriteAssets, dialoguesAssets);
+                    _providers.Add(pair.key, provider);
+                    break;
+                }
             }
         }
 

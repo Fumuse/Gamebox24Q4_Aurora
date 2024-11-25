@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -26,6 +27,7 @@ public class WhisperProvider : MonoBehaviour, IAction
     {
         _cts = new();
         InteractableObject.OnInteracted += OnInteracted;
+        InteractableObject.OnCancelInteract += OnCancelInteract;
         whisperLocalization.StringChanged += UpdateWhisperText;
     }
 
@@ -33,6 +35,7 @@ public class WhisperProvider : MonoBehaviour, IAction
     {
         _cts?.Cancel();
         InteractableObject.OnInteracted -= OnInteracted;
+        InteractableObject.OnCancelInteract -= OnCancelInteract;
         whisperLocalization.StringChanged -= UpdateWhisperText;
     }
 
@@ -42,22 +45,24 @@ public class WhisperProvider : MonoBehaviour, IAction
         _cts = new();
         
         _actionSettings = settings;
-        ToWhisper();
+        ToWhisper(_lastInteractable);
     }
 
-    private async void ToWhisper()
+    public void EmptyExecute(ActionSettings settings)
+    {        
+        _cts?.Cancel();
+        _cts = new();
+        
+        _actionSettings = settings;
+        ToWhisper(null);
+    }
+
+    private async void ToWhisper([CanBeNull] IInteractable currentInteractable)
     {
         SetWhisperLocalizationString();
         
         bool isCanceled = await whisperWrapper.FadeIn(this, _cts.Token, fadeSpeed);
         if (isCanceled) return;
-
-        bool whisperEndedInStart = false;
-        if (_actionSettings != null && !_actionSettings.WhisperBlockedMoveState)
-        {
-            whisperEndedInStart = true;
-            EndWhisperInteract();
-        }
 
         float timeToWaitToRead = (_localizedTextCharsCount * timeToWaitToReadOneChar) + timeToWaitToReadGlobal;
         isCanceled = await UniTask.WaitForSeconds(timeToWaitToRead, cancellationToken: _cts.Token)
@@ -67,22 +72,19 @@ public class WhisperProvider : MonoBehaviour, IAction
         isCanceled = await whisperWrapper.FadeOut(this, _cts.Token, fadeSpeed);
         if (isCanceled) return;
         
+        EndWhisperInteract(currentInteractable);
         OnWhisperEnds?.Invoke();
-        if (!whisperEndedInStart)
-        {
-            EndWhisperInteract();
-        }
     }
 
-    private void EndWhisperInteract()
+    private void EndWhisperInteract([CanBeNull] IInteractable currentInteractable)
     {
-        if (_lastInteractable != null)
+        if (currentInteractable != null)
         {
             if (_actionSettings != null)
             {
-                this.AfterInteractChanges(_lastInteractable, _actionSettings);
+                this.AfterInteractChanges(currentInteractable, _actionSettings);
             }
-            _lastInteractable.FinishInteract();
+            currentInteractable.FinishInteract();
         }
     }
 
@@ -99,6 +101,12 @@ public class WhisperProvider : MonoBehaviour, IAction
     private void OnInteracted(IInteractable interactable)
     {
         _lastInteractable = interactable;
+    }
+
+    private void OnCancelInteract(IInteractable interactable)
+    {
+        _lastInteractable = null;
+        _actionSettings = null;
     }
 
     private void UpdateWhisperText(string text)

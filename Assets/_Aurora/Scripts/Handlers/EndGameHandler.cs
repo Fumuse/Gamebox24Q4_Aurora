@@ -6,6 +6,7 @@ using UnityEngine;
 public class EndGameHandler : MonoBehaviour
 {
     [SerializeField] private ActionSettings deathMovieSettings;
+    [SerializeField] private ActionSettings deathReplacementMovieSettings;
     [SerializeField] private CanvasGroup overlayWrapper;
     [SerializeField] private SceneController controller;
 
@@ -15,12 +16,14 @@ public class EndGameHandler : MonoBehaviour
     private void OnEnable()
     {
         WindowLoc6_DialogueProvider.OnDeath += OnDeath;
+        PhotoAlbumLoc4_DialogueProvider.OnDeath += OnPhotoAlbumDeath;
         Slenderman.PlayerDeadFromScreamer += OnPlayerDeadFromScreamer;
     }
 
     private void OnDisable()
     {
         WindowLoc6_DialogueProvider.OnDeath -= OnDeath;
+        PhotoAlbumLoc4_DialogueProvider.OnDeath -= OnPhotoAlbumDeath;
         Slenderman.PlayerDeadFromScreamer -= OnPlayerDeadFromScreamer;
         ShowVideoSceneProvider.OnVideoHiddenAfterEnd -= OnVideoHiddenAfterEnd;
     }
@@ -29,6 +32,14 @@ public class EndGameHandler : MonoBehaviour
     {
         _videoSceneProvider = GameProvidersManager.Instance.VideoSceneProvider;
         _videoSceneProvider.Execute(deathMovieSettings);
+
+        ShowVideoSceneProvider.OnVideoHiddenAfterEnd += OnVideoHiddenAfterEnd;
+    }
+
+    private void OnPhotoAlbumDeath()
+    {        
+        _videoSceneProvider = GameProvidersManager.Instance.VideoSceneProvider;
+        _videoSceneProvider.Execute(deathReplacementMovieSettings);
 
         ShowVideoSceneProvider.OnVideoHiddenAfterEnd += OnVideoHiddenAfterEnd;
     }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 265abb343f3e9054388f2f1ea514fbb2
+guid: 68c6f33bae83e334fb7d57497e383990
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -48,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 7
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -142,10 +142,10 @@ TextureImporter:
       name: monster_-animation_19_0
       rect:
         serializedVersion: 2
-        x: 57
-        y: 0
-        width: 591
-        height: 896
+        x: 191
+        y: 1
+        width: 562
+        height: 899
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

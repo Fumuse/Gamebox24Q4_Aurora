@@ -18,7 +18,11 @@ MonoBehaviour:
   hasTimeCondition: 0
   minTime: 0
   maxTime: 0
-  hasTags: []
+  hasTags:
+  - tagName: 200
+  - tagName: 110
+  - tagName: 140
+  - tagName: 2
   hasntTags: []
   viewOnFlashlight: 0
   canHideAfterView: 0

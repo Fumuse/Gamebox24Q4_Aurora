@@ -17,7 +17,12 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
     public bool IsInteractBlocked { get; private set; }
     public bool IsInteracted { get; private set; }
     public Vector3 Position => objectPosition.position;
-    public float Offset => positionOffset;
+
+    public float Offset
+    {
+        get => positionOffset;
+        set => positionOffset = value;
+    }
 
     public GameObject GameObject => this.gameObject;
     

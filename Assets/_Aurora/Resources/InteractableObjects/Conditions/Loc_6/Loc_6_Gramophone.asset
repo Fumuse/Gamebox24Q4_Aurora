@@ -19,6 +19,7 @@ MonoBehaviour:
   minTime: 0
   maxTime: 0
   hasTags:
+  - tagName: 2
   - tagName: 60
   hasntTags: []
   viewOnFlashlight: 1
