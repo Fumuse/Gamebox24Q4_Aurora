@@ -71,10 +71,12 @@ public class Slenderman : Screamer
     public override async void Activate(bool activate)
     {
         if (IsActivate) return;
+        
         if (!gameObject.activeInHierarchy)
         {
             gameObject.SetActive(true);
         }
+        StartAmbience();
 
         IsActivate = activate;
 
@@ -95,6 +97,8 @@ public class Slenderman : Screamer
     public void ResetGhost()
     {
         if (IsActivate == false) return;
+        
+        StopAmbience();
 
         _isIdleAnimationEnded = false;
         _readyToMove = false;

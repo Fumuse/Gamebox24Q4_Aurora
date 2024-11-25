@@ -81,16 +81,17 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1709268259860480
-    m_Localized: 'She showed up, she''s dust-free! '
+    m_Localized: <b>Grandma's ghost:</b> "She showed up, she's dust-free!"
     m_Metadata:
       m_Items: []
   - m_Id: 1709271552389120
-    m_Localized: 'Remember, Aurora: we''ll talk to you again before the first roosters;
-      don''t forget the candles, we''ll need them.'
+    m_Localized: '<b>Grandma''s ghost:</b> "Remember, Aurora: we''ll talk to you
+      again before the first roosters; don''t forget the candles, we''ll need them."'
     m_Metadata:
       m_Items: []
   - m_Id: 1709304473481216
-    m_Localized: 'And turn that damn flashlight off, it''s annoying me! '
+    m_Localized: <b>Grandma's ghost:</b> "And turn that damn flashlight off, it's
+      annoying me! "
     m_Metadata:
       m_Items: []
   - m_Id: 2782144531951616

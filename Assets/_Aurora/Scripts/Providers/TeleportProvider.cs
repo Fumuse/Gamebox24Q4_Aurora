@@ -71,6 +71,8 @@ public class TeleportProvider : MonoBehaviour, IAction
 
     private async void Teleport()
     {
+        if (_interactableDoor != null) _interactableDoor.PuffAudio();
+
         bool isCanceled = await overlayWrapper.FadeIn(this, _cts.Token, fadeSpeed);
         if (isCanceled) return;
 

@@ -15,6 +15,8 @@ public class PhotoAlbumLoc4_DialogueProvider : IChangeDialogueProvider
     private int DialoguePoints { get; set; } = 0;
 
     public static Action OnDeath;
+    public static Action InEndDialogue;
+    public static Action<int> EndDialoguePoints;
 
     public PhotoAlbumLoc4_DialogueProvider(DialogueView view, SpriteLibraryAsset spriteLibrary, DialogueNodeLibraryAsset dialogueAssets)
     {
@@ -22,6 +24,8 @@ public class PhotoAlbumLoc4_DialogueProvider : IChangeDialogueProvider
         _spriteLibrary = spriteLibrary;
         _dialogueLibrary = dialogueAssets;
         _tagManager = GameManager.Instance.TagManager;
+        
+        InEndDialogue?.Invoke();
     }
     
     public void ChangeDialogue(ref DialogueNode dialogueNode, ActionSettings actionSettings)
@@ -91,6 +95,8 @@ public class PhotoAlbumLoc4_DialogueProvider : IChangeDialogueProvider
 
     private DialogueNode GetEndDialogueByPoints()
     {
+        EndDialoguePoints?.Invoke(DialoguePoints);
+        
         if (DialoguePoints >= 3)
         {
             return _dialogueLibrary.GetDialogueByEndId(DialogueCategory, "Loc_4_PhotoAlbum_EndDialogue_Final_4");

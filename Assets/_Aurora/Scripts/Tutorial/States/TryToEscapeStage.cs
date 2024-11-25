@@ -88,12 +88,9 @@ public class TryToEscapeStage : TutorialBaseState
 
     private void OnWhisperEnds(ActionSettings actionSettings)
     {
-        if (!_usedSettings.Contains(actionSettings)) return;
-        
         if (!_auroraSaysEnd)
         {
             _auroraSaysEnd = true;
-            return;
         }
     }
 

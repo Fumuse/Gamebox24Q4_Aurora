@@ -175,7 +175,7 @@ MonoBehaviour:
         m_WaitForCompletion: 0
         m_LocalVariables: []
       <NextDialogue>k__BackingField: {fileID: 11400000, guid: bd34ccbba0260d84e93d57accf90aa4e, type: 2}
-      <Condition>k__BackingField: {fileID: 0}
+      <Condition>k__BackingField: {fileID: 11400000, guid: 69350fe907e032a44a23079232c27a40, type: 2}
       acceptanceScaleCost: 0
       timeCost: 0
       tagsToAddAfterAction: []

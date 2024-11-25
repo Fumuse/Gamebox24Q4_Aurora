@@ -38,6 +38,7 @@ public class DialogueProvider : MonoBehaviour, IAction
 
     public void Execute(ActionSettings settings)
     {
+        AmbienceAudioController.Instance.PuffUIAudio("UI", "DialogueSound");
         _actionSettings = settings;
 
         if (settings != null && settings.DialogueRoot != null)

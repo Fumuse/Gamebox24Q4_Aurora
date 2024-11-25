@@ -25,6 +25,13 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 758745e89faad8b49a60401991fcd31c
+    m_Address: Kat_upokoenie
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: f6e2ef50d5e71aa4084ffae29d126493, type: 2}
   m_SchemaSet:

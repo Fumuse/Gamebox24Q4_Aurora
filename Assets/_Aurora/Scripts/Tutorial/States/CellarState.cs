@@ -180,6 +180,8 @@ public class CellarState : TutorialBaseState
     {
         if (!interactable.Equals(_grandmaCorpse)) return;
         
+        interactable.PuffAudio();
+        
         _player.BlockMove();
         InteractableObject.BlockInteractedObject(_grandmaCorpse);
         _lastInteractable = interactable;

@@ -175,6 +175,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (!startInTutorial)
         {
+            AmbienceAudioController.Instance.StartPlayBackgroundMusic();
             TagManager.AddTag(new Tag(TagEnum.TutorialEnded));
             InitPlayer();
             return;
@@ -199,6 +200,8 @@ public class GameManager : Singleton<GameManager>
         }
 
         player.ChangePlayerSpriteByStage(houseStage);
+
+        AmbienceAudioController.Instance.ChangeBackgroundMusicByStage(houseStage);
     }
 
     private void OnTagAdded()

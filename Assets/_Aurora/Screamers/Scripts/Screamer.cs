@@ -9,6 +9,8 @@ public abstract class Screamer : MonoBehaviour
     [SerializeField] protected ScreamerView _screamerView;
     [SerializeField, HideInInspector] private Transform _playerTransform;
 
+    [SerializeField] private AudioSource screamerAudioSource;
+
     private PlayerStateMachine _player;
     private CancellationTokenSource _cts = new();
     
@@ -85,5 +87,15 @@ public abstract class Screamer : MonoBehaviour
     protected void FlipX()
     {
         _screamerView.FlipX(_playerTransform.position);
+    }
+
+    protected void StartAmbience()
+    {
+        screamerAudioSource.Play();
+    }
+
+    protected void StopAmbience()
+    {
+        screamerAudioSource.Stop();
     }
 }

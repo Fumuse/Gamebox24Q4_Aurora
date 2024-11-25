@@ -26,4 +26,5 @@
     PoemFromChestTaken = 210,
     PaintingTaken = 220,
     GramophoneTaken = 230,
+    StatuetteTaken = 240,
 }

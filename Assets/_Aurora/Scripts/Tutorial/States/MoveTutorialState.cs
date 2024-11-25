@@ -28,6 +28,9 @@ public class MoveTutorialState : TutorialBaseState
         _whisperProvider = GameProvidersManager.Instance.WhisperProvider;
         _whisperProvider.OnWhisperEnds += OnWhisperEnds;
         
+        AmbienceAudioController.Instance.PuffAudio("Ambience", "Tutorial_Exit_Door");
+        AmbienceAudioController.Instance.StartPlayBackgroundMusic();
+        
         GrandmaCalls();
         SayAboutMoving();
     }

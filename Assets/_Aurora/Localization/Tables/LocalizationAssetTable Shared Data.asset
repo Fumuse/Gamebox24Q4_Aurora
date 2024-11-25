@@ -103,6 +103,10 @@ MonoBehaviour:
     m_Key: DeathMovie
     m_Metadata:
       m_Items: []
+  - m_Id: 5813999875289088
+    m_Key: AcceptanceMovie
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 9026372752308961477
@@ -133,6 +137,10 @@ MonoBehaviour:
           - en
           - ru
         - m_KeyId: 4410460938596352
+          m_TableCodes:
+          - en
+          - ru
+        - m_KeyId: 5813999875289088
           m_TableCodes:
           - en
           - ru

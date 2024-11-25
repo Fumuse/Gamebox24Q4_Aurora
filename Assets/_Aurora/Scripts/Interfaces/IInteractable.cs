@@ -10,6 +10,8 @@ public interface IInteractable
     public int ClickSort { get; }
     
     public bool IsViewed { get; }
+
+    public void PuffAudio();
     
     public void PreInteract();
     public void Interact();
@@ -17,7 +19,6 @@ public interface IInteractable
     public void FinishInteract();
     public void BlockInteract();
     public void UnblockInteract();
-
     public void ForceEnableObject();
     
     public void ChangeActionProvider(ListedUnityEvent actions);

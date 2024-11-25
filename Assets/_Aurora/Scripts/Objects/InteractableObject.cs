@@ -13,6 +13,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
     [Header("Подключение зависимостей")]
     [SerializeField] protected Transform objectPosition;
     [SerializeField] private InteractableObjectUI ui;
+    [SerializeField] private AudioSource audioSource;
 
     public bool IsInteractBlocked { get; private set; }
     public bool IsInteracted { get; private set; }
@@ -65,6 +66,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
     {
         objectPosition ??= this.transform;
         ui ??= GetComponent<InteractableObjectUI>();
+        audioSource ??= GetComponent<AudioSource>();
     }
 
     public virtual void Init()
@@ -139,6 +141,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
     /// </summary>
     public virtual void Interact()
     {
+        AmbienceAudioController.Instance.PuffUIAudio("UI", "BasicClickSound");
         OnInteracted?.Invoke(this);
         
         actionProvider?.Invoke();
@@ -230,5 +233,10 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
         this.gameObject.SetActive(true);
         IsViewed = true;
         this.enabled = true;
+    }
+
+    public void PuffAudio()
+    {
+        AmbienceAudioController.Instance.PuffAudio(audioSource, audioSource.clip);
     }
 }

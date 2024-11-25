@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b28c49fcfd7488d84c31c4971588691, type: 3}
   m_Name: Loc_6_Gramophone
   m_EditorClassIdentifier: 
-  light: {fileID: 21300000, guid: 75f69962fa8b71148bc7c2bf01e53949, type: 3}
+  light: {fileID: 21300000, guid: dd59a121fa560a64388c232aa79350f5, type: 3}
   dark: {fileID: 21300000, guid: dd59a121fa560a64388c232aa79350f5, type: 3}
   broken: {fileID: 21300000, guid: dd59a121fa560a64388c232aa79350f5, type: 3}

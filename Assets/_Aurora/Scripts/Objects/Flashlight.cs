@@ -7,6 +7,7 @@ public class Flashlight : MonoBehaviour
 {
     [SerializeField] private SpriteMask mask;
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField, HideInInspector] private InputReader reader;
     
     public delegate void FlashlightFindObject(IInteractable interactable);
@@ -56,6 +57,7 @@ public class Flashlight : MonoBehaviour
         if (maskActive)
         {
             mask.gameObject.SetActive(false);
+            AmbienceAudioController.Instance.PuffAudio(audioSource, "Flashlight", "Flashlight_Off");
         }
         else
         {
@@ -67,6 +69,7 @@ public class Flashlight : MonoBehaviour
     {
         if (GameManager.Instance.CurrentStage == HouseStageEnum.Light) return;
         mask.gameObject.SetActive(true);
+        AmbienceAudioController.Instance.PuffAudio(audioSource, "Flashlight", "Flashlight_On");
         OnFlashLightTurnOn?.Invoke();
 
         _manager.AcceptanceScale.SpentAcceptance(

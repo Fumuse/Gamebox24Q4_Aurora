@@ -22,6 +22,7 @@ public class WhisperProvider : MonoBehaviour, IAction
     private TeleportProvider _teleportProvider;
 
     private int _localizedTextCharsCount = 1;
+    private bool _hasInteractedItemWhisper = false;
 
     public Action<ActionSettings> OnWhisperEnds;
 
@@ -58,11 +59,17 @@ public class WhisperProvider : MonoBehaviour, IAction
         _cts = new();
         
         _actionSettings = settings;
+
+        _hasInteractedItemWhisper = true;
         ToWhisper(_lastInteractable);
     }
 
-    public void EmptyExecute(ActionSettings settings)
-    {        
+    public async void EmptyExecute(ActionSettings settings)
+    {
+        bool isCanceled = await UniTask.WaitWhile(() => _hasInteractedItemWhisper, cancellationToken: _cts.Token)
+            .SuppressCancellationThrow();
+        if (isCanceled) return;
+        
         _cts?.Cancel();
         _cts = new();
         
@@ -98,6 +105,7 @@ public class WhisperProvider : MonoBehaviour, IAction
                 this.AfterInteractChanges(currentInteractable, _actionSettings);
             }
             currentInteractable.FinishInteract();
+            _hasInteractedItemWhisper = false;
         }
     }
 
@@ -120,6 +128,7 @@ public class WhisperProvider : MonoBehaviour, IAction
     {
         _lastInteractable = null;
         _actionSettings = null;
+        _hasInteractedItemWhisper = false;
     }
 
     private void UpdateWhisperText(string text)
@@ -129,6 +138,8 @@ public class WhisperProvider : MonoBehaviour, IAction
 
     public async void Cancel()
     {
+        _hasInteractedItemWhisper = false;
+        
         _cts?.Cancel();
         _cts = new();
 

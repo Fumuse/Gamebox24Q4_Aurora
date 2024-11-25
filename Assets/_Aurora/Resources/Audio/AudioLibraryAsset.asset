@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c022a38c06fd4e539698c21b02e3bb5a, type: 3}
+  m_Name: AudioLibraryAsset
+  m_EditorClassIdentifier: 
+  categories:
+  - categoryName: Ambience
+    clips:
+    - label: Tutorial_Exit_Door
+      clip: {fileID: 8300000, guid: 8389c761c75603549a9b1ea8f283cd80, type: 3}
+  - categoryName: BackgroundMusic
+    clips:
+    - label: Light
+      clip: {fileID: 8300000, guid: d4d72327e8ecc4a41a2e7cca2d458ea7, type: 3}
+    - label: Dark
+      clip: {fileID: 8300000, guid: b6a01fad1ef67e844898920d90d934b5, type: 3}
+    - label: Broken
+      clip: {fileID: 8300000, guid: 700657f5852b20647af746540c244dbd, type: 3}
+  - categoryName: Flashlight
+    clips:
+    - label: Flashlight_On
+      clip: {fileID: 8300000, guid: bbb352f22562fda4fa8658c985afdc0e, type: 3}
+    - label: Flashlight_Off
+      clip: {fileID: 8300000, guid: f9cde342c61d577488af88dcab4ad4b2, type: 3}
+  - categoryName: UI
+    clips:
+    - label: DialogueSound
+      clip: {fileID: 8300000, guid: c19a80682d6e01042baa3dcb578d1579, type: 3}
+    - label: BasicClickSound
+      clip: {fileID: 8300000, guid: 8e19eb3f6e2881d499f6b95e24da0325, type: 3}

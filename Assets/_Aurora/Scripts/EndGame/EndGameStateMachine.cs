@@ -18,9 +18,14 @@ public class EndGameStateMachine : StateMachine
     [Header("Катсцены на конец игры")]
     [SerializeField] private ActionSettings deathMovieSettings;
     [SerializeField] private ActionSettings deathReplacementMovieSettings;
+    [SerializeField] private ActionSettings winAcceptanceSettings;
+    [SerializeField] private ActionSettings winEscapeSettings;
 
     private CancellationTokenSource _cts = new();
     private ShowVideoSceneProvider _videoSceneProvider;
+
+    public ActionSettings WinAcceptanceSettings => winAcceptanceSettings;
+    public ActionSettings WinEscapeSettings => winEscapeSettings;
 
     public ActionSettingsKeyPair[] Settings => settings;
     public IReadOnlyList<InteractableObjectsKeyPair> ObjectsMap => objectsMap;
@@ -51,6 +56,9 @@ public class EndGameStateMachine : StateMachine
         PhotoAlbumLoc4_DialogueProvider.OnDeath += OnPhotoAlbumDeath;
         Slenderman.PlayerDeadFromScreamer += OnPlayerDeadFromScreamer;
         Timer.OnTimeEnded += OnTimeEnded;
+        
+        WindowLoc6_DialogueProvider.InEndDialogue += OnInEndDialogue;
+        PhotoAlbumLoc4_DialogueProvider.InEndDialogue += OnInEndDialogue;
     }
 
     protected override void OnDisable()
@@ -62,22 +70,21 @@ public class EndGameStateMachine : StateMachine
         Slenderman.PlayerDeadFromScreamer -= OnPlayerDeadFromScreamer;
         ShowVideoSceneProvider.OnVideoHiddenAfterEnd -= OnVideoHiddenAfterEnd;
         Timer.OnTimeEnded -= OnTimeEnded;
+
+        WindowLoc6_DialogueProvider.InEndDialogue -= OnInEndDialogue;
+        PhotoAlbumLoc4_DialogueProvider.InEndDialogue -= OnInEndDialogue;
     }
 
     private void OnDeath()
     {
         _videoSceneProvider = GameProvidersManager.Instance.VideoSceneProvider;
         _videoSceneProvider.Execute(deathMovieSettings);
-
-        ShowVideoSceneProvider.OnVideoHiddenAfterEnd += OnVideoHiddenAfterEnd;
     }
 
     private void OnPhotoAlbumDeath()
     {        
         _videoSceneProvider = GameProvidersManager.Instance.VideoSceneProvider;
         _videoSceneProvider.Execute(deathReplacementMovieSettings);
-
-        ShowVideoSceneProvider.OnVideoHiddenAfterEnd += OnVideoHiddenAfterEnd;
     }
 
     private async void OnPlayerDeadFromScreamer(PlayerStateMachine player)
@@ -108,6 +115,14 @@ public class EndGameStateMachine : StateMachine
         return await tcs.Task;
     }
 
+    private void OnInEndDialogue()
+    {
+        Timer.OnTimeEnded -= OnTimeEnded;
+        
+        ShowVideoSceneProvider.OnVideoHiddenAfterEnd += OnVideoHiddenAfterEnd;
+        SwitchState(new InEndDialogueState(this));
+    }
+
     private async void OnTimeEnded()
     {
         Timer.OnTimeEnded -= OnTimeEnded;
@@ -116,17 +131,10 @@ public class EndGameStateMachine : StateMachine
         bool isCanceled = await UniTask.WaitWhile(() => player.InInteract, cancellationToken: _cts.Token)
             .SuppressCancellationThrow();
         if (isCanceled) return;
+
+        if (currentState is InEndDialogueState) return;
         
         SwitchState(new TimeEndedState(this));
-    }
-    
-    private void LockDoor(string doorKey)
-    {
-        foreach (DoorKeyPair pair in DoorsMap)
-        {
-            if (pair.doorKey != doorKey) continue;
-            pair.door.gameObject.SetActive(false);
-        }
     }
     
     public IInteractable GetInteractableByKey(string key)

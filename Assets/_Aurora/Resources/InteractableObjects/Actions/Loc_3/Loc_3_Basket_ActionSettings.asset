@@ -21,7 +21,6 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  whisperBlockedMoveState: 1
   dialogueRoot: {fileID: 0}
   item: {fileID: 0}
   catSceneClip:
@@ -33,7 +32,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
   timeCost: 0
-  acceptanceCost: 0
+  acceptanceCost: 10
   changeObjectEventAfterPlay: {fileID: 0}
   changeObjectSettingsAfterPlay: {fileID: 0}
   tagsToAddAfterAction: []

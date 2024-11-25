@@ -32,6 +32,8 @@ public class DialogueView : MonoBehaviour
     private string _actorName;
     private bool _isButtonView;
 
+    private AmbienceAudioController _ambienceAudioController;
+
     #region Show Some Image Action
     private bool _needToShowSomeImage = false;
     private Sprite _someImageSpriteFromResponse;
@@ -49,6 +51,8 @@ public class DialogueView : MonoBehaviour
                 _buttonsTmp[i] = Buttons[i].GetComponentInChildren<TMP_Text>();
             }
         }
+
+        _ambienceAudioController = AmbienceAudioController.Instance;
     }
 
     public void Show()
@@ -265,6 +269,9 @@ public class DialogueView : MonoBehaviour
         IsCloseButtonClicked = false;
         closeDialogueButton.onClick.RemoveAllListeners();
         closeDialogueButton.onClick.AddListener(() => IsCloseButtonClicked = true);
+        closeDialogueButton.onClick.AddListener(() => 
+                _ambienceAudioController.PuffUIAudio("UI", "DialogueSound")
+            );
         closeDialogueButton.gameObject.SetActive(true);
     }
 
@@ -289,6 +296,8 @@ public class DialogueView : MonoBehaviour
 
     private void OnResponseSelected(DialogueEventsTypeEnum responseType, Response response, DialogueNode nextDialog)
     {
+        _ambienceAudioController.PuffUIAudio("UI", "DialogueSound");
+        
         // string responseAction = response.ResponseText.GetLocalizedString();
         // PlayerAction.PerformAction(responseAction);
 

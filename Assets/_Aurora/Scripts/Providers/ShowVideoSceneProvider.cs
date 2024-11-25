@@ -84,6 +84,8 @@ public class ShowVideoSceneProvider : MonoBehaviour, IAction
         
         videoPlayer.prepareCompleted -= PlayVideo;
         
+        if (_lastInteractable != null) _lastInteractable.PuffAudio();
+        AmbienceAudioController.Instance.PausePlayBackgroundMusic();
         vp.Play();
 
         bool isCanceled = await UniTask.WaitUntil(vp, (p) => p.frame == 0, cancellationToken: _cts.Token)
@@ -115,6 +117,8 @@ public class ShowVideoSceneProvider : MonoBehaviour, IAction
             _lastInteractable.FinishInteract();
         }
         OnVideoHiddenAfterEnd?.Invoke();
+
+        AmbienceAudioController.Instance.StartPlayBackgroundMusic();
     }
 
     private async void ShowVideoCanvas()
