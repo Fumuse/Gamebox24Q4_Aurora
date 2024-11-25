@@ -21,24 +21,35 @@ public class Shadow : Screamer
     [SerializeField] private float defaultAlpha = 0.85f;
     [SerializeField] private Vector2 spawnOffset = Vector2.zero;
 
+    [Header("Расположение скримера при спавне")] 
+    [SerializeField] private float xPositionMin = -1.75f;
+    [SerializeField] private float xPositionMax = -6.57f;
+    [SerializeField] private float yPositionMin = -2.5f;
+    [SerializeField] private float yPositionMax = -3f;
+
     private Camera _camera;
     
     private bool _isIlluminated;
-    //private bool _isSpawnBehindTheBack;
-    //private float _distanceHideShadow = 2.5f;
-    private const float XPositionMin = -1.75f;
-    private const float XPositionMax = 6.57f;
-    private const float YPositionMin = -0.76f;
-    private const float YPositionMax = -1.73f;
+    private bool _isSpawnBehindTheBack;
+    private float _distanceHideShadow = 3.5f;
     private const float YOffsetPositionShadow = -1.5f;
 
     private CancellationTokenSource _cts = new();
 
     private Vector3 CameraPosition => _camera.transform.position;
 
+    private TeleportProvider _teleportProvider;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        
+        _camera ??= Camera.main;
+    }
+
     private void Start()
     {
-        _camera = Camera.main;
+        _teleportProvider ??= GameProvidersManager.Instance.TeleportProvider;
     }
 
     private void OnEnable()
@@ -46,18 +57,14 @@ public class Shadow : Screamer
         _cts ??= new();
         
         int alpha = 0;
-
-        if (showShadowInStart)
-        {
-            _isIlluminated = false;
-            //_isSpawnBehindTheBack = false;
-
-            alpha = 1;
-        }
-
         _screamerView.SetNewColorAlpha(alpha);
 
         Flashlight.OnFlashlightFindScreamer += OnFlashlightFindScreamer;
+        
+        if (_teleportProvider == null)
+            _teleportProvider = GameProvidersManager.Instance.TeleportProvider;
+
+        _teleportProvider.OnPlayerTeleported += OnPlayerTeleported;
     }
 
     private void OnDisable()
@@ -65,25 +72,26 @@ public class Shadow : Screamer
         _cts?.Cancel();
         
         Flashlight.OnFlashlightFindScreamer -= OnFlashlightFindScreamer;
+        _teleportProvider.OnPlayerTeleported -= OnPlayerTeleported;
     }
 
-    // private async void Update()
-    // {
-    //     if (_isIlluminated) return;
-    //
-    //     if (_isSpawnBehindTheBack == false)
-    //     {
-    //         FlipX();
-    //     }
-    //     else
-    //     {
-    //         if (Distance > _distanceHideShadow)
-    //         {
-    //             _isIlluminated = true;
-    //             await Hide().AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
-    //         }
-    //     }
-    // }
+    private async void Update()
+    {
+        if (_isIlluminated) return;
+    
+        if (_isSpawnBehindTheBack == false)
+        {
+            FlipX();
+        }
+        else
+        {
+            if (Distance > _distanceHideShadow)
+            {
+                _isIlluminated = true;
+                await Hide().AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
+            }
+        }
+    }
 
     private async void OnFlashlightFindScreamer(Screamer screamer)
     {
@@ -109,7 +117,7 @@ public class Shadow : Screamer
             gameObject.SetActive(true);
         
         _isIlluminated = false;
-        //_isSpawnBehindTheBack = true;
+        _isSpawnBehindTheBack = true;
 
         Vector2 position = PlayerPosition;
         position.y = YOffsetPositionShadow;
@@ -124,21 +132,22 @@ public class Shadow : Screamer
 
     public async void Spawn()
     {
+        _cts?.Cancel();
+        _cts = new();
+
+        _camera ??= Camera.main;
+
         _isIlluminated = false;
-        //_isSpawnBehindTheBack = false;
+        _isSpawnBehindTheBack = false;
 
         bool isCanceled = await UniTask.Delay(timeoutBeforeSpawn, cancellationToken: _cts.Token).SuppressCancellationThrow();
         if (isCanceled) return;
         transform.position = RandomPosition();
+        
+        if (!gameObject.activeInHierarchy)
+            gameObject.SetActive(true);
 
-        isCanceled = await Show().AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
-        if (isCanceled) return;
-
-        if (Random.Range(0, 50) > 20)
-        {
-            _isIlluminated = true;
-            await Hide();
-        }
+        await Show().AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
     }
 
     public override void Activate(bool activate)
@@ -147,8 +156,13 @@ public class Shadow : Screamer
     }
 
     private Vector3 RandomPosition() => new Vector2(
-                Random.Range(CameraPosition.x + XPositionMin,
-                    CameraPosition.x + XPositionMax), 
-                Random.Range(YPositionMin, YPositionMax)
+                Random.Range(CameraPosition.x + xPositionMin,
+                    CameraPosition.x + xPositionMax), 
+                Random.Range(yPositionMin, yPositionMax)
             );
+    
+    private async void OnPlayerTeleported()
+    {
+        await Hide().AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
+    }
 }

@@ -18,6 +18,8 @@ public class PlayerStateMachine : StateMachine
     public Camera MainCamera { get; private set; }
     public SpriteRenderer SpriteRenderer { get; private set; }
 
+    public bool InInteract => currentState is PlayerInteractState;
+
     public Vector2 LookDirection
     {
         get

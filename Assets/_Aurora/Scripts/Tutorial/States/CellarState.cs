@@ -1,6 +1,6 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 public class CellarState : TutorialBaseState
 {
@@ -13,6 +13,8 @@ public class CellarState : TutorialBaseState
     private IInteractable _candleBox;
     private IInteractable _lastInteractable;
     private PlayerStateMachine _player;
+
+    private List<ActionSettings> _usedSettings = new();
 
     private CancellationTokenSource _cts;
 
@@ -56,6 +58,7 @@ public class CellarState : TutorialBaseState
         if (isCanceled) return;
         
         _whisperProvider.EmptyExecute(setting);
+        _usedSettings.Add(setting);
     }
 
     private async void GrandmaSaySentences()
@@ -96,6 +99,7 @@ public class CellarState : TutorialBaseState
         if (isCanceled) return;
         
         _whisperProvider.EmptyExecute(setting);
+        _usedSettings.Add(setting);
     }
 
     private void PreEscape()
@@ -141,9 +145,9 @@ public class CellarState : TutorialBaseState
         stateMachine.SwitchState(new TryToEscapeStage(stateMachine));
     }
 
-    private void OnWhisperEnds()
+    private void OnWhisperEnds(ActionSettings actionSettings)
     {
-        if (!_lastInteractable.Equals(_grandmaCorpse)) return;
+        if (!_usedSettings.Contains(actionSettings)) return;
         
         if (!_grandmaSays1Sentence)
         {

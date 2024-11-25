@@ -129,6 +129,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
         {
             ui.BodySprite.enabled = !GameManager.Instance.TutorialStage;
         }
+        else ui.BodySprite.enabled = true;
         
         IsViewed = needToShow;
     }
@@ -221,5 +222,13 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
     {
         if (!this) return;
         OnDestroy();
+    }
+
+    public void ForceEnableObject()
+    {
+        UnblockInteract();
+        this.gameObject.SetActive(true);
+        IsViewed = true;
+        this.enabled = true;
     }
 }

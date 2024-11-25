@@ -17,6 +17,8 @@ public interface IInteractable
     public void FinishInteract();
     public void BlockInteract();
     public void UnblockInteract();
+
+    public void ForceEnableObject();
     
     public void ChangeActionProvider(ListedUnityEvent actions);
 }

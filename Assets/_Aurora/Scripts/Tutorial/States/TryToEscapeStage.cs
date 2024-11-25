@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 
 public class TryToEscapeStage : TutorialBaseState
@@ -10,6 +11,8 @@ public class TryToEscapeStage : TutorialBaseState
     private CancellationTokenSource _cts = new();
 
     private bool _auroraSaysEnd = false;
+
+    private List<ActionSettings> _usedSettings = new();
     
     public TryToEscapeStage(TutorialStateMachine stateMachine) : base(stateMachine)
     {}
@@ -63,6 +66,7 @@ public class TryToEscapeStage : TutorialBaseState
         if (isCanceled) return;
 
         _whisperProvider.EmptyExecute(setting);
+        _usedSettings.Add(setting);
     }
 
     private async void SayAboutExploring()
@@ -79,10 +83,13 @@ public class TryToEscapeStage : TutorialBaseState
         if (isCanceled) return;
 
         _whisperProvider.EmptyExecute(setting);
+        _usedSettings.Add(setting);
     }
 
-    private void OnWhisperEnds()
+    private void OnWhisperEnds(ActionSettings actionSettings)
     {
+        if (!_usedSettings.Contains(actionSettings)) return;
+        
         if (!_auroraSaysEnd)
         {
             _auroraSaysEnd = true;

@@ -18,7 +18,7 @@ public class Timer : ISubscriberToCleanup
             _timeToEnd = value;
             Debug.Log(_timeToEnd);
         
-            if (_timeToEnd < 0)
+            if (_timeToEnd <= 0)
             {
                 _timeToEnd = 0;
                 OnTimeEnded?.Invoke();

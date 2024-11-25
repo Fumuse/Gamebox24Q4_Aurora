@@ -19,9 +19,11 @@ public class WhisperProvider : MonoBehaviour, IAction
     private ActionSettings _actionSettings;
     private CancellationTokenSource _cts;
 
+    private TeleportProvider _teleportProvider;
+
     private int _localizedTextCharsCount = 1;
 
-    public Action OnWhisperEnds;
+    public Action<ActionSettings> OnWhisperEnds;
 
     private void OnEnable()
     {
@@ -29,6 +31,9 @@ public class WhisperProvider : MonoBehaviour, IAction
         InteractableObject.OnInteracted += OnInteracted;
         InteractableObject.OnCancelInteract += OnCancelInteract;
         whisperLocalization.StringChanged += UpdateWhisperText;
+
+        if (_teleportProvider != null)
+            _teleportProvider.OnPlayerTeleported += OnPlayerTeleported;
     }
 
     private void OnDisable()
@@ -37,6 +42,14 @@ public class WhisperProvider : MonoBehaviour, IAction
         InteractableObject.OnInteracted -= OnInteracted;
         InteractableObject.OnCancelInteract -= OnCancelInteract;
         whisperLocalization.StringChanged -= UpdateWhisperText;
+        
+        if (_teleportProvider != null) 
+            _teleportProvider.OnPlayerTeleported -= OnPlayerTeleported;
+    }
+
+    private void Start()
+    {
+        _teleportProvider ??= GameProvidersManager.Instance.TeleportProvider;
     }
 
     public void Execute(ActionSettings settings)
@@ -73,7 +86,7 @@ public class WhisperProvider : MonoBehaviour, IAction
         if (isCanceled) return;
         
         EndWhisperInteract(currentInteractable);
-        OnWhisperEnds?.Invoke();
+        OnWhisperEnds?.Invoke(_actionSettings);
     }
 
     private void EndWhisperInteract([CanBeNull] IInteractable currentInteractable)
@@ -120,5 +133,10 @@ public class WhisperProvider : MonoBehaviour, IAction
         _cts = new();
 
        await whisperWrapper.FadeIn(this, _cts.Token, fadeSpeed);
+    }
+
+    private void OnPlayerTeleported()
+    {
+        Cancel();
     }
 }

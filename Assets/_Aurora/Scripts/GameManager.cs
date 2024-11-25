@@ -127,12 +127,13 @@ public class GameManager : Singleton<GameManager>
         CleanupEvents = cleanupEvents;
         CleanupEvents.Init();
         
+        inputReader.Init();
+        providersManager.Init();
+        
         Timer = new Timer(Settings.TimeToEnd);
         AcceptanceScale = new AcceptanceScale(Settings.MaxAcceptance);
         TagManager = new TagManager();
 
-        inputReader.Init();
-        providersManager.Init();
         unconditionalInformationHandler.Init();
         AmbienceController = new AmbienceController();
         InitObjects();

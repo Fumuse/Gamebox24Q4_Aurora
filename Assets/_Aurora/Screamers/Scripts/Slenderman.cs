@@ -8,8 +8,21 @@ public class Slenderman : Screamer
     [SerializeField] private float speedMove;
     [SerializeField] private float distanceAttack;
 
+    public static bool IsActive { get; private set; }
+
     private CancellationTokenSource _cts = new();
     private bool _isActivate;
+
+    public bool IsActivate
+    {
+        get => _isActivate;
+        private set
+        {
+            _isActivate = value;
+            IsActive = _isActivate;
+        }
+    }
+    
     private bool _readyToMove;
     private Vector2 _defaultPosition;
 
@@ -57,15 +70,15 @@ public class Slenderman : Screamer
 
     public override async void Activate(bool activate)
     {
-        if (_isActivate) return;
+        if (IsActivate) return;
         if (!gameObject.activeInHierarchy)
         {
             gameObject.SetActive(true);
         }
 
-        _isActivate = activate;
+        IsActivate = activate;
 
-        if (_isActivate)
+        if (IsActivate)
         {
             bool isCanceled = await Show().AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
             if (isCanceled) return;
@@ -81,10 +94,11 @@ public class Slenderman : Screamer
 
     public void ResetGhost()
     {
-        if (_isActivate == false) return;
+        if (IsActivate == false) return;
 
+        _isIdleAnimationEnded = false;
         _readyToMove = false;
-        _isActivate = false;
+        IsActivate = false;
         transform.position = _defaultPosition;
         _screamerView.AnimationMove(_readyToMove);
         _screamerView.SetNewColorAlpha(alpha: 0);

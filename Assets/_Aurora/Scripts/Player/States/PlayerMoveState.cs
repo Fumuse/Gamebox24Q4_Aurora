@@ -35,7 +35,7 @@ public class PlayerMoveState : PlayerBaseState
     private void OnMouseClicked(Vector2 mousePosition)
     {
         if (isClickedToUI) return;
-        
+
         targetPosition = stateMachine.MainCamera.ScreenToWorldPoint(mousePosition);
         Collider2D[] clickedColliders = Physics2D.OverlapPointAll(targetPosition, _interactableObjectMask);
 
@@ -48,6 +48,14 @@ public class PlayerMoveState : PlayerBaseState
                 {
                     if (interactable.IsInteractBlocked) continue;
                     if (!interactable.IsViewed) continue;
+
+                    if (Slenderman.IsActive)
+                    {
+                        if (!clickedCollider.TryGetComponent(out Door door))
+                        {
+                            continue;
+                        }
+                    }
                     
                     clickedItems.Add(interactable);
                 }

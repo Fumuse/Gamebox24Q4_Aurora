@@ -1,20 +1,19 @@
-using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public abstract class StateMachine : MonoBehaviour
 {
-    private State _currentState;
+    protected State currentState;
     private CancellationTokenSource _cts;
 
     protected virtual PlayerLoopTiming UpdateYield => PlayerLoopTiming.Update;
 
     public void SwitchState(State state)
     {
-        _currentState?.Exit();
-        _currentState = state;
-        _currentState?.Enter();
+        currentState?.Exit();
+        currentState = state;
+        currentState?.Enter();
     }
 
     protected virtual void OnEnable()
@@ -48,11 +47,11 @@ public abstract class StateMachine : MonoBehaviour
 
     private void AsyncUpdate()
     {
-        _currentState?.Tick();
+        currentState?.Tick();
     }
 
     private void OnDestroy()
     {
-        _currentState?.Exit();
+        currentState?.Exit();
     }
 }

@@ -3,7 +3,6 @@ using System;
 using System.Threading;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Localization;
 using UnityEngine.UI;
 
 public class DialogueView : MonoBehaviour

@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -56,7 +55,7 @@ public abstract class Screamer : MonoBehaviour
         _cts?.Cancel();
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _player = _playerTransform.GetComponent<PlayerStateMachine>();
     }

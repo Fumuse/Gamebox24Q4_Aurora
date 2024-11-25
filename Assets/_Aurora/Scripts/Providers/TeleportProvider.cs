@@ -52,6 +52,12 @@ public class TeleportProvider : MonoBehaviour, IAction
         Teleport();
     }
 
+    public void TeleportToConnectedRoom(Door door)
+    {
+        _interactableDoor = door;
+        Teleport();
+    }
+
     private void GetInteractableDoor()
     {
         if (!_lastInteractable.GameObject.TryGetComponent(out IDoor door))

@@ -89,6 +89,16 @@ public class PlayerInteractState : PlayerBaseState
                     return;
                 }
 
+                if (Slenderman.IsActive)
+                {
+                    if (!clickedCollider.TryGetComponent(out Door door))
+                    {
+                        _interactable.DeclineInteract();
+                        stateMachine.SwitchState(new PlayerMoveState(stateMachine));
+                        return;
+                    }
+                }
+                
                 if (!interactable.IsInteractBlocked && interactable.IsViewed)
                 {
                     _interactable.DeclineInteract();

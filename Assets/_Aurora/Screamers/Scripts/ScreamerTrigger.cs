@@ -1,23 +1,24 @@
 using UnityEngine;
 
-public class ScreamerTrigger : MonoBehaviour
+public class ScreamerTrigger : MonoBehaviour, IIlluminated
 {
     [SerializeField] private Screamer _screamer;
     [SerializeField] private Transform _positionSpawn;
-    private bool _isTrigger;
+    
+    private bool _isTriggered;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public bool Illuminate()
     {
-        if (_isTrigger) return;
+        if (_isTriggered) return false;
 
-        if (_screamer) 
+        if (_screamer)
         {
-            if (collision.TryGetComponent(out FlashlightTEST flashlight)) //поменять на Flashlight
-            {
-                _isTrigger = true;
-                _screamer.transform.position = _positionSpawn.position;
-                _screamer.Activate(true);
-            }
+            _isTriggered = true;
+            _screamer.transform.localPosition = _positionSpawn.position;
+            _screamer.Activate(true);
+            return true;
         }
+        
+        return false;
     }
 }

@@ -1,7 +1,4 @@
-using System.Threading;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MenuController : SceneController
 {

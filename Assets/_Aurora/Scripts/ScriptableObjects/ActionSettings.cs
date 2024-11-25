@@ -8,9 +8,6 @@ public class ActionSettings : ScriptableObject
     [SerializeField] private LocalizedString whisperTextKey;
     public LocalizedString WhisperText => whisperTextKey;
 
-    [SerializeField] private bool whisperBlockedMoveState = true;
-    public bool WhisperBlockedMoveState => whisperBlockedMoveState;
-
     [SerializeField] private DialogueNode dialogueRoot;
     public DialogueNode DialogueRoot => dialogueRoot;
 

@@ -87,7 +87,7 @@ public class DialogueProvider : MonoBehaviour, IAction
 
         if (dialogueEndId == "Loc_5_CandleBox_TakenReaction")
         {
-            _lastInteractable.Offset = 7;
+            _lastInteractable.Offset = 4;
         }
     }
 
