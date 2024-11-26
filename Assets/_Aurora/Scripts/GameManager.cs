@@ -15,6 +15,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private PlayerStateMachine player;
     [SerializeField] private TutorialStateMachine tutorial;
     [SerializeField] private InputReader inputReader;
+    [SerializeField] private Flashlight flashlight;
     [SerializeField] private MouseHoverDetector mouseHoverDetector;
     [SerializeField] private UnconditionalInformationHandler unconditionalInformationHandler;
 
@@ -97,6 +98,7 @@ public class GameManager : Singleton<GameManager>
         cleanupEvents ??= FindAnyObjectByType<CleanupEvents>();
         mouseHoverDetector ??= FindAnyObjectByType<MouseHoverDetector>();
         unconditionalInformationHandler ??= FindAnyObjectByType<UnconditionalInformationHandler>();
+        flashlight ??= FindAnyObjectByType<Flashlight>();
     }
 
     private void Start()
@@ -133,6 +135,8 @@ public class GameManager : Singleton<GameManager>
         Timer = new Timer(Settings.TimeToEnd);
         AcceptanceScale = new AcceptanceScale(Settings.MaxAcceptance);
         TagManager = new TagManager();
+        
+        flashlight.Init();
 
         unconditionalInformationHandler.Init();
         AmbienceController = new AmbienceController();

@@ -29,11 +29,16 @@ public class Flashlight : MonoBehaviour
         mainCamera ??= Camera.main;
     }
 
+    public void Init()
+    {
+        _manager = GameManager.Instance;
+    }
+
     private void OnEnable()
     {
         _cts = new();
         mask.gameObject.SetActive(false);
-        
+
         InputReader.OnRightMouseClicked += OnRightMouseClicked;
     }
 
@@ -44,14 +49,12 @@ public class Flashlight : MonoBehaviour
         InputReader.OnRightMouseClicked -= OnRightMouseClicked;
     }
 
-    private void Start()
-    {
-        _manager = GameManager.Instance;
-    }
-
     private void OnRightMouseClicked(Vector2 mousePosition)
     {
-        if (GameManager.Instance.CurrentStage == HouseStageEnum.Light) return;
+        if (_manager == null) return;
+        if (_manager.CurrentStage == HouseStageEnum.Light) return;
+        if (_manager.Player.InInteract) return;
+        
         bool maskActive = mask.gameObject.activeInHierarchy;
         flashlightActive = !maskActive;
         if (maskActive)
@@ -67,7 +70,8 @@ public class Flashlight : MonoBehaviour
 
     private void TurnOnLight()
     {
-        if (GameManager.Instance.CurrentStage == HouseStageEnum.Light) return;
+        if (_manager.CurrentStage == HouseStageEnum.Light) return;
+        
         mask.gameObject.SetActive(true);
         AmbienceAudioController.Instance.PuffAudio(audioSource, "Flashlight", "Flashlight_On");
         OnFlashLightTurnOn?.Invoke();

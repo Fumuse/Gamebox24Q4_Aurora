@@ -9,6 +9,7 @@ public class MenuController : SceneController
     
     private bool _settingsOpened = false;
     private bool _creditsOpened = false;
+    private bool _gameStarts = false;
 
     private void Start()
     {
@@ -29,6 +30,8 @@ public class MenuController : SceneController
 
     public void GameStart()
     {
+        if (_gameStarts) return;
+        _gameStarts = true;
         LoadSceneAsync(gameSceneIndex);
     }
     
