@@ -208,8 +208,9 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
 
     public bool Illuminate()
     {
-        if (conditionToView == null || !conditionToView.IsViewOnFlashLight) return false;
         if (IsViewed) return false;
+        if (conditionToView == null || !conditionToView.IsViewOnFlashLight) return false;
+        if (!conditionToView.IsViewOnFlashLightInTutorial && GameManager.Instance.TutorialStage) return false;
         
         IsViewed = true;
         CheckConditionToView();

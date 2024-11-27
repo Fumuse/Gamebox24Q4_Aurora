@@ -5,6 +5,9 @@ public class InteractableObjectCondition : ObjectCondition
 {
     [SerializeField] protected bool viewOnFlashlight = false;
     public bool IsViewOnFlashLight => viewOnFlashlight;
+    
+    [SerializeField] protected bool viewOnFlashlightInTutorial = false;
+    public bool IsViewOnFlashLightInTutorial => viewOnFlashlightInTutorial;
 
     [SerializeField] protected bool canHideAfterView = false;
     public bool CanHideAfterView => canHideAfterView;
