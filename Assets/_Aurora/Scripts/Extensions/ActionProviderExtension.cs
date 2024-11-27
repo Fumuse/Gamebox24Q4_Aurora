@@ -30,9 +30,17 @@ public static class ActionProviderExtension
         );
     }
 
+    public static void SpendAcceptanceScale(this IAction action, ActionSettings actionSettings)
+    {
+        GameManager.Instance.AcceptanceScale.SpentAcceptance(
+                actionSettings.AcceptanceCost
+            );
+    }
+
     public static void AfterInteractChanges(this IAction action, IInteractable interactable, ActionSettings actionSettings)
     {
         action.SpendTime(actionSettings);
+        action.SpendAcceptanceScale(actionSettings);
         action.AddingTagsAfterInteract(actionSettings);
         action.ChangeInteractableObjectAction(
             interactable, 

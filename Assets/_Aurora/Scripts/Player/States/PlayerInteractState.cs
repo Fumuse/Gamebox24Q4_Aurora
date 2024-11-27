@@ -32,7 +32,7 @@ public class PlayerInteractState : PlayerBaseState
         
         IsMoving = true; 
         
-        stateMachine.Animator.CrossFadeInFixedTime(moveAnimBlendTreeHash, CrossFadeDuration);
+        SetMovingAnimate();
     }
 
     private Vector3 GetMoveDirection()

@@ -144,4 +144,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.03846154
+    functionName: StepSound
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 90910d5687b96804990f0860d8cf4b57, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5769231
+    functionName: StepSound
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: c7262f9de9aebaf4fa3c38ee9592f5c0, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

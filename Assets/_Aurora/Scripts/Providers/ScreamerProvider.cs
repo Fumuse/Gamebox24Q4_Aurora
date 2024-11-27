@@ -46,9 +46,9 @@ public class ScreamerProvider : MonoBehaviour, IAction
         
         if (_lastInteractable != null)
         {
-            if (_actionSettings != null)
+            if (settings != null)
             {
-                this.AfterInteractChanges(_lastInteractable, _actionSettings);
+                this.AfterInteractChanges(_lastInteractable, settings);
             }
             _lastInteractable.FinishInteract();
         }

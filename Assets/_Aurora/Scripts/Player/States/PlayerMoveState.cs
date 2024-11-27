@@ -15,7 +15,7 @@ public class PlayerMoveState : PlayerBaseState
 
         _interactableObjectMask = GameManager.Instance.InteractableObjectLayerMask;
         
-        stateMachine.Animator.CrossFadeInFixedTime(moveAnimBlendTreeHash, CrossFadeDuration);
+        SetMovingAnimate();
     }
 
     public override void Tick()

@@ -114,4 +114,9 @@ public class ScreamerView : MonoBehaviour
     {
         OnIdleAnimationEnded?.Invoke();
     }
+
+    public void StepSound(AudioClip sound)
+    {
+        AmbienceAudioController.Instance.PuffAudio(sound);
+    }
 }

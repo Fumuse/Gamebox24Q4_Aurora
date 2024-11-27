@@ -25,8 +25,15 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 758745e89faad8b49a60401991fcd31c
-    m_Address: Kat_upokoenie
+  - m_GUID: ba6858f15f096854b980913e3daa2dd4
+    m_Address: kat_proval_zvuk
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d9c55a479241b2c4b8af380216d02323
+    m_Address: Kat_upokoenie_zvuk
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

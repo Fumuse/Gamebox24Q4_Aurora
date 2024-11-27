@@ -5,7 +5,7 @@ public class ScreamerSpawner : MonoBehaviour
 {
     [SerializeField] private TeleportProvider teleportProvider;
     [SerializeField] private Shadow[] screamersToSpawn;
-    [SerializeField, Range(1, 99)] private int chanceToSpawnScreamer = 35;
+    [SerializeField, Range(1, 99)] private int chanceToSpawnScreamer = 30;
     
     private void OnValidate()
     {
@@ -24,7 +24,7 @@ public class ScreamerSpawner : MonoBehaviour
 
     private void OnPlayerTeleported()
     {
-        if (GameManager.Instance.AcceptanceScale.Current > GameManager.Instance.Settings.AcceptanceToBrokenStage) return;
+        if (GameManager.Instance.AcceptanceScale.Current > GameManager.Instance.Settings.AcceptanceToScreamerSpawn) return;
 
         foreach (Shadow shadow in screamersToSpawn)
         {

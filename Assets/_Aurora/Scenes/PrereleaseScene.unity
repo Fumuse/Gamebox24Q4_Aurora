@@ -5705,7 +5705,7 @@ MonoBehaviour:
   teleportProvider: {fileID: 49016472}
   screamersToSpawn:
   - {fileID: 151390919}
-  chanceToSpawnScreamer: 35
+  chanceToSpawnScreamer: 30
 --- !u!1 &158143853
 GameObject:
   m_ObjectHideFlags: 0
@@ -21199,7 +21199,7 @@ SpriteRenderer:
   m_SortingLayerID: 1615682465
   m_SortingLayer: 1
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: eed587a8aa9614d459dbdce97365b734, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e29fe0201150be2439c67b939efdd1a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -31767,7 +31767,7 @@ SpriteRenderer:
   m_SortingLayerID: 1615682465
   m_SortingLayer: 1
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: b5a2d0a27aefc5a418e82dd674d52997, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 03dfcb4d43586a743af382ecf0e1ffcd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -35448,7 +35448,7 @@ Transform:
   m_GameObject: {fileID: 1712486288}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.557, y: -2.593, z: 0}
+  m_LocalPosition: {x: -1.558, y: -2.623, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -38784,7 +38784,7 @@ Transform:
   m_GameObject: {fileID: 1858511321}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.225, y: 0.656, z: 0}
+  m_LocalPosition: {x: -3.212, y: 0.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43050,6 +43050,10 @@ PrefabInstance:
       propertyPath: speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8259797041392103312, guid: 2abb4111e6a9b5948ad7fa679bd5f21e, type: 3}
+      propertyPath: playerState
+      value: 
+      objectReference: {fileID: 11400000, guid: ec970075c4ad1e84e9acb4bfcb671bc8, type: 2}
     - target: {fileID: 8807575213448836296, guid: 2abb4111e6a9b5948ad7fa679bd5f21e, type: 3}
       propertyPath: m_IsActive
       value: 0

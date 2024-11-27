@@ -424,6 +424,22 @@ MonoBehaviour:
     m_Localized: ...
     m_Metadata:
       m_Items: []
+  - m_Id: 6767472094244864
+    m_Localized: Read about TV programs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6767498841321472
+    m_Localized: Read about a strange dream.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6767515832446976
+    m_Localized: Read about dances.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6767525559037952
+    m_Localized: Put the diary back where it belongs.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

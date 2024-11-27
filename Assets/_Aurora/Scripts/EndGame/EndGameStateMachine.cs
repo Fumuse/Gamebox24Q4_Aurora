@@ -26,6 +26,8 @@ public class EndGameStateMachine : StateMachine
 
     public ActionSettings WinAcceptanceSettings => winAcceptanceSettings;
     public ActionSettings WinEscapeSettings => winEscapeSettings;
+    public ActionSettings DeathMovieSettings => deathMovieSettings;
+    public ActionSettings DeathReplacementMovieSettings => deathReplacementMovieSettings;
 
     public ActionSettingsKeyPair[] Settings => settings;
     public IReadOnlyList<InteractableObjectsKeyPair> ObjectsMap => objectsMap;

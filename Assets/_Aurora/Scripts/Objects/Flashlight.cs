@@ -53,7 +53,7 @@ public class Flashlight : MonoBehaviour
     {
         if (_manager == null) return;
         if (_manager.CurrentStage == HouseStageEnum.Light) return;
-        if (_manager.Player.InInteract) return;
+        if (InteractableObject.HasInteractingObject) return;
         
         bool maskActive = mask.gameObject.activeInHierarchy;
         flashlightActive = !maskActive;

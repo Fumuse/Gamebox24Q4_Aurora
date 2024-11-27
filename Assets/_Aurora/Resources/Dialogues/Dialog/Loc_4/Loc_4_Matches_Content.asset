@@ -65,7 +65,8 @@ MonoBehaviour:
       <Condition>k__BackingField: {fileID: 0}
       acceptanceScaleCost: 0
       timeCost: 10
-      tagsToAddAfterAction: []
+      tagsToAddAfterAction:
+      - tagName: 40
     - elementName: "\u041E\u0441\u0442\u0430\u0432\u0438\u0442\u044C."
       eventType: 0
       imageToShowAfterResponse:

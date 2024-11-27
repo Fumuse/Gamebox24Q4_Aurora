@@ -15,6 +15,8 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
     [SerializeField] private InteractableObjectUI ui;
     [SerializeField] private AudioSource audioSource;
 
+    public static bool HasInteractingObject { get; private set; } = false;
+
     public bool IsInteractBlocked { get; private set; }
     public bool IsInteracted { get; private set; }
     public Vector3 Position => objectPosition.position;
@@ -141,6 +143,8 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
     /// </summary>
     public virtual void Interact()
     {
+        HasInteractingObject = true;
+        
         AmbienceAudioController.Instance.PuffUIAudio("UI", "BasicClickSound");
         OnInteracted?.Invoke(this);
         
@@ -167,6 +171,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
     public void DeclineInteract()
     {
         IsInteracted = false;
+        HasInteractingObject = false;
         onDeclineInteract?.Invoke();
     }
 
@@ -176,6 +181,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
     public void FinishInteract()
     {
         IsInteracted = false;
+        HasInteractingObject = false;
         OnCancelInteract?.Invoke(this);
     }
 
