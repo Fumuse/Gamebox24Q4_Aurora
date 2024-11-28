@@ -14,8 +14,6 @@ public class InEndDialogueState : State
 
     public override void Enter()
     {
-        Debug.Log(this);
-
         _videoProvider = GameProvidersManager.Instance.VideoSceneProvider;
 
         InteractableObject.OnCancelInteract += OnCancelInteract;
