@@ -87,8 +87,6 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
 
     protected void OnDestroy()
     {
-        Debug.Log($"item {conditionToView} destroyed");
-        
         TagManager.OnTagAdded -= CheckConditionToView;
         TagManager.OnTagRemoved -= CheckConditionToView;
         AcceptanceScale.OnAcceptanceScaleChanged -= CheckConditionToView;
@@ -124,7 +122,6 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
         if (!conditionToView.PassesTimeCondition) needToShow = false;
         if (!conditionToView.PassesAcceptanceCondition) needToShow = false;
 
-        Debug.Log($"item {conditionToView} condition");
         if (conditionToView.NeedToHideGlobal)
         {
             this.gameObject.SetActive(needToShow);
@@ -236,7 +233,6 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIlluminated, ID
     public void DestroyObject()
     {
         if (!this) return;
-        Debug.Log($"destroyer watch {conditionToView} played");
         OnDestroy();
     }
 
