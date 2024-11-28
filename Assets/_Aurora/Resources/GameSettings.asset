@@ -16,3 +16,6 @@ MonoBehaviour:
   maxAcceptance: 100
   maxRoomShadowOverlayOpacity: 220
   stepRoomShadowOverlayOpacity: 30
+  acceptanceFlashlightCost: 5
+  acceptanceToBrokenStage: 50
+  acceptanceToScreamerSpawn: 75

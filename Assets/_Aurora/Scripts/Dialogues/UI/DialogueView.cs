@@ -32,6 +32,8 @@ public class DialogueView : MonoBehaviour
     private string _actorName;
     private bool _isButtonView;
 
+    private AmbienceAudioController _ambienceAudioController;
+
     #region Show Some Image Action
     private bool _needToShowSomeImage = false;
     private Sprite _someImageSpriteFromResponse;
@@ -49,6 +51,8 @@ public class DialogueView : MonoBehaviour
                 _buttonsTmp[i] = Buttons[i].GetComponentInChildren<TMP_Text>();
             }
         }
+
+        _ambienceAudioController = AmbienceAudioController.Instance;
     }
 
     public void Show()
@@ -64,8 +68,7 @@ public class DialogueView : MonoBehaviour
 
     private void OnEnable()
     {
-        if (_cts == null)
-            _cts = new();
+        _cts = new();
     }
 
     private void OnDisable()
@@ -177,8 +180,7 @@ public class DialogueView : MonoBehaviour
 
         if (index >= _dialogue.Response.Length) return;
 
-        string colorTag = _dialogue.Response[index].ColorText;
-        _buttonsTmp[index].text = colorTag != "" ? $"<color={colorTag}>{value}</color>" : value;
+        _buttonsTmp[index].text = value;
     }
 
     private void OnSpriteResponseChange(Sprite sprite)
@@ -210,14 +212,13 @@ public class DialogueView : MonoBehaviour
 
     private bool CanDisplayResponse(Response response)
     {
-        if (response.Condition.Count == 0) return true;
+        if (response.Condition == null) return true;
 
-        bool isCondition = false;
-        int count = response.Condition.FindAll(cond => cond.Required == PlayerAction.HasAction(cond.Action)).Count;
+        bool needToShow = response.Condition.PassesTagsCondition;
+        if (!response.Condition.PassesTimeCondition) needToShow = false;
+        if (!response.Condition.PassesAcceptanceCondition) needToShow = false;
 
-        if (count == response.Condition.Count) isCondition = true;
-
-        return isCondition;
+        return needToShow;
     }
 
     private void ButtonResponseInitialize(Dialogue dialog)
@@ -244,11 +245,8 @@ public class DialogueView : MonoBehaviour
 
                     Response response = dialog.Response[i];
 
-                    string colorTag = response.ColorText;
-
                     _responseText = response.ResponseText.GetLocalizedString();
-
-                    _buttonsTmp[i].text = colorTag != "" ? $"<color={colorTag}>{_responseText}</color>" : _responseText;
+                    _buttonsTmp[i].text = _responseText;
                     Buttons[i].gameObject.SetActive(true);
 
                     DialogueEventsTypeEnum responseEventType = response.EventType;
@@ -271,6 +269,9 @@ public class DialogueView : MonoBehaviour
         IsCloseButtonClicked = false;
         closeDialogueButton.onClick.RemoveAllListeners();
         closeDialogueButton.onClick.AddListener(() => IsCloseButtonClicked = true);
+        closeDialogueButton.onClick.AddListener(() => 
+                _ambienceAudioController.PuffUIAudio("UI", "DialogueSound")
+            );
         closeDialogueButton.gameObject.SetActive(true);
     }
 
@@ -295,8 +296,10 @@ public class DialogueView : MonoBehaviour
 
     private void OnResponseSelected(DialogueEventsTypeEnum responseType, Response response, DialogueNode nextDialog)
     {
-        string responseAction = response.ResponseText.GetLocalizedString();
-        PlayerAction.PerformAction(responseAction);
+        _ambienceAudioController.PuffUIAudio("UI", "DialogueSound");
+        
+        // string responseAction = response.ResponseText.GetLocalizedString();
+        // PlayerAction.PerformAction(responseAction);
 
         isClickResponse = true;
         HideButtons();
@@ -305,6 +308,24 @@ public class DialogueView : MonoBehaviour
             response.imageToShowAfterResponse.LoadAsset() : null;
         
         ClickResponse?.Invoke(responseType);
+
+        if (response.TagsToAddAfterAction.Length > 0)
+        {
+            foreach (Tag tag in response.TagsToAddAfterAction)
+            {
+                GameManager.Instance.TagManager.AddTag(tag);
+            }
+        }
+
+        if (response.AcceptanceScaleCost > 0)
+        {
+            GameManager.Instance.AcceptanceScale.SpentAcceptance(response.AcceptanceScaleCost);
+        }
+
+        if (response.TimeCost > 0)
+        {
+            GameManager.Instance.Timer.SpendTime(response.TimeCost);
+        }
 
         if (nextDialog)
         {
@@ -317,6 +338,15 @@ public class DialogueView : MonoBehaviour
         if (containerToShowSomeImage == null) return;
 
         _needToShowSomeImage = true;
+    }
+
+    public void ChangeSomeImageAction(Sprite sprite)
+    {
+        if (containerToShowSomeImage == null) return;
+        TriggerSomeImageAction();
+
+        _needToShowSomeImage = true;
+        _someImageSpriteFromResponse = sprite;
     }
 
     private void ShowSomeImageContainer()

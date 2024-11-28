@@ -9,11 +9,8 @@ EditorBuildSettings:
     path: Assets/_Aurora/Scenes/MainMenu.unity
     guid: 6aeb4cd158882a74f954eb75a5a9cbda
   - enabled: 1
-    path: Assets/_Aurora/Scenes/TutorialScreamerScene.unity
-    guid: 835be4f3bfe15684c9d6be9d4203ab61
-  - enabled: 0
-    path: Assets/_Aurora/Scenes/TutorialScene.unity
-    guid: d531dfafe15412e4397828ab3186755e
+    path: Assets/_Aurora/Scenes/PrereleaseScene.unity
+    guid: 2a34067a4e6f4934c8deb46450dd8d06
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: dc1244d790b08774dae5c9211e01e68a, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}

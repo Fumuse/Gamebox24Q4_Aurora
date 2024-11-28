@@ -1,9 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
-public class AcceptanceScale
+public class AcceptanceScale : ISubscriberToCleanup
 {
     private GameManager _manager;
+    private TeleportProvider _teleportProvider;
     private int _currentScale;
 
     public static Action OnAcceptanceScaleExhausted;
@@ -24,10 +25,6 @@ public class AcceptanceScale
             }
             else
             {
-                if (_currentScale <= _manager.Settings.AcceptanceToBrokenStage)
-                {
-                    _manager.CurrentStage = HouseStageEnum.Broken;
-                }
                 OnAcceptanceScaleChanged?.Invoke();
             }
         }
@@ -37,6 +34,9 @@ public class AcceptanceScale
     {
         _currentScale = maxAcceptance;
         _manager = GameManager.Instance;
+        _teleportProvider = GameProvidersManager.Instance.TeleportProvider;
+
+        _teleportProvider.OnPlayerTeleported += OnPlayerTeleported;
     }
 
     public void SpentAcceptance(int cost)
@@ -45,5 +45,18 @@ public class AcceptanceScale
         if (cost < 0) return;
         
         Current -= cost;
+    }
+
+    private void OnPlayerTeleported()
+    {
+        if (_currentScale > _manager.Settings.AcceptanceToBrokenStage) return;
+        
+        _manager.CurrentStage = HouseStageEnum.Broken;
+        _teleportProvider.OnPlayerTeleported -= OnPlayerTeleported;
+    }
+
+    public void Cleanup()
+    {
+        _teleportProvider.OnPlayerTeleported -= OnPlayerTeleported;
     }
 }

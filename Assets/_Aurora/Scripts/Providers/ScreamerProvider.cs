@@ -20,8 +20,7 @@ public class ScreamerProvider : MonoBehaviour, IAction
 
     private void OnEnable()
     {
-        if (_cts == null)
-            _cts = new();
+        _cts = new();
         
         InteractableObject.OnInteracted += OnInteracted;
     }
@@ -47,9 +46,9 @@ public class ScreamerProvider : MonoBehaviour, IAction
         
         if (_lastInteractable != null)
         {
-            if (_actionSettings != null)
+            if (settings != null)
             {
-                this.AfterInteractChanges(_lastInteractable, _actionSettings);
+                this.AfterInteractChanges(_lastInteractable, settings);
             }
             _lastInteractable.FinishInteract();
         }

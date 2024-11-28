@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class PauseMenuController : MonoBehaviour
+public class PauseMenuController : SceneController
 {
     [SerializeField] private GameObject pauseMenu;
     private bool _pauseMenuOpened = false;
@@ -16,6 +16,7 @@ public class PauseMenuController : MonoBehaviour
 
     private void OnDisable()
     {
+        InPause = false;
         InputReader.OnEscClicked -= OnEscClicked;
     }
 
@@ -43,10 +44,5 @@ public class PauseMenuController : MonoBehaviour
         }
         
         OnPauseChanged?.Invoke();
-    }
-
-    public void Exit()
-    {
-        Application.Quit();
     }
 }

@@ -24,10 +24,15 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
     private bool _break;
     private bool _endEvent;
 
+    private bool _isDialogueCanceled = false;
+    
+    public delegate void DialogueChangeAfterResponseHandler(ref DialogueNode dialogueNode);
+    public static event DialogueChangeAfterResponseHandler OnDialogueChangAfterResponseHandler;
+
     private void OnEnable()
     {
         DialogueView.NextResponseDialog += OnNextResponseDialog;
-        if (_cts == null) _cts = new();
+        _cts = new();
     }
 
     private void OnDisable()
@@ -40,6 +45,11 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
 
     private void OnNextResponseDialog(DialogueNode newDialog)
     {
+        _cts?.Cancel();
+        _cts = new();
+        
+        OnDialogueChangAfterResponseHandler?.Invoke(ref newDialog);
+        if (_isDialogueCanceled) return;
         StartNewDialog(newDialog);
     }
 
@@ -61,6 +71,7 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
 
     public void StartNewDialog(DialogueNode newDialogue)
     {
+        _isDialogueCanceled = false;
         _currentDialog = null;
         dialogue = null;
         _dialoguesQueue = null;
@@ -143,6 +154,15 @@ public class DialogueHandler : MonoBehaviour, IDialogue, IDialogContinue
         dialogueView.Hide();
 
         SendEventEndDialog(dialogEndID);
+    }
+
+    public void CancelDialogue()
+    {
+        _cts?.Cancel();
+        _cts = new();
+
+        _isDialogueCanceled = true;
+        dialogueView.Hide();
     }
 
     private void SetRepeatPraza()

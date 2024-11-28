@@ -15,6 +15,13 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-Shared
   m_GUID: 87e68e78e36b59b4bad755bde1dcd3ad
   m_SerializeEntries:
+  - m_GUID: 10e8ad1e35b54ee4bb82bd2754e3e164
+    m_Address: kat_pobeg_zvuk
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 55d6372b2f0efb84d8656e38cc03060b
     m_Address: Assets/_Aurora/Localization/Tables/LocalizationTable Shared Data.asset
     m_ReadOnly: 1
@@ -25,22 +32,15 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 94a2f00d9aef13840b8952cad85e296b
-    m_Address: PhotoalbumMovie
+  - m_GUID: ba6858f15f096854b980913e3daa2dd4
+    m_Address: kat_proval_zvuk
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
     - Locale-ru
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 980aabecffe4923489c28c3586e81940
-    m_Address: TutorialMovie
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-en
-    - Locale-ru
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: afe90ce8353ce6444a7d66400b66a0fc
-    m_Address: Trellis_Scene
+  - m_GUID: d9c55a479241b2c4b8af380216d02323
+    m_Address: Kat_upokoenie_zvuk
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

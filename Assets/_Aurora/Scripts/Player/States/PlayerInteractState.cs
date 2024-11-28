@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerInteractState : PlayerBaseState
 {
     private IInteractable _interactable;
 
     private bool _playerMovingToItem = true;
+
+    public static Action OnPlayerInteracted;
+    public static Action OnPlayerExitInteract;
 
     public PlayerInteractState(PlayerStateMachine stateMachine, IInteractable interactable) : base(stateMachine)
     {
@@ -26,9 +30,9 @@ public class PlayerInteractState : PlayerBaseState
         Vector3 offset = _interactable.Offset * GetMoveDirection();
         targetPosition = _interactable.Position - offset;
         
-        isMoving = true; 
+        IsMoving = true; 
         
-        stateMachine.Animator.CrossFadeInFixedTime(moveAnimBlendTreeHash, CrossFadeDuration);
+        SetMovingAnimate();
     }
 
     private Vector3 GetMoveDirection()
@@ -55,8 +59,10 @@ public class PlayerInteractState : PlayerBaseState
     public override void Exit()
     {
         base.OnEndMove -= OnEndMoving;
+        InteractableObject.OnCancelInteract -= OnCancelInteract;
         InputReader.OnMouseClicked -= OnMouseClicked;
         PauseMenuController.OnPauseChanged -= OnPauseChanged;
+        OnPlayerExitInteract?.Invoke();
     }
 
     private void OnEndMoving()
@@ -83,9 +89,22 @@ public class PlayerInteractState : PlayerBaseState
                     return;
                 }
 
-                _interactable.DeclineInteract();
-                stateMachine.SwitchState(new PlayerInteractState(stateMachine, interactable));
-                return;
+                if (Slenderman.IsActive)
+                {
+                    if (!clickedCollider.TryGetComponent(out Door door))
+                    {
+                        _interactable.DeclineInteract();
+                        stateMachine.SwitchState(new PlayerMoveState(stateMachine));
+                        return;
+                    }
+                }
+                
+                if (!interactable.IsInteractBlocked && interactable.IsViewed)
+                {
+                    _interactable.DeclineInteract();
+                    stateMachine.SwitchState(new PlayerInteractState(stateMachine, interactable));
+                    return;
+                }
             }
         }
 
@@ -99,6 +118,7 @@ public class PlayerInteractState : PlayerBaseState
         
         InputReader.OnMouseClicked -= OnMouseClicked;
         InteractableObject.OnInteracted -= OnInteracted;
+        OnPlayerInteracted?.Invoke();
     }
 
     private void OnCancelInteract(IInteractable interactable)

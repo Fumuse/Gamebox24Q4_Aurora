@@ -51,6 +51,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 697ea50a167f70440bf530885c091525
+    m_Address: kat_2_eng
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7335d006f00dbba49b2ba6b77ce829bf
     m_Address: settings_menu_eng
     m_ReadOnly: 1
@@ -87,6 +93,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a02744995faf9c4691a9066765ce0c6
+    m_Address: kat_death_eng
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a8912407ea9745b4f96f114c76316a6f
     m_Address: credits_eng
     m_ReadOnly: 1
@@ -95,6 +107,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: adb50cec0c329434a899e4173de6e310
     m_Address: settings_language
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b185fc2bb6921054da07f5b0dd026974
+    m_Address: Kat_3_photo_album_eng
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
@@ -125,6 +143,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fb308f004a6b71346954519c70ee148f
     m_Address: exit
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fe67488145f1688479c5917de03e36d1
+    m_Address: kat_1_eng
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

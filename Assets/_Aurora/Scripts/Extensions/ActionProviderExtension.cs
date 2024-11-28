@@ -12,6 +12,7 @@ public static class ActionProviderExtension
     public static void AddingTagsAfterInteract(this IAction action, ActionSettings actionSettings)
     {
         if (actionSettings.TagsToAddAfterAction.Length < 1) return;
+        if (!actionSettings.AddTagsInTutorial && GameManager.Instance.TutorialStage) return;
 
         foreach (Tag tag in actionSettings.TagsToAddAfterAction)
         {
@@ -29,9 +30,17 @@ public static class ActionProviderExtension
         );
     }
 
+    public static void SpendAcceptanceScale(this IAction action, ActionSettings actionSettings)
+    {
+        GameManager.Instance.AcceptanceScale.SpentAcceptance(
+                actionSettings.AcceptanceCost
+            );
+    }
+
     public static void AfterInteractChanges(this IAction action, IInteractable interactable, ActionSettings actionSettings)
     {
         action.SpendTime(actionSettings);
+        action.SpendAcceptanceScale(actionSettings);
         action.AddingTagsAfterInteract(actionSettings);
         action.ChangeInteractableObjectAction(
             interactable, 

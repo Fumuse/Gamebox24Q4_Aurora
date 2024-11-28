@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ad7679d8d844dbac99a13007c02d9e, type: 3}
+  m_Name: Loc_4_Calendar_ActionSettings
+  m_EditorClassIdentifier: 
+  whisperTextKey:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  whisperBlockedMoveState: 1
+  dialogueRoot: {fileID: 11400000, guid: c1a60887b7d337849a124c34a8232242, type: 2}
+  item: {fileID: 0}
+  catSceneClip:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  timeCost: 10
+  acceptanceCost: 0
+  changeObjectEventAfterPlay: {fileID: 0}
+  changeObjectSettingsAfterPlay: {fileID: 0}
+  tagsToAddAfterAction:
+  - tagName: 40
+  addTagsInTutorial: 1
+  screamerType: 0
+  screamerSpawnPosition: {x: 0, y: 0, z: 0}
+  references:
+    version: 2
+    RefIds: []

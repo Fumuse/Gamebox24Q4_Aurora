@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b28c49fcfd7488d84c31c4971588691, type: 3}
+  m_Name: Loc_3_Basket
+  m_EditorClassIdentifier: 
+  light: {fileID: 21300000, guid: 213cdb55564f6244e81b4306970ae834, type: 3}
+  dark: {fileID: 21300000, guid: 8bf90ba256637eb4d84da798844dbf66, type: 3}
+  broken: {fileID: 21300000, guid: c644d4c62bd3c4a4cac9f89942b65f68, type: 3}

@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Loc_2_PhotoAlbum
   layers:
   - Default
   - TransparentFX
@@ -52,6 +53,12 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 796773735
+    locked: 0
+  - name: InterObjectForeground
+    uniqueID: 2769889325
+    locked: 0
+  - name: ShadowOverlay
+    uniqueID: 1818836315
     locked: 0
   - name: Monster
     uniqueID: 743708801

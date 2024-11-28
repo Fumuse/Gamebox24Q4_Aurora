@@ -1,20 +1,37 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Slenderman : Screamer
 {
     [SerializeField] private float speedMove;
     [SerializeField] private float distanceAttack;
-    [SerializeField] private UnityEvent eventDeathPlayer;
+
+    public static bool IsActive { get; private set; }
 
     private CancellationTokenSource _cts = new();
     private bool _isActivate;
+
+    public bool IsActivate
+    {
+        get => _isActivate;
+        private set
+        {
+            _isActivate = value;
+            IsActive = _isActivate;
+        }
+    }
+    
     private bool _readyToMove;
     private Vector2 _defaultPosition;
 
+    private bool _playerAttacked = false;
+    private bool _isIdleAnimationEnded = false;
+
     private TeleportProvider _teleportProvider;
+
+    public static Action<PlayerStateMachine> PlayerDeadFromScreamer;
 
     private void Start()
     {
@@ -25,7 +42,9 @@ public class Slenderman : Screamer
 
     private void OnEnable()
     {
-        if (_cts == null) _cts = new();
+        _cts = new();
+        
+        _screamerView.OnIdleAnimationEnded += OnIdleAnimationEnded;
         
         if (_teleportProvider == null)
             _teleportProvider = GameProvidersManager.Instance.TeleportProvider;
@@ -37,27 +56,31 @@ public class Slenderman : Screamer
     {
         _cts?.Cancel();
         
+        _screamerView.OnIdleAnimationEnded -= OnIdleAnimationEnded;
         _teleportProvider.OnPlayerTeleported -= OnPlayerTeleported;
     }
 
     private void Update()
     {
         if (_readyToMove == false) return;
+        if (_playerAttacked) return;
 
         Move();
     }
 
     public override async void Activate(bool activate)
     {
-        if (_isActivate) return;
+        if (IsActivate) return;
+        
         if (!gameObject.activeInHierarchy)
         {
             gameObject.SetActive(true);
         }
+        StartAmbience();
 
-        _isActivate = activate;
+        IsActivate = activate;
 
-        if (_isActivate)
+        if (IsActivate)
         {
             bool isCanceled = await Show().AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
             if (isCanceled) return;
@@ -73,10 +96,13 @@ public class Slenderman : Screamer
 
     public void ResetGhost()
     {
-        if (_isActivate == false) return;
+        if (IsActivate == false) return;
+        
+        StopAmbience();
 
+        _isIdleAnimationEnded = false;
         _readyToMove = false;
-        _isActivate = false;
+        IsActivate = false;
         transform.position = _defaultPosition;
         _screamerView.AnimationMove(_readyToMove);
         _screamerView.SetNewColorAlpha(alpha: 0);
@@ -85,7 +111,11 @@ public class Slenderman : Screamer
 
     protected override async UniTask Show()
     {
-        await base.Show().AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
+        bool isCanceled = await base.Show().AttachExternalCancellation(_cts.Token).SuppressCancellationThrow();
+        if (isCanceled) return;
+        
+        await UniTask.WaitUntil(() => _isIdleAnimationEnded, 
+            cancellationToken: _cts.Token).SuppressCancellationThrow();
     }
 
     private void Move()
@@ -101,8 +131,13 @@ public class Slenderman : Screamer
 
     private void Attack()
     {
-        Debug.Log("Аврора умерла в крепких объятиях призрака");
-        eventDeathPlayer?.Invoke();
+        IsActive = false;
+        _playerAttacked = true;
+        PlayerDeadFromScreamer?.Invoke(Player);
+        
+        _readyToMove = false;
+        StopAmbience();
+        _screamerView.DisableAnimator();
     }
 
     private void TransformTranslate() => transform.Translate(Direction * Time.deltaTime * speedMove, Space.World);
@@ -110,5 +145,10 @@ public class Slenderman : Screamer
     private void OnPlayerTeleported()
     {
         ResetGhost();
+    }
+    
+    private void OnIdleAnimationEnded()
+    {
+        _isIdleAnimationEnded = true;
     }
 }

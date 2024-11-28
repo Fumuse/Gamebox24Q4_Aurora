@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "InteractableObjectStates", menuName = "States/RoomState")]
+[CreateAssetMenu(fileName = "RoomState", menuName = "States/RoomState")]
 public class RoomState : ScriptableObject
 {
     [SerializeField] private Sprite light;

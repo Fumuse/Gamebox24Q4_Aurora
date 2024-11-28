@@ -26,10 +26,7 @@ public class MouseHoverDetector : MonoBehaviour
 
     private void OnEnable()
     {
-        if (_cts == null)
-        {
-            _cts = new();
-        }
+        _cts = new();
     }
 
     private void OnDisable()

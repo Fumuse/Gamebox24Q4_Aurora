@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class GameManager : PersistentSingleton<GameManager>
+public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private GameSettings settings;
     [SerializeField] private bool startInTutorial = true;
@@ -14,7 +15,11 @@ public class GameManager : PersistentSingleton<GameManager>
     [SerializeField] private PlayerStateMachine player;
     [SerializeField] private TutorialStateMachine tutorial;
     [SerializeField] private InputReader inputReader;
+    [SerializeField] private Flashlight flashlight;
     [SerializeField] private MouseHoverDetector mouseHoverDetector;
+    [SerializeField] private UnconditionalInformationHandler unconditionalInformationHandler;
+
+    public static Action OnTutorialStateChanged;
 
     public GameSettings Settings => settings;
 
@@ -23,7 +28,11 @@ public class GameManager : PersistentSingleton<GameManager>
     public bool TutorialStage
     {
         get => _tutorialStage;
-        private set => _tutorialStage = value;
+        private set
+        {
+            _tutorialStage = value;
+            OnTutorialStateChanged?.Invoke();
+        }
     }
     #endregion
 
@@ -60,8 +69,12 @@ public class GameManager : PersistentSingleton<GameManager>
     public TagManager TagManager { get; private set; }
     
     public CleanupEvents CleanupEvents { get; private set; }
+    
+    public AmbienceController AmbienceController { get; private set; }
 
     public LayerMask InteractableObjectLayerMask => interactableObjectLayerMask;
+
+    public PlayerStateMachine Player => player;
 
     protected override void Awake()
     {
@@ -69,6 +82,42 @@ public class GameManager : PersistentSingleton<GameManager>
 
         Init();
     }
+
+    private void OnValidate()
+    {
+        if (settings == null)
+        {
+            Debug.LogError("You need to attach the game settings to game manager!");
+        }
+
+        house ??= FindFirstObjectByType<House>();
+        player ??= FindFirstObjectByType<PlayerStateMachine>();
+        tutorial ??= FindFirstObjectByType<TutorialStateMachine>();
+        providersManager ??= FindFirstObjectByType<GameProvidersManager>();
+        inputReader ??= FindFirstObjectByType<InputReader>();
+        cleanupEvents ??= FindAnyObjectByType<CleanupEvents>();
+        mouseHoverDetector ??= FindAnyObjectByType<MouseHoverDetector>();
+        unconditionalInformationHandler ??= FindAnyObjectByType<UnconditionalInformationHandler>();
+        flashlight ??= FindAnyObjectByType<Flashlight>();
+    }
+
+    private void Start()
+    {
+        ChangeHouseSprites();
+        StartTutorial();
+    }
+
+    private void OnEnable()
+    {
+        TagManager.OnTagAdded += OnTagAdded;
+    }
+
+    private void OnDisable()
+    {
+        TagManager.OnTagAdded -= OnTagAdded;
+    }
+
+    #region Initing project
 
     /// <summary>
     /// Единая точка входа
@@ -80,19 +129,24 @@ public class GameManager : PersistentSingleton<GameManager>
         CleanupEvents = cleanupEvents;
         CleanupEvents.Init();
         
+        inputReader.Init();
+        providersManager.Init();
+        
         Timer = new Timer(Settings.TimeToEnd);
         AcceptanceScale = new AcceptanceScale(Settings.MaxAcceptance);
         TagManager = new TagManager();
+        
+        flashlight.Init();
 
-        inputReader.Init();
-        providersManager.Init();
+        unconditionalInformationHandler.Init();
+        AmbienceController = new AmbienceController();
         InitObjects();
         mouseHoverDetector.Init();
     }
 
     private void InitSettings()
     {
-        //QualitySettings.vSyncCount = 1;
+        QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 36;
     }
 
@@ -113,38 +167,20 @@ public class GameManager : PersistentSingleton<GameManager>
         }
     }
 
-    private void OnValidate()
-    {
-        if (settings == null)
-        {
-            Debug.LogError("You need to attach the game settings to game manager!");
-        }
-
-        house ??= FindFirstObjectByType<House>();
-        player ??= FindFirstObjectByType<PlayerStateMachine>();
-        tutorial ??= FindFirstObjectByType<TutorialStateMachine>();
-        providersManager ??= FindFirstObjectByType<GameProvidersManager>();
-        inputReader ??= FindFirstObjectByType<InputReader>();
-        cleanupEvents ??= FindAnyObjectByType<CleanupEvents>();
-        mouseHoverDetector ??= FindAnyObjectByType<MouseHoverDetector>();
-    }
-
     public void InitPlayer()
     {
         player.Init();
     }
 
-    private void Start()
-    {
-        ChangeHouseSprites();
-        StartTutorial();
-    }
+    #endregion
 
     #region Tutorial
     private void StartTutorial()
     {
         if (!startInTutorial)
         {
+            AmbienceAudioController.Instance.StartPlayBackgroundMusic();
+            TagManager.AddTag(new Tag(TagEnum.TutorialEnded));
             InitPlayer();
             return;
         }
@@ -156,7 +192,6 @@ public class GameManager : PersistentSingleton<GameManager>
     public void EndTutorial()
     {
         TutorialStage = false;
-        TagManager.AddTag(new Tag(TagEnum.TutorialEnded));
         tutorial.EndTutorial();
     }
     #endregion
@@ -169,5 +204,39 @@ public class GameManager : PersistentSingleton<GameManager>
         }
 
         player.ChangePlayerSpriteByStage(houseStage);
+
+        AmbienceAudioController.Instance.ChangeBackgroundMusicByStage(houseStage);
+    }
+
+    private void OnTagAdded()
+    {
+        PhotoAlbumManage();
+    }
+
+    private void PhotoAlbumManage()
+    {
+        Tag gramophoneTag = new Tag(TagEnum.GramophoneTaken);
+        if (!TagManager.HasTag(gramophoneTag)) return;
+        
+        Tag twigTag = new Tag(TagEnum.WalkingStickTaken);
+        if (!TagManager.HasTag(twigTag)) return;
+        
+        Tag bearTag = new Tag(TagEnum.BearTaken);
+        if (!TagManager.HasTag(bearTag)) return;
+
+        foreach (Room room in house.Rooms)
+        {
+            foreach (InteractableObject interObject in room.InteractableObjects)
+            {
+                if (interObject.CompareTag("Loc_2_PhotoAlbum"))
+                {
+                    TagManager.AddTag(new Tag(TagEnum.PhotoAlbumIsAssembled));
+                    
+                    interObject.enabled = false;
+                    interObject.gameObject.SetActive(false);
+                    break;
+                }
+            }
+        }
     }
 }

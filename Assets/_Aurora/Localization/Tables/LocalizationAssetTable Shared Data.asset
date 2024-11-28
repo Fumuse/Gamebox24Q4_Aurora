@@ -99,6 +99,22 @@ MonoBehaviour:
     m_Key: TutorialPhotoAlbum_Loc3_Movie
     m_Metadata:
       m_Items: []
+  - m_Id: 4410460938596352
+    m_Key: DeathMovie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813999875289088
+    m_Key: AcceptanceMovie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6095355104620544
+    m_Key: EscapeMovie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6095385999863808
+    m_Key: ReplacementMovie
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 9026372752308961477
@@ -125,6 +141,22 @@ MonoBehaviour:
           - en
           - ru
         - m_KeyId: 2184078418407424
+          m_TableCodes:
+          - en
+          - ru
+        - m_KeyId: 4410460938596352
+          m_TableCodes:
+          - en
+          - ru
+        - m_KeyId: 5813999875289088
+          m_TableCodes:
+          - en
+          - ru
+        - m_KeyId: 6095385999863808
+          m_TableCodes:
+          - en
+          - ru
+        - m_KeyId: 6095355104620544
           m_TableCodes:
           - en
           - ru

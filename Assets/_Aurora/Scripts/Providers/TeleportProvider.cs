@@ -15,8 +15,11 @@ public class TeleportProvider : MonoBehaviour, IAction
     private IInteractable _lastInteractable;
     private IDoor _interactableDoor;
     private ActionSettings _actionSettings;
+
+    private CharacterController _controller;
+    private Collider2D _playerCollider;
     
-    public Action OnTeleportEnds;
+    public Action<Room> OnTeleportEnds;
     public Action OnPlayerTeleported;
 
     private void OnValidate()
@@ -36,11 +39,22 @@ public class TeleportProvider : MonoBehaviour, IAction
         InteractableObject.OnInteracted -= OnInteracted;
     }
 
+    private void Awake()
+    {
+        _controller = player.GetComponent<CharacterController>();
+    }
+
     public void Execute(ActionSettings settings)
     {
         GetInteractableDoor();
         _actionSettings = settings;
 
+        Teleport();
+    }
+
+    public void TeleportToConnectedRoom(Door door)
+    {
+        _interactableDoor = door;
         Teleport();
     }
 
@@ -57,6 +71,8 @@ public class TeleportProvider : MonoBehaviour, IAction
 
     private async void Teleport()
     {
+        if (_interactableDoor != null) _interactableDoor.PuffAudio();
+
         bool isCanceled = await overlayWrapper.FadeIn(this, _cts.Token, fadeSpeed);
         if (isCanceled) return;
 
@@ -69,8 +85,6 @@ public class TeleportProvider : MonoBehaviour, IAction
         isCanceled = await overlayWrapper.FadeOut(this, _cts.Token, fadeSpeed);
         if (isCanceled) return;
 
-        OnTeleportEnds?.Invoke();
-
         if (_interactableDoor != null)
         {
             if (_actionSettings != null)
@@ -78,15 +92,21 @@ public class TeleportProvider : MonoBehaviour, IAction
                 this.AfterInteractChanges(_interactableDoor, _actionSettings);
             }
             _interactableDoor.FinishInteract();
+
+            OnTeleportEnds?.Invoke(_interactableDoor.ConnectedDoor.Room);
         }
     }
 
     private void TeleportPlayer()
     {
+        _controller.enabled = false;
+        
         Vector3 newPlayerPosition = player.position;
         newPlayerPosition.x = _interactableDoor.ConnectedDoor.Transform.position.x;
-
+        
         player.position = newPlayerPosition;
+        
+        _controller.enabled = true;
 
         Vector3 connectedRoomPosition = _interactableDoor.ConnectedDoor.Room.transform.position;
         Vector3 newCameraPosition = mainCamera.transform.position;

@@ -33,8 +33,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ru
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2fb3e7c8d486fe347b1e8488a72b0f40
+    m_Address: kat_2_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 39b1427cb0a8cd64794707b3dc18401e
     m_Address: settings_sound
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d3d0be03111b8245a2bf345f07f3a64
+    m_Address: kat_1_ru
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ru
@@ -99,6 +111,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ru
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a44de255ed8376b4da555c5e388e8a83
+    m_Address: Kat_3_photo_album_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b851ee0f2bb1202488421caa606b6409
     m_Address: back_hover
     m_ReadOnly: 1
@@ -107,6 +125,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cf3307cd0b0f61a49aa38d21c0e6ff15
     m_Address: creators
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e0752706dd16f9d43bd074fa74a96e20
+    m_Address: kat_death_ru
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ru

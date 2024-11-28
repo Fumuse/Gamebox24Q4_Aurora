@@ -16,6 +16,9 @@ public class ShowVideoSceneProvider : MonoBehaviour, IAction
     private CancellationTokenSource _cts;
 
     public Action OnVideoEndShowed;
+    public static Action OnVideoHiddenAfterEnd;
+
+    public CanvasGroup VideoPlayerWrapper => videoPlayerWrapper;
 
     private void OnEnable()
     {
@@ -81,6 +84,8 @@ public class ShowVideoSceneProvider : MonoBehaviour, IAction
         
         videoPlayer.prepareCompleted -= PlayVideo;
         
+        if (_lastInteractable != null) _lastInteractable.PuffAudio();
+        AmbienceAudioController.Instance.PausePlayBackgroundMusic();
         vp.Play();
 
         bool isCanceled = await UniTask.WaitUntil(vp, (p) => p.frame == 0, cancellationToken: _cts.Token)
@@ -111,6 +116,9 @@ public class ShowVideoSceneProvider : MonoBehaviour, IAction
             }
             _lastInteractable.FinishInteract();
         }
+        OnVideoHiddenAfterEnd?.Invoke();
+
+        AmbienceAudioController.Instance.StartPlayBackgroundMusic();
     }
 
     private async void ShowVideoCanvas()

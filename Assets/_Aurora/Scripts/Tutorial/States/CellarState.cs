@@ -1,6 +1,6 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 public class CellarState : TutorialBaseState
 {
@@ -10,7 +10,11 @@ public class CellarState : TutorialBaseState
     private TagManager _tagManager;
     private Tag _interactCorpseTag;
     private IInteractable _grandmaCorpse;
+    private IInteractable _candleBox;
     private IInteractable _lastInteractable;
+    private PlayerStateMachine _player;
+
+    private List<ActionSettings> _usedSettings = new();
 
     private CancellationTokenSource _cts;
 
@@ -30,6 +34,7 @@ public class CellarState : TutorialBaseState
         _teleportProvider = GameProvidersManager.Instance.TeleportProvider;
         _whisperProvider = GameProvidersManager.Instance.WhisperProvider;
         _tagManager = GameManager.Instance.TagManager;
+        _player = GameManager.Instance.Player;
 
         _interactCorpseTag = new Tag(TagEnum.InteractWithGrandmaCorpse);
         
@@ -37,8 +42,10 @@ public class CellarState : TutorialBaseState
         
         Flashlight.OnFlashlightFindObject += OnFlashlightFindObject;
         InteractableObject.OnInteracted += OnInteracted;
+        InteractableObject.OnCancelInteract += OnCancelInteract;
         
         _grandmaCorpse = GetInteractableByKey("Room_5_GrandmaCorpse");
+        _candleBox = GetInteractableByKey("Room_5_CandleBox");
     }
 
     private async void SayAboutInteract()
@@ -50,7 +57,8 @@ public class CellarState : TutorialBaseState
             .SuppressCancellationThrow();
         if (isCanceled) return;
         
-        _whisperProvider.Execute(setting);
+        _whisperProvider.EmptyExecute(setting);
+        _usedSettings.Add(setting);
     }
 
     private async void GrandmaSaySentences()
@@ -90,14 +98,17 @@ public class CellarState : TutorialBaseState
             .SuppressCancellationThrow();
         if (isCanceled) return;
         
-        _whisperProvider.Execute(setting);
+        _whisperProvider.EmptyExecute(setting);
+        _usedSettings.Add(setting);
     }
 
     private void PreEscape()
     {
+        _player.UnblockMove();
+        
         //Включаем проход в предбанник
         UnlockDoor("Room_5_DoorUp");
-        _teleportProvider.OnPlayerTeleported += OnPlayerTeleportedToFirstRoom;
+        _teleportProvider.OnTeleportEnds += OnPlayerTeleportedToFirstRoom;
     }
 
     public override void Tick()
@@ -115,7 +126,9 @@ public class CellarState : TutorialBaseState
     public override void Exit()
     {
         _whisperProvider.OnWhisperEnds -= OnWhisperEnds;
-        _teleportProvider.OnPlayerTeleported -= OnPlayerTeleportedToFirstRoom;
+        _teleportProvider.OnTeleportEnds -= OnPlayerTeleportedToFirstRoom;
+        InteractableObject.OnInteracted -= OnInteracted;
+        InteractableObject.OnCancelInteract -= OnCancelInteract;
     }
 
     private void OnPlayerTeleportedToCellar()
@@ -126,16 +139,15 @@ public class CellarState : TutorialBaseState
         SayAboutInteract();
     }
 
-    private void OnPlayerTeleportedToFirstRoom()
+    private void OnPlayerTeleportedToFirstRoom(Room room)
     {
-        LockDoor("Room_1_DoorDown");
+        InteractableObject.UnblockInteractedObject(_candleBox);
         stateMachine.SwitchState(new TryToEscapeStage(stateMachine));
     }
 
-    
-    private void OnWhisperEnds()
+    private void OnWhisperEnds(ActionSettings actionSettings)
     {
-        if (!_lastInteractable.Equals(_grandmaCorpse)) return;
+        if (!_usedSettings.Contains(actionSettings)) return;
         
         if (!_grandmaSays1Sentence)
         {
@@ -168,7 +180,20 @@ public class CellarState : TutorialBaseState
     {
         if (!interactable.Equals(_grandmaCorpse)) return;
         
+        interactable.PuffAudio();
+        
+        _player.BlockMove();
+        InteractableObject.BlockInteractedObject(_grandmaCorpse);
         _lastInteractable = interactable;
-        InteractableObject.OnInteracted -= OnInteracted;
+    }
+
+    private void OnCancelInteract(IInteractable interactable)
+    {
+        if (!interactable.Equals(_candleBox)) return;
+
+        if (_tagManager.HasTag(new Tag(TagEnum.CandleTaken)))
+        {
+            InteractableObject.BlockInteractedObject(_candleBox);
+        }
     }
 }

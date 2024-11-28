@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -18,22 +19,38 @@ public class WhisperProvider : MonoBehaviour, IAction
     private ActionSettings _actionSettings;
     private CancellationTokenSource _cts;
 
-    private int _localizedTextCharsCount = 1;
+    private TeleportProvider _teleportProvider;
 
-    public Action OnWhisperEnds;
+    private int _localizedTextCharsCount = 1;
+    private bool _hasInteractedItemWhisper = false;
+
+    public Action<ActionSettings> OnWhisperEnds;
 
     private void OnEnable()
     {
         _cts = new();
         InteractableObject.OnInteracted += OnInteracted;
+        InteractableObject.OnCancelInteract += OnCancelInteract;
         whisperLocalization.StringChanged += UpdateWhisperText;
+
+        if (_teleportProvider != null)
+            _teleportProvider.OnPlayerTeleported += OnPlayerTeleported;
     }
 
     private void OnDisable()
     {
         _cts?.Cancel();
         InteractableObject.OnInteracted -= OnInteracted;
+        InteractableObject.OnCancelInteract -= OnCancelInteract;
         whisperLocalization.StringChanged -= UpdateWhisperText;
+        
+        if (_teleportProvider != null) 
+            _teleportProvider.OnPlayerTeleported -= OnPlayerTeleported;
+    }
+
+    private void Start()
+    {
+        _teleportProvider ??= GameProvidersManager.Instance.TeleportProvider;
     }
 
     public void Execute(ActionSettings settings)
@@ -42,10 +59,25 @@ public class WhisperProvider : MonoBehaviour, IAction
         _cts = new();
         
         _actionSettings = settings;
-        ToWhisper();
+
+        _hasInteractedItemWhisper = true;
+        ToWhisper(_lastInteractable);
     }
 
-    private async void ToWhisper()
+    public async void EmptyExecute(ActionSettings settings)
+    {
+        bool isCanceled = await UniTask.WaitWhile(() => _hasInteractedItemWhisper, cancellationToken: _cts.Token)
+            .SuppressCancellationThrow();
+        if (isCanceled) return;
+        
+        _cts?.Cancel();
+        _cts = new();
+        
+        _actionSettings = settings;
+        ToWhisper(null);
+    }
+
+    private async void ToWhisper([CanBeNull] IInteractable currentInteractable)
     {
         SetWhisperLocalizationString();
         
@@ -59,15 +91,21 @@ public class WhisperProvider : MonoBehaviour, IAction
 
         isCanceled = await whisperWrapper.FadeOut(this, _cts.Token, fadeSpeed);
         if (isCanceled) return;
+        
+        EndWhisperInteract(currentInteractable);
+        OnWhisperEnds?.Invoke(_actionSettings);
+    }
 
-        OnWhisperEnds?.Invoke();
-        if (_lastInteractable != null)
+    private void EndWhisperInteract([CanBeNull] IInteractable currentInteractable)
+    {
+        if (currentInteractable != null)
         {
             if (_actionSettings != null)
             {
-                this.AfterInteractChanges(_lastInteractable, _actionSettings);
+                this.AfterInteractChanges(currentInteractable, _actionSettings);
             }
-            _lastInteractable.FinishInteract();
+            currentInteractable.FinishInteract();
+            _hasInteractedItemWhisper = false;
         }
     }
 
@@ -86,8 +124,30 @@ public class WhisperProvider : MonoBehaviour, IAction
         _lastInteractable = interactable;
     }
 
+    private void OnCancelInteract(IInteractable interactable)
+    {
+        _lastInteractable = null;
+        _actionSettings = null;
+        _hasInteractedItemWhisper = false;
+    }
+
     private void UpdateWhisperText(string text)
     {
         whisperText.text = text;
+    }
+
+    public async void Cancel()
+    {
+        _hasInteractedItemWhisper = false;
+        
+        _cts?.Cancel();
+        _cts = new();
+
+       await whisperWrapper.FadeIn(this, _cts.Token, fadeSpeed);
+    }
+
+    private void OnPlayerTeleported()
+    {
+        Cancel();
     }
 }

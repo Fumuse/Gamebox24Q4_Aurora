@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -28,7 +27,7 @@ public class Ghost : Screamer
 
     private void OnEnable()
     {
-        if (_cts == null) _cts = new();
+        _cts = new();
 
         _screamerView.OnIdleAnimationEnded += OnIdleAnimationEnded;
         
@@ -106,7 +105,6 @@ public class Ghost : Screamer
 
     private void Attack()
     {
-        Debug.Log("Аврора умерла в крепких объятиях призрака");
         EventDeathPlayer?.Invoke();
     }
 

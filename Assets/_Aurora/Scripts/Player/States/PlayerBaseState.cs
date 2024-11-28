@@ -8,7 +8,18 @@ public abstract class PlayerBaseState : State
     protected Vector3 targetPosition;
     protected Vector3 moveDirection;
 
-    protected bool isMoving = false;
+    private bool _isMoving = false;
+
+    protected bool IsMoving
+    {
+        get => _isMoving;
+        set
+        {
+            bool prevMoving = _isMoving;
+            _isMoving = value;
+        }
+    }
+
     protected bool isClickedToUI = false;
 
     public Action OnEndMove;
@@ -17,6 +28,7 @@ public abstract class PlayerBaseState : State
     
     protected readonly int moveAnimParamHash = Animator.StringToHash("MoveSpeed");
     protected readonly int moveAnimBlendTreeHash = Animator.StringToHash("MoveBlendTree");
+    protected readonly int moveAnimFearBlendTreeHash = Animator.StringToHash("FearMoveBlendTree");
     
     protected const float AnimationDampTime = 0f;
     protected const float CrossFadeDuration = 0f;
@@ -30,7 +42,7 @@ public abstract class PlayerBaseState : State
 
     protected void Move()
     {
-        if (targetPosition == Vector3.zero || !isMoving) return;
+        if (targetPosition == Vector3.zero || !IsMoving) return;
 
         FixMoveDirection();
 
@@ -41,7 +53,7 @@ public abstract class PlayerBaseState : State
             stateMachine.Сontroller.velocity.magnitude < .1f
         )
         {
-            isMoving = false;
+            IsMoving = false;
             targetPosition = Vector3.zero;
             OnEndMove?.Invoke();
         }
@@ -50,9 +62,7 @@ public abstract class PlayerBaseState : State
     protected void MoveAnimation()
     {
         stateMachine.Animator.SetFloat(moveAnimParamHash, 
-            isMoving ? 1f : 0f, 
-            AnimationDampTime, 
-            Time.deltaTime
+            IsMoving ? 1f : 0f
         );
     }
 
@@ -66,7 +76,7 @@ public abstract class PlayerBaseState : State
 
     protected void Rotate()
     {
-        if (targetPosition == Vector3.zero || !isMoving) return;
+        if (targetPosition == Vector3.zero || !IsMoving) return;
         
         stateMachine.SpriteRenderer.flipX = (targetPosition.x - stateMachine.transform.position.x > 0);
     }
@@ -76,6 +86,18 @@ public abstract class PlayerBaseState : State
         if (EventSystem.current != null)
         {
             isClickedToUI = EventSystem.current.IsPointerOverGameObject();
+        }
+    }
+
+    protected void SetMovingAnimate()
+    {
+        if (GameManager.Instance.CurrentStage == HouseStageEnum.Broken)
+        {
+            stateMachine.Animator.CrossFadeInFixedTime(moveAnimFearBlendTreeHash, CrossFadeDuration);
+        }
+        else
+        {
+            stateMachine.Animator.CrossFadeInFixedTime(moveAnimBlendTreeHash, CrossFadeDuration);
         }
     }
 }

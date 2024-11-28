@@ -4,14 +4,16 @@ using UnityEngine;
 
 public abstract class StateMachine : MonoBehaviour
 {
-    private State _currentState;
+    protected State currentState;
     private CancellationTokenSource _cts;
+
+    protected virtual PlayerLoopTiming UpdateYield => PlayerLoopTiming.Update;
 
     public void SwitchState(State state)
     {
-        _currentState?.Exit();
-        _currentState = state;
-        _currentState?.Enter();
+        currentState?.Exit();
+        currentState = state;
+        currentState?.Enter();
     }
 
     protected virtual void OnEnable()
@@ -24,7 +26,7 @@ public abstract class StateMachine : MonoBehaviour
         _cts?.Cancel();
     }
 
-    private async void UpdateLoop()
+    protected virtual async void UpdateLoop()
     {
         _cts = new();
 
@@ -37,13 +39,19 @@ public abstract class StateMachine : MonoBehaviour
                 if (isAwaitCanceled) return;
             }
             AsyncUpdate();
-            bool isCanceled = await UniTask.WaitForEndOfFrame(this, _cts.Token).SuppressCancellationThrow();
+
+            bool isCanceled = await UniTask.Yield(UpdateYield, _cts.Token).SuppressCancellationThrow();
             if (isCanceled) return;
         }
     }
 
     private void AsyncUpdate()
     {
-        _currentState?.Tick();
+        currentState?.Tick();
+    }
+
+    private void OnDestroy()
+    {
+        currentState?.Exit();
     }
 }

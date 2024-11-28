@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de2ec311efdf5684c8a96962c764a828, type: 3}
+  m_Name: Loc_6_ChristmasDecorations_Reaction
+  m_EditorClassIdentifier: 
+  Dialogue:
+  - _tag:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _dialogueText:
+      m_TableReference:
+        m_TableCollectionName: GUID:55d6372b2f0efb84d8656e38cc03060b
+      m_TableEntryReference:
+        m_KeyId: 6803208642260992
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    <Condition>k__BackingField: []
+    <Response>k__BackingField: []
+    <RepeatEndPhraze>k__BackingField: 0
+    <Event>k__BackingField:
+      <NameEvent>k__BackingField: 
+      <SendEvent>k__BackingField: 0
+      <WaitEndEvent>k__BackingField: 0
+    showCloseDialogueButtonIfEnd: 1
+  EndDialoguesID: Loc_6_ChristmasDecorations_Reaction
+  references:
+    version: 2
+    RefIds: []

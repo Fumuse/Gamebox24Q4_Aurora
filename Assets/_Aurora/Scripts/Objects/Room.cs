@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Room : MonoBehaviour
 {
@@ -10,10 +11,13 @@ public class Room : MonoBehaviour
     [SerializeField] private Door[] doors;
     [SerializeField] private InteractableObject[] interactableObjects;
     [SerializeField] private RoomAdditionalObject[] additionalObjects;
+    [SerializeField] private Light2D[] lights;
+    [SerializeField] private AmbienceAnimation[] ambience;
 
     public IReadOnlyList<Door> Doors => doors;
     public IReadOnlyList<InteractableObject> InteractableObjects => interactableObjects;
     public RoomShadow Shadow => shadow;
+    public AmbienceAnimation[] Ambience => ambience;
 
     private void OnValidate()
     {
@@ -23,6 +27,13 @@ public class Room : MonoBehaviour
         doors = GetComponentsInChildren<Door>();
         additionalObjects = GetComponentsInChildren<RoomAdditionalObject>();
         shadow ??= GetComponentInChildren<RoomShadow>();
+
+        if (lights.Length < 1)
+        {
+            lights ??= GetComponentsInChildren<Light2D>(); 
+        }
+        
+        ambience ??= GetComponentsInChildren<AmbienceAnimation>(true); 
     }
 
     public void ChangeSpriteStage(HouseStageEnum stage)
@@ -57,6 +68,16 @@ public class Room : MonoBehaviour
         foreach (RoomAdditionalObject additionalObject in additionalObjects)
         {
             additionalObject.ChangeBodySpriteByStage(stage);
+        }
+
+        foreach (Light2D roomLight in lights)
+        {
+            roomLight.enabled = stage == HouseStageEnum.Light;
+        }
+
+        foreach (AmbienceAnimation animation in ambience)
+        {
+            animation.ShowSprite();
         }
     }
 }

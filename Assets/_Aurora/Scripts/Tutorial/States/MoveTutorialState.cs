@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 
 public class MoveTutorialState : TutorialBaseState
@@ -7,10 +8,14 @@ public class MoveTutorialState : TutorialBaseState
     private WhisperProvider _whisperProvider;
     private TeleportProvider _teleportProvider;
 
+    private List<ActionSettings> _usedSettings = new();
+
     private CancellationTokenSource _cts;
 
     private bool _grandmaCallsEnded = false;
     private bool _sayAboutMovingEnded = false;
+
+    private InteractableObject _leftDoor;
     
     public MoveTutorialState(TutorialStateMachine stateMachine) : base(stateMachine)
     {}
@@ -22,6 +27,10 @@ public class MoveTutorialState : TutorialBaseState
         _teleportProvider = GameProvidersManager.Instance.TeleportProvider;
         _whisperProvider = GameProvidersManager.Instance.WhisperProvider;
         _whisperProvider.OnWhisperEnds += OnWhisperEnds;
+        
+        AmbienceAudioController.Instance.PuffAudio("Ambience", "Tutorial_Exit_Door");
+        AmbienceAudioController.Instance.StartPlayBackgroundMusic();
+        
         GrandmaCalls();
         SayAboutMoving();
     }
@@ -35,7 +44,8 @@ public class MoveTutorialState : TutorialBaseState
             .SuppressCancellationThrow();
         if (isCanceled) return;
 
-        _whisperProvider.Execute(setting);
+        _whisperProvider.EmptyExecute(setting);
+        _usedSettings.Add(setting);
     }
 
     private async void SayAboutMoving()
@@ -58,11 +68,14 @@ public class MoveTutorialState : TutorialBaseState
             .SuppressCancellationThrow();
         if (isCanceled) return;
         
-        _whisperProvider.Execute(setting);
+        _whisperProvider.EmptyExecute(setting);
+        _usedSettings.Add(setting);
     }
 
-    private void OnWhisperEnds()
+    private void OnWhisperEnds(ActionSettings actionSettings)
     {
+        if (!_usedSettings.Contains(actionSettings)) return;
+        
         if (!_grandmaCallsEnded)
         {
             _grandmaCallsEnded = true;
@@ -77,6 +90,7 @@ public class MoveTutorialState : TutorialBaseState
 
     private void OnPlayerTeleported()
     {
+        _whisperProvider.Cancel();
         stateMachine.SwitchState(new TrellisWatchState(stateMachine));
     }
 

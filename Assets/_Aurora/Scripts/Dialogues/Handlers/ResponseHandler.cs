@@ -10,12 +10,14 @@ public class ResponseHandler : MonoBehaviour
     [SerializeField] private List<DialogueEvent> _endDialogEvents;
 
     private IDialogContinue _dialogHandler;
+    private IInteractable _lastInteractable;
 
     private void OnEnable()
     {
         DialogueView.ClickResponse += OnClickResponse;
         DialogueHandler.DialogEvent += OnDialogEvent;
         DialogueHandler.EndDialogEvent += OnEndDialogEvent;
+        InteractableObject.OnInteracted += OnInteracted;
     }
 
     private void OnDisable()
@@ -23,6 +25,7 @@ public class ResponseHandler : MonoBehaviour
         DialogueView.ClickResponse -= OnClickResponse;
         DialogueHandler.DialogEvent -= OnDialogEvent;
         DialogueHandler.EndDialogEvent -= OnEndDialogEvent;
+        InteractableObject.OnInteracted -= OnInteracted;
     }
 
     /// <summary>
@@ -40,7 +43,6 @@ public class ResponseHandler : MonoBehaviour
         {
             dialogueEvent.Event.Invoke();
         }
-
     }
 
     /// <summary>
@@ -56,7 +58,7 @@ public class ResponseHandler : MonoBehaviour
         
         if (dialogueEvent != null)
         {
-            Debug.Log("как сцена или ещё что-нибудь и при завершении продолжиться диалог");
+            Debug.Log("Кат. сцена или ещё что-нибудь и при завершении продолжиться диалог");
             _dialogHandler = handler;
             await TestDelay();
             dialogueEvent.Event.Invoke();
@@ -75,7 +77,6 @@ public class ResponseHandler : MonoBehaviour
         _dialogHandler.EndEvent();
     }
 
-
     /// <summary>
     /// При нажатии на кнопку, выбор персонажа запускаем событие.
     /// </summary>
@@ -90,6 +91,23 @@ public class ResponseHandler : MonoBehaviour
         {
             responseEvent.Event?.Invoke();
         }
+    }
+    
+    private void OnInteracted(IInteractable interactable)
+    {
+        _lastInteractable = interactable;
+    }
+
+    public void BlockInteractedObject()
+    {
+        if (_lastInteractable == null) return;
+        InteractableObject.BlockInteractedObject(_lastInteractable);
+    }
+
+    public void UnblockInteractedObject()
+    {
+        if (_lastInteractable == null) return;
+        InteractableObject.UnblockInteractedObject(_lastInteractable);
     }
 }
 

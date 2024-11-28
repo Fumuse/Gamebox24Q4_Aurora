@@ -7,6 +7,7 @@ public class Flashlight : MonoBehaviour
 {
     [SerializeField] private SpriteMask mask;
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField, HideInInspector] private InputReader reader;
     
     public delegate void FlashlightFindObject(IInteractable interactable);
@@ -28,33 +29,39 @@ public class Flashlight : MonoBehaviour
         mainCamera ??= Camera.main;
     }
 
+    public void Init()
+    {
+        _manager = GameManager.Instance;
+    }
+
     private void OnEnable()
     {
         _cts = new();
         mask.gameObject.SetActive(false);
-        
+
         InputReader.OnRightMouseClicked += OnRightMouseClicked;
     }
 
     private void OnDisable()
     {
         _cts?.Cancel();
-        
-        InputReader.OnRightMouseClicked -= OnRightMouseClicked;
-    }
 
-    private void Start()
-    {
-        _manager = GameManager.Instance;
+        flashlightActive = false;
+        InputReader.OnRightMouseClicked -= OnRightMouseClicked;
     }
 
     private void OnRightMouseClicked(Vector2 mousePosition)
     {
+        if (_manager == null) return;
+        if (_manager.CurrentStage == HouseStageEnum.Light) return;
+        if (InteractableObject.HasInteractingObject) return;
+        
         bool maskActive = mask.gameObject.activeInHierarchy;
         flashlightActive = !maskActive;
         if (maskActive)
         {
             mask.gameObject.SetActive(false);
+            AmbienceAudioController.Instance.PuffAudio(audioSource, "Flashlight", "Flashlight_Off");
         }
         else
         {
@@ -64,8 +71,10 @@ public class Flashlight : MonoBehaviour
 
     private void TurnOnLight()
     {
-        if (GameManager.Instance.CurrentStage == HouseStageEnum.Light) return;
+        if (_manager.CurrentStage == HouseStageEnum.Light) return;
+        
         mask.gameObject.SetActive(true);
+        AmbienceAudioController.Instance.PuffAudio(audioSource, "Flashlight", "Flashlight_On");
         OnFlashLightTurnOn?.Invoke();
 
         _manager.AcceptanceScale.SpentAcceptance(

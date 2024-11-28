@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class PlayerMoveState : PlayerBaseState
 {
@@ -13,7 +15,7 @@ public class PlayerMoveState : PlayerBaseState
 
         _interactableObjectMask = GameManager.Instance.InteractableObjectLayerMask;
         
-        stateMachine.Animator.CrossFadeInFixedTime(moveAnimBlendTreeHash, CrossFadeDuration);
+        SetMovingAnimate();
     }
 
     public override void Tick()
@@ -21,7 +23,7 @@ public class PlayerMoveState : PlayerBaseState
         CheckClickToUI();
         Rotate();
         Move();
-
+        
         MoveAnimation();
     }
 
@@ -33,22 +35,44 @@ public class PlayerMoveState : PlayerBaseState
     private void OnMouseClicked(Vector2 mousePosition)
     {
         if (isClickedToUI) return;
-        
-        targetPosition = stateMachine.MainCamera.ScreenToWorldPoint(mousePosition);
-        Collider2D clickedCollider = Physics2D.OverlapPoint(targetPosition, _interactableObjectMask);
 
-        if (clickedCollider != null)
+        targetPosition = stateMachine.MainCamera.ScreenToWorldPoint(mousePosition);
+        Collider2D[] clickedColliders = Physics2D.OverlapPointAll(targetPosition, _interactableObjectMask);
+
+        List<IInteractable> clickedItems = new();
+        if (clickedColliders is {Length: > 0})
         {
-            if (clickedCollider.TryGetComponent(out IInteractable interactable))
+            foreach (Collider2D clickedCollider in clickedColliders)
             {
-                if (interactable.IsViewed)
+                if (clickedCollider.TryGetComponent(out IInteractable interactable))
                 {
-                    stateMachine.SwitchState(new PlayerInteractState(stateMachine, interactable));
-                    return;
+                    if (interactable.IsInteractBlocked) continue;
+                    if (!interactable.IsViewed) continue;
+
+                    if (Slenderman.IsActive)
+                    {
+                        if (!clickedCollider.TryGetComponent(out Door door))
+                        {
+                            continue;
+                        }
+                    }
+                    
+                    clickedItems.Add(interactable);
                 }
             }
         }
 
-        isMoving = true; 
+        if (clickedItems.Count > 0)
+        {
+            if (clickedItems.Count > 1)
+            {
+                clickedItems.Sort((a, b) => b.ClickSort.CompareTo(a.ClickSort));
+            }
+            
+            stateMachine.SwitchState(new PlayerInteractState(stateMachine, clickedItems.FirstOrDefault()));
+            return;
+        }
+
+        IsMoving = true; 
     }
 }
