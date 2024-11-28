@@ -98,6 +98,12 @@ public class ScreamerView : MonoBehaviour
         ChangeSpritesVisible(isMove);
     }
 
+    public void DisableAnimator()
+    {
+        _animator.SetBool(_moveAnimationHash, false);
+        _animator.enabled = false;
+    }
+
     private void ChangeSpritesVisible(bool isMove)
     {
         if (renderForFullBody != null)

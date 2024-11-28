@@ -131,8 +131,13 @@ public class Slenderman : Screamer
 
     private void Attack()
     {
+        IsActive = false;
         _playerAttacked = true;
         PlayerDeadFromScreamer?.Invoke(Player);
+        
+        _readyToMove = false;
+        StopAmbience();
+        _screamerView.DisableAnimator();
     }
 
     private void TransformTranslate() => transform.Translate(Direction * Time.deltaTime * speedMove, Space.World);

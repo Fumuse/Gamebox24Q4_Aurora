@@ -16,6 +16,7 @@ public class PauseMenuController : SceneController
 
     private void OnDisable()
     {
+        InPause = false;
         InputReader.OnEscClicked -= OnEscClicked;
     }
 

@@ -79,6 +79,7 @@ public class EndGameStateMachine : StateMachine
 
     private void OnDeath()
     {
+        ShowVideoSceneProvider.OnVideoHiddenAfterEnd += OnVideoHiddenAfterEnd;
         _videoSceneProvider = GameProvidersManager.Instance.VideoSceneProvider;
         _videoSceneProvider.Execute(deathMovieSettings);
     }

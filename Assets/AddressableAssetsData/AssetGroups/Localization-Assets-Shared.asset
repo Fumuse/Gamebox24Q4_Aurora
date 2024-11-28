@@ -15,6 +15,13 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-Shared
   m_GUID: 87e68e78e36b59b4bad755bde1dcd3ad
   m_SerializeEntries:
+  - m_GUID: 10e8ad1e35b54ee4bb82bd2754e3e164
+    m_Address: kat_pobeg_zvuk
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 55d6372b2f0efb84d8656e38cc03060b
     m_Address: Assets/_Aurora/Localization/Tables/LocalizationTable Shared Data.asset
     m_ReadOnly: 1

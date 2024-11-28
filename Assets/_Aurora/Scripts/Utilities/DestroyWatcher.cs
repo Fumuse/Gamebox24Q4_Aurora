@@ -5,11 +5,13 @@ public class DestroyWatcher : MonoBehaviour
 {
     public static List<IDestroyable> ListToDestroy = new();
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         foreach (IDestroyable destroyObject in ListToDestroy)
         {
             destroyObject.DestroyObject();
         }
+        
+        ListToDestroy.Clear();
     }
 }

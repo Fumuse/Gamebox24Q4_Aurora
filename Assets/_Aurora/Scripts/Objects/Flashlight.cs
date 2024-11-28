@@ -45,7 +45,8 @@ public class Flashlight : MonoBehaviour
     private void OnDisable()
     {
         _cts?.Cancel();
-        
+
+        flashlightActive = false;
         InputReader.OnRightMouseClicked -= OnRightMouseClicked;
     }
 

@@ -23,12 +23,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 339593865228288
-    m_Localized: There's some text here that appeared after interacting with the
-      object.
+    m_Localized: "\u0422\u0443\u0442 \u043A\u0430\u043A\u043E\u0439-\u0442\u043E
+      \u0442\u0435\u043A\u0441\u0442, \u043A\u043E\u0442\u043E\u0440\u044B\u0439
+      \u043F\u043E\u044F\u0432\u0438\u043B\u0441\u044F \u043F\u043E\u0441\u043B\u0435
+      \u0432\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u044F
+      \u0441 \u043E\u0431\u044A\u0435\u043A\u0442\u043E\u043C."
     m_Metadata:
       m_Items: []
   - m_Id: 384729642987520
-    m_Localized: Trellis
+    m_Localized: Toilet table
     m_Metadata:
       m_Items: []
   - m_Id: 1106321603850240
@@ -81,7 +84,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1709268259860480
-    m_Localized: <b>Grandma's ghost:</b> "She showed up, she's dust-free!"
+    m_Localized: <b>Grandma's ghost:</b> "Well, well, look who finally showed up!"
     m_Metadata:
       m_Items: []
   - m_Id: 1709271552389120
@@ -91,31 +94,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1709304473481216
     m_Localized: <b>Grandma's ghost:</b> "And turn that damn flashlight off, it's
-      annoying me! "
+      annoying me!"
     m_Metadata:
       m_Items: []
   - m_Id: 2782144531951616
-    m_Localized: 'Igor Shapovalov - gamedesign
-
-      Trisha Skarzgard - 2D
-
-      Inna
-      Shinkareva - 2D
-
-      Lyudmila Bryzgalova - 2D
-
-      Yuliya Shchigareva -
-      narrative
-
-      Vitaly Fesov - developer
-
-      Nadzeya Shenfeld - developer
-
-      Helena
-      Borka - video editor
-
-
-      Alena Goncharenko - Gamebox mentor'
+    m_Localized: "Igor Shapovalov - game designer\n Trisha Skarzgard - 2D artist\n
+      Inna Shinkareva - 2D artist\n Lyudmila Bryzgalova - 2D artist\n Yuliya Shchigareva
+      - narrative designer\n Vitaly Fesov - developer\n Nadzeya Shenfeld - developer\n
+      Helena Borka - video editor\n \n Alena Goncharenko - Gamebox mentor"
     m_Metadata:
       m_Items: []
   - m_Id: 3925550652747776
@@ -159,7 +145,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3973628034314240
-    m_Localized: On the kitchen
+    m_Localized: "\u041D\u0430 \u043A\u0443\u0445\u043D\u0435"
     m_Metadata:
       m_Items: []
   - m_Id: 3973716735455232
@@ -169,13 +155,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3994370570481664
-    m_Localized: "<b>Grandmother:</b> \u201CYou're here, you're not dusty. You forgot
-      all about Grandma. Now we'll sit down to the table. Go down to the cellar and
-      get some cucumbers.\u201D"
+    m_Localized: "<b>Grandmother:</b> \u201CWell, well, look who finally showed up!
+      You nearly forgot about your granny. Come on, let\u2019s eat! But first, could
+      you please go down to the cellar and grab a jar of pickles?\u201D"
     m_Metadata:
       m_Items: []
   - m_Id: 3994713966538752
-    m_Localized: I have to go to the cellar ...
+    m_Localized: I have to go down to the cellar...
     m_Metadata:
       m_Items: []
   - m_Id: 6372791451676672
@@ -191,16 +177,17 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4343722748964864
-    m_Localized: I could use some candles. I'm gonna grab a couple.
+    m_Localized: The candles might come in handy. I'll grab a couple.
     m_Metadata:
       m_Items: []
   - m_Id: 4343657787584512
-    m_Localized: A lone candle burns in the darkness of the basement. Below, on one
-      of the lighted shelves, a box of similar candles can be seen.
+    m_Localized: There is a lit candle on one of the shelves in the basement. Below,
+      you can find a box with new candles.
     m_Metadata:
       m_Items: []
   - m_Id: 4343747033985024
-    m_Localized: I take a couple candles from the box and take them with me.
+    m_Localized: I took a couple of candles from the box and tucked them into my
+      pocket. It seems that my eyes are gradually adjusting to the surrounding darkness
     m_Metadata:
       m_Items: []
   - m_Id: 4652276567535616
@@ -216,7 +203,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4654170606170112
-    m_Localized: Walking stick
+    m_Localized: Walking Cane
     m_Metadata:
       m_Items: []
   - m_Id: 4863519463075840
@@ -228,11 +215,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4863525515456512
-    m_Localized: Clay statuette
+    m_Localized: Clay Whistle
     m_Metadata:
       m_Items: []
   - m_Id: 4863528090759168
-    m_Localized: Set of plates
+    m_Localized: Dinner set
     m_Metadata:
       m_Items: []
   - m_Id: 4967866051489792
@@ -248,7 +235,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4973127856189440
-    m_Localized: TV
+    m_Localized: TV set
     m_Metadata:
       m_Items: []
   - m_Id: 4973147829465088
@@ -260,7 +247,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5011872588394496
-    m_Localized: "Garlic\t"
+    m_Localized: Garlic
     m_Metadata:
       m_Items: []
   - m_Id: 5012101266042880
@@ -280,7 +267,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5012603424894976
-    m_Localized: Seasonings
+    m_Localized: Spices
     m_Metadata:
       m_Items: []
   - m_Id: 5038409735892992
@@ -292,7 +279,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5039119038836736
-    m_Localized: Clothing box
+    m_Localized: Clothes box
     m_Metadata:
       m_Items: []
   - m_Id: 5061565133516800
@@ -312,7 +299,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5062276416172032
-    m_Localized: Christmas tree decorations
+    m_Localized: Christmas toys
     m_Metadata:
       m_Items: []
   - m_Id: 5062300193681408
@@ -324,7 +311,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5782008289849344
-    m_Localized: Take.
+    m_Localized: Take it.
     m_Metadata:
       m_Items: []
   - m_Id: 6010746050998272
@@ -336,7 +323,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6038903403606016
-    m_Localized: <b>Aurora:</b> "An old album. Grandma was missed me..."
+    m_Localized: <b>Aurora:</b> "Old album. Grandma missed me..."
     m_Metadata:
       m_Items: []
   - m_Id: 6372814830727168
@@ -344,7 +331,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6388086237065216
-    m_Localized: The door of the trellis is ajar, maybe there's something in there.
+    m_Localized: The cabinet door is slightly ajar. The box of secrets is in place.
     m_Metadata:
       m_Items: []
   - m_Id: 6405853342363648
@@ -364,14 +351,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5781970889240576
-    m_Localized: ???
+    m_Localized: A bunch of dried garlic.
     m_Metadata:
       m_Items: []
   - m_Id: 5771608135593984
     m_Localized: "Amazing. A crackle of static, occasionally interrupted by some
-      supernatural broadcast, filled the room. \n<i>\"And remember, garlic only works
-      against vampires. It won't work against other evil things.\u201D </i>\nWith
-      that information out of the way, the TV went back to broadcasting interference."
+      supernatural broadcast, filled the room. \n <i>\"And remember, garlic only
+      works against vampires. It won't work against other evil things.\u201D </i>\nAfter
+      delivering this information, the TV switched back to broadcasting static."
     m_Metadata:
       m_Items: []
   - m_Id: 5771592260153344
@@ -379,49 +366,40 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5771557388709888
-    m_Localized: Try turn on.
+    m_Localized: Try to turn it on.
     m_Metadata:
       m_Items: []
   - m_Id: 5771501424111616
-    m_Localized: "\u0421\u0442\u0430\u0440\u0435\u043D\u044C\u043A\u0438\u0439 \u0442\u0435\u043B\u0435\u0432\u0438\u0437\u043E\u0440.
-      \u0421\u0442\u043E\u0438\u0442 \u043B\u0438 \u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C,
-      \u0447\u0442\u043E \u043E\u043D \u0431\u0435\u0441\u043F\u043E\u043B\u0435\u0437\u0435\u043D
-      \u0431\u0435\u0437 \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u0442\u0432\u0430..."
+    m_Localized: An old tv-set. it's useless without electricity...
     m_Metadata:
       m_Items: []
   - m_Id: 6388120932347904
-    m_Localized: Reread the scrap with a poem.
+    m_Localized: Reread the scrap of paper with the poem.
     m_Metadata:
       m_Items: []
   - m_Id: 6388139525697536
-    m_Localized: Step away from the trellis.
+    m_Localized: Step away from the toilet table.
     m_Metadata:
       m_Items: []
   - m_Id: 6388147968831488
-    m_Localized: "On a night when the candles are burning \nAnd the spirits tell
-      us we're in trouble,\nI'll perform a protective ritual,\nI'll make a white
-      noise to cover my tracks.\nThese twigs are like swords\nWill stop the fear
-      of doom\nYou'll find salt by the stove\nAnd the ghosts will be ruined!"
+    m_Localized: "On a night when candles burn bright,\nAnd spirits forebode ill
+      plight,\nI'll perform a protective rite,\nWith white noise concealing my tracks.\nThese
+      twigs, like swords, will hold their might,\nDispelling fear\u2019s fatal blight.\nSalt
+      by the oven you'll find,\nGhosts' demise shall be in kind!"
     m_Metadata:
       m_Items: []
   - m_Id: 6743713782198272
-    m_Localized: "\u041F\u0435\u0440\u0435\u0434 \u0433\u043B\u0430\u0437\u0430\u043C\u0438
-      \u0432\u043E\u0437\u043D\u0438\u043A \u043E\u0431\u0440\u0430\u0437 \u0441\u0442\u0430\u0440\u0443\u0448\u043A\u0438
-      \u0434\u0435\u043D\u044C \u0437\u0430 \u0434\u043D\u0435\u043C \u043E\u0436\u0438\u0434\u0430\u044E\u0449\u0435\u0439
-      \u043F\u0440\u0438\u0435\u0437\u0434\u0430 \u0432\u043D\u0443\u0447\u043A\u0438
-      \u043D\u0430 \u043A\u0440\u044B\u043B\u044C\u0446\u0435. \u0418 \u043A\u0430\u0436\u0434\u044B\u0439
-      \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439 \u044D\u043F\u0438\u0437\u043E\u0434
-      \u0434\u0430\u0432\u0430\u043B\u0441\u044F \u0435\u0439 \u0442\u044F\u0436\u0435\u043B\u0435\u0435
-      \u043F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0435\u0433\u043E."
+    m_Localized: Touch the cane.
     m_Metadata:
       m_Items: []
   - m_Id: 6764136641097728
-    m_Localized: "<b>Aurora:</b> \"\u0412 \u043D\u043E\u0447\u044C, \u043A\u043E\u0433\u0434\u0430
-      \u0441\u0432\u0435\u0447\u0438 \u0433\u043E\u0440\u044F\u0442...\""
+    m_Localized: <color=yellow>You found one of the important items. It might come
+      in handy.</color>
     m_Metadata:
       m_Items: []
   - m_Id: 6802777144848384
-    m_Localized: ...
+    m_Localized: Each of these records is older than me. I remember how carefully
+      Grandma treated them. It seemed as if they held the entire history of her life.
     m_Metadata:
       m_Items: []
   - m_Id: 6767472094244864
@@ -438,6 +416,664 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 6767525559037952
     m_Localized: Put the diary back where it belongs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5420225800728576
+    m_Localized: The attic is quiet and dark. Only stars gently glimmer, marking
+      the window and pointing the way to freedom and relief from nightmares. But
+      some invisible bonds prevent me from escaping.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5420509260181504
+    m_Localized: Try to push the window harder.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5420563744190464
+    m_Localized: Look at the painting again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5420635450011648
+    m_Localized: Ask the house to let me out.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5420645684113408
+    m_Localized: Place the candle on the windowsill.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5421053164941312
+    m_Localized: The old frame refuses to budge, and with each subsequent attempt,
+      my strength wanes. A chilling mist begins to rise from the hatch. Suddenly,
+      everything slows down and surroundings fracture into distinct frames.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5421132365983744
+    m_Localized: The painting, freed from the confinement of the sheet, now seems
+      to glow with a steady, soothing light. The light envelops every object in the
+      attic. Everything suddenly slows down, frame by frame.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5421178809511936
+    m_Localized: No reaction. A cold mist begins rising from the hatch.  Everything
+      suddenly slows down, frame by frame.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5421186736746496
+    m_Localized: The candle flickered briefly before igniting into a steady, calming
+      light that enveloped every object in the attic. Everything suddenly slows down,
+      frame by frame.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5421882991210496
+    m_Localized: Thoughts are tangled. Movement of hands is paralyzed by fear. I
+      feel her approaching. I need to find a way to defend myself.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5580538370093056
+    m_Localized: Scatter salt around yourself.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5580765189664768
+    m_Localized: Point the flashlight at the hatch.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5580768398307328
+    m_Localized: Throw garlic into the opening.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5580769639821312
+    m_Localized: Try pushing the chest towards the hatch.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5580909477916672
+    m_Localized: It seems to have worked. At least thinking has become easier.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5580961319514112
+    m_Localized: The soft, persistent murmur continued to grow louder.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5580962548445184
+    m_Localized: The soft, persistent murmuring kept getting louder. "I told you
+      not to play with your food!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5580963773181952
+    m_Localized: The soft, persistent murmur continued to grow louder.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581129129422848
+    m_Localized: The haze around the window starts to ripple. Time to move on to
+      the final part of the ritual.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581203246968832
+    m_Localized: Recite the children's rhyme aloud.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581221332807680
+    m_Localized: Recall what was written on the note inside the matryoshka.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581222888894464
+    m_Localized: Snap off a birch twig.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581223744532480
+    m_Localized: Hit the frame with your hand.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581343005372416
+    m_Localized: The words sound dull in the emptiness.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581360390762496
+    m_Localized: The words suggested by the matryoshka dolls sound dull in the emptiness..
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581361560973312
+    m_Localized: A muffled thud sounds. Then several infinitely long seconds of silence.
+      And...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5581362441777152
+    m_Localized: A rattling noise reverberates throughout the house. The old frame
+      creaks laboriously.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5768344895778816
+    m_Localized: The window flies open abruptly, blasting cold air. Freedom!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5768395021905920
+    m_Localized: "The window bursts open, blowing in frosty air. I hear footsteps
+      approaching quickly\u2014there's no time to waste!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5768411690070016
+    m_Localized: "The window bursts open, blowing in frosty air. I hear footsteps
+      approaching quickly, fetid breath close behind. There\u2019s no time to waste!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5768417121693696
+    m_Localized: The window bursts open, blowing in frosty air. I hear footsteps
+      approaching quickly, the foul breath catching up!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6716068390531072
+    m_Localized: An old but sturdily tied broom made of birch twigs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6716121368784896
+    m_Localized: Pull out a few birch twigs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6716305330958336
+    m_Localized: Remember how we used to "fly" on brooms as children...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6716315942547456
+    m_Localized: Place the broom in the corner.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6716346326085632
+    m_Localized: It feels like this might be useful.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6716369210208256
+    m_Localized: And then we'd run around the yard while Grandma grumbled... Somehow,
+      this memory calmed me down and gave me strength.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6737412339560448
+    m_Localized: <color=yellow>You found one of the important items. It might help
+      you escape.</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6743582404014080
+    m_Localized: Is this a cane? I haven't visited in such a long time! Could Grandma
+      really have gotten so weak that she needs a cane now?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6743736439828480
+    m_Localized: Don't touch it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6743780467437568
+    m_Localized: An image appeared before my eyes of grandma waiting for me on the
+      porch day after day. And every day, it became harder for her to leave the house.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6744000014086144
+    m_Localized: <color=yellow>The photo album is updated. You've found one of the
+      important memories. It may be useful to say goodbye to your grandmother.</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6751320043450368
+    m_Localized: I scratched my name here when I was 7 years old.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6751448141688832
+    m_Localized: Touch the inscription.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6751450205286400
+    m_Localized: Pass by.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6751508443197440
+    m_Localized: I remember how I would hide from Grandma in the attic after that.
+      Even then, it was a struggle for her to climb those stairs. Maybe I should
+      seek refuge there again now?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6757360864620544
+    m_Localized: I left the album somewhere else. Now it's open, and some of the
+      photos are missing.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6757399406080000
+    m_Localized: Try to figure out which photos are missing.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6757421241626624
+    m_Localized: Leave the album where it is.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6757434961195008
+    m_Localized: Childhood photos disappeared. Perhaps if I manage to restore them,
+      I'll be able to talk to grandma?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6759111416115200
+    m_Localized: I remember shooting dried peas at this weird stuffed goose with
+      a straw when I was a kid. Grandma would always scold me for wasting food...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6759577839497216
+    m_Localized: The old whistle brought back memories of childhood.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6767419342483456
+    m_Localized: An old granny's diary, it's been lying here for a thousand years.
+      Maybe there's something useful in here?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6767539521875968
+    m_Localized: '<i>February 8th.</i>
+
+      I''m spending more and more time watching
+      TV series, it''s so addictive! I feel paralyzed. It pulls me out of reality,
+      where Aurora doesn''t visit me.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6767566029877248
+    m_Localized: '<i>March 19th.</i>
+
+      Today I dreamed of my mother. In my dream,
+      she said that bright light both annoyed and frightened her. Now I''ve even
+      started dreaming of the dead. I should look up a dream interpretation book.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6767571809628160
+    m_Localized: '<i>July 3rd.</i>
+
+      Today, my favorite sad waltz played on
+      the radio. Ah, once upon a time, I could dance to it all night long.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6769171299069952
+    m_Localized: A cardboard box with old clothes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6769233014059008
+    m_Localized: Search for something useful at the bottom of the box.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6769251578048512
+    m_Localized: Leave the box alone.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6769269902962688
+    m_Localized: Nothing useful was found.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6792105132584960
+    m_Localized: A teddy bear is sitting on the chair.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6792162103816192
+    m_Localized: Take the toy and examine it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6792187835871232
+    m_Localized: Pass it by.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6792231628599296
+    m_Localized: Teddy! My old bear! I thought he had been lost long ago! Apparently,
+      he's dear to Grandma too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6793830119796736
+    m_Localized: <b>Aurora:</b> "My photo. Grandma looked at it as she fell asleep."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6793852525768704
+    m_Localized: "\u041F\u043E\u043B\u043E\u0436\u0443 \u0435\u0433\u043E \u0432
+      \u0430\u043B\u044C\u0431\u043E\u043C."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6793875313422336
+    m_Localized: "\u0424\u043E\u0442\u043E \u043F\u043E\u043F\u043E\u043B\u043D\u044F\u0435\u0442
+      \u0430\u043B\u044C\u0431\u043E\u043C."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6795026389823488
+    m_Localized: Due to the lack of light, it seemed as though one of the matryoshkas
+      had a sinister smile distorting its face. Picking it up, I realized two things.
+      First, it was all in my imagination, and second, there was something inside.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6795071486980096
+    m_Localized: Open the matryoshka.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6795110955380736
+    m_Localized: Put it back in its place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6795121457917952
+    m_Localized: The matryoshka opened with an unpleasant squeak. A neatly folded
+      piece of paper fell out with the words "Clap, stamp, and the window will open!"
+      written on it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6799350494949376
+    m_Localized: A pack of salt is a must-have item in every kitchen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6799388226908160
+    m_Localized: Put the salt in your pocket.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6799407193550848
+    m_Localized: Don't take it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6799424314699776
+    m_Localized: There was something about salt in the rhyme. Maybe it'll help me
+      escape somehow.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6799495626256384
+    m_Localized: <color=yellow>You found one of the important items. It might help
+      you escape from here.</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6800025010335744
+    m_Localized: 'There is a small handwriting on the calendar sheet: "I died at
+      4 AM, it will be fair to let you struggle until the same time".'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6802303888945152
+    m_Localized: In the dark corner stands an old Soviet gramophone.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6802394838233088
+    m_Localized: Look through the records.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6802463532544000
+    m_Localized: Leave it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6802832996200448
+    m_Localized: A painting, half-covered by some fabric.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6802944610824192
+    m_Localized: Examine it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6802967926960128
+    m_Localized: Leave it as is. Grandma covered it for a reason.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6802987032014848
+    m_Localized: 'Cruiser Aurora, of course... But instead of the usual irritation,
+      a sense of calm came over me.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803107752472576
+    m_Localized: A cardboard box full of Christmas ornaments. I randomly pull one
+      out. It's a beautiful glass ball, and it seems there's a note hidden inside.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803172348948480
+    m_Localized: Break it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803196784963584
+    m_Localized: Put it back in its place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803208642260992
+    m_Localized: 'The sound of the shattering ornament echoed throughout the attic.
+      In my hands is a small scrap of paper, on which childlike writing reads: "Do
+      not trust the matryoshkas."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803246219030528
+    m_Localized: The chest is packed with old books. Perhaps one of them could be
+      useful.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803304586964992
+    m_Localized: Open the adventures of Winnie-the-Pooh.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803322064629760
+    m_Localized: Close the chest.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803332990791680
+    m_Localized: When I was a child, I asked Grandma to read this book to me every
+      evening. I'm sure both she and I know it by heart.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6819860352102400
+    m_Localized: <color=yellow>Several photos have appeared in the album.</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6820244890087424
+    m_Localized: <color=yellow>Several photos have appeared in the album.</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6821003778093056
+    m_Localized: Wipe off the dust.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6821024644755456
+    m_Localized: Leave the object right there.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6821068286488576
+    m_Localized: As I wipe the whistle clean, I recall how Grandma used to grumble
+      that only the Ride of the Valkyries was louder than this toy.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6830526081298432
+    m_Localized: A shelf with a few low-maintenance plants. They appear to have not
+      been watered in a while.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6830558536822784
+    m_Localized: Tear off a leaf.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6830576240979968
+    m_Localized: Do not disturb the pots.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6830585489420288
+    m_Localized: 'A quiet voice behind reminds:
+
+      "Your time is melting away..."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6849285437288448
+    m_Localized: <b>Aurora:</b> "Every time I try to open the window, my hands grow
+      weak and my head starts pounding."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6850526594756608
+    m_Localized: Matches. One of the few sources of light in a house without electricity.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6850528658354176
+    m_Localized: Take a matchbox.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6850580105687040
+    m_Localized: Don't take it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6850625769074688
+    m_Localized: You can't illuminate much with just matches. If I'm able to restore
+      the album, it will definitely be easier to look through it by candlelight.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6851890972487680
+    m_Localized: <color=yellow>You received information about the amount of time
+      allotted for your escape.</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6862445007368192
+    m_Localized: 'The photo album is once again filled with pictures. It''s time
+      to talk about what happened.
+
+      "Grandma, you''re dead, aren''t you? Why
+      do you scare me like this? Are you so upset that I haven''t visited you in
+      such a long time that you want to hurt me?"
+
+      "I''m so sorry, forgive
+      me. I love you so much!"
+
+      "I''ll try to help you find peace, grandma!
+      Let''s look at the photos together, like we used to. And I''ll forever keep
+      the memory of you and my happy childhood alive."
+
+      "In this picture, we''re
+      standing side by side, hugging each other, so happy!"'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6862510052634624
+    m_Localized: "\"Sorry we haven\u2019t gone for walks lately. I've been busy with
+      school and chores.\""
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6862554268987392
+    m_Localized: '"I remember that day. I was singing the song "Where Are We Going
+      With Piglet," and you were laughing and joining in..."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6862572644233216
+    m_Localized: '"City walks are more interesting, with lots of beautiful places
+      to see."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6862578067468288
+    m_Localized: '"I''m truly sorry that walking became so difficult for you, requiring
+      a cane, and I wasn''t there to help."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6862591464075264
+    m_Localized: 'Grandma abruptly turns the page of the album: "You''ve completely
+      forgotten me, Aurora!"'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863066913599488
+    m_Localized: 'Grandma freezes, lost in memorie, and whispers softly: "... is
+      a big, big secret!"'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863084374487040
+    m_Localized: Grandma flips the page abruptly. "And when you were little, you
+      used to come here happily. It's a shame you've changed so much."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863092368830464
+    m_Localized: Grandma reproachfully says, "You haven't visited in five years,
+      Aurora. A lot has changed since then," but there is no cold in her voice.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863226070659072
+    m_Localized: 'Grandma looks at a photo where she and Aurora hold a toy bear.
+
+      "Do
+      you remember your favorite toys?" Grandma asks.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863303841443840
+    m_Localized: '"Yes, grandma. I remember Teddy. When those boys tore his paw off,
+      I cried so hard, and you sewed it back on so skillfully."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863317263216640
+    m_Localized: '"I''m too grown-up to play with toys now."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863318546673664
+    m_Localized: '"Grandma, do you remember the bird whistle? I used to whistle non-stop
+      all day long."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863319368757248
+    m_Localized: '"I don''t."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863741512871936
+    m_Localized: Grandma smiles warmly. "So you do remember? I thought you'd forgotten
+      everything."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863764191473664
+    m_Localized: Grandma frowns.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863766036967424
+    m_Localized: 'Grandma starts to get angry: "My head hurt from all that whistling!!!"'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863768301891584
+    m_Localized: Grandma frowns.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6863976289038336
+    m_Localized: '"Grandma, maybe it was a sad waltz?"'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6864186947956736
+    m_Localized: '"The Beatles, maybe?"'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6864200180985856
+    m_Localized: '"Surely you were dancing to folk songs."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6864210939375616
+    m_Localized: '"Grandma, I can just imagine you dancing to Ride of the Valkyries!"'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6864245018095616
+    m_Localized: Grandma closes her eyes and hums a tune.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6864279616909312
+    m_Localized: 'Grandma wrinkles her nose: "I never understood their songs."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6864302912073728
+    m_Localized: '"I wasn''t old enough to dance to folk songs!"'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6864309488742400
+    m_Localized: '"You''re making fun of me?!"'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6865060441124864
+    m_Localized: '"I see that you haven''t forgotten me, Aurora. I can be free now!"'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6865090933714944
+    m_Localized: '"I''m glad our conversation took place, albeit late, and you''ll
+      have fond memories of me."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6865106712686592
+    m_Localized: '"We stopped understanding each other a long time ago, but at least
+      we talked one last time."'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6865118691618816
+    m_Localized: '"We''ve grown so distant, it''s a pity we don''t understand each
+      other anymore. Goodbye!"'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6865803533381632
+    m_Localized: Grandmother and granddaughter look at a photo where young grandmother
+      dances next to a gramophone. Grandmother says, "I can't recall which melody
+      I was dancing to. Help me remember."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6933074180075520
+    m_Localized: A mandatory status symbol for any Soviet family.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6933673831329792
+    m_Localized: Nothing of use...
     m_Metadata:
       m_Items: []
   references:
