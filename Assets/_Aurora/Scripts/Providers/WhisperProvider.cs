@@ -58,6 +58,7 @@ public class WhisperProvider : MonoBehaviour, IAction
         _cts?.Cancel();
         _cts = new();
         
+        ClearActionEvents();
         _actionSettings = settings;
 
         _hasInteractedItemWhisper = true;
@@ -73,7 +74,9 @@ public class WhisperProvider : MonoBehaviour, IAction
         _cts?.Cancel();
         _cts = new();
         
+        ClearActionEvents();
         _actionSettings = settings;
+
         ToWhisper(null);
     }
 
@@ -113,6 +116,7 @@ public class WhisperProvider : MonoBehaviour, IAction
     {
         if (_actionSettings.WhisperText == null) return;
 
+        SubscribeActionEvents();
         string whisperText = _actionSettings.WhisperText.GetLocalizedString();
         UpdateWhisperText(whisperText);
 
@@ -126,6 +130,8 @@ public class WhisperProvider : MonoBehaviour, IAction
 
     private void OnCancelInteract(IInteractable interactable)
     {
+        ClearActionEvents();
+        
         _lastInteractable = null;
         _actionSettings = null;
         _hasInteractedItemWhisper = false;
@@ -138,6 +144,8 @@ public class WhisperProvider : MonoBehaviour, IAction
 
     public async void Cancel()
     {
+        ClearActionEvents();
+        
         _hasInteractedItemWhisper = false;
         
         _cts?.Cancel();
@@ -149,5 +157,21 @@ public class WhisperProvider : MonoBehaviour, IAction
     private void OnPlayerTeleported()
     {
         Cancel();
+    }
+
+    private void ClearActionEvents()
+    {
+        if (_actionSettings == null) return;
+        if (_actionSettings.WhisperText.IsEmpty) return;
+
+        _actionSettings.WhisperText.StringChanged -= UpdateWhisperText;
+    }
+
+    private void SubscribeActionEvents()
+    {
+        if (_actionSettings == null) return;
+        if (_actionSettings.WhisperText.IsEmpty) return;
+        
+        _actionSettings.WhisperText.StringChanged += UpdateWhisperText;
     }
 }

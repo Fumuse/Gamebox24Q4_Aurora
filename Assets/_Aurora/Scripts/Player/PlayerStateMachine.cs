@@ -72,16 +72,19 @@ public class PlayerStateMachine : StateMachine
 
     public void BlockMove()
     {
+        Animator.enabled = false;
         SwitchState(null);
     }
 
     public void UnblockMove()
     {
+        Animator.enabled = true;
         SwitchState(new PlayerMoveState(this));
     }
 
     public void Die()
     {
+        Animator.enabled = false;
         SwitchState(null);
     }
 

@@ -15,6 +15,7 @@ public abstract class SceneController : MonoBehaviour
 
     public void GameEnd()
     {
+        DestroyWatcher.Disable();
         LoadSceneAsync(0);
     }
 
