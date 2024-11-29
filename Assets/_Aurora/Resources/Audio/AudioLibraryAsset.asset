@@ -25,6 +25,10 @@ MonoBehaviour:
       clip: {fileID: 8300000, guid: b6a01fad1ef67e844898920d90d934b5, type: 3}
     - label: Broken
       clip: {fileID: 8300000, guid: 700657f5852b20647af746540c244dbd, type: 3}
+    - label: Acceptance
+      clip: {fileID: 8300000, guid: 526c0995cb0708c4ebc6882434145adb, type: 3}
+    - label: Escape
+      clip: {fileID: 8300000, guid: 54f0270e7c0d68f4c83195fcfff91f4f, type: 3}
   - categoryName: Flashlight
     clips:
     - label: Flashlight_On

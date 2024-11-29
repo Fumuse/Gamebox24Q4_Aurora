@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class InEndDialogueState : State
+﻿public class InEndDialogueState : State
 {
     private EndGameStateMachine _stateMachine;
     private ShowVideoSceneProvider _videoProvider;
@@ -64,11 +62,5 @@ public class InEndDialogueState : State
                 _videoProvider.Execute(_happyEnd ? _stateMachine.WinAcceptanceSettings : _stateMachine.DeathReplacementMovieSettings);
                 break;
         }
-    }
-
-    private enum EndGamePath
-    {
-        Acceptance,
-        Escape
     }
 }
