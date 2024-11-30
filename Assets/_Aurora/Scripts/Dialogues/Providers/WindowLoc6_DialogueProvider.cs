@@ -24,6 +24,8 @@ public class WindowLoc6_DialogueProvider : IChangeDialogueProvider
         _dialogueLibrary = dialogueAssets;
         _tagManager = GameManager.Instance.TagManager;
         
+        AmbienceAudioController.Instance.ChangeBackgroundMusicByEndDialogue(EndGamePath.Escape);
+        
         InEndDialogue?.Invoke();
     }
 

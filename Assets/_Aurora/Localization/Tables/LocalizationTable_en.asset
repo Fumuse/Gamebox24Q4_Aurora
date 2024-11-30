@@ -327,7 +327,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6372814830727168
-    m_Localized: "\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410\u0410!!!!!!"
+    m_Localized: 'My grandmother''s body lies In front of me.
+
+      "What the hell
+      is going on here? I need to get out of this house!"'
     m_Metadata:
       m_Items: []
   - m_Id: 6388086237065216
@@ -335,11 +338,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6405853342363648
-    m_Localized: <b>Aurora:</b> "I should think of something..."
+    m_Localized: <b>Aurora:</b> "I need to escape from here. Perhaps a poem will
+      help me get out."
     m_Metadata:
       m_Items: []
   - m_Id: 6406266909126656
-    m_Localized: <color=yellow>Explore the room</color>
+    m_Localized: <b>Aurora:</b> "Or should I try talking to grandma's spirit? I'll
+      need the album then."
     m_Metadata:
       m_Items: []
   - m_Id: 5782044029513728
@@ -393,8 +398,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6764136641097728
-    m_Localized: <color=yellow>You found one of the important items. It might come
-      in handy.</color>
+    m_Localized: <b>Aurora:</b> "On a night when candles burn bright..."
     m_Metadata:
       m_Items: []
   - m_Id: 6802777144848384
@@ -585,8 +589,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6737412339560448
-    m_Localized: <color=yellow>You found one of the important items. It might help
-      you escape.</color>
+    m_Localized: <b>Aurora:</b> "These twigs, like swords, will hold their might..."
     m_Metadata:
       m_Items: []
   - m_Id: 6743582404014080
@@ -604,8 +607,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6744000014086144
-    m_Localized: <color=yellow>The photo album is updated. You've found one of the
-      important memories. It may be useful to say goodbye to your grandmother.</color>
+    m_Localized: <color=yellow>Several photos have appeared in the album.</color>
     m_Metadata:
       m_Items: []
   - m_Id: 6751320043450368
@@ -766,8 +768,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6799495626256384
-    m_Localized: <color=yellow>You found one of the important items. It might help
-      you escape from here.</color>
+    m_Localized: <b>Aurora:</b> "Salt by the oven you'll find..."
     m_Metadata:
       m_Items: []
   - m_Id: 6800025010335744
@@ -1074,6 +1075,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 6933673831329792
     m_Localized: Nothing of use...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8673951061012480
+    m_Localized: Hold LMB to skip
     m_Metadata:
       m_Items: []
   references:

@@ -24,6 +24,8 @@ public class PhotoAlbumLoc4_DialogueProvider : IChangeDialogueProvider
         _spriteLibrary = spriteLibrary;
         _dialogueLibrary = dialogueAssets;
         _tagManager = GameManager.Instance.TagManager;
+
+        AmbienceAudioController.Instance.ChangeBackgroundMusicByEndDialogue(EndGamePath.Acceptance);
         
         InEndDialogue?.Invoke();
     }

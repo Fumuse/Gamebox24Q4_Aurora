@@ -17,6 +17,10 @@ public abstract class PlayerBaseState : State
         {
             bool prevMoving = _isMoving;
             _isMoving = value;
+            if (prevMoving != _isMoving)
+            {
+                OnMovingChange();
+            }
         }
     }
 
@@ -98,6 +102,14 @@ public abstract class PlayerBaseState : State
         else
         {
             stateMachine.Animator.CrossFadeInFixedTime(moveAnimBlendTreeHash, CrossFadeDuration);
+        }
+    }
+
+    protected void OnMovingChange()
+    {
+        if (!_isMoving)
+        {
+            stateMachine.StepStopSound();
         }
     }
 }

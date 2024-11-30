@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927eb93266d9419980b6fbfa27d0ee9d, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  timeToEnd: 240
+  timeToEnd: 260
   maxAcceptance: 100
   maxRoomShadowOverlayOpacity: 220
   stepRoomShadowOverlayOpacity: 30
   acceptanceFlashlightCost: 5
   acceptanceToBrokenStage: 50
   acceptanceToScreamerSpawn: 75
+  acceptanceBadEndStep: 25

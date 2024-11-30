@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Logo_GB_Horror_0: -3776227504841625249
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

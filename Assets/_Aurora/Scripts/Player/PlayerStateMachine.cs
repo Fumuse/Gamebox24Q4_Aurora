@@ -4,11 +4,13 @@ using UnityEngine;
 [RequireComponent(typeof(InputReader))]
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AudioSource))]
 public class PlayerStateMachine : StateMachine
 {
     [SerializeField] private float speed = 7f;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private PlayerState playerState;
+    [SerializeField] private AudioClip stopStepSound;
 
     protected override PlayerLoopTiming UpdateYield => PlayerLoopTiming.Update;
 
@@ -34,6 +36,8 @@ public class PlayerStateMachine : StateMachine
     
     protected readonly int fearTriggerAnimParamHash = Animator.StringToHash("PlayerFear");
 
+    private AudioSource _audioSource;
+
     public void Init()
     {
         InputReader = GetComponent<InputReader>();
@@ -41,6 +45,7 @@ public class PlayerStateMachine : StateMachine
         Animator = GetComponent<Animator>();
         MainCamera = Camera.main;
         SpriteRenderer = spriteRenderer;
+        _audioSource = GetComponent<AudioSource>();
         
         SwitchState(new PlayerMoveState(this));
     }
@@ -67,16 +72,31 @@ public class PlayerStateMachine : StateMachine
 
     public void BlockMove()
     {
+        Animator.enabled = false;
         SwitchState(null);
     }
 
     public void UnblockMove()
     {
+        Animator.enabled = true;
         SwitchState(new PlayerMoveState(this));
     }
 
     public void Die()
     {
+        Animator.enabled = false;
         SwitchState(null);
+    }
+
+    public void StepSound(AudioClip sound)
+    {
+        if (_audioSource == null) return;
+        AmbienceAudioController.Instance.PuffAudio(_audioSource, sound);
+    }
+
+    public void StepStopSound()
+    {
+        // if (_audioSource == null) return;
+        // AmbienceAudioController.Instance.PuffAudio(_audioSource, stopStepSound);
     }
 }

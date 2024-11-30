@@ -63,7 +63,7 @@ MonoBehaviour:
         m_LocalVariables: []
       <NextDialogue>k__BackingField: {fileID: 11400000, guid: 71a6a6fbe3ede814491944495cc48360, type: 2}
       <Condition>k__BackingField: {fileID: 0}
-      acceptanceScaleCost: 5
+      acceptanceScaleCost: 0
       timeCost: 10
       tagsToAddAfterAction:
       - tagName: 10

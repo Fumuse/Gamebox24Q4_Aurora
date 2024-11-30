@@ -62,6 +62,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SkipVideo"",
+                    ""type"": ""Button"",
+                    ""id"": ""4abb5958-15e9-487c-be70-d7a266667fb9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""SlowTap(duration=3)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -161,6 +170,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e45dc5a-a1bd-407f-a473-7726e34745cb"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""SkipVideo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -284,6 +304,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_RightClick = m_Player.FindAction("RightClick", throwIfNotFound: true);
         m_Player_Point = m_Player.FindAction("Point", throwIfNotFound: true);
         m_Player_Cancel = m_Player.FindAction("Cancel", throwIfNotFound: true);
+        m_Player_SkipVideo = m_Player.FindAction("SkipVideo", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
@@ -359,6 +380,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RightClick;
     private readonly InputAction m_Player_Point;
     private readonly InputAction m_Player_Cancel;
+    private readonly InputAction m_Player_SkipVideo;
     public struct PlayerActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -367,6 +389,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @RightClick => m_Wrapper.m_Player_RightClick;
         public InputAction @Point => m_Wrapper.m_Player_Point;
         public InputAction @Cancel => m_Wrapper.m_Player_Cancel;
+        public InputAction @SkipVideo => m_Wrapper.m_Player_SkipVideo;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -388,6 +411,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Cancel.started += instance.OnCancel;
             @Cancel.performed += instance.OnCancel;
             @Cancel.canceled += instance.OnCancel;
+            @SkipVideo.started += instance.OnSkipVideo;
+            @SkipVideo.performed += instance.OnSkipVideo;
+            @SkipVideo.canceled += instance.OnSkipVideo;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -404,6 +430,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Cancel.started -= instance.OnCancel;
             @Cancel.performed -= instance.OnCancel;
             @Cancel.canceled -= instance.OnCancel;
+            @SkipVideo.started -= instance.OnSkipVideo;
+            @SkipVideo.performed -= instance.OnSkipVideo;
+            @SkipVideo.canceled -= instance.OnSkipVideo;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -526,6 +555,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnPoint(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
+        void OnSkipVideo(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

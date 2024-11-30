@@ -67,4 +67,14 @@ public class AmbienceAudioController : Singleton<AmbienceAudioController>
             }
         }
     }
+
+    public void ChangeBackgroundMusicByEndDialogue(EndGamePath path)
+    {
+        AudioClip clip = audioAssets["BackgroundMusic", path.ToString()];
+        if (clip != null)
+        {
+            backgroundAudioSource.clip = clip;
+            StartPlayBackgroundMusic();
+        }
+    }
 }

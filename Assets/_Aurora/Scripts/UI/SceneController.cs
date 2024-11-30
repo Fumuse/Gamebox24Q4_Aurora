@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public abstract class SceneController : MonoBehaviour
 {
-    protected CancellationTokenSource _cts = new(); 
+    protected CancellationTokenSource _cts = new();
+    public const string GameEndedSaveName = "GameEnded";
     
     protected async void LoadSceneAsync(int sceneIndex)
     {
@@ -15,6 +16,10 @@ public abstract class SceneController : MonoBehaviour
 
     public void GameEnd()
     {
+        DestroyWatcher.Disable();
+        
+        PlayerPrefs.SetInt(GameEndedSaveName, 1);
+        
         LoadSceneAsync(0);
     }
 
