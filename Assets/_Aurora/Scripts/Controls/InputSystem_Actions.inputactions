@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SkipVideo",
+                    "type": "Button",
+                    "id": "4abb5958-15e9-487c-be70-d7a266667fb9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "SlowTap(duration=3)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -139,6 +148,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3e45dc5a-a1bd-407f-a473-7726e34745cb",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "SkipVideo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

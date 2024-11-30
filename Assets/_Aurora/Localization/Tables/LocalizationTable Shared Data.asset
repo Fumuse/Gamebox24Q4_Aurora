@@ -935,6 +935,10 @@ MonoBehaviour:
     m_Key: Loc_4_Seasonings_Content
     m_Metadata:
       m_Items: []
+  - m_Id: 8673951061012480
+    m_Key: VideoSkip_LoaderTip
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

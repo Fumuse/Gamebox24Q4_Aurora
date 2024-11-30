@@ -15,6 +15,9 @@ public class InputReader : MonoBehaviour
     public delegate void MouseClicked(Vector2 mousePosition);
     public static event MouseClicked OnMouseClicked;
 
+    public static Action OnSkipVideoStarted;
+    public static Action OnSkipVideoCanceled;
+
     public void Init()
     {
         _isActions = new();
@@ -25,6 +28,9 @@ public class InputReader : MonoBehaviour
         _isActions.Player.Click.performed += OnMouseClick;
         _isActions.Player.RightClick.performed += OnMouseRightClick;
         _isActions.Player.Point.performed += OnMouseMove;
+        
+        _isActions.Player.SkipVideo.started += OnSkipVideoStart;
+        _isActions.Player.SkipVideo.canceled += OnSkipVideoCancel;
     }
 
     private void OnDisable()
@@ -35,6 +41,9 @@ public class InputReader : MonoBehaviour
         _isActions.Player.Click.performed -= OnMouseClick;
         _isActions.Player.RightClick.performed -= OnMouseRightClick;
         _isActions.Player.Point.performed -= OnMouseMove;
+        
+        _isActions.Player.SkipVideo.started -= OnSkipVideoStart;
+        _isActions.Player.SkipVideo.canceled -= OnSkipVideoCancel;
     }
 
     private void OnCancel(InputAction.CallbackContext context)
@@ -69,5 +78,15 @@ public class InputReader : MonoBehaviour
     {
         if (!IsMouseInCameraView(Mouse.current.position.value)) return;
         OnRightMouseClicked?.Invoke(Mouse.current.position.value);
+    }
+
+    private void OnSkipVideoStart(InputAction.CallbackContext context)
+    {
+        OnSkipVideoStarted?.Invoke();
+    }
+
+    private void OnSkipVideoCancel(InputAction.CallbackContext context)
+    {
+        OnSkipVideoCanceled?.Invoke();
     }
 }
